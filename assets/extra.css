@@ -80,8 +80,6 @@
 .md-nav--secondary .md-nav__link:hover,
 .md-nav--secondary .md-nav__link:focus {
   color: #ffffff !important;
-  border-left: 3px solid #6b7f99;
-  padding-left: calc(0.75rem - 3px);
   background: rgba(255, 255, 255, 0.05);
 }
 
