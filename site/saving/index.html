@@ -1,0 +1,1404 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Threader — Visual Dialogue System for Unity">
+      
+      
+      
+      
+        <link rel="prev" href="../entry-points/">
+      
+      
+        <link rel="next" href="../api-reference/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Saving - Threader</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#saving" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Threader" class="md-header__button md-logo" aria-label="Threader" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Threader
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Saving
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../quick-start/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Quick Start
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../tutorial/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Tutorial
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../graph-editor/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Graph Editor
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../nodes/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Node Reference
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../variables/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Variables
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../conditions/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Conditions
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../entry-points/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Entry Points
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Saving
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../api-reference/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  API Reference
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../changelog/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Changelog
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Threader" class="md-nav__button md-logo" aria-label="Threader" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Threader
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quick-start/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quick Start
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tutorial
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../graph-editor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Graph Editor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nodes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Node Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../variables/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Variables
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../conditions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Conditions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../entry-points/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Entry Points
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Saving
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Saving
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-saving-variable-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Saving variable values
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Saving variable values">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#multiple-assets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Multiple assets
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#new-game-reset-to-defaults" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        New game (reset to defaults)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-saving-entry-points" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Saving entry points
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Saving entry points">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#saving-entry-points-for-all-scene-actors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Saving entry points for all scene actors
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-saving-choice-history" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Saving choice history
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Saving choice history">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-stability" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key stability
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#loadsavedata-merges-not-replaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LoadSaveData merges, not replaces
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#querying-in-c" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Querying in C
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-conditionstore-if-using-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. ConditionStore (if using it)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-delegate-registered-conditions-conditionservice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Delegate-registered conditions (ConditionService)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#full-saveload-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Full save/load example
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#when-to-call-saveload" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        When to call Save/Load
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-threader-does-not-save-for-you" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What Threader does NOT save for you
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../changelog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Changelog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="saving">Saving</h1>
+<p>Threader owns <strong>no runtime persistence</strong>. Every project has a different save system, so the plugin gives you clean data-extraction APIs you can feed into whatever you're already using (PlayerPrefs, JSON, a database, a binary serializer, Steam Cloud, etc.).</p>
+<p>There are three separate things to save when a player saves their game mid-playthrough:</p>
+<table>
+<thead>
+<tr>
+<th>What</th>
+<th>Where it lives</th>
+<th>How to save/load</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Variable values</td>
+<td><code>DialogueVariables</code> assets</td>
+<td>Read with <code>GetBool</code>/<code>GetInt</code>/<code>GetString</code>, write back with <code>SetBool</code>/<code>SetInt</code>/<code>SetString</code></td>
+</tr>
+<tr>
+<td>NPC entry points</td>
+<td><code>IDialogueActor.ActiveEntryPointKey</code> per actor</td>
+<td>Copy the string; restore with <code>SetEntryPoint</code></td>
+</tr>
+<tr>
+<td>Choice history</td>
+<td><code>DialogueChoiceHistory</code> static class</td>
+<td><code>GetSaveData()</code> / <code>LoadSaveData()</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="1-saving-variable-values">1. Saving variable values</h2>
+<p><code>DialogueVariables</code> is a <code>ScriptableObject</code>. Its runtime dictionaries are in-memory only and reset whenever the asset is unloaded or the game exits. After loading a save, repopulate the dictionaries before any dialogue starts.</p>
+<pre><code class="language-csharp">// ─── Saving ──────────────────────────────────────────────────────────────
+DialogueVariables vars = dialogueManager.VariablesList[0]; // or find by name
+
+// Booleans
+bool hasSword     = vars.GetBool(&quot;hasSword&quot;);
+bool talkedToKing = vars.GetBool(&quot;talkedToKing&quot;);
+
+// Integers
+int relationshipScore = vars.GetInt(&quot;relationship&quot;);
+int gold              = vars.GetInt(&quot;gold&quot;);
+
+// Strings
+string playerName = vars.GetString(&quot;playerName&quot;);
+
+// Write to your preferred system — PlayerPrefs shown for simplicity
+PlayerPrefs.SetInt(&quot;hasSword&quot;,     hasSword ? 1 : 0);
+PlayerPrefs.SetInt(&quot;relationship&quot;, relationshipScore);
+PlayerPrefs.SetString(&quot;playerName&quot;, playerName);
+
+// ─── Loading ──────────────────────────────────────────────────────────────
+vars.SetBool  (&quot;hasSword&quot;,     PlayerPrefs.GetInt(&quot;hasSword&quot;,     0) == 1);
+vars.SetInt   (&quot;relationship&quot;, PlayerPrefs.GetInt(&quot;relationship&quot;, 0));
+vars.SetString(&quot;playerName&quot;,   PlayerPrefs.GetString(&quot;playerName&quot;, &quot;&quot;));
+
+// No need to call InitRuntime() — SetBool/SetInt/SetString call EnsureInit() automatically
+</code></pre>
+<h3 id="multiple-assets">Multiple assets</h3>
+<p>If you have more than one <code>DialogueVariables</code> asset assigned to <code>DialogueManager.VariablesList</code>, iterate all of them. You can use the asset name (<code>.name</code>) or a custom naming convention as save keys:</p>
+<pre><code class="language-csharp">foreach (var asset in dialogueManager.VariablesList)
+{
+    foreach (var variable in asset.Variables)
+    {
+        string saveKey = $&quot;{asset.name}.{variable.Name}&quot;;
+
+        switch (variable.Type)
+        {
+            case VariableType.Bool:
+                int bit = asset.GetBool(variable.Name) ? 1 : 0;
+                data[saveKey] = bit.ToString();
+                break;
+            case VariableType.Int:
+                data[saveKey] = asset.GetInt(variable.Name).ToString();
+                break;
+            case VariableType.String:
+                data[saveKey] = asset.GetString(variable.Name);
+                break;
+        }
+    }
+}
+</code></pre>
+<h3 id="new-game-reset-to-defaults">New game (reset to defaults)</h3>
+<p>Call <code>InitRuntime()</code> explicitly to copy the asset's design-time defaults back into the runtime dictionaries. This is the canonical "new game" reset:</p>
+<pre><code class="language-csharp">void StartNewGame()
+{
+    foreach (var asset in dialogueManager.VariablesList)
+        asset.InitRuntime();
+
+    DialogueChoiceHistory.Clear();
+
+    foreach (var actor in FindObjectsOfType&lt;MonoBehaviour&gt;()
+                              .OfType&lt;IDialogueActor&gt;())
+        actor.ResetEntryPoint();
+}
+</code></pre>
+<blockquote>
+<p><code>InitRuntime()</code> resets <strong>all</strong> variables in that asset to their design-time defaults. If you only want to reset some variables, use individual <code>SetBool</code>/<code>SetInt</code>/<code>SetString</code> calls.</p>
+</blockquote>
+<hr />
+<h2 id="2-saving-entry-points">2. Saving entry points</h2>
+<p>Each <code>IDialogueActor</code> (a <code>DialogueTrigger</code> or <code>NPCDialogue</code> in your scene) stores a single string — <code>ActiveEntryPointKey</code>. Empty or null means "use the graph's start node."</p>
+<pre><code class="language-csharp">// ─── Saving ──────────────────────────────────────────────────────────────
+var actor = npcGameObject.GetComponent&lt;IDialogueActor&gt;();
+string key = actor.ActiveEntryPointKey; // may be null or &quot;&quot;
+// Treat null and &quot;&quot; identically when saving — both mean &quot;default start&quot;
+PlayerPrefs.SetString(&quot;npc_merchant_ep&quot;, key ?? &quot;&quot;);
+
+// ─── Loading ──────────────────────────────────────────────────────────────
+string savedKey = PlayerPrefs.GetString(&quot;npc_merchant_ep&quot;, &quot;&quot;);
+actor.SetEntryPoint(savedKey); // &quot;&quot; or null restores the default
+</code></pre>
+<h3 id="saving-entry-points-for-all-scene-actors">Saving entry points for all scene actors</h3>
+<p>If you have many NPCs, collect them at load time and save/restore by a stable identifier (GameObject name, a unique ID component, etc.):</p>
+<pre><code class="language-csharp">// Save
+var actors = FindObjectsOfType&lt;MonoBehaviour&gt;().OfType&lt;IDialogueActor&gt;();
+foreach (var actor in actors)
+{
+    var mb = (MonoBehaviour)actor;
+    string saveKey = &quot;ep_&quot; + mb.gameObject.name;
+    PlayerPrefs.SetString(saveKey, actor.ActiveEntryPointKey ?? &quot;&quot;);
+}
+
+// Load (call before first dialogue in new scene)
+foreach (var actor in FindObjectsOfType&lt;MonoBehaviour&gt;().OfType&lt;IDialogueActor&gt;())
+{
+    var mb = (MonoBehaviour)actor;
+    string saveKey = &quot;ep_&quot; + mb.gameObject.name;
+    string stored  = PlayerPrefs.GetString(saveKey, &quot;&quot;);
+    actor.SetEntryPoint(stored);
+}
+</code></pre>
+<blockquote>
+<p><code>FindObjectsOfType</code> is slow. Cache the list at <code>Start()</code> if performance matters, or keep a <code>Dictionary&lt;string, IDialogueActor&gt;</code> keyed by a stable ID.</p>
+</blockquote>
+<hr />
+<h2 id="3-saving-choice-history">3. Saving choice history</h2>
+<p><code>DialogueChoiceHistory</code> tracks which choices the player has made during the session. It is used by nodes to:</p>
+<ul>
+<li>Style "already chosen" options differently in a custom UI</li>
+<li>Query from C# (e.g. quest system checking if the player asked a specific question)</li>
+</ul>
+<p>The static class stores a <code>HashSet&lt;string&gt;</code>. Each entry is a key in the format <code>{choiceNodeGuid}:{choiceIndex}</code>.</p>
+<pre><code class="language-csharp">// ─── Saving ──────────────────────────────────────────────────────────────
+string[] visitedChoices = DialogueChoiceHistory.GetSaveData();
+// visitedChoices is a snapshot — serialize it however you like:
+string json = JsonUtility.ToJson(new StringArrayWrapper { items = visitedChoices });
+PlayerPrefs.SetString(&quot;choiceHistory&quot;, json);
+
+// ─── Loading ──────────────────────────────────────────────────────────────
+string json = PlayerPrefs.GetString(&quot;choiceHistory&quot;, &quot;&quot;);
+if (!string.IsNullOrEmpty(json))
+{
+    string[] keys = JsonUtility.FromJson&lt;StringArrayWrapper&gt;(json).items;
+    DialogueChoiceHistory.LoadSaveData(keys);
+}
+
+// ─── New game ─────────────────────────────────────────────────────────────
+DialogueChoiceHistory.Clear();
+</code></pre>
+<h3 id="key-stability">Key stability</h3>
+<p>The key format is <code>{choiceNodeGuid}:{choiceIndex}</code>. It is <strong>stable</strong> as long as:
+- The Player Choice node is not deleted and recreated
+- Choices within that node are not reordered</p>
+<p>If you reorganize choices in the editor, old save data keys for that node become orphaned (they are just ignored). Existing choices won't be marked as visited. Deletions and reorderings only affect the specific node touched.</p>
+<h3 id="loadsavedata-merges-not-replaces"><code>LoadSaveData</code> merges, not replaces</h3>
+<p><code>LoadSaveData</code> <em>adds</em> the supplied keys to the existing set. If you want a clean slate before loading, call <code>Clear()</code> first:</p>
+<pre><code class="language-csharp">DialogueChoiceHistory.Clear();
+DialogueChoiceHistory.LoadSaveData(savedKeys);
+</code></pre>
+<h3 id="querying-in-c">Querying in C</h3>
+<pre><code class="language-csharp">// From a quest script — check if player asked a specific question
+bool askedAboutSword = DialogueChoiceHistory.IsVisited(&quot;abc123guid:1&quot;);
+</code></pre>
+<p>To get the key for a specific choice, look up the node GUID on the <code>DialogueGraph.asset</code> in the Inspector and note the choice index (0-based order in the card list).</p>
+<hr />
+<h2 id="4-conditionstore-if-using-it">4. ConditionStore (if using it)</h2>
+<p>If you use <code>ConditionStoreProvider</code> (see <a href="../conditions/">Conditions</a>), its static dictionary is also in-memory only. Save/restore it the same way as variable values:</p>
+<pre><code class="language-csharp">// ─── Saving ──────────────────────────────────────────────────────────────
+// ConditionStore does not expose an enumerator — save the keys you care about manually
+int gold      = ConditionStore.GetInt(&quot;Gold&quot;);
+string quest  = ConditionStore.Get(&quot;QuestState&quot;);
+// … write to save data …
+
+// ─── Loading ──────────────────────────────────────────────────────────────
+ConditionStore.SetInt(&quot;Gold&quot;,       savedGold);
+ConditionStore.Set   (&quot;QuestState&quot;, savedQuestState);
+</code></pre>
+<p>Alternatively, repopulate <code>ConditionStore</code> from your existing game-state objects (inventory, quest manager, etc.) rather than saving/loading it separately — it's just a cache that bridges game state into the condition system.</p>
+<hr />
+<h2 id="5-delegate-registered-conditions-conditionservice">5. Delegate-registered conditions (ConditionService)</h2>
+<p>If your conditions are registered via <code>ConditionService.Register</code>, the delegates themselves don't need to be saved — they re-register in <code>Awake</code> when the scene loads. The <strong>state they read</strong> (inventory, quest flags, etc.) is what you save in your main save system.</p>
+<p>Make sure delegates are registered before any dialogue starts. If you load a save and immediately trigger dialogue before <code>Awake</code> runs on the registering component, conditions will fall back to <code>WhenMissing</code>. Call <code>ConditionService.Register</code> in <code>Awake</code>, not <code>Start</code>.</p>
+<hr />
+<h2 id="full-saveload-example">Full save/load example</h2>
+<pre><code class="language-csharp">using System.Collections.Generic;
+using UnityEngine;
+
+/// &lt;summary&gt;
+/// Self-contained save/load manager for a single-save-slot game.
+/// Attach to the same GameObject as DialogueManager.
+/// &lt;/summary&gt;
+public class DialogueSaveManager : MonoBehaviour
+{
+    [SerializeField] private DialogueManager dialogueManager;
+    [SerializeField] private List&lt;MonoBehaviour&gt; actors; // drag NPCDialogue/DialogueTrigger here
+
+    const string PREF_VARS    = &quot;dlg_vars&quot;;
+    const string PREF_EP      = &quot;dlg_ep_{0}&quot;;
+    const string PREF_HISTORY = &quot;dlg_history&quot;;
+
+    public void Save()
+    {
+        var blob = new SaveBlob();
+
+        // — Variables ——————————————————————————————————
+        foreach (var asset in dialogueManager.VariablesList)
+        {
+            foreach (var v in asset.Variables)
+            {
+                if (string.IsNullOrEmpty(v.Name)) continue;
+                string key = $&quot;{asset.name}|{v.Name}&quot;;
+                string val = v.Type switch
+                {
+                    VariableType.Bool   =&gt; asset.GetBool(v.Name) ? &quot;1&quot; : &quot;0&quot;,
+                    VariableType.Int    =&gt; asset.GetInt(v.Name).ToString(),
+                    VariableType.String =&gt; asset.GetString(v.Name),
+                    _                  =&gt; &quot;&quot;
+                };
+                blob.variables.Add(new KV { key = key, val = val });
+            }
+        }
+
+        // — Entry points ———————————————————————————————
+        foreach (var mb in actors)
+        {
+            if (mb is not IDialogueActor actor) continue;
+            blob.entryPoints.Add(new KV
+            {
+                key = mb.gameObject.name,
+                val = actor.ActiveEntryPointKey ?? &quot;&quot;
+            });
+        }
+
+        // — Choice history —————————————————————————————
+        blob.choiceHistory = DialogueChoiceHistory.GetSaveData();
+
+        PlayerPrefs.SetString(PREF_VARS, JsonUtility.ToJson(blob));
+        PlayerPrefs.Save();
+    }
+
+    public void Load()
+    {
+        string json = PlayerPrefs.GetString(PREF_VARS, &quot;&quot;);
+        if (string.IsNullOrEmpty(json)) return;
+
+        var blob = JsonUtility.FromJson&lt;SaveBlob&gt;(json);
+
+        // — Variables ——————————————————————————————————
+        var assetMap = new Dictionary&lt;string, DialogueVariables&gt;();
+        foreach (var asset in dialogueManager.VariablesList)
+            assetMap[asset.name] = asset;
+
+        foreach (var kv in blob.variables)
+        {
+            int sep = kv.key.IndexOf('|');
+            if (sep &lt; 0) continue;
+            string assetName = kv.key[..sep];
+            string varName   = kv.key[(sep + 1)..];
+            if (!assetMap.TryGetValue(assetName, out var asset)) continue;
+
+            var def = asset.Variables.Find(v =&gt; v.Name == varName);
+            if (def == null) continue;
+
+            switch (def.Type)
+            {
+                case VariableType.Bool:   asset.SetBool  (varName, kv.val == &quot;1&quot;); break;
+                case VariableType.Int:    _ = int.TryParse(kv.val, out int i);
+                                          asset.SetInt(varName, i); break;
+                case VariableType.String: asset.SetString(varName, kv.val); break;
+            }
+        }
+
+        // — Entry points ———————————————————————————————
+        var actorMap = new Dictionary&lt;string, IDialogueActor&gt;();
+        foreach (var mb in actors)
+            if (mb is IDialogueActor a) actorMap[mb.gameObject.name] = a;
+
+        foreach (var kv in blob.entryPoints)
+            if (actorMap.TryGetValue(kv.key, out var actor))
+                actor.SetEntryPoint(kv.val);
+
+        // — Choice history —————————————————————————————
+        DialogueChoiceHistory.Clear();
+        DialogueChoiceHistory.LoadSaveData(blob.choiceHistory);
+    }
+
+    public void ResetForNewGame()
+    {
+        foreach (var asset in dialogueManager.VariablesList)
+            asset.InitRuntime();
+
+        foreach (var mb in actors)
+            if (mb is IDialogueActor actor) actor.ResetEntryPoint();
+
+        DialogueChoiceHistory.Clear();
+
+        PlayerPrefs.DeleteKey(PREF_VARS);
+        PlayerPrefs.Save();
+    }
+
+    // — Serialisable types ─────────────────────────────
+    [System.Serializable] class KV { public string key, val; }
+
+    [System.Serializable]
+    class SaveBlob
+    {
+        public List&lt;KV&gt; variables   = new();
+        public List&lt;KV&gt; entryPoints = new();
+        public string[] choiceHistory = System.Array.Empty&lt;string&gt;();
+    }
+}
+</code></pre>
+<hr />
+<h2 id="when-to-call-saveload">When to call Save/Load</h2>
+<table>
+<thead>
+<tr>
+<th>Event</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Player opens save menu</td>
+<td>Call <code>Save()</code></td>
+</tr>
+<tr>
+<td>Player selects a save file</td>
+<td>Call <code>Load()</code>, then load your scene and start gameplay</td>
+</tr>
+<tr>
+<td>New game</td>
+<td>Call <code>ResetForNewGame()</code> before starting</td>
+</tr>
+<tr>
+<td>Scene transition (same save)</td>
+<td>Entry points are scene-persisted by their component's serialized field — no extra work unless NPCs are instantiated at runtime</td>
+</tr>
+<tr>
+<td>Dialogue ends</td>
+<td>No action needed — changes happen immediately in memory</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="what-threader-does-not-save-for-you">What Threader does NOT save for you</h2>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Reason</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ConditionStore</code> values</td>
+<td>Too project-specific; repopulate from your own game-state objects</td>
+</tr>
+<tr>
+<td>Which choices are locked/hidden</td>
+<td>Computed live from current variable values and condition results</td>
+</tr>
+<tr>
+<td>Dialogue "in progress" state</td>
+<td>No mid-dialogue saves — always save at a safe point between conversations</td>
+</tr>
+<tr>
+<td>Audio or animation state</td>
+<td>Managed by Unity and your own systems</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "toc.integrate", "search.suggest", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

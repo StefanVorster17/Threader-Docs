@@ -1,0 +1,1312 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Threader — Visual Dialogue System for Unity">
+      
+      
+      
+      
+        <link rel="prev" href="../conditions/">
+      
+      
+        <link rel="next" href="../saving/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Entry Points - Threader</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#entry-points" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Threader" class="md-header__button md-logo" aria-label="Threader" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Threader
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Entry Points
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../quick-start/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Quick Start
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../tutorial/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Tutorial
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../graph-editor/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Graph Editor
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../nodes/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Node Reference
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../variables/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Variables
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../conditions/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Conditions
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Entry Points
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../saving/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Saving
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../api-reference/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  API Reference
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../changelog/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Changelog
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Threader" class="md-nav__button md-logo" aria-label="Threader" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Threader
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quick-start/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quick Start
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tutorial
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../graph-editor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Graph Editor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nodes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Node Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../variables/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Variables
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../conditions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Conditions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Entry Points
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Entry Points
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Concepts
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-an-entry-point" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Creating an entry point
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Creating an entry point">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-mark-a-node" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1 — Mark a node
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-verify-on-the-asset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2 — Verify on the asset
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-use-the-key" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3 — Use the key
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-the-runner-resolves-an-entry-point" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How the runner resolves an entry point
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#runtime-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Runtime API
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Runtime API">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#setentrypointstring-key" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SetEntryPoint(string key)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resetentrypoint" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ResetEntryPoint()
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#activeentrypointkey" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ActiveEntryPointKey
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#directly-via-dialoguemanager" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Directly via DialogueManager
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#auto-switching-with-end-nodes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Auto-switching with End nodes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Auto-switching with End nodes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-pattern-quest-aware-npc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example pattern — quest-aware NPC
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dialoguetrigger-specific-fields" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DialogueTrigger-specific fields
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#saving-and-restoring-the-active-entry-point" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Saving and restoring the active entry point
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#multiple-entry-points-on-the-same-graph" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Multiple entry points on the same graph
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#edge-cases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Edge cases
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Edge cases">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#entry-point-on-a-jump-node" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Entry point on a Jump Node
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#entry-point-on-an-end-node" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Entry point on an End Node
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changing-the-entry-point-mid-dialogue" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Changing the entry point mid-dialogue
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#entry-point-not-found-warning-not-error" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Entry point not found — warning, not error
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../saving/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Saving
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../changelog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Changelog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="entry-points">Entry Points</h1>
+<p>Entry points let you jump to any node in a graph instead of always starting from the default start node. They are the primary mechanism for <strong>branching narrative across multiple conversations</strong> — an NPC who says different things before and after a quest, a cutscene that can start from different beats, a shop NPC with a special line once you've been friends for a while.</p>
+<hr />
+<h2 id="concepts">Concepts</h2>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Start node</strong></td>
+<td>Every graph has one — the node with the Start badge. This is the default entry.</td>
+</tr>
+<tr>
+<td><strong>Entry point</strong></td>
+<td>A named alias that maps a key string to a specific node GUID. Stored on the graph asset.</td>
+</tr>
+<tr>
+<td><strong>Active entry point key</strong></td>
+<td>A string held per-actor at runtime. When dialogue starts, this key is resolved to a node. Empty/null = use start node.</td>
+</tr>
+<tr>
+<td><strong>Auto-switching</strong></td>
+<td>End nodes can carry a <code>SetEntryPointOnComplete</code> key, which automatically updates the actor's active key when that end node is reached.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="creating-an-entry-point">Creating an entry point</h2>
+<h3 id="step-1-mark-a-node">Step 1 — Mark a node</h3>
+<p>Right-click any node in the graph editor canvas → <strong>Set as Entry Point</strong>.</p>
+<p>A text field appears in the popup. Type a short, descriptive key — e.g. <code>QuestDone</code>, <code>Repeat</code>, <code>PostBattle</code>. The key is case-sensitive everywhere.</p>
+<p>The node gets a <strong>yellow ⚑ badge</strong> in the top-right corner. The key label is also displayed on the badge so you can see at a glance which entry points exist in the graph.</p>
+<h3 id="step-2-verify-on-the-asset">Step 2 — Verify on the asset</h3>
+<p>Select the <code>DialogueGraph.asset</code> file in the Project window. In the Inspector you will see <strong>Entry Points</strong> — a list of <code>{Key, NodeGuid}</code> pairs. Verify that the entry point you just set appears with the correct key and a non-empty GUID. If the GUID is empty, the entry point will resolve to the start node with a warning.</p>
+<h3 id="step-3-use-the-key">Step 3 — Use the key</h3>
+<p>Leave the <strong>Active Entry Point Key</strong> field on <code>DialogueTrigger</code> or <code>NPCDialogue</code> empty to use the start node. Type any of your defined keys to start there instead. This field is directly editable and saved in the scene — useful for authoring a component that always starts partway through a graph (e.g. a tutorial skip).</p>
+<hr />
+<h2 id="how-the-runner-resolves-an-entry-point">How the runner resolves an entry point</h2>
+<p><code>DialogueGraph.ResolveEntryPointGuid(key)</code> is called at the start of every dialogue:</p>
+<pre><code class="language-csharp">public string ResolveEntryPointGuid(string key)
+{
+    if (!string.IsNullOrEmpty(key))
+    {
+        foreach (var ep in EntryPoints)
+        {
+            if (ep.Key == key)
+                return ep.NodeGuid;
+        }
+        Debug.LogWarning($&quot;[DialogueGraph] Entry point key '{key}' not found in '{name}'. &quot; +
+                         &quot;Falling back to start node.&quot;);
+    }
+    return StartNodeGuid;
+}
+</code></pre>
+<p>Key points:
+- If <code>key</code> is null or empty, start node is used (no warning)
+- If <code>key</code> is non-empty but not found in the <code>EntryPoints</code> list, a warning is printed and the start node is used — it does not throw
+- Entry point lookup is a simple linear scan — keep count small; performance only matters for very large graphs with many entry points</p>
+<hr />
+<h2 id="runtime-api">Runtime API</h2>
+<p>Both <code>DialogueTrigger</code> and <code>NPCDialogue</code> implement <code>IDialogueActor</code>:</p>
+<pre><code class="language-csharp">public interface IDialogueActor
+{
+    DialogueGraph Graph               { get; }
+    string        ActiveEntryPointKey { get; }
+
+    void SetEntryPoint(string key);   // switch to named branch
+    void ResetEntryPoint();           // revert to default start node (sets key to null)
+    void StartDialogue();             // begin dialogue from current entry point key
+}
+</code></pre>
+<p>From any script:</p>
+<pre><code class="language-csharp">// Get the component — works whether it's a DialogueTrigger or NPCDialogue
+IDialogueActor actor = npcObject.GetComponent&lt;IDialogueActor&gt;();
+
+// Change the branch
+actor.SetEntryPoint(&quot;QuestDone&quot;);
+
+// Start immediately
+actor.StartDialogue();
+
+// Or just set it and let the player trigger it naturally
+actor.SetEntryPoint(&quot;RepeatBranch&quot;);
+</code></pre>
+<p>Using <code>IDialogueActor</code> rather than the concrete type means your quest system, save system, and cutscene scripts don't need to know whether the NPC uses <code>DialogueTrigger</code> or <code>NPCDialogue</code> — the interface is the same.</p>
+<h3 id="setentrypointstring-key"><code>SetEntryPoint(string key)</code></h3>
+<p>Sets the actor's <code>ActiveEntryPointKey</code> to <code>key</code>. The change takes effect the next time <code>StartDialogue()</code> is called — it does not interrupt an in-progress dialogue.</p>
+<h3 id="resetentrypoint"><code>ResetEntryPoint()</code></h3>
+<p>Sets <code>ActiveEntryPointKey</code> to <code>null</code>. The next dialogue start will use the graph's default start node.</p>
+<h3 id="activeentrypointkey"><code>ActiveEntryPointKey</code></h3>
+<p>Read-only property. Reflects the current key. Always check this when saving (see <a href="../saving/">Saving</a>).</p>
+<h3 id="directly-via-dialoguemanager">Directly via <code>DialogueManager</code></h3>
+<p>You can also call <code>StartDialogue</code> directly on the manager without going through the actor:</p>
+<pre><code class="language-csharp">DialogueManager.Instance.StartDialogue(graph, &quot;QuestDone&quot;, actorComponent);
+</code></pre>
+<p>This does not update the actor's <code>ActiveEntryPointKey</code> — it just runs from that key for this one call. If you want the key to persist for next time, call <code>actor.SetEntryPoint("QuestDone")</code> first.</p>
+<hr />
+<h2 id="auto-switching-with-end-nodes">Auto-switching with End nodes</h2>
+<p>Every <strong>End Node</strong> has a <strong>Set Entry Point On Complete</strong> field. When dialogue reaches this end node, the runner automatically calls <code>actor.SetEntryPoint(key)</code> with whatever you typed in that field.</p>
+<pre><code class="language-csharp">// DialogueRunner.cs (simplified)
+if (!string.IsNullOrEmpty(endNode.SetEntryPointOnComplete))
+    actor?.SetEntryPoint(endNode.SetEntryPointOnComplete);
+</code></pre>
+<h3 id="example-pattern-quest-aware-npc">Example pattern — quest-aware NPC</h3>
+<p>Suppose an NPC has three phases:</p>
+<table>
+<thead>
+<tr>
+<th>When</th>
+<th>Key</th>
+<th>Branch content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>First meeting</td>
+<td><em>(empty, start node)</em></td>
+<td>Introductory dialogue</td>
+</tr>
+<tr>
+<td>Quest in progress</td>
+<td><code>InProgress</code></td>
+<td>Brief reminder</td>
+</tr>
+<tr>
+<td>Quest complete</td>
+<td><code>QuestDone</code></td>
+<td>Reward dialogue + closure</td>
+</tr>
+</tbody>
+</table>
+<p>Graph setup:</p>
+<ol>
+<li><strong>Start node</strong> → introductory conversation → <strong>End node</strong> with <code>Set Entry Point On Complete = InProgress</code></li>
+<li><code>InProgress</code> entry point → reminder branch → <strong>End node</strong> with <code>Set Entry Point On Complete = InProgress</code> <em>(stays in "in progress" branch until something changes it)</em></li>
+<li><code>QuestDone</code> entry point → reward branch → <strong>End node</strong> <em>(leave Set Entry Point On Complete empty — quest is done, no further switching needed)</em></li>
+</ol>
+<p>Your quest system changes the actor:</p>
+<pre><code class="language-csharp">void OnQuestCompleted()
+{
+    IDialogueActor npc = questNpc.GetComponent&lt;IDialogueActor&gt;();
+    npc.SetEntryPoint(&quot;QuestDone&quot;);
+}
+</code></pre>
+<p>The NPC now runs <code>QuestDone</code> on the player's next interaction, regardless of whether they spoke to him before or after completing the quest.</p>
+<hr />
+<h2 id="dialoguetrigger-specific-fields">DialogueTrigger-specific fields</h2>
+<p><code>DialogueTrigger</code> has an <strong>Active Entry Point Key</strong> field directly in the Inspector. This is a serialized field — you can set it at design time for NPCs that always start partway through a graph without any C# code.</p>
+<p>At runtime, <code>TriggerDialogue()</code> always passes <code>activeEntryPointKey</code> to <code>DialogueManager.StartDialogue</code>. If <code>DialogueManager</code> is missing or <code>graph</code> is null, an error is logged and nothing happens.</p>
+<p>Interaction flow with a trigger collider:</p>
+<ol>
+<li>Player enters trigger zone → <code>playerInRange = true</code>, interact prompt shown (if assigned)</li>
+<li>Player presses <code>InteractKey</code> (or <code>Start On Enter = true</code>) → <code>TriggerDialogue()</code> is called</li>
+<li><code>TriggerDialogue</code> calls <code>DialogueManager.Instance.StartDialogue(graph, activeEntryPointKey, this)</code></li>
+<li>Dialogue runs from the resolved node</li>
+</ol>
+<hr />
+<h2 id="saving-and-restoring-the-active-entry-point">Saving and restoring the active entry point</h2>
+<p>The <code>ActiveEntryPointKey</code> is a plain string at runtime — not automatically persisted. Save and restore it with your existing save system:</p>
+<pre><code class="language-csharp">// --- Saving ---
+string savedKey = npc.GetComponent&lt;IDialogueActor&gt;().ActiveEntryPointKey;
+// Write savedKey to PlayerPrefs, JSON, etc.
+
+// --- Loading ---
+string savedKey = /* load from your save system */;
+npc.GetComponent&lt;IDialogueActor&gt;().SetEntryPoint(savedKey); // null or &quot;&quot; restores the default
+</code></pre>
+<p>For a convenient wrapper, implement save/load directly on the actor:</p>
+<pre><code class="language-csharp">public class NPCDialogueWithSave : NPCDialogue
+{
+    public string SaveKey =&gt; $&quot;ep_{gameObject.name}&quot;;
+
+    public void Save() =&gt;
+        PlayerPrefs.SetString(SaveKey, ActiveEntryPointKey ?? &quot;&quot;);
+
+    public void Load() =&gt;
+        SetEntryPoint(PlayerPrefs.GetString(SaveKey, &quot;&quot;));
+}
+</code></pre>
+<p>See <a href="../saving/">Saving</a> for a full discussion including variables and choice history.</p>
+<hr />
+<h2 id="multiple-entry-points-on-the-same-graph">Multiple entry points on the same graph</h2>
+<p>There is no limit to the number of entry points on a graph. Complex NPCs might have ten or more:</p>
+<pre><code>Start        — first meeting
+AfterBanquet — next morning after the banquet scene
+QuestActive  — while quest is running
+QuestDone    — after quest is complete
+Hostile      — if player attacked a villager
+Friend       — high affinity branch
+</code></pre>
+<p>Use the <strong>yellow badges</strong> and the Entry Points list on the graph asset to keep track of them. Group related branches with <strong>Comment Boxes</strong> in the editor so the canvas doesn't become confusing.</p>
+<hr />
+<h2 id="edge-cases">Edge cases</h2>
+<h3 id="entry-point-on-a-jump-node">Entry point on a Jump Node</h3>
+<p>You can set an entry point on a Jump Node. Execution will immediately jump to the tagged node — it will never display any content at the entry point node itself. This can be used as an indirection layer:</p>
+<pre><code>Entry &quot;Retry&quot; → Jump Node [tag: FirstLine]
+              → First NPC Node
+</code></pre>
+<h3 id="entry-point-on-an-end-node">Entry point on an End Node</h3>
+<p>Technically valid. Dialogue will end immediately on starting. Rarely useful, but it won't crash — the runner sees the end node and calls <code>HandleEnd</code>.</p>
+<h3 id="changing-the-entry-point-mid-dialogue">Changing the entry point mid-dialogue</h3>
+<p>Calling <code>actor.SetEntryPoint(key)</code> while a dialogue is running is safe (it's just a string assignment) but the current dialogue is not affected. The key only takes effect on the <em>next</em> <code>StartDialogue</code> call. If you need to jump within a running dialogue, use a <strong>Jump Node</strong> connected by the graph.</p>
+<h3 id="entry-point-not-found-warning-not-error">Entry point not found — warning, not error</h3>
+<p>If you call <code>SetEntryPoint("Typo")</code> and <code>"Typo"</code> doesn't exist in the graph, <code>ResolveEntryPointGuid</code> logs a warning and falls back to the start node. Check the Console for these warnings during QA — they signal a graph/code mismatch.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "toc.integrate", "search.suggest", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

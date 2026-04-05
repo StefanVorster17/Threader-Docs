@@ -1,0 +1,1516 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Threader — Visual Dialogue System for Unity">
+      
+      
+      
+      
+        <link rel="prev" href="../tutorial/">
+      
+      
+        <link rel="next" href="../nodes/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Graph Editor - Threader</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#graph-editor" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Threader" class="md-header__button md-logo" aria-label="Threader" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Threader
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Graph Editor
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../quick-start/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Quick Start
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../tutorial/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Tutorial
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Graph Editor
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../nodes/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Node Reference
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../variables/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Variables
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../conditions/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Conditions
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../entry-points/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Entry Points
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../saving/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Saving
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../api-reference/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  API Reference
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../changelog/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Changelog
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Threader" class="md-nav__button md-logo" aria-label="Threader" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Threader
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quick-start/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quick Start
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tutorial
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Graph Editor
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Graph Editor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#opening-the-editor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Opening the editor
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#layout" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Layout
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#canvas-controls" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Canvas controls
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sidebar-sections" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sidebar sections
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sidebar sections">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#project" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PROJECT
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#graph" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GRAPH
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#navigate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NAVIGATE
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CREATE
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#keyboard-shortcuts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Keyboard shortcuts
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#node-context-menu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Node context menu
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#speaker-roster-assets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Speaker Roster assets
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setting-up-speakers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Setting up speakers
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#find-replace" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Find &amp; Replace
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comment-group-boxes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comment / Group boxes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sticky-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sticky notes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dialogue-preview-window" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dialogue Preview Window
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Validation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#after-a-script-recompile" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        After a script recompile
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nodes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Node Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../variables/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Variables
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../conditions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Conditions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../entry-points/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Entry Points
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../saving/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Saving
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../changelog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Changelog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="graph-editor">Graph Editor</h1>
+<p>The graph editor is the primary authoring tool in Threader. It opens as a Unity EditorWindow and runs entirely in edit mode — no Play mode required to build or preview dialogues.</p>
+<hr />
+<h2 id="opening-the-editor">Opening the editor</h2>
+<p>Double-click any <strong>Dialogue Graph</strong> asset in the Project window. The editor opens and loads that graph automatically. You can also open it via <strong>Threader → Graph Editor</strong> in the Unity menu bar and then load a graph from the sidebar.</p>
+<hr />
+<h2 id="layout">Layout</h2>
+<p>The editor is split into two panels separated by a draggable divider:</p>
+<ul>
+<li><strong>Left panel — Sidebar</strong>: project operations, graph settings, navigation, and node creation</li>
+<li><strong>Right panel — Canvas</strong>: infinite scrollable graph canvas where nodes live</li>
+</ul>
+<p>Both panels remember their sizes between sessions via EditorPrefs.</p>
+<hr />
+<h2 id="canvas-controls">Canvas controls</h2>
+<table>
+<thead>
+<tr>
+<th>Action</th>
+<th>How</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Pan</td>
+<td>Middle-mouse drag, or Alt + left-drag</td>
+</tr>
+<tr>
+<td>Zoom</td>
+<td>Scroll wheel</td>
+</tr>
+<tr>
+<td>Select a node</td>
+<td>Left-click</td>
+</tr>
+<tr>
+<td>Multi-select</td>
+<td>Left-drag a box, or Shift+click individual nodes</td>
+</tr>
+<tr>
+<td>Move nodes</td>
+<td>Left-drag selected nodes</td>
+</tr>
+<tr>
+<td>Connect nodes</td>
+<td>Drag from an output port to an input port</td>
+</tr>
+<tr>
+<td>Disconnect an edge</td>
+<td>Right-click the edge → Delete, or select and press Delete</td>
+</tr>
+<tr>
+<td>Context menu</td>
+<td>Right-click on the canvas background or a node</td>
+</tr>
+<tr>
+<td>Frame selected</td>
+<td><code>F</code></td>
+</tr>
+<tr>
+<td>Frame all</td>
+<td><code>A</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="sidebar-sections">Sidebar sections</h2>
+<h3 id="project">PROJECT</h3>
+<table>
+<thead>
+<tr>
+<th>Button</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>New</strong></td>
+<td>Prompts for a name and creates a new <code>DialogueGraph</code> asset in the currently selected folder</td>
+</tr>
+<tr>
+<td><strong>Load</strong></td>
+<td>Opens an object picker to load an existing graph</td>
+</tr>
+<tr>
+<td><strong>Save</strong></td>
+<td>Writes all unsaved changes to the asset on disk (<code>Ctrl+S</code> also works)</td>
+</tr>
+<tr>
+<td><strong>Validate</strong></td>
+<td>Runs the graph validator and shows a list of warnings/errors inline</td>
+</tr>
+<tr>
+<td><strong>Find &amp; Replace</strong></td>
+<td>Opens the find/replace panel (see below)</td>
+</tr>
+</tbody>
+</table>
+<p>An orange <strong>● Unsaved</strong> indicator appears in the toolbar whenever the graph has changes not yet written to disk. Closing the window or switching graphs while unsaved changes are present will prompt you to save.</p>
+<h3 id="graph">GRAPH</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Default Speaker</strong></td>
+<td>Fallback speaker name for any NPC node whose own Speaker field is blank. Populated from your SpeakerRoster assets. Nodes with no override show <code>(Graph Default: X)</code> in their dropdown, updating live as you change this value.</td>
+</tr>
+<tr>
+<td><strong>Look At Speaker</strong></td>
+<td>When ticked, any scene object that implements <code>IDialogueFocus</code> (e.g. a first-person camera controller) will automatically rotate to face the current speaker's transform each time an NPC node fires. Toggle this per-graph.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="navigate">NAVIGATE</h3>
+<table>
+<thead>
+<tr>
+<th>Button</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Go to Start</strong></td>
+<td>Pans and zooms the canvas to frame the start node</td>
+</tr>
+<tr>
+<td><strong>Entry Points</strong></td>
+<td>Lists all named entry points defined in the graph; click any to jump there</td>
+</tr>
+<tr>
+<td><strong>Minimap</strong></td>
+<td>Toggles the floating minimap overlay (preference saved per session)</td>
+</tr>
+<tr>
+<td><strong>Snap to Grid</strong></td>
+<td>Snaps all node movement to a 20 px grid (preference saved per session)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="create">CREATE</h3>
+<p>A set of colour-coded pills for every node type, grouped into categories:</p>
+<ul>
+<li><strong>Dialogue</strong> — NPC Node, Player Choice Node, End Node</li>
+<li><strong>Logic</strong> — Branch Node, Jump Node, Random Node</li>
+<li><strong>Data / Events</strong> — Set Variable Node, Fire Event Node, Play Audio Node, Animator Trigger Node</li>
+<li><strong>Utility</strong> — Debug Node, Wait Node, Group, Sticky Note</li>
+</ul>
+<p><strong>Click</strong> a pill to create the node at the canvas centre.<br />
+<strong>Drag</strong> a pill directly onto the canvas to place it at the drop position.</p>
+<hr />
+<h2 id="keyboard-shortcuts">Keyboard shortcuts</h2>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>N</code></td>
+<td>Create NPC Node</td>
+</tr>
+<tr>
+<td><code>C</code></td>
+<td>Create Player Choice Node</td>
+</tr>
+<tr>
+<td><code>E</code></td>
+<td>Create End Node</td>
+</tr>
+<tr>
+<td><code>D</code></td>
+<td>Create Debug Node</td>
+</tr>
+<tr>
+<td><code>J</code></td>
+<td>Create Jump Node</td>
+</tr>
+<tr>
+<td><code>B</code></td>
+<td>Create Branch Node</td>
+</tr>
+<tr>
+<td><code>V</code></td>
+<td>Create Set Variable Node</td>
+</tr>
+<tr>
+<td><code>R</code></td>
+<td>Create Random Node</td>
+</tr>
+<tr>
+<td><code>F2</code></td>
+<td>Create Fire Event Node</td>
+</tr>
+<tr>
+<td><code>F3</code></td>
+<td>Create Play Audio Node</td>
+</tr>
+<tr>
+<td><code>F4</code></td>
+<td>Create Animator Trigger Node</td>
+</tr>
+<tr>
+<td><code>F5</code></td>
+<td>Create Wait Node</td>
+</tr>
+<tr>
+<td><code>G</code></td>
+<td>Group selected nodes into a comment box</td>
+</tr>
+<tr>
+<td><code>Z</code></td>
+<td>Add a sticky note at the cursor position</td>
+</tr>
+<tr>
+<td><code>F</code></td>
+<td>Frame / zoom to selected nodes</td>
+</tr>
+<tr>
+<td><code>A</code></td>
+<td>Frame all nodes</td>
+</tr>
+<tr>
+<td><code>Space</code></td>
+<td>Open node search window</td>
+</tr>
+<tr>
+<td><code>Ctrl+D</code></td>
+<td>Duplicate selected nodes</td>
+</tr>
+<tr>
+<td><code>Ctrl+C</code> / <code>Ctrl+V</code></td>
+<td>Copy and paste selected nodes</td>
+</tr>
+<tr>
+<td><code>Ctrl+Z</code></td>
+<td>Undo last graph change</td>
+</tr>
+<tr>
+<td><code>Delete</code> / <code>Backspace</code></td>
+<td>Delete selected nodes or edges</td>
+</tr>
+<tr>
+<td><code>Ctrl+S</code></td>
+<td>Save graph</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Typing shortcuts are blocked while a sticky note, text field, or other input control has focus — you won't accidentally create nodes while typing dialogue text.</p>
+</blockquote>
+<hr />
+<h2 id="node-context-menu">Node context menu</h2>
+<p>Right-click any node to open its context menu:</p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Set as Start Node</strong></td>
+<td>Makes this node the graph's entry point (green ▶ START badge)</td>
+</tr>
+<tr>
+<td><strong>Set as Entry Point…</strong></td>
+<td>Opens a dialog to assign a named entry-point key to this node (yellow ⚑ badge appears)</td>
+</tr>
+<tr>
+<td><strong>Remove Entry Point</strong></td>
+<td>Clears the entry point key from this node</td>
+</tr>
+<tr>
+<td><strong>Set Colour</strong></td>
+<td>Opens the colour picker (None / Red / Orange / Yellow / Green / Blue / Purple)</td>
+</tr>
+<tr>
+<td><strong>Duplicate</strong></td>
+<td>Creates a copy of the node with a new GUID, positioned slightly offset</td>
+</tr>
+<tr>
+<td><strong>Delete</strong></td>
+<td>Removes the node and all edges connected to it</td>
+</tr>
+</tbody>
+</table>
+<p>A 4 px accent border on the left side of the node shows any assigned colour. The colour is purely organisational — it has no effect on execution.</p>
+<hr />
+<h2 id="speaker-roster-assets">Speaker Roster assets</h2>
+<p>Speaker Roster assets define the valid speaker names in your project. Without one, the Speaker dropdowns across all node types fall back to scanning all <code>SpeakerRoster</code> assets in the project — which still works, but is slower and may pick up unrelated assets.</p>
+<p><strong>Setup:</strong></p>
+<ol>
+<li>Right-click in the Project window → <strong>Create → Threader → Speaker Roster</strong></li>
+<li>Click <strong>+</strong> in the Inspector and type each speaker name exactly as it appears on the corresponding <code>NPCDialogue</code> component in the scene</li>
+<li>Assign the asset to <strong>DialogueManager → Speaker Rosters</strong> in the Inspector</li>
+</ol>
+<p>Once assigned, every Speaker dropdown in the graph editor shows only names from your roster. A ⚠ prefix on a dropdown entry means the stored value doesn't match any roster entry — the old value is preserved (never silently lost), but you should resolve the mismatch.</p>
+<p>You can assign <strong>multiple</strong> roster assets to the <code>DialogueManager</code> — all are combined into one list for the dropdowns.</p>
+<hr />
+<h2 id="setting-up-speakers">Setting up speakers</h2>
+<p>Every speaker name used in the graph must have a matching <strong>NPCDialogue</strong> component in the scene with the identical name in its <strong>Speaker Name</strong> field. This is how the system finds the character's transform for camera look-at, spatial audio positioning, and Animator targeting.</p>
+<p><strong>Primary NPC</strong> (the character the player talks to directly):</p>
+<ul>
+<li>Add <code>NPCDialogue</code> to the NPC's root GameObject</li>
+<li><strong>Graph</strong> — drag the <code>DialogueGraph</code> asset here</li>
+<li><strong>Speaker Name</strong> — type the name exactly, e.g. <code>"Villager"</code> — must match the NPC node's Speaker field</li>
+<li><strong>Is Interactable</strong> — leave checked</li>
+</ul>
+<p><strong>Secondary speaker</strong> (appears in the same graph but is not a directly interactable NPC):</p>
+<ul>
+<li>Add <code>NPCDialogue</code> to that character's GameObject too</li>
+<li><strong>Graph</strong> — leave empty (secondary speakers don't own the graph)</li>
+<li><strong>Speaker Name</strong> — must exactly match the name used in the graph node</li>
+<li><strong>Is Interactable</strong> — uncheck this</li>
+</ul>
+<p>Without the <code>NPCDialogue</code> component on a secondary speaker, the system has no transform to target — look-at and Animator actions for that name silently do nothing. No errors are thrown, but a warning will appear in the Console.</p>
+<blockquote>
+<p>Speaker Name matching is <strong>case-sensitive</strong>. If look-at or Animators aren't working, a name mismatch is the first thing to check.</p>
+</blockquote>
+<hr />
+<h2 id="find-replace">Find &amp; Replace</h2>
+<p>Open via <strong>PROJECT → Find &amp; Replace</strong> in the sidebar. Searches all NPC line text and Player Choice button text in the currently loaded graph.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Find</strong></td>
+<td>Type a term and press Enter or click <strong>Find</strong> to search</td>
+</tr>
+<tr>
+<td><strong>Replace</strong></td>
+<td>The replacement text</td>
+</tr>
+<tr>
+<td><strong>Case Sensitive</strong></td>
+<td>Toggle; re-runs the search automatically when changed</td>
+</tr>
+<tr>
+<td><strong>Results list</strong></td>
+<td>Each match shows: speaker name or type, line index, and a preview snippet</td>
+</tr>
+</tbody>
+</table>
+<p>Per-result buttons:</p>
+<ul>
+<li><strong>Go</strong> — selects and frames that node in the graph</li>
+<li><strong>Replace</strong> — replaces that single occurrence (undoable)</li>
+<li><strong>All</strong> — replaces every match at once (undoable, single undo step)</li>
+</ul>
+<p>After any replacement the graph view refreshes and the search re-runs automatically so remaining matches are immediately visible.</p>
+<hr />
+<h2 id="comment-group-boxes">Comment / Group boxes</h2>
+<p><img alt="Comment / Group box" src="../assets/images/nodes/group.png" width="260" /></p>
+<p>Select one or more nodes and press <strong>G</strong> (or drag the <strong>Group</strong> pill from the sidebar) to wrap them in an organisational comment box.</p>
+<ul>
+<li><strong>Double-click</strong> the title to rename it</li>
+<li>Click the <strong>Notes</strong> text area below the title to type multi-line annotations (saved with the graph)</li>
+<li><strong>Right-click</strong> the group to change its colour (Default / Red / Orange / Yellow / Green / Blue / Purple) or delete it</li>
+<li><strong>Drag nodes</strong> in and out of a group to include or exclude them</li>
+<li><strong>Sticky notes</strong> can also be dragged into a group; they snap in and are saved as part of that group</li>
+</ul>
+<p>Groups are purely visual — they have no effect on dialogue execution.</p>
+<hr />
+<h2 id="sticky-notes">Sticky notes</h2>
+<p><img alt="Sticky note" src="../assets/images/nodes/sticky-note.png" width="200" /></p>
+<p>Press <strong>Z</strong> or right-click the canvas → <strong>Add Sticky Note</strong> to place a free-floating annotation anywhere on the canvas.</p>
+<ul>
+<li>Click the title or body to edit the text inline</li>
+<li>Drag by the title bar to reposition</li>
+<li>Drag the bottom-right corner handle to resize</li>
+<li>Drag onto a Group box to attach it to that group</li>
+</ul>
+<p><strong>Right-click</strong> a sticky note for:</p>
+<table>
+<thead>
+<tr>
+<th>Menu</th>
+<th>Options</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Theme</td>
+<td>Classic / Black / Dark / Orange / Red / Purple / Teal</td>
+</tr>
+<tr>
+<td>Font Size</td>
+<td>Small / Medium / Large / Huge</td>
+</tr>
+</tbody>
+</table>
+<p>Sticky notes are saved with the graph asset and are never shown at runtime.</p>
+<hr />
+<h2 id="dialogue-preview-window">Dialogue Preview Window</h2>
+<p>Open via <strong>Threader → Dialogue Preview</strong> (or <code>Shift+Alt+P</code>).</p>
+<p>Runs a complete dialogue playthrough entirely inside the Editor — no Play mode required. Uses the same <code>DialogueRunner</code> as production, so the behaviour is identical to runtime.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Graph</strong></td>
+<td>Drag any <code>DialogueGraph</code> asset here</td>
+</tr>
+<tr>
+<td><strong>Start From</strong></td>
+<td>Choose the default start node or any named entry point</td>
+</tr>
+<tr>
+<td><strong>Variables</strong></td>
+<td>Drag one or more <code>DialogueVariables</code> assets here; values are seeded from defaults and shown live in the right panel</td>
+</tr>
+<tr>
+<td><strong>Dialogue log</strong></td>
+<td>Scrollable transcript — NPC lines, player choices, events (✏ Set, ↩ Jump, ✀ FireEvent, etc.), and system messages</td>
+</tr>
+<tr>
+<td><strong>Show hidden</strong></td>
+<td>Toggle to reveal choices that are hidden by failed conditions</td>
+</tr>
+<tr>
+<td><strong>Copy Log</strong></td>
+<td>Copies the full transcript to the clipboard</td>
+</tr>
+</tbody>
+</table>
+<p>Variable values are reset to their asset defaults when you click <strong>Stop</strong> — the on-disk ScriptableObject is <strong>never</strong> modified by the preview. This makes it safe to iterate without affecting your game state.</p>
+<blockquote>
+<p><code>{varName}</code> and <code>{varName:name}</code> tokens are resolved in the preview log, so what you see matches exactly what players see at runtime.</p>
+</blockquote>
+<hr />
+<h2 id="validation">Validation</h2>
+<p>Click <strong>Validate</strong> in the sidebar PROJECT section to run a static check over the loaded graph. The validator looks for:</p>
+<ul>
+<li>Nodes with no outgoing connection (potential dead ends other than End nodes)</li>
+<li>Choice nodes with no choices defined</li>
+<li>Jump nodes pointing at tags that don't exist</li>
+<li>Branch or condition variables that don't exist in any assigned <code>DialogueVariables</code> asset</li>
+<li>Missing audio clips in Play Audio nodes</li>
+<li>NPC nodes with no lines</li>
+</ul>
+<p>Each issue is listed inline with a <strong>Go</strong> button to jump directly to the offending node.</p>
+<hr />
+<h2 id="after-a-script-recompile">After a script recompile</h2>
+<p>Unity recompiles all scripts when you save a <code>.cs</code> file. The graph editor re-loads automatically after a recompile. If the canvas appears empty after a recompile, click <strong>Load</strong> in the sidebar or close and re-open the window.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "toc.integrate", "search.suggest", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

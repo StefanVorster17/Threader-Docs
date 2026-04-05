@@ -1,0 +1,1988 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Threader — Visual Dialogue System for Unity">
+      
+      
+      
+      
+        <link rel="prev" href="../saving/">
+      
+      
+        <link rel="next" href="../changelog/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>API Reference - Threader</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#api-reference" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Threader" class="md-header__button md-logo" aria-label="Threader" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Threader
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              API Reference
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../quick-start/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Quick Start
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../tutorial/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Tutorial
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../graph-editor/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Graph Editor
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../nodes/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Node Reference
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../variables/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Variables
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../conditions/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Conditions
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../entry-points/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Entry Points
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../saving/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Saving
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+  
+    
+  
+  API Reference
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../changelog/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Changelog
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Threader" class="md-nav__button md-logo" aria-label="Threader" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Threader
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quick-start/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quick Start
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tutorial
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../graph-editor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Graph Editor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nodes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Node Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../variables/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Variables
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../conditions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Conditions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../entry-points/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Entry Points
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../saving/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Saving
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API Reference
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#dialoguemanager" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DialogueManager
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="DialogueManager">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#singleton-access" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Singleton access
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inspector-fields" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Inspector fields
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#events-c-subscriptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Events (C# subscriptions)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Properties
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#audio-behaviour" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Audio behaviour
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#idialogueactor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        IDialogueActor
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#idialogue" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        IDialogue
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#idialoguefocus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        IDialogueFocus
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#idialogueready" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        IDialogueReady
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#npcdialogue" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NPCDialogue
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="NPCDialogue">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inspector-fields_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Inspector fields
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#methods_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dialoguetrigger" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DialogueTrigger
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="DialogueTrigger">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inspector-fields_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Inspector fields
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Validation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#methods_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dialoguegraph" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DialogueGraph
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="DialogueGraph">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inspector-fields_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Inspector fields
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#methods_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dialoguevariables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DialogueVariables
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="DialogueVariables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inspector-fields_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Inspector fields
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#methods_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#runtime-lifecycle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Runtime lifecycle
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#speakerroster" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SpeakerRoster
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conditionservice-static" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ConditionService (static)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ConditionService (static)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#property" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Property
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#methods_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conditionprovider-abstract" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ConditionProvider (abstract)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conditiondefinition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ConditionDefinition
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ConditionDefinition">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#methods_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conditionstore-static" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ConditionStore (static)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dialoguechoicehistory-static" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DialogueChoiceHistory (static)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#npcline-data-class" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NPCLine (data class)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#choicedata-data-class" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ChoiceData (data class)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#variable-substitution-in-text" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Variable substitution in text
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dialogueentrypoint" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DialogueEntryPoint
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#enums" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Enums
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../changelog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Changelog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="api-reference">API Reference</h1>
+<p>Complete reference for all public types, methods, properties, and events in Threader. For walkthroughs and examples, see the per-topic pages. This page is the definitive source for signatures and behaviour details.</p>
+<hr />
+<h2 id="dialoguemanager">DialogueManager</h2>
+<p><code>DialogueManager : MonoBehaviour</code></p>
+<p>Singleton. Add one to your scene. All interaction with the dialogue system goes through this class.</p>
+<h3 id="singleton-access">Singleton access</h3>
+<pre><code class="language-csharp">DialogueManager.Instance  // null when no manager exists in the scene
+</code></pre>
+<h3 id="inspector-fields">Inspector fields</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>audioSource</code></td>
+<td><code>AudioSource</code></td>
+<td>2D fallback audio source. Auto-created if not assigned.</td>
+</tr>
+<tr>
+<td><code>conditionProvider</code></td>
+<td><code>ConditionProvider</code></td>
+<td>Optional. Assigned providers are forwarded to <code>ConditionService.SetProvider</code> in <code>Awake</code>.</td>
+</tr>
+<tr>
+<td><code>_variablesList</code></td>
+<td><code>List&lt;DialogueVariables&gt;</code></td>
+<td>Assets searched in order for variable lookups. Exposed as <code>VariablesList</code>.</td>
+</tr>
+<tr>
+<td><code>_speakerRosters</code></td>
+<td><code>List&lt;SpeakerRoster&gt;</code></td>
+<td>Assets that populate speaker dropdowns in the editor. Exposed as <code>SpeakerRosters</code>.</td>
+</tr>
+<tr>
+<td><code>linePause</code></td>
+<td><code>float</code></td>
+<td>Seconds to wait after each NPC line before advancing. Default: 1.</td>
+</tr>
+<tr>
+<td><code>OnDialogueStarted</code></td>
+<td><code>UnityEvent</code></td>
+<td>Inspector-wired event fired when dialogue starts.</td>
+</tr>
+<tr>
+<td><code>OnDialogueEnded</code></td>
+<td><code>UnityEvent</code></td>
+<td>Inspector-wired event fired when dialogue ends.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="events-c-subscriptions">Events (C# subscriptions)</h3>
+<p>Subscribe in <code>OnEnable</code>, unsubscribe in <code>OnDisable</code>.</p>
+<pre><code class="language-csharp">// Each dialogue line as it becomes current.
+event Action&lt;NPCLine&gt; OnNPCLine;
+</code></pre>
+<ul>
+<li><code>NPCLine.Text</code> — fully resolved text (variable tokens already substituted)</li>
+<li><code>NPCLine.Clip</code> — optional <code>AudioClip</code>. May be null.</li>
+</ul>
+<pre><code class="language-csharp">// Every node event fired from any NPC node (local + global).
+event Action&lt;string&gt; OnNodeEvent;
+</code></pre>
+<p>Guard with <code>CurrentActor</code> to scope handling to a specific NPC:</p>
+<pre><code class="language-csharp">manager.OnNodeEvent += key =&gt; {
+    if (manager.CurrentActor != myNpc) return;
+    HandleEvent(key);
+};
+</code></pre>
+<pre><code class="language-csharp">// Only events marked Global on the NPC node.
+event Action&lt;string&gt; OnGlobalNodeEvent;
+</code></pre>
+<p>No actor guard needed — these are intentionally broadcast to all listeners.</p>
+<pre><code class="language-csharp">// A Player Choice node has become active.
+// The list contains only the visible choices (IsHidden = false is filtered upstream).
+event Action&lt;List&lt;ChoiceData&gt;&gt; OnChoiceNode;
+</code></pre>
+<p>Each <code>ChoiceData</code> in the list:
+- <code>Text</code> — resolved display text
+- <code>IsLocked</code> — true if unfulfilled non-hiding conditions; show greyed out
+- <code>IsHidden</code> — true if a hiding condition failed (choice is not shown to player)
+- <code>ChoiceKey</code> — <code>"{nodeGuid}:{index}"</code> for history lookups</p>
+<pre><code class="language-csharp">// Dialogue has fully ended (after End node is processed).
+event Action OnDialogueEnd;
+</code></pre>
+<pre><code class="language-csharp">// Dialogue is starting. Also fires OnDialogueStarted (UnityEvent) in parallel.
+event Action OnDialogueStartedEvent;
+</code></pre>
+<h3 id="properties">Properties</h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Instance</code></td>
+<td><code>DialogueManager</code></td>
+<td>Static singleton reference</td>
+</tr>
+<tr>
+<td><code>CurrentActor</code></td>
+<td><code>IDialogueActor</code></td>
+<td>The actor currently running dialogue. <code>null</code> between conversations.</td>
+</tr>
+<tr>
+<td><code>IsDialogueActive</code></td>
+<td><code>bool</code></td>
+<td><code>true</code> while dialogue is running (blockables are blocked)</td>
+</tr>
+<tr>
+<td><code>ConditionProvider</code></td>
+<td><code>ConditionProvider</code></td>
+<td>The provider assigned in the Inspector (read-only)</td>
+</tr>
+<tr>
+<td><code>VariablesList</code></td>
+<td><code>IReadOnlyList&lt;DialogueVariables&gt;</code></td>
+<td>All assigned variable assets</td>
+</tr>
+<tr>
+<td><code>SpeakerRosters</code></td>
+<td><code>IReadOnlyList&lt;SpeakerRoster&gt;</code></td>
+<td>All assigned roster assets</td>
+</tr>
+</tbody>
+</table>
+<h3 id="methods">Methods</h3>
+<pre><code class="language-csharp">void StartDialogue(DialogueGraph graph, string entryPointKey = null, IDialogueActor actor = null)
+</code></pre>
+<p>Starts a dialogue. Resolves the entry point, fires <code>OnDialogueStarted</code>, blocks all registered blockables, then starts the runner. If any registered <code>IDialogue</code> also implements <code>IDialogueReady</code>, the runner waits until <code>IsDialogueReady</code> is <code>true</code> on all of them.</p>
+<ul>
+<li><code>graph</code> — must not be null</li>
+<li><code>entryPointKey</code> — empty/null = default start node</li>
+<li><code>actor</code> — passed to the runner so End nodes can call <code>actor.SetEntryPoint()</code></li>
+</ul>
+<hr />
+<pre><code class="language-csharp">void SelectChoice(int index)
+</code></pre>
+<p>Tells the runner which choice the player made. Call from your choice button callbacks. <code>index</code> is the 0-based position in the list passed to <code>OnChoiceNode</code>. Calling with an out-of-range index is silently ignored.</p>
+<hr />
+<pre><code class="language-csharp">void RegisterBlockable(IDialogue blockable)
+void UnregisterBlockable(IDialogue blockable)
+</code></pre>
+<p>Register/unregister a component to receive <code>Block()</code> and <code>Unblock()</code> calls when dialogue starts and ends. Also used for <code>IDialogueFocus</code> (camera) and <code>IDialogueReady</code> (transition gate). Call <code>Register</code> in <code>OnEnable</code> and <code>Unregister</code> in <code>OnDisable</code>.</p>
+<hr />
+<pre><code class="language-csharp">void RegisterSpeaker(string name, Transform t)
+void UnregisterSpeaker(string name)
+</code></pre>
+<p>Register a named speaker. The name must match the <strong>Speaker Name</strong> field on NPC nodes in the graph. Used to:
+- Position spatial audio at the speaker's world location
+- Direct <code>IDialogueFocus</code> to look at the correct NPC mid-dialogue</p>
+<p><code>NPCDialogue</code> calls <code>RegisterSpeaker</code> in <code>Start</code> automatically. For <code>DialogueTrigger</code>, you do not need to register manually (it uses the trigger's own transform as a fallback). Register manually only for NPCs added dynamically at runtime.</p>
+<hr />
+<pre><code class="language-csharp">void SetBlocked(bool value)
+</code></pre>
+<p>Manually block or unblock all registered blockables. Call if you need to freeze the player for reasons other than dialogue (e.g. a cutscene that runs alongside dialogue). Normally called internally.</p>
+<hr />
+<h3 id="audio-behaviour">Audio behaviour</h3>
+<ul>
+<li>When a line has an <code>AudioClip</code> and the speaker's <code>Transform</code> is in the registry, the clip plays from a hidden spatial <code>AudioSource</code> repositioned to the speaker's world position (<code>spatialBlend = 1</code>, <code>rolloffMode = Linear</code>).</li>
+<li>If no speaker transform is known, the clip plays from the 2D <code>audioSource</code> component.</li>
+<li>The runner waits for the clip to finish (<code>WaitWhile(() =&gt; audioSource.isPlaying)</code>) before advancing. <code>linePause</code> is applied <strong>after</strong> the clip ends.</li>
+<li>When no clip exists, the runner waits for <code>DialogueUI.IsTyping</code> to become false, then waits <code>linePause</code> seconds before advancing.</li>
+</ul>
+<hr />
+<h2 id="idialogueactor">IDialogueActor</h2>
+<pre><code class="language-csharp">public interface IDialogueActor
+{
+    DialogueGraph Graph               { get; }
+    string        ActiveEntryPointKey { get; }
+
+    void SetEntryPoint(string key);
+    void ResetEntryPoint();
+    void StartDialogue();
+}
+</code></pre>
+<p>Implemented by <code>NPCDialogue</code> and <code>DialogueTrigger</code>. Implement on your own components if you have a custom interaction system. Gives quest scripts, cutscene scripts, and save systems a stable interface that doesn't depend on which NPC component is used.</p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Graph</code></td>
+<td>The <code>DialogueGraph</code> this actor runs.</td>
+</tr>
+<tr>
+<td><code>ActiveEntryPointKey</code></td>
+<td>Current entry point override. Null/empty = start node.</td>
+</tr>
+<tr>
+<td><code>SetEntryPoint(key)</code></td>
+<td>Switches the active branch for the next <code>StartDialogue</code> call.</td>
+</tr>
+<tr>
+<td><code>ResetEntryPoint()</code></td>
+<td>Clears the override (sets to null).</td>
+</tr>
+<tr>
+<td><code>StartDialogue()</code></td>
+<td>Starts dialogue from <code>ActiveEntryPointKey</code>.</td>
+</tr>
+</tbody>
+</table>
+<p>See <a href="../entry-points/">Entry Points</a> for patterns and save/restore detail.</p>
+<hr />
+<h2 id="idialogue">IDialogue</h2>
+<pre><code class="language-csharp">public interface IDialogue
+{
+    void Block();
+    void Unblock();
+}
+</code></pre>
+<p>Implement on any component that should pause when dialogue is active — player movement, hotkeys, game menus, etc. Register with <code>DialogueManager.RegisterBlockable</code>.</p>
+<hr />
+<h2 id="idialoguefocus">IDialogueFocus</h2>
+<pre><code class="language-csharp">public interface IDialogueFocus
+{
+    void FocusOn(Transform target);
+    void ReleaseFocus();
+}
+</code></pre>
+<p>Implement alongside <code>IDialogue</code> on your player camera controller. When <code>DialogueGraph.LookAtSpeaker = true</code> and a speaker transform is registered, <code>FocusOn</code> is called each time a new NPC node is reached. <code>ReleaseFocus</code> is called when dialogue ends.</p>
+<hr />
+<h2 id="idialogueready">IDialogueReady</h2>
+<pre><code class="language-csharp">public interface IDialogueReady
+{
+    bool IsDialogueReady { get; }
+}
+</code></pre>
+<p>Implement alongside <code>IDialogue</code> when your blockable needs a moment to complete a transition (a camera cut, a fade-in) before the first line is displayed. <code>DialogueManager.StartDialogue</code> waits on <code>WaitUntil(() =&gt; IsDialogueReady)</code> for every registered blockable that also implements this interface before starting the runner.</p>
+<hr />
+<h2 id="npcdialogue">NPCDialogue</h2>
+<p><code>NPCDialogue : MonoBehaviour, IDialogueActor</code></p>
+<p>Drop on an NPC GameObject for code-driven interaction (the dialogue is started by your own input system rather than a trigger collider).</p>
+<h3 id="inspector-fields_1">Inspector fields</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>graph</code></td>
+<td><code>DialogueGraph</code></td>
+<td>The graph this NPC runs.</td>
+</tr>
+<tr>
+<td><code>speakerName</code></td>
+<td><code>string</code></td>
+<td>Must match the Speaker Name set on NPC nodes. Registers this transform with <code>DialogueManager.RegisterSpeaker</code>.</td>
+</tr>
+<tr>
+<td><code>IsInteractable</code></td>
+<td><code>bool</code></td>
+<td>Public flag for your input system to check before calling <code>StartDialogue</code>. Not enforced internally.</td>
+</tr>
+<tr>
+<td><code>NodeEvents</code></td>
+<td><code>List&lt;NodeEventResponse&gt;</code></td>
+<td>Per-key <code>UnityEvent</code> responses for node events fired during this NPC's dialogue.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="methods_1">Methods</h3>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>StartDialogue()</code></td>
+<td>Calls <code>DialogueManager.Instance.StartDialogue(graph, _activeEntryPointKey, this)</code>.</td>
+</tr>
+<tr>
+<td><code>SetEntryPoint(string key)</code></td>
+<td>Stores key for next <code>StartDialogue</code>.</td>
+</tr>
+<tr>
+<td><code>ResetEntryPoint()</code></td>
+<td>Clears the stored key.</td>
+</tr>
+</tbody>
+</table>
+<p><code>NPCDialogue</code> subscribes to <code>DialogueManager.OnNodeEvent</code> in <code>Start()</code>. When an event fires with a key matching an entry in <code>NodeEvents</code>, the corresponding <code>UnityEvent</code> is invoked. This allows per-NPC event responses without any custom C#.</p>
+<hr />
+<h2 id="dialoguetrigger">DialogueTrigger</h2>
+<p><code>DialogueTrigger : MonoBehaviour, IDialogueActor</code></p>
+<p>Drop on an NPC with a trigger Collider. Handles collision detection and player input natively.</p>
+<h3 id="inspector-fields_2">Inspector fields</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>graph</code></td>
+<td><code>DialogueGraph</code></td>
+<td>The graph to run.</td>
+</tr>
+<tr>
+<td><code>playerTag</code></td>
+<td><code>string</code></td>
+<td>Tag that identifies the player. Default: <code>"Player"</code></td>
+</tr>
+<tr>
+<td><code>interactKey</code></td>
+<td><code>KeyCode</code></td>
+<td>Key to press when in range. Default: <code>E</code>. Ignored if <code>startOnEnter</code> is true.</td>
+</tr>
+<tr>
+<td><code>startOnEnter</code></td>
+<td><code>bool</code></td>
+<td>Start dialogue immediately when player enters trigger zone.</td>
+</tr>
+<tr>
+<td><code>interactPrompt</code></td>
+<td><code>GameObject</code></td>
+<td>Optional UI prompt shown when player is in range (e.g. "Press E").</td>
+</tr>
+<tr>
+<td><code>activeEntryPointKey</code></td>
+<td><code>string</code></td>
+<td>Serialized in the scene. Edit at design time to start partway through a graph.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="validation">Validation</h3>
+<p>On <code>Start()</code>, <code>ValidateSetup()</code> runs:
+- Warns if no trigger <code>Collider</code> or <code>Collider2D</code> found on this or children
+- Warns if no <code>Rigidbody</code> or <code>Rigidbody2D</code> found (required for <code>OnTriggerEnter</code>)
+- Warns if no <code>DialogueGraph</code> assigned</p>
+<h3 id="methods_2">Methods</h3>
+<pre><code class="language-csharp">void TriggerDialogue()
+</code></pre>
+<p>Safe to call from a <code>UnityEvent</code>, animation event, or external script. Guards against null manager/graph and logs errors if either is missing.</p>
+<hr />
+<h2 id="dialoguegraph">DialogueGraph</h2>
+<p><code>DialogueGraph : ScriptableObject</code></p>
+<p>Create via <strong>Assets → Create → Threader → Dialogue Graph</strong>.</p>
+<h3 id="inspector-fields_3">Inspector fields</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Nodes</code></td>
+<td><code>List&lt;DialogueNode&gt;</code></td>
+<td>All nodes in the graph (SerializeReference)</td>
+</tr>
+<tr>
+<td><code>StartNodeGuid</code></td>
+<td><code>string</code></td>
+<td>GUID of the default start node</td>
+</tr>
+<tr>
+<td><code>DefaultSpeakerName</code></td>
+<td><code>string</code></td>
+<td>Fallback speaker name for NPC nodes with no speaker override</td>
+</tr>
+<tr>
+<td><code>LookAtSpeaker</code></td>
+<td><code>bool</code></td>
+<td>When true, calls <code>IDialogueFocus.FocusOn</code> on the speaking NPC's transform</td>
+</tr>
+<tr>
+<td><code>EntryPoints</code></td>
+<td><code>List&lt;DialogueEntryPoint&gt;</code></td>
+<td>Named entry points. Set via right-click in the editor.</td>
+</tr>
+<tr>
+<td><code>Groups</code></td>
+<td><code>List&lt;DialogueGroupData&gt;</code></td>
+<td>Comment boxes (editor-only)</td>
+</tr>
+<tr>
+<td><code>StickyNotes</code></td>
+<td><code>List&lt;StickyNoteData&gt;</code></td>
+<td>Sticky notes (editor-only)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="methods_3">Methods</h3>
+<pre><code class="language-csharp">string ResolveEntryPointGuid(string key)
+</code></pre>
+<p>Returns the node GUID for <code>key</code>. Falls back to <code>StartNodeGuid</code> if <code>key</code> is null, empty, or not found. Logs a warning (not an error) on fallback when a non-empty key was supplied. Called by <code>DialogueManager.StartDialogue</code>.</p>
+<hr />
+<h2 id="dialoguevariables">DialogueVariables</h2>
+<p><code>DialogueVariables : ScriptableObject</code></p>
+<p>Create via <strong>Assets → Create → Threader → Variables Store</strong>.</p>
+<h3 id="inspector-fields_4">Inspector fields</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Variables</code></td>
+<td><code>List&lt;DialogueVariable&gt;</code></td>
+<td>Design-time defaults. Each entry has <code>Name</code>, <code>Type</code>, <code>DisplayName</code>, and a value field.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="methods_4">Methods</h3>
+<pre><code class="language-csharp">void InitRuntime()
+</code></pre>
+<p>Copies design-time defaults into runtime dictionaries. Call explicitly to reset all variables (new game). Called automatically on first access if not called manually.</p>
+<hr />
+<pre><code class="language-csharp">bool   GetBool(string name)
+int    GetInt(string name)
+string GetString(string name)
+</code></pre>
+<p>Returns the current runtime value. Default: <code>false</code>, <code>0</code>, <code>""</code> if the name is not found. Calls <code>EnsureInit()</code> automatically.</p>
+<hr />
+<pre><code class="language-csharp">void SetBool(string name, bool value)
+void SetInt(string name, int value)
+void SetString(string name, string value)
+</code></pre>
+<p>Writes to the runtime dictionary. Logs a warning if the name doesn't exist in the design-time list or if the type doesn't match. Calls <code>EnsureInit()</code> automatically.</p>
+<hr />
+<pre><code class="language-csharp">string GetDisplayName(string name)
+</code></pre>
+<p>Returns <code>DialogueVariable.DisplayName</code> if non-empty, otherwise returns <code>name</code>. Used by <code>{varName:name}</code> text substitution tokens.</p>
+<hr />
+<pre><code class="language-csharp">VariableType? GetVariableType(string name)
+</code></pre>
+<p>Returns the type enum, or <code>null</code> if the name is not in the design-time list.</p>
+<hr />
+<pre><code class="language-csharp">string GetValueAsString(string name)
+</code></pre>
+<p>Returns the current runtime value as a string, or <code>"(not found)"</code> if the name doesn't exist.</p>
+<hr />
+<h3 id="runtime-lifecycle">Runtime lifecycle</h3>
+<ul>
+<li>Runtime dictionaries are private, non-serialized. Play-mode changes never write back to the <code>.asset</code> file.</li>
+<li>When the asset is unloaded (<code>OnDisable</code>), <code>_initialised</code> is reset to <code>false</code> — the next access calls <code>InitRuntime</code> again from defaults.</li>
+<li>Multiple <code>DialogueVariables</code> assets can be assigned to <code>DialogueManager.VariablesList</code>. Variable name lookups search assets in list order. If two assets have the same name, only the first is found.</li>
+</ul>
+<hr />
+<h2 id="speakerroster">SpeakerRoster</h2>
+<p><code>SpeakerRoster : ScriptableObject</code></p>
+<p>Create via <strong>Assets → Create → Threader → Speaker Roster</strong>.</p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Speakers</code></td>
+<td><code>List&lt;string&gt;</code> — all canonical speaker names</td>
+</tr>
+<tr>
+<td><code>bool Contains(string name)</code></td>
+<td>Returns true if the name is in the list (case-sensitive)</td>
+</tr>
+</tbody>
+</table>
+<p>Assign one or more rosters to <code>DialogueManager</code>. Speaker fields in the graph editor become type-safe dropdowns populated from all assigned rosters combined.</p>
+<hr />
+<h2 id="conditionservice-static">ConditionService (static)</h2>
+<pre><code class="language-csharp">public static class ConditionService
+</code></pre>
+<p>Routes condition evaluation from the graph runner to your game code.</p>
+<h3 id="property">Property</h3>
+<pre><code class="language-csharp">static ConditionProvider Provider { get; }
+</code></pre>
+<p>Returns the active provider. If none was explicitly set, attempts <code>Resources.Load&lt;ConditionProvider&gt;("DialogueSystem/DefaultConditionProvider")</code>.</p>
+<h3 id="methods_5">Methods</h3>
+<pre><code class="language-csharp">static void SetProvider(ConditionProvider provider)
+</code></pre>
+<p>Explicitly assign a provider. Called by <code>DialogueManager.Awake</code> if one is assigned in the Inspector. Pass <code>null</code> to clear and allow Resources lookup.</p>
+<hr />
+<pre><code class="language-csharp">static void Register(string conditionKey, Func&lt;string, bool&gt; evaluator)
+static void Unregister(string conditionKey)
+static void ClearDelegates()
+</code></pre>
+<p>Register/unregister inline delegates by key. The delegate receives the parameter string from the choice's <strong>Condition Parameter</strong> field.</p>
+<ul>
+<li><code>Register</code> overwrites any existing delegate for the same key (no duplicate protection beyond last-write-wins)</li>
+<li><code>Unregister</code> silently succeeds if the key is not registered</li>
+<li><code>ClearDelegates</code> removes all entries — useful in <code>OnDestroy</code> of a manager object that owns many registrations</li>
+</ul>
+<hr />
+<pre><code class="language-csharp">static bool Evaluate(ConditionDefinition definition, string parameter)
+</code></pre>
+<p>Resolution order:
+1. <code>VariableConditionDefinition</code> — self-evaluates (no delegate/provider needed)
+2. Registered delegate for <code>definition.GetKey()</code>
+3. Active <code>Provider.Evaluate(definition, parameter)</code>
+4. <code>definition.WhenMissing</code> fallback (<code>Allow</code> → true, <code>Block</code> → false + warning)</p>
+<p>Returns <code>true</code> if <code>definition</code> is <code>null</code>.</p>
+<hr />
+<h2 id="conditionprovider-abstract">ConditionProvider (abstract)</h2>
+<pre><code class="language-csharp">public abstract class ConditionProvider : ScriptableObject
+{
+    public abstract bool Evaluate(ConditionDefinition definition, string parameter);
+}
+</code></pre>
+<p>Subclass this to centralize condition evaluation in a single <code>ScriptableObject</code>. Assign the instance to <code>DialogueManager.ConditionProvider</code> or call <code>ConditionService.SetProvider</code>. Inside <code>Evaluate</code>, use <code>definition.GetKey()</code> and <code>parameter</code> to implement your routing logic.</p>
+<hr />
+<h2 id="conditiondefinition">ConditionDefinition</h2>
+<p><code>ConditionDefinition : ScriptableObject</code></p>
+<p>Create via <strong>Assets → Create → Threader → Condition (Custom)</strong>.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Key</code></td>
+<td>Lookup key. If empty, <code>name</code> (asset file name) is used.</td>
+</tr>
+<tr>
+<td><code>DisplayName</code></td>
+<td>Human-readable label in the editor. Falls back to <code>name</code>.</td>
+</tr>
+<tr>
+<td><code>Category</code></td>
+<td>Groups conditions in pickers as <code>Category/Name</code>.</td>
+</tr>
+<tr>
+<td><code>ParameterHint</code></td>
+<td>Tooltip on the parameter field in the graph.</td>
+</tr>
+<tr>
+<td><code>WhenMissing</code></td>
+<td><code>Allow</code> (pass) or <code>Block</code> (fail) when no handler is registered.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="methods_6">Methods</h3>
+<pre><code class="language-csharp">string GetKey()         // Key ?? name
+string GetDisplayName() // DisplayName ?? name
+</code></pre>
+<hr />
+<h2 id="conditionstore-static">ConditionStore (static)</h2>
+<p>Optional in-memory key/value store for condition state. Pairs with <code>ConditionStoreProvider</code>.</p>
+<pre><code class="language-csharp">static void Set(string key, string value)
+static bool TryGet(string key, out string value)  // false if key missing
+static void SetInt(string key, int value)
+static int  GetInt(string key, int fallback = 0)  // fallback if key missing or not a number
+static void Remove(string key)
+static void Clear()
+</code></pre>
+<p>No persistence — resets each time you enter Play mode. Repopulate from your game-state objects after loading a save.</p>
+<hr />
+<h2 id="dialoguechoicehistory-static">DialogueChoiceHistory (static)</h2>
+<p>Tracks which choices the player has selected. Stored as a <code>HashSet&lt;string&gt;</code>.</p>
+<pre><code class="language-csharp">static void   MarkVisited(string choiceKey)                    // called by runner automatically
+static bool   IsVisited(string choiceKey)                      // query from quest/UI code
+static void   Clear()                                          // call on new game
+static string[] GetSaveData()                                  // snapshot for save system
+static void   LoadSaveData(IEnumerable&lt;string&gt; keys)           // restore — merges, not replaces
+</code></pre>
+<p>Key format: <code>"{choiceNodeGuid}:{choiceIndex}"</code>. Stable unless the node is deleted/recreated or choices are reordered.</p>
+<p><code>LoadSaveData</code> <strong>merges</strong> with existing data. Call <code>Clear()</code> first if you want a clean slate before loading.</p>
+<hr />
+<h2 id="npcline-data-class">NPCLine (data class)</h2>
+<pre><code class="language-csharp">public class NPCLine
+{
+    public string    Text;  // resolved display text (tokens substituted)
+    public AudioClip Clip;  // may be null
+}
+</code></pre>
+<p>Passed to <code>OnNPCLine</code> subscribers and <code>DialogueUI.SetText</code>.</p>
+<hr />
+<h2 id="choicedata-data-class">ChoiceData (data class)</h2>
+<pre><code class="language-csharp">public class ChoiceData
+{
+    public string               Text;                // resolved display text
+    public string               NextNodeGuid;        // internal routing — read-only
+    public List&lt;VariableCondition&gt; Conditions;       // inline conditions
+    public ConditionDefinition  ConditionDefinition; // custom condition asset
+    public string               ConditionParameter;  // parameter string
+    public bool                 NegateCondition;     // invert custom condition result
+    public bool                 IsLocked;            // true = show greyed out
+    public bool                 IsHidden;            // true = don't show
+    public string               ChoiceKey;           // &quot;{nodeGuid}:{index}&quot;
+}
+</code></pre>
+<p>The list passed to <code>OnChoiceNode</code> contains display copies — never the originals from the graph asset. Modifying these copies is safe and has no effect on the graph.</p>
+<hr />
+<h2 id="variable-substitution-in-text">Variable substitution in text</h2>
+<p><code>DialogueManager.ResolveText(string text)</code> and the equivalent in <code>DialoguePreviewWindow</code> handle <code>{token}</code> substitution.</p>
+<table>
+<thead>
+<tr>
+<th>Token</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>{varName}</code></td>
+<td>Current runtime value of the variable named <code>varName</code>. Bool renders as <code>"true"</code> or <code>"false"</code> (lowercase).</td>
+</tr>
+<tr>
+<td><code>{varName:name}</code></td>
+<td>Display name of the variable (from <code>DialogueVariable.DisplayName</code>, falls back to <code>varName</code>).</td>
+</tr>
+<tr>
+<td><code>{unknownVar}</code></td>
+<td>Left as-is — visible in the game as an authoring hint</td>
+</tr>
+</tbody>
+</table>
+<p>Regex used: <code>\{([^}:]+)(?::([^}]*))?\}</code> (compiled, cached as a static field).</p>
+<p>Applied to: NPC line text, choice text (as display copies — originals are never mutated).</p>
+<hr />
+<h2 id="dialogueentrypoint">DialogueEntryPoint</h2>
+<pre><code class="language-csharp">[Serializable]
+public class DialogueEntryPoint
+{
+    public string Key;      // key used in SetEntryPoint / StartDialogue
+    public string NodeGuid; // target node
+}
+</code></pre>
+<p>Stored on <code>DialogueGraph.EntryPoints</code>. Set via right-click → <strong>Set as Entry Point</strong> in the graph editor.</p>
+<hr />
+<h2 id="enums">Enums</h2>
+<pre><code class="language-csharp">public enum VariableType   { Bool, Int, String }
+public enum SetOperator    { Set, Add, Subtract, Toggle }
+public enum WhenMissingBehaviour { Allow, Block }
+public enum AnimatorParamType    { Trigger, Bool, Int, Float }
+public enum NodeType
+{
+    Start, NPC, PlayerChoice, End,
+    Branch, SetVariable, Random, Jump,
+    Debug, Wait, FireEvent, PlayAudio, AnimatorTrigger
+}
+</code></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "toc.integrate", "search.suggest", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

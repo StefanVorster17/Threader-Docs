@@ -1,0 +1,1864 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Threader — Visual Dialogue System for Unity">
+      
+      
+      
+      
+        <link rel="prev" href="../graph-editor/">
+      
+      
+        <link rel="next" href="../variables/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Node Reference - Threader</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#node-reference" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Threader" class="md-header__button md-logo" aria-label="Threader" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Threader
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Node Reference
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../quick-start/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Quick Start
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../tutorial/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Tutorial
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../graph-editor/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Graph Editor
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Node Reference
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../variables/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Variables
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../conditions/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Conditions
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../entry-points/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Entry Points
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../saving/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Saving
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../api-reference/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  API Reference
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../changelog/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Changelog
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Threader" class="md-nav__button md-logo" aria-label="Threader" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Threader
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quick-start/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quick Start
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tutorial
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../graph-editor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Graph Editor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Node Reference
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Node Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#npc-node-n" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NPC Node [N]
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="NPC Node [N]">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#execution-order" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Execution order
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fields" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fields
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Fields">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#speaker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Speaker
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#events-add" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Events (+ Add)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#set-vars-add" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Set Vars (+ Add)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#animators-add" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Animators (+ Add)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lines-add-line" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lines (+ Add Line)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#player-choice-node-c" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Player Choice Node [C]
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Player Choice Node [C]">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#execution-order_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Execution order
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fields_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fields
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Fields">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#choice-cards-add-choice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Choice cards (+ Add Choice)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conditions-add-inside-a-choice-card" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conditions (+ Add inside a choice card)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#condition-definition-custom-foldout-inside-each-choice-card" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Condition Definition [Custom] (foldout inside each choice card)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#end-node-e" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        End Node [E]
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="End Node [E]">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fields_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fields
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Fields">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#next-entry-dropdown" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Next Entry (dropdown)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#branch-node-b" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Branch Node [B]
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Branch Node [B]">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#execution-order_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Execution order
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fields_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fields
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#set-variable-node-v" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Set Variable Node [V]
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Set Variable Node [V]">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fields_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fields
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#random-node-r" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Random Node [R]
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Random Node [R]">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fields_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fields
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#jump-node-j" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Jump Node [J]
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Jump Node [J]">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fields_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fields
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#debug-node-d" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Debug Node [D]
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Debug Node [D]">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fields_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fields
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wait-node-f5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Wait Node [F5]
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Wait Node [F5]">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fields_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fields
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fire-event-node-f2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fire Event Node [F2]
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Fire Event Node [F2]">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fields_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fields
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#play-audio-node-f3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Play Audio Node [F3]
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Play Audio Node [F3]">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fields_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fields
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#animator-trigger-node-f4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Animator Trigger Node [F4]
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Animator Trigger Node [F4]">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fields_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fields
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#shared-return-tag-tag-field" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Shared: Return Tag (⚐ Tag field)
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../variables/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Variables
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../conditions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Conditions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../entry-points/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Entry Points
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../saving/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Saving
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../changelog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Changelog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="node-reference">Node Reference</h1>
+<p>Threader has 12 node types. This page documents every field and the exact order in which things happen at runtime.</p>
+<p>All nodes share:</p>
+<ul>
+<li><strong>⚐ Tag field</strong> — a string identifier used as a Jump target. Set this on any node you want a Jump Node to redirect to. Leave blank if this node is never a jump target. Tags must be unique within a graph.</li>
+<li><strong>Right-click context menu</strong> — Set as Start Node, Set as Entry Point, Remove Entry Point, Set Colour, Duplicate, Delete.</li>
+</ul>
+<hr />
+<h2 id="npc-node-n">NPC Node <code>[N]</code></h2>
+<p><img alt="NPC Node" src="../assets/images/nodes/npc.png" width="260" /></p>
+<p>Shows one or more spoken lines from a character. The runner pauses after displaying each line and waits for the player to advance before moving to the next line. When all lines are shown, execution moves to the connected output node.</p>
+<h3 id="execution-order">Execution order</h3>
+<ol>
+<li><strong>Set Vars</strong> actions are applied to <code>DialogueVariables</code> (in list order)</li>
+<li><strong>Events</strong> are fired — local events trigger <code>OnNodeEvent</code>; global events also trigger <code>OnGlobalNodeEvent</code></li>
+<li><strong>Animator</strong> actions are sent to the matching speaker's <code>Animator</code> component</li>
+<li><code>OnNPCNode</code> fires on the <code>DialogueRunner</code>, which the <code>DialogueManager</code> catches to begin line playback</li>
+<li>Each <strong>Line</strong> in the list is displayed in sequence — <code>OnNPCLine</code> fires per line, then the UI typewriter runs, then the per-line <code>linePause</code> delay, then the player advances (or space-to-skip)</li>
+<li>After the last line, <code>Continue()</code> is called and execution moves to the next connected node</li>
+</ol>
+<h3 id="fields">Fields</h3>
+<h4 id="speaker">Speaker</h4>
+<p>The name of the character speaking. Must exactly match the <code>Speaker Name</code> field on the <code>NPCDialogue</code> component in the scene.</p>
+<ul>
+<li>Leave blank to inherit the graph's <strong>Default Speaker</strong></li>
+<li>Used for: camera look-at target, Animator resolution, 3D spatial audio positioning</li>
+<li>If the name is set but no matching <code>NPCDialogue</code> is found in the scene, a warning is logged and the line is still displayed (just without look-at/audio positioning)</li>
+</ul>
+<h4 id="events-add">Events (+ Add)</h4>
+<p>Fires named string events when this node is reached (before lines are shown).</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Key</td>
+<td>The event string. Received by <code>OnNodeEvent</code> subscribers and <code>NPCDialogue.NodeEvents</code> response list</td>
+</tr>
+<tr>
+<td>Global</td>
+<td>Off = Local: only fires <code>OnNodeEvent</code>. Guard your handler with <code>CurrentActor</code> to scope it to this NPC. On = Global: also fires <code>OnGlobalNodeEvent</code>. No guard needed — intentionally broadcast to all listeners.</td>
+</tr>
+</tbody>
+</table>
+<p>Multiple events are fired in list order. Empty keys are skipped.</p>
+<h4 id="set-vars-add">Set Vars (+ Add)</h4>
+<p>Applies variable write operations the moment this node is reached, <strong>before</strong> events fire.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Variable Name</td>
+<td>Dropdown of variable names from all assigned <code>DialogueVariables</code> assets</td>
+</tr>
+<tr>
+<td>Operator</td>
+<td><code>Set</code> / <code>Add</code> / <code>Subtract</code> / <code>Toggle</code></td>
+</tr>
+<tr>
+<td>Value</td>
+<td>Operand string. Use <code>true</code>/<code>false</code> for Bool. Ignored for Toggle.</td>
+</tr>
+</tbody>
+</table>
+<p>Operations by type:</p>
+<table>
+<thead>
+<tr>
+<th>Operator</th>
+<th>Bool</th>
+<th>Int</th>
+<th>String</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Set</td>
+<td><code>var = value</code></td>
+<td><code>var = value</code></td>
+<td><code>var = value</code></td>
+</tr>
+<tr>
+<td>Add</td>
+<td><em>(unsupported)</em></td>
+<td><code>var += value</code></td>
+<td><em>(unsupported)</em></td>
+</tr>
+<tr>
+<td>Subtract</td>
+<td><em>(unsupported)</em></td>
+<td><code>var -= value</code></td>
+<td><em>(unsupported)</em></td>
+</tr>
+<tr>
+<td>Toggle</td>
+<td><code>var = !var</code></td>
+<td><em>(unsupported)</em></td>
+<td><em>(unsupported)</em></td>
+</tr>
+</tbody>
+</table>
+<h4 id="animators-add">Animators (+ Add)</h4>
+<p>Sets Animator parameters on a speaker's <code>Animator</code> component, fired after events.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Parameter Name</td>
+<td>Exact Animator parameter name (case-sensitive)</td>
+</tr>
+<tr>
+<td>Type</td>
+<td>Trigger / Bool / Int / Float</td>
+</tr>
+<tr>
+<td>Value</td>
+<td>Visible for Bool / Int / Float; hidden for Trigger</td>
+</tr>
+<tr>
+<td>Speaker (override)</td>
+<td>Target a different speaker's Animator. Leave blank to use the node's own Speaker field.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="lines-add-line">Lines (+ Add Line)</h4>
+<p>The spoken text. Each entry has:</p>
+<ul>
+<li><strong>Text field</strong> — the dialogue string. Multiline. Supports <code>{varName}</code> and <code>{varName:name}</code> tokens (see <a href="../variables/#variable-substitution-in-text">Variables — text substitution</a>).</li>
+<li><strong>Audio Clip</strong> — one optional <code>AudioClip</code> slot per line, matched by list position. If set, the clip plays from the speaker's world position (3D spatial), or from the 2D fallback <code>AudioSource</code> if no matching speaker transform is registered.</li>
+<li>If a clip is assigned, the runner waits for the clip to finish before pausing for <code>linePause</code>. If no clip, it waits for the typewriter to complete.</li>
+</ul>
+<hr />
+<h2 id="player-choice-node-c">Player Choice Node <code>[C]</code></h2>
+<p><img alt="Player Choice Node" src="../assets/images/nodes/player-choice.png" width="260" /></p>
+<p>Presents the player with a list of choices. Each choice is its own output port connecting to a separate branch. Unlike NPC nodes, the runner does <strong>not</strong> auto-advance — it waits for <code>SelectChoice(index)</code> to be called, which your UI does when the player clicks a button.</p>
+<h3 id="execution-order_1">Execution order</h3>
+<ol>
+<li>Runtime keys are stamped on each choice: <code>{nodeGuid}:{choiceIndex}</code></li>
+<li>Conditions are evaluated on each choice (inline variable conditions first, then ConditionDefinition)</li>
+<li><code>OnChoiceNode</code> fires with the evaluated list</li>
+<li>UI displays choices; player picks one</li>
+<li><code>SelectChoice(index)</code> is called → execution follows that choice's output port</li>
+</ol>
+<h3 id="fields_1">Fields</h3>
+<h4 id="choice-cards-add-choice">Choice cards (+ Add Choice)</h4>
+<p>Each card has:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Text</td>
+<td>The choice label shown to the player. Supports <code>{varName}</code> tokens.</td>
+</tr>
+<tr>
+<td>Output port</td>
+<td>Drag from this port to the node for this branch</td>
+</tr>
+<tr>
+<td>✕ button</td>
+<td>Removes this choice card and its output port</td>
+</tr>
+</tbody>
+</table>
+<h4 id="conditions-add-inside-a-choice-card">Conditions (+ Add inside a choice card)</h4>
+<p>All condition rows use AND logic — every row must pass for the choice to be selectable.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Variable</td>
+<td>Dropdown of names from your <code>DialogueVariables</code> assets</td>
+</tr>
+<tr>
+<td>Operator</td>
+<td>Equal / NotEqual / GreaterThan (<code>&gt;</code>) / GreaterOrEqual (<code>&gt;=</code>) / LessThan (<code>&lt;</code>) / LessOrEqual (<code>&lt;=</code>)</td>
+</tr>
+<tr>
+<td>Value</td>
+<td>The value to compare against. Use <code>true</code>/<code>false</code> for Bool, a number for Int, or a string for String.</td>
+</tr>
+<tr>
+<td>Hide</td>
+<td><strong>Checked</strong> = completely hide this choice when the condition fails. <strong>Unchecked</strong> = show greyed-out and locked.</td>
+</tr>
+<tr>
+<td>NOT</td>
+<td>Inverts this individual row's result before it contributes to the AND chain</td>
+</tr>
+<tr>
+<td>✕</td>
+<td>Removes this condition row</td>
+</tr>
+</tbody>
+</table>
+<p>When a condition fails and <strong>Hide is unchecked</strong>, the choice shows in the UI with an <code>is-locked</code> USS class — typically rendered greyed out and unclickable, with <code>IsLocked = true</code> on the <code>ChoiceData</code>.</p>
+<p>When <strong>Hide is checked</strong>, <code>IsHidden = true</code> on the <code>ChoiceData</code> and the built-in <code>DialogueUI</code> removes it from the list entirely. If you build a custom UI, filter out <code>IsHidden</code> choices before rendering.</p>
+<h4 id="condition-definition-custom-foldout-inside-each-choice-card">Condition Definition <code>[Custom]</code> (foldout inside each choice card)</h4>
+<p>An optional advanced condition linking a <code>ConditionDefinition</code> asset to a C# handler.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Asset field</td>
+<td>Drag a <code>ConditionDefinition</code> ScriptableObject here</td>
+</tr>
+<tr>
+<td>Parameter</td>
+<td>String passed to <code>ConditionService.Evaluate(def, param)</code></td>
+</tr>
+<tr>
+<td>Negate</td>
+<td>Inverts the C# condition result</td>
+</tr>
+</tbody>
+</table>
+<p>This condition is evaluated <strong>after</strong> all inline variable conditions. If any inline condition already failed, this is not evaluated (the choice is already locked).</p>
+<blockquote>
+<p>The <strong>Condition Definition</strong> foldout auto-expands when an asset is already assigned.</p>
+</blockquote>
+<hr />
+<h2 id="end-node-e">End Node <code>[E]</code></h2>
+<p><img alt="End Node" src="../assets/images/nodes/end.png" width="260" /></p>
+<p>Terminates the current dialogue. Fires <code>OnDialogueEnd</code> and <code>OnDialogueEnded</code>, hides the UI, releases blocking, and clears <code>CurrentActor</code>.</p>
+<h3 id="fields_2">Fields</h3>
+<h4 id="next-entry-dropdown">Next Entry (dropdown)</h4>
+<p>Sets the actor's active entry point for the <strong>next</strong> conversation <strong>before</strong> dialogue ends.</p>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>(keep current)</em></td>
+<td>Actor's entry point is unchanged after this conversation</td>
+</tr>
+<tr>
+<td>Any named key</td>
+<td>Actor's <code>ActiveEntryPointKey</code> is set to that key automatically</td>
+</tr>
+</tbody>
+</table>
+<p>This is how you advance NPC story state without a single line of code. Only entry points defined in the <strong>current graph</strong> appear in the dropdown.</p>
+<p>See <a href="../entry-points/">Entry Points</a> for the full workflow.</p>
+<hr />
+<h2 id="branch-node-b">Branch Node <code>[B]</code></h2>
+<p><img alt="Branch Node" src="../assets/images/nodes/branch.png" width="260" /></p>
+<p>Silently evaluates one or more variable conditions and routes execution to a <strong>True</strong> or <strong>False</strong> output port. No dialogue is shown — execution passes through immediately.</p>
+<h3 id="execution-order_2">Execution order</h3>
+<ol>
+<li>All condition rows are evaluated in list order (AND logic)</li>
+<li>If all pass → True port is followed</li>
+<li>If any fail → False port is followed</li>
+<li>If a port has no connection → dialogue ends</li>
+</ol>
+<h3 id="fields_3">Fields</h3>
+<p>Conditions use the same fields as Player Choice inline conditions (Variable, Operator, Value, NOT, ✕), but there is no Hide checkbox — Branch nodes are never visible to the player.</p>
+<hr />
+<h2 id="set-variable-node-v">Set Variable Node <code>[V]</code></h2>
+<p><img alt="Set Variable Node" src="../assets/images/nodes/set-variable.png" width="260" /></p>
+<p>Silently applies one or more variable write operations and advances. No dialogue is shown.</p>
+<p>Use this when you need to write variables at a precise point in the flow without attaching the action to an NPC node. Useful for:</p>
+<ul>
+<li>Setting flags at the start or end of a branch</li>
+<li>Initialising counters before a looping section</li>
+<li>Marking story progression at dead-end branches</li>
+</ul>
+<h3 id="fields_4">Fields</h3>
+<p>Same as the <strong>Set Vars</strong> section on a NPC Node (Variable Name, Operator, Value). Multiple rows are applied in list order.</p>
+<hr />
+<h2 id="random-node-r">Random Node <code>[R]</code></h2>
+<p><img alt="Random Node" src="../assets/images/nodes/random.png" width="260" /></p>
+<p>Picks one of its output ports at random each time it is reached. Every output has <strong>equal probability</strong> — there is no weighting system.</p>
+<h3 id="fields_5">Fields</h3>
+<table>
+<thead>
+<tr>
+<th>Control</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>+ Output</strong></td>
+<td>Adds a new output port (labelled Output 1, Output 2, …)</td>
+</tr>
+<tr>
+<td><strong>− Output</strong></td>
+<td>Removes the last output port</td>
+</tr>
+</tbody>
+</table>
+<p>Each output port connects to a separate branch. At least one output is required. If a selected output has no connection, dialogue ends.</p>
+<p><strong>Practical uses</strong>: ambient NPC variety (different greetings on repeat visits), randomised story fragments, loot tables embedded in narrative.</p>
+<hr />
+<h2 id="jump-node-j">Jump Node <code>[J]</code></h2>
+<p><img alt="Jump Node" src="../assets/images/nodes/jump.png" width="260" /></p>
+<p>Redirects execution to any node in the same graph identified by its <strong>⚐ Tag</strong> (Return Tag). Has no output port. Execution jumps immediately — no dialogue is shown.</p>
+<p>Use Jump nodes to:</p>
+<ul>
+<li><strong>Loop</strong> back to an earlier part of the graph (e.g. repeat a menu until the player picks "Goodbye")</li>
+<li><strong>Share a common ending</strong> branch from multiple paths without drawing crossing edges</li>
+<li><strong>Avoid long edges</strong> across large graphs</li>
+</ul>
+<h3 id="fields_6">Fields</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Jumps to</strong> (dropdown)</td>
+<td>Lists every ⚐ Tag set on a node in this graph. Select the target tag.</td>
+</tr>
+<tr>
+<td><strong>↺ Refresh</strong></td>
+<td>Re-scans the graph for tags added after this Jump Node was placed</td>
+</tr>
+</tbody>
+</table>
+<p>The jump target is resolved by tag string at runtime. If the tag no longer exists in the graph when dialogue runs, the runner logs an error and ends the dialogue.</p>
+<blockquote>
+<p>Set the ⚐ Tag on the <strong>target node</strong>, not on the Jump Node itself.</p>
+</blockquote>
+<hr />
+<h2 id="debug-node-d">Debug Node <code>[D]</code></h2>
+<p><img alt="Debug Node" src="../assets/images/nodes/debug.png" width="260" /></p>
+<p>Logs a message to the Unity Console when reached. Passes through silently — the player never sees it. Execution continues to the connected output node immediately.</p>
+<h3 id="fields_7">Fields</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Level</strong></td>
+<td>Info (white), Warning (yellow — node title bar turns yellow), Error (red — node title bar turns red)</td>
+</tr>
+<tr>
+<td><strong>Message</strong></td>
+<td>Text written to the Console. Multiline.</td>
+</tr>
+<tr>
+<td><strong>Include Node ID</strong></td>
+<td>Prepends the node's short GUID to the message, useful when multiple Debug nodes log similar text</td>
+</tr>
+<tr>
+<td><strong>Watch Vars</strong> (+ Add)</td>
+<td>Variable name dropdown. The current runtime value of each listed variable is appended to the log output, e.g. <code>[foundCat=true] [gold=42]</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="wait-node-f5">Wait Node <code>[F5]</code></h2>
+<p><img alt="Wait Node" src="../assets/images/nodes/wait.png" width="260" /></p>
+<p>Pauses execution for a set duration in real-time seconds, then advances silently. No dialogue is shown.</p>
+<p>Internally, <code>DialogueManager</code> starts a coroutine that calls <code>runner.Continue()</code> after the delay. The wait cannot be skipped by the player — it runs to completion regardless of input.</p>
+<p>In the <strong>Dialogue Preview Window</strong>, the wait is skipped instantly so you can step through graphs without sitting through delays.</p>
+<h3 id="fields_8">Fields</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Seconds</strong></td>
+<td>Float, minimum 0. A value of 0 advances on the next frame.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Practical uses</strong>: dramatic pauses between automatic lines, pacing cutscene sequences, spacing between timed Play Audio clips.</p>
+<hr />
+<h2 id="fire-event-node-f2">Fire Event Node <code>[F2]</code></h2>
+<p><img alt="Fire Event Node" src="../assets/images/nodes/fire-event.png" width="260" /></p>
+<p>Silently broadcasts one or more named events and advances. No dialogue is shown. Uses the same <code>OnNodeEvent</code> / <code>OnGlobalNodeEvent</code> callbacks as NPC node events.</p>
+<p>Use this when you need to trigger a game system at a precise point in the conversation flow without attaching the event to an NPC speak node — for example, triggering a door to open between two branches, or spawning an enemy after a dramatic reveal.</p>
+<h3 id="fields_9">Fields</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Key</strong></td>
+<td>The event string. Received by <code>OnNodeEvent</code> subscribers.</td>
+</tr>
+<tr>
+<td><strong>Global</strong></td>
+<td>Off = Local (fires <code>OnNodeEvent</code> only). On = Global (fires both <code>OnNodeEvent</code> and <code>OnGlobalNodeEvent</code>).</td>
+</tr>
+<tr>
+<td><strong>✕</strong></td>
+<td>Removes this event row</td>
+</tr>
+</tbody>
+</table>
+<p>Multiple events are fired in list order.</p>
+<hr />
+<h2 id="play-audio-node-f3">Play Audio Node <code>[F3]</code></h2>
+<p><img alt="Play Audio Node" src="../assets/images/nodes/play-audio.png" width="260" /></p>
+<p>Plays one or more <code>AudioClip</code> assets and <strong>advances immediately</strong> — it does not wait for playback to finish. All clips fire in list order via the <code>DialogueManager</code>'s audio sources.</p>
+<h3 id="fields_10">Fields</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Speaker</strong></td>
+<td>Name of the registered speaker whose world position is used for 3D spatial audio. Leave blank to use the 2D fallback <code>AudioSource</code> on the <code>DialogueManager</code>.</td>
+</tr>
+<tr>
+<td><strong>Audio Clips</strong> (+ Add)</td>
+<td><code>AudioClip</code> object fields. Drag assets in. Null slots are skipped.</td>
+</tr>
+<tr>
+<td><strong>✕</strong></td>
+<td>Removes a slot</td>
+</tr>
+</tbody>
+</table>
+<p>If a matching speaker transform is found, the spatial <code>AudioSource</code> is repositioned to that transform and plays with full 3D (<code>spatialBlend = 1</code>). If not, the 2D <code>AudioSource</code> plays instead.</p>
+<blockquote>
+<p>Because Play Audio Node advances immediately, it's best for short stings and sound effects. For voice lines that the dialogue should wait for, use an AudioClip slot on an NPC line instead.</p>
+</blockquote>
+<hr />
+<h2 id="animator-trigger-node-f4">Animator Trigger Node <code>[F4]</code></h2>
+<p><img alt="Animator Trigger Node" src="../assets/images/nodes/animator-trigger.png" width="260" /></p>
+<p>Silently sets one or more Animator parameters on registered speakers and advances. No dialogue is shown.</p>
+<p>Use this to trigger animations at precise moments in dialogue flow without tying them to an NPC speak node — for example, playing a gesture animation between two NPC lines, or triggering a walk cycle after a dialogue branch resolves.</p>
+<h3 id="fields_11">Fields</h3>
+<p>Each action card has:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Parameter Name</strong></td>
+<td>Exact Animator parameter name (case-sensitive)</td>
+</tr>
+<tr>
+<td><strong>Type</strong></td>
+<td>Trigger / Bool / Int / Float</td>
+</tr>
+<tr>
+<td><strong>Value</strong></td>
+<td>Visible and editable for Bool, Int, Float. Hidden for Trigger.</td>
+</tr>
+<tr>
+<td><strong>Speaker (override)</strong></td>
+<td>Name of the registered speaker whose Animator to target. Blank = uses the graph's Default Speaker.</td>
+</tr>
+<tr>
+<td><strong>✕</strong></td>
+<td>Removes this action card</td>
+</tr>
+</tbody>
+</table>
+<p>The Animator is found by calling <code>GetComponentInChildren&lt;Animator&gt;()</code> on the speaker's registered transform. If no Animator is found, a warning is logged and the action is skipped.</p>
+<hr />
+<h2 id="shared-return-tag-tag-field">Shared: Return Tag (⚐ Tag field)</h2>
+<p>Every node has a <strong>⚐ Tag</strong> field at the top. This is the node's <strong>Return Tag</strong> — a string identifier used exclusively as a Jump Node target.</p>
+<ul>
+<li>Leave blank if no Jump Node needs to target this node</li>
+<li>Tags must be unique within a graph (the validator will warn you about duplicates)</li>
+<li>Tags are resolved at runtime by string comparison — renaming a tag after a Jump Node references it will break the jump</li>
+</ul>
+<p>The tag is displayed as a small badge on the node in the graph editor when set.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "toc.integrate", "search.suggest", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
