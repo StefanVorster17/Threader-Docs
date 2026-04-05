@@ -860,6 +860,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#localization-support-v1x" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Localization support — v1.x
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -978,6 +989,16 @@
 - Reusable shop, trade, or minigame dialogue sequences called from multiple graphs
 - Breaking very large story graphs into smaller chapter graphs that chain together</p>
 <p><strong>Status:</strong> Architecture designed, not yet implemented. Waiting on v1.0 user feedback before committing.</p>
+<hr />
+<h3 id="localization-support-v1x">Localization support — v1.x</h3>
+<p>Allow all dialogue text to be translated and swapped at runtime by language.</p>
+<p><strong>Two approaches are being considered:</strong></p>
+<p><strong>Option A — Built-in (no dependency)</strong>
+Threader ships its own <code>LocalizationTable</code> ScriptableObject: a simple line ID → translated string mapping. Swap the active table at runtime and all dialogue text updates automatically. No external packages required — works for everyone out of the box.</p>
+<p><strong>Option B — Unity Localization package integration</strong>
+Threader reads from <code>LocalizedString</code> fields via Unity's official Localization package. Buyers who already use it get seamless integration with their existing workflow.</p>
+<p>The most likely approach is to ship both: Option A as the default with zero setup friction, and Option B as an optional bridge assembly compiled only when the Unity Localization package is detected (<code>#if</code> conditional). This way existing buyers are never affected and no unwanted dependencies are introduced.</p>
+<p><strong>Status:</strong> Under consideration. Dependency strategy needs to be resolved before implementation begins.</p>
 <hr />
 <h2 id="out-of-scope">Out of scope</h2>
 <p>These are features that have been considered and deliberately won't be added to Threader core. If you need them, alternatives are noted.</p>
