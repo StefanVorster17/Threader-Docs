@@ -1,24 +1,8 @@
 # Changelog
 
-All notable changes to Threader are documented here.  
-Format follows [Keep a Changelog](https://keepachangelog.com/). Versions follow [Semantic Versioning](https://semver.org/).
-
 ---
 
 ## [Unreleased]
-
----
-
-## [1.1.0] — 2026-04-05
-
-### Added
-- **Variable text substitution** — embed variable values directly in NPC line text and choice text using `{varName}` tokens. Use `{varName:name}` to insert the variable's display name instead of its value. Unknown tokens are left as-is as an authoring hint.
-- **`DisplayName` field on `DialogueVariable`** — optional human-readable label for a variable, separate from its internal `Name`. Used by `{varName:name}` tokens and `DialogueVariables.GetDisplayName()`.
-- **`DialogueVariables.GetDisplayName(string name)`** — returns `DisplayName` if set, otherwise falls back to `Name`.
-- **Dialogue Preview Window supports token substitution** — seed variable values in the preview, see them resolved live in line text and choice cards.
-
-### Fixed
-- Choice text was being written back to the graph asset during play (mutation bug). Choices now use display copies — the original graph asset data is never modified at runtime.
 
 ---
 
@@ -95,5 +79,3 @@ Format follows [Keep a Changelog](https://keepachangelog.com/). Versions follow 
 - Tabs: Quick Start, Graph Editor, Node Reference, Variables, Conditions, Entry Points, Saving, API Reference
 
 ---
-
-*To add an entry: edit `docs/changelog.md` before each release. The `[Unreleased]` section collects changes since the last tag.*

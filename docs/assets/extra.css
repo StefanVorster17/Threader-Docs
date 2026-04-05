@@ -8,6 +8,25 @@
   --md-accent-fg-color: #00d4ff;
 }
 
+/* Hide native scrollbar track on right TOC */
+.md-sidebar--secondary .md-sidebar__scrollwrap {
+  scrollbar-color: #1a6ff5 transparent;
+  scrollbar-width: thin;
+}
+
+.md-sidebar--secondary .md-sidebar__scrollwrap::-webkit-scrollbar {
+  width: 4px;
+}
+
+.md-sidebar--secondary .md-sidebar__scrollwrap::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.md-sidebar--secondary .md-sidebar__scrollwrap::-webkit-scrollbar-thumb {
+  background-color: #1a6ff5;
+  border-radius: 4px;
+}
+
 /* Dark navy background to match logo */
 [data-md-color-scheme="slate"] {
   --md-default-bg-color:        #070c18;
@@ -90,4 +109,11 @@
   border-left: 3px solid #00d4ff;
   padding-left: calc(0.75rem - 3px);
   background: rgba(0, 212, 255, 0.07);
+}
+
+/* Left sidebar: same hover style as TOC */
+.md-nav--primary .md-nav__link:hover,
+.md-nav--primary .md-nav__link:focus {
+  color: #ffffff !important;
+  background: rgba(255, 255, 255, 0.05);
 }

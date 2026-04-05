@@ -19,22 +19,28 @@ theme:
     accent: custom
   features:
     - navigation.tabs
-    - navigation.sections
+    - navigation.tabs.sticky
     - navigation.top
-    - toc.integrate
+    - toc.follow
     - search.suggest
     - content.code.copy
 
 nav:
   - Home: index.md
-  - Quick Start: quick-start.md
-  - Tutorial: tutorial.md
-  - Graph Editor: graph-editor.md
-  - Node Reference: nodes.md
-  - Variables: variables.md
-  - Conditions: conditions.md
-  - Entry Points: entry-points.md
-  - Saving: saving.md
-  - API Reference: api-reference.md
-  - Troubleshooting: troubleshooting.md
-  - Changelog: changelog.md
+  - Getting Started:
+    - Quick Start: quick-start.md
+    - Tutorial: tutorial.md
+  - Editor:
+    - Graph Editor: graph-editor.md
+    - Dialogue Preview: preview-window.md
+  - Systems:
+    - Node Reference: nodes.md
+    - Variables: variables.md
+    - Conditions: conditions.md
+    - Entry Points: entry-points.md
+    - Saving: saving.md
+    - API Reference: api-reference.md
+  - Support:
+    - Troubleshooting: troubleshooting.md
+    - Roadmap: roadmap.md
+    - Changelog: changelog.md

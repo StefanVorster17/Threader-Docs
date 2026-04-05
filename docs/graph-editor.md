@@ -237,24 +237,7 @@ Sticky notes are saved with the graph asset and are never shown at runtime.
 
 ## Dialogue Preview Window
 
-Open via **Threader → Dialogue Preview** (or `Shift+Alt+P`).
-
-Runs a complete dialogue playthrough entirely inside the Editor — no Play mode required. Uses the same `DialogueRunner` as production, so the behaviour is identical to runtime.
-
-| Field | Description |
-|---|---|
-| **Graph** | Drag any `DialogueGraph` asset here |
-| **Start From** | Choose the default start node or any named entry point |
-| **Variables** | Drag one or more `DialogueVariables` assets here; values are seeded from defaults and shown live in the right panel |
-| **Dialogue log** | Scrollable transcript — NPC lines, player choices, events (✏ Set, ↩ Jump, ✀ FireEvent, etc.), and system messages |
-| **Show hidden** | Toggle to reveal choices that are hidden by failed conditions |
-| **Copy Log** | Copies the full transcript to the clipboard |
-
-Variable values are reset to their asset defaults when you click **Stop** — the on-disk ScriptableObject is **never** modified by the preview. This makes it safe to iterate without affecting your game state.
-
-> `{varName}` and `{varName:name}` tokens are resolved in the preview log, so what you see matches exactly what players see at runtime.
-
-![Dialogue Preview Window](assets/images/dialogue-preview-window.png){ width="520" }
+The preview window is covered on its own page — see [Dialogue Preview Window](preview-window.md).
 
 ---
 
