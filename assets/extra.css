@@ -16,23 +16,38 @@
   --md-code-bg-color:           #0d1525;
 }
 
-/* TOC: bullet points for top-level section links (h2) */
+/* TOC: bullet points for top-level section links (h2) — white */
 .md-nav--secondary > .md-nav__list > .md-nav__item > .md-nav__link::before {
   content: "• ";
   color: #1a6ff5;
 }
 
-/* TOC: h3 — indent + slightly smaller */
-.md-nav--secondary .md-nav__item .md-nav__item > .md-nav__link {
-  padding-left: 0.75rem;
-  font-size: 0.73rem;
+.md-nav--secondary > .md-nav__list > .md-nav__item > .md-nav__link {
+  color: #ffffff;
 }
 
-/* TOC: h4 — deeper indent + dimmer */
+/* TOC: h3 — dash prefix, indented, light grey */
+.md-nav--secondary .md-nav__item .md-nav__item > .md-nav__link::before {
+  content: "– ";
+  color: #8ab4f8;
+}
+
+.md-nav--secondary .md-nav__item .md-nav__item > .md-nav__link {
+  padding-left: 0.5rem;
+  font-size: 0.73rem;
+  color: #aac4e8;
+}
+
+/* TOC: h4 — deeper indent, dimmer grey */
+.md-nav--secondary .md-nav__item .md-nav__item .md-nav__item > .md-nav__link::before {
+  content: "– ";
+  color: #556a88;
+}
+
 .md-nav--secondary .md-nav__item .md-nav__item .md-nav__item > .md-nav__link {
-  padding-left: 1.25rem;
+  padding-left: 1rem;
   font-size: 0.68rem;
-  opacity: 0.7;
+  color: #6b7f99;
 }
 
 /* TOC: white hover on all nav links */
