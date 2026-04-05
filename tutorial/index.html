@@ -1067,7 +1067,7 @@ Name it <code>VillagerDialogue</code>. Double-click to open.</p>
 <h3 id="two-end-nodes">Two end nodes</h3>
 <p>Press <strong>E</strong> twice to create two End nodes — one for each choice.</p>
 <p>Connect <strong>Choice 0 output → End 0</strong>, <strong>Choice 1 output → End 1</strong>.</p>
-<p>On <strong>both</strong> End nodes, set <strong>Set Entry Point On Complete</strong> to <code>InProgress</code>.</p>
+<p>On <strong>both</strong> End nodes, set the <strong>Next entry</strong> dropdown to <code>InProgress</code>.</p>
 <blockquote>
 <p>This means no matter what the player says, the next conversation will start from the <code>InProgress</code> branch.</p>
 </blockquote>
@@ -1094,8 +1094,8 @@ Name it <code>VillagerDialogue</code>. Double-click to open.</p>
 <h3 id="two-end-nodes_1">Two end nodes</h3>
 <p>Create two End nodes. Connect <strong>Choice 0 output → End A</strong>, <strong>Choice 1 output → End B</strong>.</p>
 <ul>
-<li><strong>End A</strong> (cat returned): set <strong>Set Entry Point On Complete</strong> to <code>QuestDone</code></li>
-<li><strong>End B</strong> (still looking): set <strong>Set Entry Point On Complete</strong> to <code>InProgress</code> (stays in this branch)</li>
+<li><strong>End A</strong> (cat returned): set <strong>Next entry</strong> to <code>QuestDone</code></li>
+<li><strong>End B</strong> (still looking): set <strong>Next entry</strong> to <code>InProgress</code> (stays in this branch)</li>
 </ul>
 <hr />
 <h2 id="6-build-branch-3-quest-complete">6. Build Branch 3 — Quest complete</h2>

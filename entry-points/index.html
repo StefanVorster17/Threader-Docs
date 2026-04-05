@@ -1067,7 +1067,7 @@
 </tr>
 <tr>
 <td><strong>Auto-switching</strong></td>
-<td>End nodes can carry a <code>SetEntryPointOnComplete</code> key, which automatically updates the actor's active key when that end node is reached.</td>
+<td>End nodes have a <strong>Next entry</strong> dropdown — selecting a key automatically updates the actor's active entry point when that end node is reached.</td>
 </tr>
 </tbody>
 </table>
@@ -1143,7 +1143,7 @@ actor.SetEntryPoint(&quot;RepeatBranch&quot;);
 <p>This does not update the actor's <code>ActiveEntryPointKey</code> — it just runs from that key for this one call. If you want the key to persist for next time, call <code>actor.SetEntryPoint("QuestDone")</code> first.</p>
 <hr />
 <h2 id="auto-switching-with-end-nodes">Auto-switching with End nodes</h2>
-<p>Every <strong>End Node</strong> has a <strong>Set Entry Point On Complete</strong> field. When dialogue reaches this end node, the runner automatically calls <code>actor.SetEntryPoint(key)</code> with whatever you typed in that field.</p>
+<p>Every <strong>End Node</strong> has a <strong>Next entry</strong> dropdown. When dialogue reaches this end node, the runner automatically calls <code>actor.SetEntryPoint(key)</code> with the selected key.</p>
 <pre><code class="language-csharp">// DialogueRunner.cs (simplified)
 if (!string.IsNullOrEmpty(endNode.SetEntryPointOnComplete))
     actor?.SetEntryPoint(endNode.SetEntryPointOnComplete);
@@ -1178,9 +1178,9 @@ if (!string.IsNullOrEmpty(endNode.SetEntryPointOnComplete))
 </table>
 <p>Graph setup:</p>
 <ol>
-<li><strong>Start node</strong> → introductory conversation → <strong>End node</strong> with <code>Set Entry Point On Complete = InProgress</code></li>
-<li><code>InProgress</code> entry point → reminder branch → <strong>End node</strong> with <code>Set Entry Point On Complete = InProgress</code> <em>(stays in "in progress" branch until something changes it)</em></li>
-<li><code>QuestDone</code> entry point → reward branch → <strong>End node</strong> <em>(leave Set Entry Point On Complete empty — quest is done, no further switching needed)</em></li>
+<li><strong>Start node</strong> → introductory conversation → <strong>End node</strong> with <strong>Next entry = InProgress</strong></li>
+<li><code>InProgress</code> entry point → reminder branch → <strong>End node</strong> with <strong>Next entry = InProgress</strong> <em>(stays in "in progress" branch until something changes it)</em></li>
+<li><code>QuestDone</code> entry point → reward branch → <strong>End node</strong> <em>(leave Next entry as (keep current) — quest is done, no further switching needed)</em></li>
 </ol>
 <p>Your quest system changes the actor:</p>
 <pre><code class="language-csharp">void OnQuestCompleted()
