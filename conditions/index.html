@@ -1,0 +1,1340 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Threader — Visual Dialogue System for Unity">
+      
+      
+      
+      
+        <link rel="prev" href="../variables/">
+      
+      
+        <link rel="next" href="../entry-points/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Conditions - Threader</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#conditions" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Threader" class="md-header__button md-logo" aria-label="Threader" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Threader
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Conditions
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../quick-start/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Quick Start
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../tutorial/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Tutorial
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../graph-editor/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Graph Editor
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../nodes/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Node Reference
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../variables/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Variables
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Conditions
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../entry-points/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Entry Points
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../saving/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Saving
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../api-reference/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  API Reference
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../changelog/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Changelog
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Threader" class="md-nav__button md-logo" aria-label="Threader" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Threader
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quick-start/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quick Start
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tutorial
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../graph-editor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Graph Editor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nodes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Node Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../variables/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Variables
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Conditions
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Conditions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-happens-when-a-condition-fails" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What happens when a condition fails
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inline-variable-conditions-no-c-required" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Inline variable conditions (no C# required)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Inline variable conditions (no C# required)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#setup-in-3-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Setup in 3 steps
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#and-logic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AND logic
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-names-are-case-sensitive" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Variable names are case-sensitive
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#branch-node-conditions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Branch Node conditions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#custom-conditions-c-required" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Custom conditions (C# required)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Custom conditions (C# required)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-register-a-handler" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1 — Register a handler
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 1 — Register a handler">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#option-a-delegate-simplest" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Option A: Delegate (simplest)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#option-b-conditionprovider-subclass-all-conditions-in-one-asset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Option B: ConditionProvider subclass (all conditions in one asset)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#evaluation-order" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Evaluation order
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-create-a-conditiondefinition-asset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2 — Create a ConditionDefinition asset
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-link-the-asset-to-a-choice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3 — Link the asset to a choice
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conditionstoreprovider-built-in-provider" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ConditionStoreProvider (built-in provider)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#variableconditiondefinition-no-code-asset-condition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VariableConditionDefinition (no-code asset condition)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#combining-both-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Combining both systems
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#debugging-conditions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Debugging conditions
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../entry-points/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Entry Points
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../saving/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Saving
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../changelog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Changelog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="conditions">Conditions</h1>
+<p>Conditions control whether a player choice is <strong>available</strong> at runtime. Threader has two distinct systems — you can use either or both on the same choice.</p>
+<table>
+<thead>
+<tr>
+<th>System</th>
+<th>Requires C#?</th>
+<th>Best for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Inline variable conditions</td>
+<td>No</td>
+<td>Checking <code>DialogueVariables</code> values set from the graph</td>
+</tr>
+<tr>
+<td>Custom conditions (C#)</td>
+<td>Yes</td>
+<td>Anything that lives in your game code — inventory, quests, reputation, time of day</td>
+</tr>
+</tbody>
+</table>
+<p>When both are used on the same choice, <strong>all</strong> must pass for the choice to be selectable.</p>
+<hr />
+<h2 id="what-happens-when-a-condition-fails">What happens when a condition fails</h2>
+<p>Each inline condition row has a <strong>Hide</strong> checkbox that controls the UI presentation:</p>
+<table>
+<thead>
+<tr>
+<th>Hide checked</th>
+<th>The choice is completely removed from the list (<code>IsHidden = true</code>)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Hide unchecked</td>
+<td>The choice is shown greyedout and locked (<code>IsLocked = true</code>, unclickable)</td>
+</tr>
+</tbody>
+</table>
+<p>The custom ConditionDefinition slot has a <strong>Negate</strong> toggle and the definition asset has a <strong>When Missing</strong> setting (see below), but no per-definition Hide — if it fails, the choice is locked but not hidden. If you need hiding behaviour from a custom condition, use the <strong>Negate</strong> toggle combined with a variable that your C# code writes.</p>
+<hr />
+<h2 id="inline-variable-conditions-no-c-required">Inline variable conditions (no C# required)</h2>
+<p>These are added directly inside each choice card in the Player Choice node editor.</p>
+<h3 id="setup-in-3-steps">Setup in 3 steps</h3>
+<p><strong>Step 1 — Create a DialogueVariables asset</strong> (if you haven't already):</p>
+<p>Right-click in the Project window → <strong>Create → Threader → Variables Store</strong>.<br />
+Add variables in the Inspector. See <a href="../variables/">Variables</a> for full detail.</p>
+<p><strong>Step 2 — Assign the asset to DialogueManager:</strong></p>
+<p>Drag the asset into <strong>DialogueManager → Variables List</strong>.</p>
+<p><strong>Step 3 — Add conditions in the graph:</strong></p>
+<p>Open a Player Choice node. Inside each choice card, click <strong>+ Add</strong> in the Conditions box.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Variable</td>
+<td>Dropdown of all variable names from assigned assets</td>
+</tr>
+<tr>
+<td>Operator</td>
+<td>Equal / NotEqual / GreaterThan / GreaterOrEqual / LessThan / LessOrEqual</td>
+</tr>
+<tr>
+<td>Value</td>
+<td>The comparison value — <code>true</code>/<code>false</code>, a number, or a string</td>
+</tr>
+<tr>
+<td>Hide</td>
+<td>Hides the choice entirely when this row fails</td>
+</tr>
+<tr>
+<td>NOT</td>
+<td>Inverts this row's result before it contributes</td>
+</tr>
+<tr>
+<td>✕</td>
+<td>Removes this row</td>
+</tr>
+</tbody>
+</table>
+<h3 id="and-logic">AND logic</h3>
+<p>All rows on a choice must pass for the choice to be selectable. There is no built-in OR. To achieve OR logic, duplicate the choice and put a different condition on each copy — they lead to the same branch.</p>
+<h3 id="variable-names-are-case-sensitive">Variable names are case-sensitive</h3>
+<p><code>foundCat</code> ≠ <code>FoundCat</code>. If you type a name that doesn't exist in any assigned asset, the row is silently skipped and the choice always appears — double-check spelling if a condition has no effect.</p>
+<h3 id="example">Example</h3>
+<pre><code>Choice:  &quot;Offer the fish&quot;
+
+Conditions:
+  hasFish   Equal   true       Hide = ✓
+  gold      GreaterOrEqual  10  Hide = ✗
+</code></pre>
+<p>Result: the choice is hidden until <code>hasFish</code> is true. Once <code>hasFish</code> is true, if <code>gold &lt; 10</code> the choice shows but is greyed out.</p>
+<hr />
+<h2 id="branch-node-conditions">Branch Node conditions</h2>
+<p>The <strong>Branch Node <code>[B]</code></strong> uses the same condition system (Variable / Operator / Value / NOT), but instead of locking/hiding a choice it routes execution to a True or False output port. All rows are AND logic — True port if all pass, False port if any fail.</p>
+<p>See <a href="../nodes/#branch-node-b">Node Reference — Branch Node</a> for full field details.</p>
+<hr />
+<h2 id="custom-conditions-c-required">Custom conditions (C# required)</h2>
+<p>Use this when the state you need to check lives in your game code — an inventory system, a quest log, a reputation tracker, etc.</p>
+<p>The workflow has two parts:
+1. <strong>Register a handler</strong> in C# that evaluates the condition
+2. <strong>Link a ConditionDefinition asset</strong> to a choice in the graph</p>
+<h3 id="step-1-register-a-handler">Step 1 — Register a handler</h3>
+<h4 id="option-a-delegate-simplest">Option A: Delegate (simplest)</h4>
+<p>Call <code>ConditionService.Register</code> from <code>Awake</code> on any <code>MonoBehaviour</code>. The lambda closes over whatever your game code exposes.</p>
+<pre><code class="language-csharp">public class PlayerWallet : MonoBehaviour
+{
+    public int Gold = 100;
+
+    void Awake()
+    {
+        ConditionService.Register(&quot;GoldGTE&quot;, param =&gt;
+        {
+            int.TryParse(param, out int needed);
+            return Gold &gt;= needed;
+        });
+    }
+
+    void OnDestroy() =&gt; ConditionService.Unregister(&quot;GoldGTE&quot;);
+}
+</code></pre>
+<p>The delegate is stored in a static dictionary keyed by the condition key string. Multiple delegates can be registered from multiple MonoBehaviours — each has its own key.</p>
+<blockquote>
+<p>Always <code>Unregister</code> in <code>OnDestroy</code> (or <code>OnDisable</code> if your object might be disabled). Failing to unregister means the delegate persists even after the object is destroyed — the next scene load might fail with a null reference if the lambda captures a destroyed object.</p>
+</blockquote>
+<h4 id="option-b-conditionprovider-subclass-all-conditions-in-one-asset">Option B: ConditionProvider subclass (all conditions in one asset)</h4>
+<p>Create a <code>ScriptableObject</code> that inherits <code>ConditionProvider</code> and override <code>Evaluate</code>. Good when you have many conditions and want them in one organized, inspectable place.</p>
+<pre><code class="language-csharp">[CreateAssetMenu(menuName = &quot;Threader/My Condition Provider&quot;)]
+public class GameConditionProvider : ConditionProvider
+{
+    public override bool Evaluate(ConditionDefinition def, string param)
+    {
+        switch (def.GetKey())
+        {
+            case &quot;GoldGTE&quot;:
+                return int.TryParse(param, out int n) &amp;&amp; Economy.Instance.Gold &gt;= n;
+
+            case &quot;HasItem&quot;:
+                return Inventory.Instance.Has(param);
+
+            case &quot;QuestComplete&quot;:
+                return QuestManager.Instance.IsComplete(param);
+
+            default:
+                // Fall back to the definition's WhenMissing setting
+                return def.WhenMissing == WhenMissingBehaviour.Allow;
+        }
+    }
+}
+</code></pre>
+<p>Create an instance of this asset and assign it to <strong>DialogueManager → Condition Provider</strong> in the Inspector, or call <code>ConditionService.SetProvider(myProvider)</code> from a bootstrap script.</p>
+<h3 id="evaluation-order">Evaluation order</h3>
+<p>When a choice has a <code>ConditionDefinition</code>, <code>ConditionService.Evaluate</code> resolves in this priority order:</p>
+<ol>
+<li><strong>Registered delegate</strong> — if a delegate is registered for this key, it runs</li>
+<li><strong>Active ConditionProvider</strong> — if a provider is assigned and no delegate matched, the provider's <code>Evaluate</code> is called</li>
+<li><strong><code>WhenMissing</code> fallback</strong> — if neither a delegate nor a provider handled this key, the definition's <code>WhenMissing</code> setting decides the result</li>
+</ol>
+<h3 id="step-2-create-a-conditiondefinition-asset">Step 2 — Create a ConditionDefinition asset</h3>
+<p>Right-click in the Project window → <strong>Create → Threader → Condition (Custom)</strong>.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Key</strong></td>
+<td>Must exactly match the string you used in <code>Register()</code> or <code>def.GetKey()</code>. Defaults to the asset file name.</td>
+</tr>
+<tr>
+<td><strong>Display Name</strong></td>
+<td>Human-readable label shown in the Inspector</td>
+</tr>
+<tr>
+<td><strong>Category</strong></td>
+<td>Groups assets in pickers as <code>Category/Name</code></td>
+</tr>
+<tr>
+<td><strong>Parameter Hint</strong></td>
+<td>Tooltip shown when browsing in the Inspector — describe what the parameter string means</td>
+</tr>
+<tr>
+<td><strong>When Missing</strong></td>
+<td><strong>Allow</strong> (default) — choice always shown when no handler is registered. Safe during development. <strong>Block</strong> — choice locked when no handler is registered. Use for must-be-earned conditions.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="step-3-link-the-asset-to-a-choice">Step 3 — Link the asset to a choice</h3>
+<ol>
+<li>Select the <strong>DialogueGraph asset</strong> in the Project window (click the <code>.asset</code> file — not a node in the editor canvas)</li>
+<li>In the Inspector, expand the choice list for the Player Choice node you want</li>
+<li>Drag the <code>ConditionDefinition</code> asset into the <strong>Condition Definition</strong> field</li>
+<li>Type a value in <strong>Condition Parameter</strong> — this is the string your lambda or <code>Evaluate</code> receives</li>
+</ol>
+<blockquote>
+<p>The ConditionDefinition is set on the <strong>graph asset file in the inspector</strong>, not on the graph editor canvas. Select the <code>.asset</code> file in the Project window to see the serialized choice data.</p>
+</blockquote>
+<hr />
+<h2 id="conditionstoreprovider-built-in-provider">ConditionStoreProvider (built-in provider)</h2>
+<p>Threader ships with <code>ConditionStoreProvider</code> — a ready-to-use <code>ConditionProvider</code> subclass that evaluates against <code>ConditionStore</code>, a static in-memory key/value dictionary.</p>
+<p>Assign <code>ConditionStoreProvider</code> to <strong>DialogueManager → Condition Provider</strong> and then write your game state into <code>ConditionStore</code> from anywhere:</p>
+<pre><code class="language-csharp">// Write from your game code
+ConditionStore.SetInt(&quot;Gold&quot;,    economy.Gold);
+ConditionStore.Set(&quot;HasSword&quot;,   inventory.Has(&quot;sword&quot;) ? &quot;true&quot; : &quot;false&quot;);
+ConditionStore.Set(&quot;QuestState&quot;, questManager.ActiveQuest);
+
+// ConditionStoreProvider supports these condition key patterns:
+// &quot;Exists:KeyName&quot;          → true if the key is present at all
+// &quot;Bool:KeyName&quot;            → true if the stored value is &quot;true&quot; (case-insensitive)
+// &quot;GTE:KeyName:50&quot;          → true if stored value &gt;= 50 (numeric)
+// &quot;Equal:KeyName:someValue&quot; → true if stored string == someValue
+</code></pre>
+<p><code>ConditionStore</code> is in-memory only — it resets when you start Play mode. After loading a save, repopulate it before starting any dialogue.</p>
+<hr />
+<h2 id="variableconditiondefinition-no-code-asset-condition">VariableConditionDefinition (no-code asset condition)</h2>
+<p>If you want a reusable condition asset that checks a <code>DialogueVariables</code> store without any C# handler, create a <code>VariableConditionDefinition</code>:</p>
+<p>Right-click in the Project window → <strong>Create → Threader → Variable Condition</strong>.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Variables</strong></td>
+<td>Drag a <code>DialogueVariables</code> asset here</td>
+</tr>
+<tr>
+<td><strong>Variable Name</strong></td>
+<td>The variable to check</td>
+</tr>
+<tr>
+<td><strong>Operator</strong></td>
+<td>Equal / NotEqual / GreaterThan / etc.</td>
+</tr>
+<tr>
+<td><strong>Value</strong></td>
+<td>The comparison value</td>
+</tr>
+</tbody>
+</table>
+<p>Drag this asset into a choice's <strong>Condition Definition</strong> slot. No <code>Register</code> call needed — it self-evaluates by calling the asset's <code>GetBool</code>/<code>GetInt</code>/<code>GetString</code> methods directly.</p>
+<p>This is useful for creating reusable condition assets that can be shared across multiple graphs — for example, a <code>HasGoldCond.asset</code> that multiple shops all reference.</p>
+<hr />
+<h2 id="combining-both-systems">Combining both systems</h2>
+<p>A choice can carry both inline conditions <strong>and</strong> a <code>ConditionDefinition</code>. The evaluation order is:</p>
+<ol>
+<li>All inline variable condition rows are checked (AND logic)</li>
+<li>If any inline condition fails → choice is locked/hidden immediately, <code>ConditionDefinition</code> is skipped</li>
+<li>If all inline conditions pass → <code>ConditionDefinition</code> is evaluated</li>
+<li>If that fails → choice is locked</li>
+</ol>
+<p>This means inline conditions act as a <strong>fast-path guard</strong> — expensive C# lookups in your provider are only reached if the cheap variable checks all pass.</p>
+<hr />
+<h2 id="debugging-conditions">Debugging conditions</h2>
+<p>If a condition isn't behaving as expected:</p>
+<ol>
+<li><strong>Open the Dialogue Preview Window</strong> (<code>Shift+Alt+P</code>) — enable <strong>Show hidden</strong> to see choices that are being hidden, and check which conditions are evaluated against your seeded variable values</li>
+<li><strong>Variable names are case-sensitive</strong> — double-check spelling in both the graph and the asset</li>
+<li><strong>Delegate not registered</strong> — if <code>WhenMissing = Block</code> and nothing is registered, the choice locks silently. Add a <code>Debug.Log</code> inside your delegate to confirm it fires.</li>
+<li><strong>Provider not assigned</strong> — if you use Option B, make sure the asset is in <strong>DialogueManager → Condition Provider</strong> or <code>ConditionService.SetProvider</code> was called. Check <code>ConditionService.Provider</code> in code to verify.</li>
+<li><strong>Multiple variables assets</strong> — the runner searches assets in list order. If two assets have the same variable name, only the first found is used.</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "toc.integrate", "search.suggest", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,1288 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Threader — Visual Dialogue System for Unity">
+      
+      
+      
+      
+        <link rel="prev" href="../quick-start/">
+      
+      
+        <link rel="next" href="../graph-editor/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Tutorial - Threader</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#tutorial-a-quest-driven-npc-from-scratch" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Threader" class="md-header__button md-logo" aria-label="Threader" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Threader
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Tutorial
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../quick-start/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Quick Start
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Tutorial
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../graph-editor/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Graph Editor
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../nodes/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Node Reference
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../variables/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Variables
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../conditions/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Conditions
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../entry-points/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Entry Points
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../saving/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Saving
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../api-reference/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  API Reference
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../changelog/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Changelog
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Threader" class="md-nav__button md-logo" aria-label="Threader" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Threader
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quick-start/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quick Start
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tutorial
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tutorial
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-plan-the-conversation-tree" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Plan the conversation tree
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-create-the-dialoguevariables-asset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Create the DialogueVariables asset
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-create-the-graph" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Create the graph
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-build-branch-1-first-meeting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Build Branch 1 — First meeting
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Build Branch 1 — First meeting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#npc-greeting-node" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NPC greeting node
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#player-choice-node" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Player choice node
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#two-end-nodes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Two end nodes
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-build-branch-2-quest-in-progress" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Build Branch 2 — Quest in progress
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Build Branch 2 — Quest in progress">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mark-an-entry-point" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mark an entry point
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#player-choice-node-with-a-condition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Player choice node with a condition
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#two-end-nodes_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Two end nodes
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-build-branch-3-quest-complete" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Build Branch 3 — Quest complete
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-add-a-fire-event-node-for-the-quest-reward" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Add a fire-event node for the quest reward
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-set-hascat-from-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Set hasCat from code
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-add-the-npc-to-the-scene" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Add the NPC to the scene
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-hook-up-the-ui" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Hook up the UI
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-test-the-full-loop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Test the full loop
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-to-try-next" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What to try next
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../graph-editor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Graph Editor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nodes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Node Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../variables/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Variables
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../conditions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Conditions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../entry-points/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Entry Points
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../saving/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Saving
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../changelog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Changelog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="tutorial-a-quest-driven-npc-from-scratch">Tutorial: A Quest-Driven NPC from Scratch</h1>
+<p>This tutorial builds a complete, quest-aware NPC end-to-end. When you finish, you'll have:</p>
+<ul>
+<li>A villager who greets the player on first meeting</li>
+<li>A quest to retrieve a lost cat</li>
+<li>Dialogue that changes once the cat is returned</li>
+<li>A variable tracking the quest state</li>
+<li>Player choices gated behind conditions</li>
+<li>Events wired to your game code</li>
+<li>Entry points that auto-switch as the quest progresses</li>
+</ul>
+<p><strong>Time:</strong> ~30 minutes<br />
+<strong>Prerequisites:</strong> <code>DialogueManager</code> in your scene, a basic UI that handles <code>OnNPCLine</code> and <code>OnChoiceNode</code>. See <a href="../quick-start/">Quick Start</a> if you haven't done this yet.</p>
+<hr />
+<h2 id="1-plan-the-conversation-tree">1. Plan the conversation tree</h2>
+<p>Before touching the editor, sketch the branches:</p>
+<pre><code>[Start] Greet player
+    → First meeting: &quot;Have you seen my cat?&quot;
+        Choice: &quot;I'll look for it&quot;   → quest accepted  → [End: switch to InProgress]
+        Choice: &quot;Not my problem&quot;     → [End: switch to InProgress]
+    → [Entry: InProgress] &quot;Any luck finding my cat?&quot;
+        Choice: &quot;I found it!&quot; (requires hasCat=true)  → reward  → [End: switch to QuestDone]
+        Choice: &quot;Still looking...&quot;                     → [End: stay at InProgress]
+    → [Entry: QuestDone] &quot;Thank you so much!&quot;
+        → [End]
+</code></pre>
+<p>Three branches, two entry points, one variable. Keep this sketch open while building.</p>
+<hr />
+<h2 id="2-create-the-dialoguevariables-asset">2. Create the DialogueVariables asset</h2>
+<p><strong>Right-click</strong> in Project → <strong>Create → Threader → Variables Store</strong>.<br />
+Name it <code>VillagerVars</code>.</p>
+<p>In the Inspector, add one variable:</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>hasCat</code></td>
+<td>Bool</td>
+<td>false</td>
+</tr>
+</tbody>
+</table>
+<p>Assign <code>VillagerVars</code> to <strong>DialogueManager → Variables List</strong>.</p>
+<hr />
+<h2 id="3-create-the-graph">3. Create the graph</h2>
+<p><strong>Right-click</strong> in Project → <strong>Create → Threader → Dialogue Graph</strong>.<br />
+Name it <code>VillagerDialogue</code>. Double-click to open.</p>
+<hr />
+<h2 id="4-build-branch-1-first-meeting">4. Build Branch 1 — First meeting</h2>
+<h3 id="npc-greeting-node">NPC greeting node</h3>
+<p>Press <strong>N</strong> to create an NPC node. Click it to select, then in the inspector sidebar:</p>
+<ul>
+<li><strong>Speaker:</strong> <code>Villager</code> (type the name, or pick from a roster if you have one set up)</li>
+<li>Click <strong>+ Add Line</strong> and enter: <code>Oh, a traveller! You haven't seen a small orange cat around here, have you?</code></li>
+</ul>
+<h3 id="player-choice-node">Player choice node</h3>
+<p>Press <strong>C</strong> to create a Player Choice node. Connect the NPC node's output port to its input.</p>
+<p>Add two choices (click <strong>+ Add Choice</strong> twice):</p>
+<p><strong>Choice 0:</strong>
+- Text: <code>I'll keep an eye out for you.</code></p>
+<p><strong>Choice 1:</strong>
+- Text: <code>Sounds like a personal problem.</code></p>
+<h3 id="two-end-nodes">Two end nodes</h3>
+<p>Press <strong>E</strong> twice to create two End nodes — one for each choice.</p>
+<p>Connect <strong>Choice 0 output → End 0</strong>, <strong>Choice 1 output → End 1</strong>.</p>
+<p>On <strong>both</strong> End nodes, set <strong>Set Entry Point On Complete</strong> to <code>InProgress</code>.</p>
+<blockquote>
+<p>This means no matter what the player says, the next conversation will start from the <code>InProgress</code> branch.</p>
+</blockquote>
+<hr />
+<h2 id="5-build-branch-2-quest-in-progress">5. Build Branch 2 — Quest in progress</h2>
+<h3 id="mark-an-entry-point">Mark an entry point</h3>
+<p>Press <strong>N</strong> to create a new NPC node somewhere below. Right-click it → <strong>Set as Entry Point</strong>. Type <code>InProgress</code> as the key. The node gets a yellow badge.</p>
+<p>Set its line to: <code>Any luck finding my little {varName}?</code></p>
+<blockquote>
+<p>Wait — we don't have a variable called <code>varName</code>. Let's use a plain name for now: <code>Any luck finding Mr Whiskers?</code> You could also add a <code>catName</code> string variable and use <code>{catName}</code> here if you want it configurable.</p>
+</blockquote>
+<h3 id="player-choice-node-with-a-condition">Player choice node with a condition</h3>
+<p>Press <strong>C</strong> to create a Player Choice node below the InProgress NPC node. Connect them.</p>
+<p>Add two choices:</p>
+<p><strong>Choice 0:</strong>
+- Text: <code>I found him! Here you go.</code>
+- Click <strong>+ Add</strong> under Conditions
+  - Variable: <code>hasCat</code>
+  - Operator: <code>Equal</code>
+  - Value: <code>true</code>
+  - Hide: ✓ (hide until the player actually has the cat)</p>
+<p><strong>Choice 1:</strong>
+- Text: <code>Still looking, sorry.</code></p>
+<h3 id="two-end-nodes_1">Two end nodes</h3>
+<p>Create two End nodes. Connect <strong>Choice 0 output → End A</strong>, <strong>Choice 1 output → End B</strong>.</p>
+<ul>
+<li><strong>End A</strong> (cat returned): set <strong>Set Entry Point On Complete</strong> to <code>QuestDone</code></li>
+<li><strong>End B</strong> (still looking): set <strong>Set Entry Point On Complete</strong> to <code>InProgress</code> (stays in this branch)</li>
+</ul>
+<hr />
+<h2 id="6-build-branch-3-quest-complete">6. Build Branch 3 — Quest complete</h2>
+<p>Press <strong>N</strong> for a new NPC node. Right-click → <strong>Set as Entry Point</strong>, key: <code>QuestDone</code>.</p>
+<p>Add two lines:
+1. <code>You found Mr Whiskers! I can't thank you enough.</code>
+2. <code>He's been with me for twelve years. I was so worried.</code></p>
+<p>Press <strong>E</strong> for an End node. Connect the NPC node to it. Leave <strong>Set Entry Point On Complete</strong> empty — the quest is over.</p>
+<hr />
+<h2 id="7-add-a-fire-event-node-for-the-quest-reward">7. Add a fire-event node for the quest reward</h2>
+<p>Between the "cat returned" choice and End A, insert a <strong>Fire Event</strong> node (press <strong>V</strong>).</p>
+<ul>
+<li><strong>Event Key:</strong> <code>QuestReward</code></li>
+<li><strong>Global:</strong> ✓ (so any listener in the scene can pick it up)</li>
+</ul>
+<p>Reconnect: <strong>Choice 0 output → Fire Event Node → End A</strong>.</p>
+<p>In your game code, subscribe once:</p>
+<pre><code class="language-csharp">void OnEnable()
+{
+    DialogueManager.Instance.OnGlobalNodeEvent += HandleGlobalEvent;
+}
+
+void OnDisable()
+{
+    DialogueManager.Instance.OnGlobalNodeEvent -= HandleGlobalEvent;
+}
+
+void HandleGlobalEvent(string key)
+{
+    if (key == &quot;QuestReward&quot;)
+        GivePlayerGold(50);
+}
+</code></pre>
+<hr />
+<h2 id="8-set-hascat-from-code">8. Set hasCat from code</h2>
+<p>When the player finds the cat (however your game handles that), set the variable:</p>
+<pre><code class="language-csharp">// Find the asset and set the variable
+var vars = DialogueManager.Instance.VariablesList[0]; // or find by name
+vars.SetBool(&quot;hasCat&quot;, true);
+</code></pre>
+<p>The choice <code>I found him!</code> will now unhide automatically the next time the InProgress dialogue runs.</p>
+<hr />
+<h2 id="9-add-the-npc-to-the-scene">9. Add the NPC to the scene</h2>
+<p>Add an NPC GameObject with a <code>Collider</code> (set <strong>Is Trigger</strong>) and an <code>NPCDialogue</code> or <code>DialogueTrigger</code> component.</p>
+<ul>
+<li>Assign <code>VillagerDialogue</code> to the <strong>Graph</strong> field</li>
+<li>For <code>NPCDialogue</code>, set <strong>Speaker Name</strong> to <code>Villager</code> (must match the graph nodes exactly)</li>
+<li>Leave <strong>Active Entry Point Key</strong> empty — the first conversation starts from the default start node</li>
+</ul>
+<hr />
+<h2 id="10-hook-up-the-ui">10. Hook up the UI</h2>
+<p>If you're using the built-in <code>DialogueUI</code>, make sure it's in the scene and the Canvas is set up. Otherwise wire <code>DialogueManager.OnNPCLine</code> and <code>DialogueManager.OnChoiceNode</code> to your own UI from <code>OnEnable</code>:</p>
+<pre><code class="language-csharp">void OnEnable()
+{
+    DialogueManager.Instance.OnNPCLine    += ShowLine;
+    DialogueManager.Instance.OnChoiceNode += ShowChoices;
+    DialogueManager.Instance.OnDialogueEnd += HideUI;
+}
+
+void OnDisable()
+{
+    DialogueManager.Instance.OnNPCLine    -= ShowLine;
+    DialogueManager.Instance.OnChoiceNode -= ShowChoices;
+    DialogueManager.Instance.OnDialogueEnd -= HideUI;
+}
+
+void ShowLine(NPCLine line) =&gt; dialogueText.text = line.Text;
+
+void ShowChoices(List&lt;ChoiceData&gt; choices)
+{
+    for (int i = 0; i &lt; choices.Count; i++)
+    {
+        int index = i; // capture for the lambda
+        var btn = Instantiate(choiceButtonPrefab, choiceContainer);
+        btn.GetComponentInChildren&lt;TMP_Text&gt;().text = choices[i].Text;
+        btn.interactable = !choices[i].IsLocked;
+        btn.onClick.AddListener(() =&gt; DialogueManager.Instance.SelectChoice(index));
+    }
+}
+</code></pre>
+<hr />
+<h2 id="11-test-the-full-loop">11. Test the full loop</h2>
+<p>Enter Play mode and walk into the trigger zone (or call <code>StartDialogue</code> manually).</p>
+<p><strong>First talk:</strong>
+- "I'll keep an eye out" or "Not my problem" — both should End and silently switch to <code>InProgress</code></p>
+<p><strong>Second talk:</strong>
+- "Any luck finding Mr Whiskers?" — only "Still looking" should be visible (hasCat is false)</p>
+<p><strong>Set hasCat = true</strong> — in a quick test you can do this in the Console with a one-shot script, or temporarily check a Update key press:</p>
+<pre><code class="language-csharp">if (Input.GetKeyDown(KeyCode.F5))
+    DialogueManager.Instance.VariablesList[0].SetBool(&quot;hasCat&quot;, true);
+</code></pre>
+<p><strong>Third talk:</strong>
+- Both choices now visible — pick "I found him!"
+- The <code>QuestReward</code> event fires → player gets 50 gold
+- End node switches entry point to <code>QuestDone</code></p>
+<p><strong>Fourth talk:</strong>
+- The tearful thanks plays, then dialogue ends permanently at the default end node</p>
+<hr />
+<h2 id="what-to-try-next">What to try next</h2>
+<table>
+<thead>
+<tr>
+<th>Extension</th>
+<th>How</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Add voice clips</td>
+<td>Drag AudioClips onto each NPC line in the node inspector</td>
+</tr>
+<tr>
+<td>Use a second NPC speaker</td>
+<td>Add a second Speaker Name, register with <code>DialogueManager.RegisterSpeaker</code>, add NPC nodes with that speaker — the camera will cut between them</td>
+</tr>
+<tr>
+<td>Track whether the player was rude</td>
+<td>Add a <code>bool wasRude</code> variable, use a <strong>Set Variable Node</strong> after the "Not my problem" choice, add a condition hiding the reward choice if <code>wasRude = true</code></td>
+</tr>
+<tr>
+<td>Persist quest state on save</td>
+<td>See <a href="../saving/">Saving</a> — save <code>hasCat</code> and <code>ActiveEntryPointKey</code></td>
+</tr>
+<tr>
+<td>Test without entering Play mode</td>
+<td>Open the <strong>Dialogue Preview Window</strong> (<code>Shift+Alt+P</code>), seed <code>hasCat = false</code>, and step through every branch</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "toc.integrate", "search.suggest", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
