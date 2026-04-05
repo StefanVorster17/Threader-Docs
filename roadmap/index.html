@@ -835,6 +835,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Planned">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sub-graph-support-v11-target" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sub-Graph support — v1.1 target
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -848,17 +865,6 @@
   
     <nav class="md-nav" aria-label="Considering">
       <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#sub-graph-support-v11" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Sub-Graph support — v1.1
-      
-    </span>
-  </a>
-  
-</li>
         
           <li class="md-nav__item">
   <a href="#localization-support-v1x" class="md-nav__link">
@@ -973,11 +979,7 @@
 <hr />
 <h2 id="planned">Planned</h2>
 <p>Features that are confirmed and targeted for a specific version.</p>
-<p><em>Nothing confirmed yet — v1.0 just shipped. Watch this space.</em></p>
-<hr />
-<h2 id="considering">Considering</h2>
-<p>Features that are on the radar but not yet committed. These may or may not ship depending on scope, community interest, and architectural fit.</p>
-<h3 id="sub-graph-support-v11">Sub-Graph support — v1.1</h3>
+<h3 id="sub-graph-support-v11-target">Sub-Graph support — v1.1 target</h3>
 <p>Call a separate <code>SubGraph</code> asset from within a running dialogue graph, then return to the calling graph when it ends.</p>
 <p><strong>Design intent:</strong>
 - A new <code>SubGraph</code> graph type that carries no actor, no LookAt setting, and fires no <code>OnDialogueStarted</code> / <code>OnDialogueEnded</code> events of its own
@@ -988,8 +990,10 @@
 - Shared "rumour" or "ambient" dialogue that any NPC can invoke mid-conversation
 - Reusable shop, trade, or minigame dialogue sequences called from multiple graphs
 - Breaking very large story graphs into smaller chapter graphs that chain together</p>
-<p><strong>Status:</strong> Architecture designed, not yet implemented. Waiting on v1.0 user feedback before committing.</p>
+<p><strong>Status:</strong> Architecture designed. Implementation planned for v1.1.</p>
 <hr />
+<h2 id="considering">Considering</h2>
+<p>Features that are on the radar but not yet committed. These may or may not ship depending on scope, community interest, and architectural fit.</p>
 <h3 id="localization-support-v1x">Localization support — v1.x</h3>
 <p>Allow all dialogue text to be translated and swapped at runtime by language.</p>
 <p><strong>Two approaches are being considered:</strong></p>
