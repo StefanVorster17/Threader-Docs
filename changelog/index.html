@@ -977,34 +977,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="[Unreleased]">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#added" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Added
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#fixed" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Fixed
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
         <li class="md-nav__item">
@@ -1086,34 +1058,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="[Unreleased]">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#added" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Added
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#fixed" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Fixed
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
         <li class="md-nav__item">
@@ -1166,17 +1110,6 @@
 Format follows <a href="https://keepachangelog.com/">Keep a Changelog</a>. Versions follow <a href="https://semver.org/">Semantic Versioning</a>.</p>
 <hr />
 <h2 id="unreleased">[Unreleased]</h2>
-<h3 id="added">Added</h3>
-<ul>
-<li><strong>Variable text substitution</strong> — embed variable values directly in NPC line text and choice text using <code>{varName}</code> tokens. Use <code>{varName:name}</code> to insert the variable's display name instead of its value. Unknown tokens are left as-is as an authoring hint.</li>
-<li><strong><code>DisplayName</code> field on <code>DialogueVariable</code></strong> — optional human-readable label for a variable, separate from its internal <code>Name</code>. Used by <code>{varName:name}</code> tokens and <code>DialogueVariables.GetDisplayName()</code>.</li>
-<li><strong><code>DialogueVariables.GetDisplayName(string name)</code></strong> — returns <code>DisplayName</code> if set, otherwise falls back to <code>Name</code>.</li>
-<li><strong>Dialogue Preview Window supports token substitution</strong> — seed variable values in the preview, see them resolved live in line text and choice cards.</li>
-</ul>
-<h3 id="fixed">Fixed</h3>
-<ul>
-<li>Choice text was being written back to the graph asset during play (mutation bug). Choices now use display copies — the original graph asset data is never modified at runtime.</li>
-</ul>
 <hr />
 <h2 id="100-initial-release">[1.0.0] — Initial Release</h2>
 <h3 id="core-systems">Core Systems</h3>
