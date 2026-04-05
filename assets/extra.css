@@ -34,7 +34,12 @@
   color: #8ab4f8;
 }
 
-/* TOC: h4 items — deeper indent, no extra border, dimmer text */
+/* TOC: white hover on all nav links */
+.md-nav--secondary .md-nav__link:hover,
+.md-nav--secondary .md-nav__link:focus {
+  color: #ffffff !important;
+}
+
 .md-nav--secondary .md-nav__item .md-nav__item .md-nav__item {
   border-left: none;
   margin-left: 0.5rem;
