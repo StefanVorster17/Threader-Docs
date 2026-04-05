@@ -16,21 +16,32 @@
   --md-code-bg-color:           #0d1525;
 }
 
-/* TOC: bullet points for top-level section links */
+/* TOC: bullet points for top-level section links (h2) */
 .md-nav--secondary > .md-nav__list > .md-nav__item > .md-nav__link::before {
   content: "• ";
   color: #1a6ff5;
 }
 
-/* TOC: striped background for nested (sub-heading) items */
+/* TOC: h3 items — left border indent only */
 .md-nav--secondary .md-nav__item .md-nav__item {
-  background-color: #0c1220;
   border-left: 2px solid #1a6ff5;
-  margin-top: 1px;
+  margin-left: 0.2rem;
 }
 
-.md-nav--secondary .md-nav__item .md-nav__item .md-nav__link {
-  padding-left: 0.8rem;
-  font-size: 0.72rem;
+.md-nav--secondary .md-nav__item .md-nav__item > .md-nav__link {
+  padding-left: 0.75rem;
+  font-size: 0.73rem;
   color: #8ab4f8;
+}
+
+/* TOC: h4 items — deeper indent, no extra border, dimmer text */
+.md-nav--secondary .md-nav__item .md-nav__item .md-nav__item {
+  border-left: none;
+  margin-left: 0.5rem;
+}
+
+.md-nav--secondary .md-nav__item .md-nav__item .md-nav__item > .md-nav__link {
+  padding-left: 0.5rem;
+  font-size: 0.68rem;
+  color: #5a7faa;
 }
