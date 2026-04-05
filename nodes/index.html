@@ -1096,6 +1096,185 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#jump-node-j_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Jump Node [J]
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Jump Node [J]">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fields_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fields
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#debug-node-d_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Debug Node [D]
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Debug Node [D]">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fields_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fields
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wait-node-f5_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Wait Node [F5]
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Wait Node [F5]">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fields_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fields
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fire-event-node-f2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fire Event Node [F2]
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Fire Event Node [F2]">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fields_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fields
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#play-audio-node-f3_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Play Audio Node [F3]
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Play Audio Node [F3]">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fields_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fields
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#animator-trigger-node-f4_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Animator Trigger Node [F4]
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Animator Trigger Node [F4]">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fields_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fields
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#shared-return-tag-tag-field_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Shared: Return Tag (⚐ Tag field)
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1794,6 +1973,199 @@
 <p>The Animator is found by calling <code>GetComponentInChildren&lt;Animator&gt;()</code> on the speaker's registered transform. If no Animator is found, a warning is logged and the action is skipped.</p>
 <hr />
 <h2 id="shared-return-tag-tag-field">Shared: Return Tag (⚐ Tag field)</h2>
+<p>Every node has a <strong>⚐ Tag</strong> field at the top. This is the node's <strong>Return Tag</strong> — a string identifier used exclusively as a Jump Node target.</p>
+<ul>
+<li>Leave blank if no Jump Node needs to target this node</li>
+<li>Tags must be unique within a graph (the validator will warn you about duplicates)</li>
+<li>Tags are resolved at runtime by string comparison — renaming a tag after a Jump Node references it will break the jump</li>
+</ul>
+<p>The tag is displayed as a small badge on the node in the graph editor when set.</p>
+<hr />
+<h2 id="jump-node-j_1">Jump Node <code>[J]</code></h2>
+<p><img alt="Jump Node" src="../assets/images/nodes/jump.png" width="260" /></p>
+<p>Redirects execution to any node in the same graph identified by its <strong>⚐ Tag</strong> (Return Tag). Has no output port. Execution jumps immediately — no dialogue is shown.</p>
+<p>Use Jump nodes to:</p>
+<ul>
+<li><strong>Loop</strong> back to an earlier part of the graph (e.g. repeat a menu until the player picks "Goodbye")</li>
+<li><strong>Share a common ending</strong> branch from multiple paths without drawing crossing edges</li>
+<li><strong>Avoid long edges</strong> across large graphs</li>
+</ul>
+<h3 id="fields_12">Fields</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Jumps to</strong> (dropdown)</td>
+<td>Lists every ⚐ Tag set on a node in this graph. Select the target tag.</td>
+</tr>
+<tr>
+<td><strong>↺ Refresh</strong></td>
+<td>Re-scans the graph for tags added after this Jump Node was placed</td>
+</tr>
+</tbody>
+</table>
+<p>The jump target is resolved by tag string at runtime. If the tag no longer exists in the graph when dialogue runs, the runner logs an error and ends the dialogue.</p>
+<blockquote>
+<p>Set the ⚐ Tag on the <strong>target node</strong>, not on the Jump Node itself.</p>
+</blockquote>
+<hr />
+<h2 id="debug-node-d_1">Debug Node <code>[D]</code></h2>
+<p><img alt="Debug Node" src="../assets/images/nodes/debug.png" width="260" /></p>
+<p>Logs a message to the Unity Console when reached. Passes through silently — the player never sees it. Execution continues to the connected output node immediately.</p>
+<h3 id="fields_13">Fields</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Level</strong></td>
+<td>Info (white), Warning (yellow — node title bar turns yellow), Error (red — node title bar turns red)</td>
+</tr>
+<tr>
+<td><strong>Message</strong></td>
+<td>Text written to the Console. Multiline.</td>
+</tr>
+<tr>
+<td><strong>Include Node ID</strong></td>
+<td>Prepends the node's short GUID to the message, useful when multiple Debug nodes log similar text</td>
+</tr>
+<tr>
+<td><strong>Watch Vars</strong> (+ Add)</td>
+<td>Variable name dropdown. The current runtime value of each listed variable is appended to the log output, e.g. <code>[foundCat=true] [gold=42]</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="wait-node-f5_1">Wait Node <code>[F5]</code></h2>
+<p><img alt="Wait Node" src="../assets/images/nodes/wait.png" width="260" /></p>
+<p>Pauses execution for a set duration in real-time seconds, then advances silently. No dialogue is shown.</p>
+<p>Internally, <code>DialogueManager</code> starts a coroutine that calls <code>runner.Continue()</code> after the delay. The wait cannot be skipped by the player — it runs to completion regardless of input.</p>
+<p>In the <strong>Dialogue Preview Window</strong>, the wait is skipped instantly so you can step through graphs without sitting through delays.</p>
+<h3 id="fields_14">Fields</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Seconds</strong></td>
+<td>Float, minimum 0. A value of 0 advances on the next frame.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Practical uses</strong>: dramatic pauses between automatic lines, pacing cutscene sequences, spacing between timed Play Audio clips.</p>
+<hr />
+<h2 id="fire-event-node-f2_1">Fire Event Node <code>[F2]</code></h2>
+<p><img alt="Fire Event Node" src="../assets/images/nodes/fire-event.png" width="260" /></p>
+<p>Silently broadcasts one or more named events and advances. No dialogue is shown. Uses the same <code>OnNodeEvent</code> / <code>OnGlobalNodeEvent</code> callbacks as NPC node events.</p>
+<p>Use this when you need to trigger a game system at a precise point in the conversation flow without attaching the event to an NPC speak node — for example, triggering a door to open between two branches, or spawning an enemy after a dramatic reveal.</p>
+<h3 id="fields_15">Fields</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Key</strong></td>
+<td>The event string. Received by <code>OnNodeEvent</code> subscribers.</td>
+</tr>
+<tr>
+<td><strong>Global</strong></td>
+<td>Off = Local (fires <code>OnNodeEvent</code> only). On = Global (fires both <code>OnNodeEvent</code> and <code>OnGlobalNodeEvent</code>).</td>
+</tr>
+<tr>
+<td><strong>✕</strong></td>
+<td>Removes this event row</td>
+</tr>
+</tbody>
+</table>
+<p>Multiple events are fired in list order.</p>
+<hr />
+<h2 id="play-audio-node-f3_1">Play Audio Node <code>[F3]</code></h2>
+<p><img alt="Play Audio Node" src="../assets/images/nodes/play-audio.png" width="260" /></p>
+<p>Plays one or more <code>AudioClip</code> assets and <strong>advances immediately</strong> — it does not wait for playback to finish. All clips fire in list order via the <code>DialogueManager</code>'s audio sources.</p>
+<h3 id="fields_16">Fields</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Speaker</strong></td>
+<td>Name of the registered speaker whose world position is used for 3D spatial audio. Leave blank to use the 2D fallback <code>AudioSource</code> on the <code>DialogueManager</code>.</td>
+</tr>
+<tr>
+<td><strong>Audio Clips</strong> (+ Add)</td>
+<td><code>AudioClip</code> object fields. Drag assets in. Null slots are skipped.</td>
+</tr>
+<tr>
+<td><strong>✕</strong></td>
+<td>Removes a slot</td>
+</tr>
+</tbody>
+</table>
+<p>If a matching speaker transform is found, the spatial <code>AudioSource</code> is repositioned to that transform and plays with full 3D (<code>spatialBlend = 1</code>). If not, the 2D <code>AudioSource</code> plays instead.</p>
+<blockquote>
+<p>Because Play Audio Node advances immediately, it's best for short stings and sound effects. For voice lines that the dialogue should wait for, use an AudioClip slot on an NPC line instead.</p>
+</blockquote>
+<hr />
+<h2 id="animator-trigger-node-f4_1">Animator Trigger Node <code>[F4]</code></h2>
+<p><img alt="Animator Trigger Node" src="../assets/images/nodes/animator-trigger.png" width="260" /></p>
+<p>Silently sets one or more Animator parameters on registered speakers and advances. No dialogue is shown.</p>
+<p>Use this to trigger animations at precise moments in dialogue flow without tying them to an NPC speak node — for example, playing a gesture animation between two NPC lines, or triggering a walk cycle after a dialogue branch resolves.</p>
+<h3 id="fields_17">Fields</h3>
+<p>Each action card has:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Parameter Name</strong></td>
+<td>Exact Animator parameter name (case-sensitive)</td>
+</tr>
+<tr>
+<td><strong>Type</strong></td>
+<td>Trigger / Bool / Int / Float</td>
+</tr>
+<tr>
+<td><strong>Value</strong></td>
+<td>Visible and editable for Bool, Int, Float. Hidden for Trigger.</td>
+</tr>
+<tr>
+<td><strong>Speaker (override)</strong></td>
+<td>Name of the registered speaker whose Animator to target. Blank = uses the graph's Default Speaker.</td>
+</tr>
+<tr>
+<td><strong>✕</strong></td>
+<td>Removes this action card</td>
+</tr>
+</tbody>
+</table>
+<p>The Animator is found by calling <code>GetComponentInChildren&lt;Animator&gt;()</code> on the speaker's registered transform. If no Animator is found, a warning is logged and the action is skipped.</p>
+<hr />
+<h2 id="shared-return-tag-tag-field_1">Shared: Return Tag (⚐ Tag field)</h2>
 <p>Every node has a <strong>⚐ Tag</strong> field at the top. This is the node's <strong>Return Tag</strong> — a string identifier used exclusively as a Jump Node target.</p>
 <ul>
 <li>Leave blank if no Jump Node needs to target this node</li>
