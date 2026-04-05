@@ -8,6 +8,25 @@
   --md-accent-fg-color: #00d4ff;
 }
 
+/* Hide native scrollbar track on right TOC */
+.md-sidebar--secondary .md-sidebar__scrollwrap {
+  scrollbar-color: #1a6ff5 transparent;
+  scrollbar-width: thin;
+}
+
+.md-sidebar--secondary .md-sidebar__scrollwrap::-webkit-scrollbar {
+  width: 4px;
+}
+
+.md-sidebar--secondary .md-sidebar__scrollwrap::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.md-sidebar--secondary .md-sidebar__scrollwrap::-webkit-scrollbar-thumb {
+  background-color: #1a6ff5;
+  border-radius: 4px;
+}
+
 /* Dark navy background to match logo */
 [data-md-color-scheme="slate"] {
   --md-default-bg-color:        #070c18;
