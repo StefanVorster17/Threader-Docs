@@ -1201,13 +1201,15 @@ public class GameConditionProvider : ConditionProvider
 </table>
 <h3 id="step-3-link-the-asset-to-a-choice">Step 3 — Link the asset to a choice</h3>
 <ol>
-<li>Select the <strong>DialogueGraph asset</strong> in the Project window (click the <code>.asset</code> file — not a node in the editor canvas)</li>
-<li>In the Inspector, expand the choice list for the Player Choice node you want</li>
-<li>Drag the <code>ConditionDefinition</code> asset into the <strong>Condition Definition</strong> field</li>
-<li>Type a value in <strong>Condition Parameter</strong> — this is the string your lambda or <code>Evaluate</code> receives</li>
+<li>Open the graph in the <strong>Graph Editor</strong></li>
+<li>Click the Player Choice node to select it</li>
+<li>Inside the choice card, expand the <strong>Condition Definition [Custom]</strong> foldout</li>
+<li>Click the object picker (⊙) next to <strong>None (Condition Definition)</strong> and select your asset</li>
+<li>Type a value in <strong>Parameter</strong> — this is the string your lambda or <code>Evaluate</code> receives</li>
+<li>Check <strong>Negate</strong> if you want the result inverted</li>
 </ol>
 <blockquote>
-<p>The ConditionDefinition is set on the <strong>graph asset file in the inspector</strong>, not on the graph editor canvas. Select the <code>.asset</code> file in the Project window to see the serialized choice data.</p>
+<p>The ConditionDefinition is set directly on the choice card in the graph editor canvas — not on the <code>.asset</code> file in the Inspector.</p>
 </blockquote>
 <hr />
 <h2 id="conditionstoreprovider-built-in-provider">ConditionStoreProvider (built-in provider)</h2>
