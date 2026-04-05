@@ -15,3 +15,22 @@
   --md-default-bg-color--dark:  #040810;
   --md-code-bg-color:           #0d1525;
 }
+
+/* TOC: bullet points for top-level section links */
+.md-nav--secondary > .md-nav__list > .md-nav__item > .md-nav__link::before {
+  content: "• ";
+  color: #1a6ff5;
+}
+
+/* TOC: striped background for nested (sub-heading) items */
+.md-nav--secondary .md-nav__item .md-nav__item {
+  background-color: #0c1220;
+  border-left: 2px solid #1a6ff5;
+  margin-top: 1px;
+}
+
+.md-nav--secondary .md-nav__item .md-nav__item .md-nav__link {
+  padding-left: 0.8rem;
+  font-size: 0.72rem;
+  color: #8ab4f8;
+}
