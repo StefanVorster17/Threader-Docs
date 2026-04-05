@@ -715,10 +715,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#step-2-verify-on-the-asset" class="md-nav__link">
+  <a href="#step-2-verify-in-the-graph-editor" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 2 — Verify on the asset
+        Step 2 — Verify in the graph editor
       
     </span>
   </a>
@@ -1077,8 +1077,8 @@
 <p>Right-click any node in the graph editor canvas → <strong>Set as Entry Point</strong>.</p>
 <p>A text field appears in the popup. Type a short, descriptive key — e.g. <code>QuestDone</code>, <code>Repeat</code>, <code>PostBattle</code>. The key is case-sensitive everywhere.</p>
 <p>The node gets a <strong>yellow ⚑ badge</strong> in the top-right corner. The key label is also displayed on the badge so you can see at a glance which entry points exist in the graph.</p>
-<h3 id="step-2-verify-on-the-asset">Step 2 — Verify on the asset</h3>
-<p>Select the <code>DialogueGraph.asset</code> file in the Project window. In the Inspector you will see <strong>Entry Points</strong> — a list of <code>{Key, NodeGuid}</code> pairs. Verify that the entry point you just set appears with the correct key and a non-empty GUID. If the GUID is empty, the entry point will resolve to the start node with a warning.</p>
+<h3 id="step-2-verify-in-the-graph-editor">Step 2 — Verify in the graph editor</h3>
+<p>The Inspector shows a summary count of entry points on the graph asset but not the individual keys. To verify, open the graph in the editor and look for the <strong>yellow ⚑ badges</strong> on nodes — each badge displays the key assigned to that node. If a node you intended to mark as an entry point has no badge, right-click it and set it again.</p>
 <h3 id="step-3-use-the-key">Step 3 — Use the key</h3>
 <p>Leave the <strong>Active Entry Point Key</strong> field on <code>DialogueTrigger</code> or <code>NPCDialogue</code> empty to use the start node. Type any of your defined keys to start there instead. This field is directly editable and saved in the scene — useful for authoring a component that always starts partway through a graph (e.g. a tutorial skip).</p>
 <hr />
