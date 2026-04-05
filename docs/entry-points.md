@@ -11,7 +11,7 @@ Entry points let you jump to any node in a graph instead of always starting from
 | **Start node** | Every graph has one — the node with the Start badge. This is the default entry. |
 | **Entry point** | A named alias that maps a key string to a specific node GUID. Stored on the graph asset. |
 | **Active entry point key** | A string held per-actor at runtime. When dialogue starts, this key is resolved to a node. Empty/null = use start node. |
-| **Auto-switching** | End nodes can carry a `SetEntryPointOnComplete` key, which automatically updates the actor's active key when that end node is reached. |
+| **Auto-switching** | End nodes have a **Next entry** dropdown — selecting a key automatically updates the actor's active entry point when that end node is reached. |
 
 ---
 
@@ -25,9 +25,9 @@ A text field appears in the popup. Type a short, descriptive key — e.g. `Quest
 
 The node gets a **yellow ⚑ badge** in the top-right corner. The key label is also displayed on the badge so you can see at a glance which entry points exist in the graph.
 
-### Step 2 — Verify on the asset
+### Step 2 — Verify in the graph editor
 
-Select the `DialogueGraph.asset` file in the Project window. In the Inspector you will see **Entry Points** — a list of `{Key, NodeGuid}` pairs. Verify that the entry point you just set appears with the correct key and a non-empty GUID. If the GUID is empty, the entry point will resolve to the start node with a warning.
+The Inspector shows a summary count of entry points on the graph asset but not the individual keys. To verify, open the graph in the editor and look for the **yellow ⚑ badges** on nodes — each badge displays the key assigned to that node. If a node you intended to mark as an entry point has no badge, right-click it and set it again.
 
 ### Step 3 — Use the key
 
@@ -123,7 +123,9 @@ This does not update the actor's `ActiveEntryPointKey` — it just runs from tha
 
 ## Auto-switching with End nodes
 
-Every **End Node** has a **Set Entry Point On Complete** field. When dialogue reaches this end node, the runner automatically calls `actor.SetEntryPoint(key)` with whatever you typed in that field.
+Every **End Node** has a **Next entry** dropdown. When dialogue reaches this end node, the runner automatically calls `actor.SetEntryPoint(key)` with the selected key.
+
+![End node with Next entry dropdown](assets/images/entry-point-end-node.png){ width="320" }
 
 ```csharp
 // DialogueRunner.cs (simplified)
@@ -143,9 +145,9 @@ Suppose an NPC has three phases:
 
 Graph setup:
 
-1. **Start node** → introductory conversation → **End node** with `Set Entry Point On Complete = InProgress`
-2. `InProgress` entry point → reminder branch → **End node** with `Set Entry Point On Complete = InProgress` *(stays in "in progress" branch until something changes it)*
-3. `QuestDone` entry point → reward branch → **End node** *(leave Set Entry Point On Complete empty — quest is done, no further switching needed)*
+1. **Start node** → introductory conversation → **End node** with **Next entry = InProgress**
+2. `InProgress` entry point → reminder branch → **End node** with **Next entry = InProgress** *(stays in "in progress" branch until something changes it)*
+3. `QuestDone` entry point → reward branch → **End node** *(leave Next entry as (keep current) — quest is done, no further switching needed)*
 
 Your quest system changes the actor:
 

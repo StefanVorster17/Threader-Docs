@@ -130,11 +130,11 @@ When **Hide is checked**, `IsHidden = true` on the `ChoiceData` and the built-in
 
 #### Condition Definition `[Custom]` (foldout inside each choice card)
 
-An optional advanced condition linking a `ConditionDefinition` asset to a C# handler.
+An optional advanced condition linking a `ConditionDefinition` asset to a C# handler. Expand the **Condition Definition [Custom]** foldout inside the choice card.
 
 | Field | Description |
 |---|---|
-| Asset field | Drag a `ConditionDefinition` ScriptableObject here |
+| Asset field | Click the object picker (⊙) and select a `ConditionDefinition` ScriptableObject |
 | Parameter | String passed to `ConditionService.Evaluate(def, param)` |
 | Negate | Inverts the C# condition result |
 
@@ -152,7 +152,7 @@ Terminates the current dialogue. Fires `OnDialogueEnd` and `OnDialogueEnded`, hi
 
 ### Fields
 
-#### Next Entry (dropdown)
+#### Next entry (dropdown)
 
 Sets the actor's active entry point for the **next** conversation **before** dialogue ends.
 
@@ -183,6 +183,8 @@ Silently evaluates one or more variable conditions and routes execution to a **T
 ### Fields
 
 Conditions use the same fields as Player Choice inline conditions (Variable, Operator, Value, NOT, ✕), but there is no Hide checkbox — Branch nodes are never visible to the player.
+
+![Branch node wired to two paths](assets/images/branch-node-wired.png){ width="600" }
 
 ---
 
@@ -220,6 +222,144 @@ Picks one of its output ports at random each time it is reached. Every output ha
 Each output port connects to a separate branch. At least one output is required. If a selected output has no connection, dialogue ends.
 
 **Practical uses**: ambient NPC variety (different greetings on repeat visits), randomised story fragments, loot tables embedded in narrative.
+
+---
+
+## Jump Node `[J]`
+
+![Jump Node](assets/images/nodes/jump.png){ width="260" }
+
+Redirects execution to any node in the same graph identified by its **⚐ Tag** (Return Tag). Has no output port. Execution jumps immediately — no dialogue is shown.
+
+Use Jump nodes to:
+
+- **Loop** back to an earlier part of the graph (e.g. repeat a menu until the player picks "Goodbye")
+- **Share a common ending** branch from multiple paths without drawing crossing edges
+- **Avoid long edges** across large graphs
+
+### Fields
+
+| Field | Description |
+|---|---|
+| **Jumps to** (dropdown) | Lists every ⚐ Tag set on a node in this graph. Select the target tag. |
+| **↺ Refresh** | Re-scans the graph for tags added after this Jump Node was placed |
+
+The jump target is resolved by tag string at runtime. If the tag no longer exists in the graph when dialogue runs, the runner logs an error and ends the dialogue.
+
+> Set the ⚐ Tag on the **target node**, not on the Jump Node itself.
+
+---
+
+## Debug Node `[D]`
+
+![Debug Node](assets/images/nodes/debug.png){ width="260" }
+
+Logs a message to the Unity Console when reached. Passes through silently — the player never sees it. Execution continues to the connected output node immediately.
+
+### Fields
+
+| Field | Description |
+|---|---|
+| **Level** | Info (white), Warning (yellow — node title bar turns yellow), Error (red — node title bar turns red) |
+| **Message** | Text written to the Console. Multiline. |
+| **Include Node ID** | Prepends the node's short GUID to the message, useful when multiple Debug nodes log similar text |
+| **Watch Vars** (+ Add) | Variable name dropdown. The current runtime value of each listed variable is appended to the log output, e.g. `[foundCat=true] [gold=42]` |
+
+---
+
+## Wait Node `[F5]`
+
+![Wait Node](assets/images/nodes/wait.png){ width="260" }
+
+Pauses execution for a set duration in real-time seconds, then advances silently. No dialogue is shown.
+
+Internally, `DialogueManager` starts a coroutine that calls `runner.Continue()` after the delay. The wait cannot be skipped by the player — it runs to completion regardless of input.
+
+In the **Dialogue Preview Window**, the wait is skipped instantly so you can step through graphs without sitting through delays.
+
+### Fields
+
+| Field | Description |
+|---|---|
+| **Seconds** | Float, minimum 0. A value of 0 advances on the next frame. |
+
+**Practical uses**: dramatic pauses between automatic lines, pacing cutscene sequences, spacing between timed Play Audio clips.
+
+---
+
+## Fire Event Node `[F2]`
+
+![Fire Event Node](assets/images/nodes/fire-event.png){ width="260" }
+
+Silently broadcasts one or more named events and advances. No dialogue is shown. Uses the same `OnNodeEvent` / `OnGlobalNodeEvent` callbacks as NPC node events.
+
+Use this when you need to trigger a game system at a precise point in the conversation flow without attaching the event to an NPC speak node — for example, triggering a door to open between two branches, or spawning an enemy after a dramatic reveal.
+
+### Fields
+
+| Field | Description |
+|---|---|
+| **Key** | The event string. Received by `OnNodeEvent` subscribers. |
+| **Global** | Off = Local (fires `OnNodeEvent` only). On = Global (fires both `OnNodeEvent` and `OnGlobalNodeEvent`). |
+| **✕** | Removes this event row |
+
+Multiple events are fired in list order.
+
+---
+
+## Play Audio Node `[F3]`
+
+![Play Audio Node](assets/images/nodes/play-audio.png){ width="260" }
+
+Plays one or more `AudioClip` assets and **advances immediately** — it does not wait for playback to finish. All clips fire in list order via the `DialogueManager`'s audio sources.
+
+### Fields
+
+| Field | Description |
+|---|---|
+| **Speaker** | Name of the registered speaker whose world position is used for 3D spatial audio. Leave blank to use the 2D fallback `AudioSource` on the `DialogueManager`. |
+| **Audio Clips** (+ Add) | `AudioClip` object fields. Drag assets in. Null slots are skipped. |
+| **✕** | Removes a slot |
+
+If a matching speaker transform is found, the spatial `AudioSource` is repositioned to that transform and plays with full 3D (`spatialBlend = 1`). If not, the 2D `AudioSource` plays instead.
+
+> Because Play Audio Node advances immediately, it's best for short stings and sound effects. For voice lines that the dialogue should wait for, use an AudioClip slot on an NPC line instead.
+
+---
+
+## Animator Trigger Node `[F4]`
+
+![Animator Trigger Node](assets/images/nodes/animator-trigger.png){ width="260" }
+
+Silently sets one or more Animator parameters on registered speakers and advances. No dialogue is shown.
+
+Use this to trigger animations at precise moments in dialogue flow without tying them to an NPC speak node — for example, playing a gesture animation between two NPC lines, or triggering a walk cycle after a dialogue branch resolves.
+
+### Fields
+
+Each action card has:
+
+| Field | Description |
+|---|---|
+| **Parameter Name** | Exact Animator parameter name (case-sensitive) |
+| **Type** | Trigger / Bool / Int / Float |
+| **Value** | Visible and editable for Bool, Int, Float. Hidden for Trigger. |
+| **Speaker (override)** | Name of the registered speaker whose Animator to target. Blank = uses the graph's Default Speaker. |
+| **✕** | Removes this action card |
+
+The Animator is found by calling `GetComponentInChildren<Animator>()` on the speaker's registered transform. If no Animator is found, a warning is logged and the action is skipped.
+
+---
+
+## Shared: Return Tag (⚐ Tag field)
+
+Every node has a **⚐ Tag** field at the top. This is the node's **Return Tag** — a string identifier used exclusively as a Jump Node target.
+
+- Leave blank if no Jump Node needs to target this node
+- Tags must be unique within a graph (the validator will warn you about duplicates)
+- Tags are resolved at runtime by string comparison — renaming a tag after a Jump Node references it will break the jump
+
+The tag is displayed as a small badge on the node in the graph editor when set.
 
 ---
 

@@ -21,7 +21,9 @@ Each variable in the list has:
 | **Int Value** | Default value when Type = Int |
 | **String Value** | Default value when Type = String |
 
-> The inspector shows only the value field relevant to the selected Type.
+> All three value fields (Bool, Int, String) are always visible. Only the field matching the selected Type is used at runtime — the others are ignored.
+
+![DialogueVariables asset in the Inspector](assets/images/variables-panel.png){ width="480" }
 
 ---
 

@@ -18,6 +18,8 @@ DialogueManager.Instance  // null when no manager exists in the scene
 
 ### Inspector fields
 
+![DialogueManager Inspector](assets/images/dialogue-manager-inspector.png){ width="480" }
+
 | Field | Type | Description |
 |---|---|---|
 | `audioSource` | `AudioSource` | 2D fallback audio source. Auto-created if not assigned. |

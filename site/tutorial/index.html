@@ -27,7 +27,7 @@
     
     
       
-        <title>Tutorial - Threader</title>
+        <title>Tutorial - Threader - Dialogue Kit</title>
       
     
     
@@ -92,7 +92,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="Threader" class="md-header__button md-logo" aria-label="Threader" data-md-component="logo">
+    <a href=".." title="Threader - Dialogue Kit" class="md-header__button md-logo" aria-label="Threader - Dialogue Kit" data-md-component="logo">
       
   <img src="../assets/images/logo.png" alt="logo">
 
@@ -105,7 +105,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Threader
+            Threader - Dialogue Kit
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -378,6 +378,25 @@
   
   
     <li class="md-tabs__item">
+      <a href="../troubleshooting/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Troubleshooting
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
       <a href="../changelog/" class="md-tabs__link">
         
   
@@ -415,12 +434,12 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="Threader" class="md-nav__button md-logo" aria-label="Threader" data-md-component="logo">
+    <a href=".." title="Threader - Dialogue Kit" class="md-nav__button md-logo" aria-label="Threader - Dialogue Kit" data-md-component="logo">
       
   <img src="../assets/images/logo.png" alt="logo">
 
     </a>
-    Threader
+    Threader - Dialogue Kit
   </label>
   
   <ul class="md-nav__list" data-md-scrollfix>
@@ -959,6 +978,33 @@
   
   
     <li class="md-nav__item">
+      <a href="../troubleshooting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Troubleshooting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../changelog/" class="md-nav__link">
         
   
@@ -1067,7 +1113,7 @@ Name it <code>VillagerDialogue</code>. Double-click to open.</p>
 <h3 id="two-end-nodes">Two end nodes</h3>
 <p>Press <strong>E</strong> twice to create two End nodes — one for each choice.</p>
 <p>Connect <strong>Choice 0 output → End 0</strong>, <strong>Choice 1 output → End 1</strong>.</p>
-<p>On <strong>both</strong> End nodes, set <strong>Set Entry Point On Complete</strong> to <code>InProgress</code>.</p>
+<p>On <strong>both</strong> End nodes, set the <strong>Next entry</strong> dropdown to <code>InProgress</code>.</p>
 <blockquote>
 <p>This means no matter what the player says, the next conversation will start from the <code>InProgress</code> branch.</p>
 </blockquote>
@@ -1094,8 +1140,8 @@ Name it <code>VillagerDialogue</code>. Double-click to open.</p>
 <h3 id="two-end-nodes_1">Two end nodes</h3>
 <p>Create two End nodes. Connect <strong>Choice 0 output → End A</strong>, <strong>Choice 1 output → End B</strong>.</p>
 <ul>
-<li><strong>End A</strong> (cat returned): set <strong>Set Entry Point On Complete</strong> to <code>QuestDone</code></li>
-<li><strong>End B</strong> (still looking): set <strong>Set Entry Point On Complete</strong> to <code>InProgress</code> (stays in this branch)</li>
+<li><strong>End A</strong> (cat returned): set <strong>Next entry</strong> to <code>QuestDone</code></li>
+<li><strong>End B</strong> (still looking): set <strong>Next entry</strong> to <code>InProgress</code> (stays in this branch)</li>
 </ul>
 <hr />
 <h2 id="6-build-branch-3-quest-complete">6. Build Branch 3 — Quest complete</h2>
@@ -1103,7 +1149,7 @@ Name it <code>VillagerDialogue</code>. Double-click to open.</p>
 <p>Add two lines:
 1. <code>You found Mr Whiskers! I can't thank you enough.</code>
 2. <code>He's been with me for twelve years. I was so worried.</code></p>
-<p>Press <strong>E</strong> for an End node. Connect the NPC node to it. Leave <strong>Set Entry Point On Complete</strong> empty — the quest is over.</p>
+<p>Press <strong>E</strong> for an End node. Connect the NPC node to it. Leave <strong>Next entry</strong> as <strong>(keep current)</strong> — the quest is over.</p>
 <hr />
 <h2 id="7-add-a-fire-event-node-for-the-quest-reward">7. Add a fire-event node for the quest reward</h2>
 <p>Between the "cat returned" choice and End A, insert a <strong>Fire Event</strong> node (press <strong>V</strong>).</p>

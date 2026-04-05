@@ -84,7 +84,7 @@ Press **E** twice to create two End nodes — one for each choice.
 
 Connect **Choice 0 output → End 0**, **Choice 1 output → End 1**.
 
-On **both** End nodes, set **Set Entry Point On Complete** to `InProgress`.
+On **both** End nodes, set the **Next entry** dropdown to `InProgress`.
 
 > This means no matter what the player says, the next conversation will start from the `InProgress` branch.
 
@@ -121,8 +121,8 @@ Add two choices:
 
 Create two End nodes. Connect **Choice 0 output → End A**, **Choice 1 output → End B**.
 
-- **End A** (cat returned): set **Set Entry Point On Complete** to `QuestDone`
-- **End B** (still looking): set **Set Entry Point On Complete** to `InProgress` (stays in this branch)
+- **End A** (cat returned): set **Next entry** to `QuestDone`
+- **End B** (still looking): set **Next entry** to `InProgress` (stays in this branch)
 
 ---
 
@@ -134,7 +134,7 @@ Add two lines:
 1. `You found Mr Whiskers! I can't thank you enough.`
 2. `He's been with me for twelve years. I was so worried.`
 
-Press **E** for an End node. Connect the NPC node to it. Leave **Set Entry Point On Complete** empty — the quest is over.
+Press **E** for an End node. Connect the NPC node to it. Leave **Next entry** as **(keep current)** — the quest is over.
 
 ---
 

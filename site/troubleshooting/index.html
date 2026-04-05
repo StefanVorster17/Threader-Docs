@@ -1,0 +1,1371 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Threader — Visual Dialogue System for Unity">
+      
+      
+      
+        <link rel="canonical" href="https://stefanvorster17.github.io/Threader-Docs/troubleshooting/">
+      
+      
+        <link rel="prev" href="../api-reference/">
+      
+      
+        <link rel="next" href="../changelog/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/logo.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Troubleshooting - Threader - Dialogue Kit</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#troubleshooting" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Threader - Dialogue Kit" class="md-header__button md-logo" aria-label="Threader - Dialogue Kit" data-md-component="logo">
+      
+  <img src="../assets/images/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Threader - Dialogue Kit
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Troubleshooting
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../quick-start/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Quick Start
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../tutorial/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Tutorial
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../graph-editor/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Graph Editor
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../nodes/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Node Reference
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../variables/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Variables
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../conditions/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Conditions
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../entry-points/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Entry Points
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../saving/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Saving
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../api-reference/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  API Reference
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Troubleshooting
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../changelog/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Changelog
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Threader - Dialogue Kit" class="md-nav__button md-logo" aria-label="Threader - Dialogue Kit" data-md-component="logo">
+      
+  <img src="../assets/images/logo.png" alt="logo">
+
+    </a>
+    Threader - Dialogue Kit
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quick-start/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quick Start
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tutorial
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../graph-editor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Graph Editor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nodes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Node Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../variables/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Variables
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../conditions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Conditions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../entry-points/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Entry Points
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../saving/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Saving
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Troubleshooting
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Troubleshooting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#dialogue-wont-start" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dialogue won't start
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Dialogue won&#39;t start">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#no-dialoguemanager-found-in-the-scene" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        "No DialogueManager found in the scene"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#no-dialoguegraph-assigned" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        "No DialogueGraph assigned"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dialoguegraph-has-no-start-node-set" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        "DialogueGraph has no start node set"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dialoguetrigger-does-nothing-when-the-player-walks-in" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DialogueTrigger does nothing when the player walks in
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#startonenter-is-ticked-but-dialogue-starts-repeatedly" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        startOnEnter is ticked but dialogue starts repeatedly
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#speaker-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Speaker issues
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Speaker issues">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#speaker-name-shows-blank-or-graph-default" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Speaker name shows blank or "(Graph Default: )"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#animator-not-found-no-animation-triggers-firing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Animator not found / no animation triggers firing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#audio-clips-not-playing-from-the-speakers-position" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Audio clips not playing from the speaker's position
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Variables
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Variables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-condition-has-no-effect-the-choice-always-appears" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A condition has no effect — the choice always appears
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-changes-in-the-graph-are-lost-after-play-mode-ends" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Variable changes in the graph are lost after Play mode ends
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#varname-token-shows-as-literal-text-in-dialogue" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        {varName} token shows as literal text in dialogue
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conditions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conditions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Conditions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#custom-condition-always-passes-always-blocks-unexpectedly" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Custom condition always passes / always blocks unexpectedly
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#condition-handler-stops-working-after-a-scene-reload" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Condition handler stops working after a scene reload
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#graph-editor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Graph editor
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Graph editor">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#unsaved-changes-keep-reappearing-after-save" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Unsaved changes keep reappearing after save
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#graph-editor-is-blank-wont-load" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Graph editor is blank / won't load
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#node-connections-disappear-after-duplicating-a-node" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Node connections disappear after duplicating a node
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#entry-points" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Entry points
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Entry points">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#entry-point-key-does-nothing-dialogue-always-starts-from-the-beginning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Entry point key does nothing — dialogue always starts from the beginning
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#next-entry-dropdown-on-end-nodes-is-empty" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        "Next entry" dropdown on End nodes is empty
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#general" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        General
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="General">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#everything-was-working-and-suddenly-nothing-runs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Everything was working and suddenly nothing runs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#console-is-spamming-warnings-every-frame" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Console is spamming warnings every frame
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../changelog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Changelog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="troubleshooting">Troubleshooting</h1>
+<p>Answers to the most common problems. Check the Unity <strong>Console</strong> window first — Threader logs specific warnings and errors for most failure cases.</p>
+<hr />
+<h2 id="dialogue-wont-start">Dialogue won't start</h2>
+<h3 id="no-dialoguemanager-found-in-the-scene">"No DialogueManager found in the scene"</h3>
+<p>You called <code>StartDialogue()</code> but there is no <code>DialogueManager</code> component in the scene.</p>
+<p><strong>Fix:</strong> Add an empty GameObject, attach the <code>DialogueManager</code> component, and assign your Variables List and Speaker Rosters.</p>
+<hr />
+<h3 id="no-dialoguegraph-assigned">"No DialogueGraph assigned"</h3>
+<p><code>NPCDialogue</code> or <code>DialogueTrigger</code> has no graph in its <strong>Graph</strong> field.</p>
+<p><strong>Fix:</strong> Assign a <code>DialogueGraph</code> asset to the component in the Inspector.</p>
+<hr />
+<h3 id="dialoguegraph-has-no-start-node-set">"DialogueGraph has no start node set"</h3>
+<p>The graph exists but has no <strong>Start</strong> node, or the Start node has been deleted.</p>
+<p><strong>Fix:</strong> Open the graph in the Graph Editor. If no Start node is visible, create one from the <strong>CREATE</strong> sidebar panel and connect it to your first NPC node.</p>
+<hr />
+<h3 id="dialoguetrigger-does-nothing-when-the-player-walks-in">DialogueTrigger does nothing when the player walks in</h3>
+<p>Three things to check in order:</p>
+<ol>
+<li><strong>Is Trigger</strong> — the Collider on the trigger object must have <strong>Is Trigger</strong> ticked.</li>
+<li><strong>Rigidbody</strong> — either the trigger object or the player must have a <code>Rigidbody</code> (or <code>Rigidbody2D</code>) component. Without one, <code>OnTriggerEnter</code> never fires.</li>
+<li><strong>Player Tag</strong> — the <code>DialogueTrigger</code> <strong>Player Tag</strong> field (default <code>Player</code>) must exactly match the Tag on your player GameObject.</li>
+</ol>
+<p>Threader logs warnings for missing colliders and Rigidbodies at startup — check the Console.</p>
+<hr />
+<h3 id="startonenter-is-ticked-but-dialogue-starts-repeatedly"><code>startOnEnter</code> is ticked but dialogue starts repeatedly</h3>
+<p>Dialogue is firing every time the trigger is re-entered.</p>
+<p><strong>Fix:</strong> Use an Entry Point to move the actor to a different branch after the first conversation, so subsequent enters play a different (or shorter) line. See <a href="../entry-points/">Entry Points</a>.</p>
+<hr />
+<h2 id="speaker-issues">Speaker issues</h2>
+<h3 id="speaker-name-shows-blank-or-graph-default">Speaker name shows blank or "(Graph Default: )"</h3>
+<p>An NPC node's <strong>Speaker</strong> dropdown is set to a name that doesn't exist in any <strong>SpeakerRoster</strong> asset assigned to <code>DialogueManager</code>.</p>
+<p><strong>Fix:</strong>
+1. Open <strong>DialogueManager → Speaker Rosters</strong> and confirm the correct roster is assigned.
+2. Open the roster asset and confirm the speaker name matches exactly (case-sensitive) what's set on the NPC node.</p>
+<hr />
+<h3 id="animator-not-found-no-animation-triggers-firing">Animator not found / no animation triggers firing</h3>
+<p><code>DialogueManager</code> logs <code>"Animator not found for speaker X"</code>.</p>
+<p><strong>Fix:</strong> Call <code>DialogueManager.Instance.RegisterSpeaker("SpeakerName", transform)</code> from the speaker's <code>Awake</code> or <code>Start</code>. <code>NPCDialogue</code> does this automatically — if you're using a custom actor you must register manually.</p>
+<hr />
+<h3 id="audio-clips-not-playing-from-the-speakers-position">Audio clips not playing from the speaker's position</h3>
+<p>The clip plays in 2D (centred) instead of from the speaker's world position.</p>
+<p><strong>Fix:</strong> Same as above — the speaker's <code>Transform</code> is only known to <code>DialogueManager</code> after <code>RegisterSpeaker</code> is called. Without a registered transform, audio falls back to the 2D <code>AudioSource</code> on the manager.</p>
+<hr />
+<h2 id="variables">Variables</h2>
+<h3 id="a-condition-has-no-effect-the-choice-always-appears">A condition has no effect — the choice always appears</h3>
+<ul>
+<li><strong>Typo in the variable name.</strong> Names are case-sensitive. <code>foundCat</code> ≠ <code>FoundCat</code>. Open the <code>DialogueVariables</code> asset and compare carefully.</li>
+<li><strong>Asset not assigned.</strong> The asset containing that variable must be in <strong>DialogueManager → Variables List</strong>. If it's missing, the condition row is silently skipped.</li>
+<li><strong>Wrong asset type.</strong> Checking a <code>Bool</code> variable with <code>GreaterThan 0</code> will always pass — use <code>Equal true</code> for booleans.</li>
+</ul>
+<hr />
+<h3 id="variable-changes-in-the-graph-are-lost-after-play-mode-ends">Variable changes in the graph are lost after Play mode ends</h3>
+<p>This is correct behaviour. <code>DialogueVariables</code> resets to its serialized defaults when Play mode ends (via <code>OnDisable</code>). The on-disk asset is never modified during play.</p>
+<p><strong>Fix:</strong> If you need variables to survive sessions, save and restore them yourself — see <a href="../saving/">Saving</a>.</p>
+<hr />
+<h3 id="varname-token-shows-as-literal-text-in-dialogue"><code>{varName}</code> token shows as literal text in dialogue</h3>
+<ul>
+<li>The variable name inside <code>{}</code> must exactly match the <strong>Name</strong> field in the <code>DialogueVariables</code> asset.</li>
+<li>The asset must be assigned to <strong>DialogueManager → Variables List</strong>.</li>
+<li>Use <code>{varName:name}</code> to substitute the <strong>Display Name</strong> field instead.</li>
+</ul>
+<hr />
+<h2 id="conditions">Conditions</h2>
+<h3 id="custom-condition-always-passes-always-blocks-unexpectedly">Custom condition always passes / always blocks unexpectedly</h3>
+<p>Check the <strong>When Missing</strong> setting on the <code>ConditionDefinition</code> asset:</p>
+<table>
+<thead>
+<tr>
+<th>When Missing</th>
+<th>Behaviour when no handler is registered</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Allow</strong></td>
+<td>Condition passes (choice is always shown)</td>
+</tr>
+<tr>
+<td><strong>Block</strong></td>
+<td>Condition fails (choice is always hidden/locked) + Console warning</td>
+</tr>
+</tbody>
+</table>
+<p>If your handler isn't registered yet (e.g. the MonoBehaviour hasn't run <code>Awake</code>), the fallback fires instead.</p>
+<hr />
+<h3 id="condition-handler-stops-working-after-a-scene-reload">Condition handler stops working after a scene reload</h3>
+<p>You registered a delegate in <code>Awake</code> but forgot to unregister it in <code>OnDestroy</code>. The old delegate kept a reference to the destroyed object and throws a null reference on the next evaluation.</p>
+<p><strong>Fix:</strong></p>
+<pre><code class="language-csharp">void Awake()   =&gt; ConditionService.Register(&quot;MyKey&quot;, param =&gt; Check(param));
+void OnDestroy() =&gt; ConditionService.Unregister(&quot;MyKey&quot;);
+</code></pre>
+<hr />
+<h2 id="graph-editor">Graph editor</h2>
+<h3 id="unsaved-changes-keep-reappearing-after-save">Unsaved changes keep reappearing after save</h3>
+<p>If you press <strong>Save</strong> but the orange <strong>● Unsaved</strong> dot returns immediately, a script recompile is triggering a graph reload. This is normal — recompiles force a full editor refresh. Save again after the compile finishes.</p>
+<hr />
+<h3 id="graph-editor-is-blank-wont-load">Graph editor is blank / won't load</h3>
+<ul>
+<li>If you just recompiled, wait for the compile to finish and reopen the window.</li>
+<li>If the graph asset is missing from disk, the editor will open but show nothing. Re-assign the graph via <strong>PROJECT → Load</strong>.</li>
+</ul>
+<hr />
+<h3 id="node-connections-disappear-after-duplicating-a-node">Node connections disappear after duplicating a node</h3>
+<p>Duplicating a node in Unity's Project window creates a copy with the same GUIDs, which causes duplicate GUID warnings. Always create new nodes via the <strong>CREATE</strong> panel in the Graph Editor — don't duplicate graph assets directly.</p>
+<hr />
+<h2 id="entry-points">Entry points</h2>
+<h3 id="entry-point-key-does-nothing-dialogue-always-starts-from-the-beginning">Entry point key does nothing — dialogue always starts from the beginning</h3>
+<ul>
+<li>The entry point key must be defined in the graph (a Start-type node with that key set, or a node tagged with that key).</li>
+<li>The <strong>Active Entry Point Key</strong> on <code>NPCDialogue</code> or <code>DialogueTrigger</code> must be set to the same key — it's case-sensitive.</li>
+<li>If the key doesn't match any node in the graph, the runner falls back to the default Start node.</li>
+</ul>
+<hr />
+<h3 id="next-entry-dropdown-on-end-nodes-is-empty">"Next entry" dropdown on End nodes is empty</h3>
+<p>No entry point keys have been set in this graph yet.</p>
+<p><strong>Fix:</strong> Open the graph. In the node you want to act as an entry point, expand the <strong>Tag</strong> field and assign a key, or use the <strong>NAVIGATE → Entry Points</strong> sidebar panel to see all defined keys.</p>
+<hr />
+<h2 id="general">General</h2>
+<h3 id="everything-was-working-and-suddenly-nothing-runs">Everything was working and suddenly nothing runs</h3>
+<ol>
+<li>Check the Console for red errors — a compile error will prevent all scripts from running.</li>
+<li>Check that <strong>DialogueManager</strong> still exists in the scene (it's not part of a prefab that got reverted).</li>
+<li>Check that Play mode is active — dialogue cannot start in edit mode via <code>StartDialogue</code>, only via the Preview Window.</li>
+</ol>
+<hr />
+<h3 id="console-is-spamming-warnings-every-frame">Console is spamming warnings every frame</h3>
+<p>A common cause is calling <code>StartDialogue</code> in <code>Update</code> without checking <code>DialogueManager.Instance.IsDialogueActive</code> first.</p>
+<p><strong>Fix:</strong></p>
+<pre><code class="language-csharp">void Update()
+{
+    if (Input.GetKeyDown(KeyCode.E) &amp;&amp; !DialogueManager.Instance.IsDialogueActive)
+        npcDialogue.StartDialogue();
+}
+</code></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "toc.integrate", "search.suggest", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

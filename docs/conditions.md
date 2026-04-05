@@ -170,12 +170,16 @@ Right-click in the Project window → **Create → Threader → Condition (Custo
 
 ### Step 3 — Link the asset to a choice
 
-1. Select the **DialogueGraph asset** in the Project window (click the `.asset` file — not a node in the editor canvas)
-2. In the Inspector, expand the choice list for the Player Choice node you want
-3. Drag the `ConditionDefinition` asset into the **Condition Definition** field
-4. Type a value in **Condition Parameter** — this is the string your lambda or `Evaluate` receives
+1. Open the graph in the **Graph Editor**
+2. Click the Player Choice node to select it
+3. Inside the choice card, expand the **Condition Definition [Custom]** foldout
+4. Click the object picker (⊙) on the right of the asset slot and select your `ConditionDefinition` asset
+5. Type a value in **Parameter** — this is the string your lambda or `Evaluate` receives
+6. Check **Negate** if you want the result inverted
 
-> The ConditionDefinition is set on the **graph asset file in the inspector**, not on the graph editor canvas. Select the `.asset` file in the Project window to see the serialized choice data.
+![ConditionDefinition foldout expanded with object picker](assets/images/condition-picker.png){ width="480" }
+
+> The ConditionDefinition is set directly on the choice card in the graph editor canvas — not on the `.asset` file in the Inspector.
 
 ---
 

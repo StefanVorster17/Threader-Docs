@@ -1,6 +1,8 @@
-# Threader
+# Threader - Dialogue Kit
 
 **Visual Dialogue System for Unity** — build branching conversations with a node-based graph editor, no boilerplate required.
+
+![Threader graph editor](assets/images/hero-graph.png){ width="720" }
 
 ---
 

@@ -1,4 +1,4 @@
-site_name: Threader
+site_name: Threader - Dialogue Kit
 site_description: Threader — Visual Dialogue System for Unity
 site_url: https://stefanvorster17.github.io/Threader-Docs/
 
@@ -36,4 +36,5 @@ nav:
   - Entry Points: entry-points.md
   - Saving: saving.md
   - API Reference: api-reference.md
+  - Troubleshooting: troubleshooting.md
   - Changelog: changelog.md

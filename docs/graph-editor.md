@@ -19,6 +19,8 @@ The editor is split into two panels separated by a draggable divider:
 
 Both panels remember their sizes between sessions via EditorPrefs.
 
+![Graph canvas overview](assets/images/graph-canvas.png){ width="720" }
+
 ---
 
 ## Canvas controls
@@ -39,6 +41,8 @@ Both panels remember their sizes between sessions via EditorPrefs.
 ---
 
 ## Sidebar sections
+
+![Graph editor sidebar](assets/images/graph-sidebar.png){ width="280" }
 
 ### PROJECT
 
@@ -189,6 +193,8 @@ Per-result buttons:
 
 After any replacement the graph view refreshes and the search re-runs automatically so remaining matches are immediately visible.
 
+![Find & Replace panel](assets/images/find-replace-panel.png){ width="680" }
+
 ---
 
 ## Comment / Group boxes
@@ -247,6 +253,8 @@ Runs a complete dialogue playthrough entirely inside the Editor — no Play mode
 Variable values are reset to their asset defaults when you click **Stop** — the on-disk ScriptableObject is **never** modified by the preview. This makes it safe to iterate without affecting your game state.
 
 > `{varName}` and `{varName:name}` tokens are resolved in the preview log, so what you see matches exactly what players see at runtime.
+
+![Dialogue Preview Window](assets/images/dialogue-preview-window.png){ width="520" }
 
 ---
 
