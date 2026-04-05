@@ -16,7 +16,7 @@
         <link rel="prev" href="../tutorial/">
       
       
-        <link rel="next" href="../nodes/">
+        <link rel="next" href="../preview-window/">
       
       
         
@@ -252,6 +252,25 @@
     
   
   Graph Editor
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../preview-window/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Dialogue Preview
 
       </a>
     </li>
@@ -818,6 +837,33 @@
   
 </nav>
       
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../preview-window/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dialogue Preview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -1493,47 +1539,7 @@
 <p>Sticky notes are saved with the graph asset and are never shown at runtime.</p>
 <hr />
 <h2 id="dialogue-preview-window">Dialogue Preview Window</h2>
-<p>Open via <strong>Threader → Dialogue Preview</strong> (or <code>Shift+Alt+P</code>).</p>
-<p>Runs a complete dialogue playthrough entirely inside the Editor — no Play mode required. Uses the same <code>DialogueRunner</code> as production, so the behaviour is identical to runtime.</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Graph</strong></td>
-<td>Drag any <code>DialogueGraph</code> asset here</td>
-</tr>
-<tr>
-<td><strong>Start From</strong></td>
-<td>Choose the default start node or any named entry point</td>
-</tr>
-<tr>
-<td><strong>Variables</strong></td>
-<td>Drag one or more <code>DialogueVariables</code> assets here; values are seeded from defaults and shown live in the right panel</td>
-</tr>
-<tr>
-<td><strong>Dialogue log</strong></td>
-<td>Scrollable transcript — NPC lines, player choices, events (✏ Set, ↩ Jump, ✀ FireEvent, etc.), and system messages</td>
-</tr>
-<tr>
-<td><strong>Show hidden</strong></td>
-<td>Toggle to reveal choices that are hidden by failed conditions</td>
-</tr>
-<tr>
-<td><strong>Copy Log</strong></td>
-<td>Copies the full transcript to the clipboard</td>
-</tr>
-</tbody>
-</table>
-<p>Variable values are reset to their asset defaults when you click <strong>Stop</strong> — the on-disk ScriptableObject is <strong>never</strong> modified by the preview. This makes it safe to iterate without affecting your game state.</p>
-<blockquote>
-<p><code>{varName}</code> and <code>{varName:name}</code> tokens are resolved in the preview log, so what you see matches exactly what players see at runtime.</p>
-</blockquote>
-<p><img alt="Dialogue Preview Window" src="../assets/images/dialogue-preview-window.png" width="520" /></p>
+<p>The preview window is covered on its own page — see <a href="../preview-window/">Dialogue Preview Window</a>.</p>
 <hr />
 <h2 id="validation">Validation</h2>
 <p>Click <strong>Validate</strong> in the sidebar PROJECT section to run a static check over the loaded graph. The validator looks for:</p>
