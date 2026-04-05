@@ -8,15 +8,6 @@
   --md-accent-fg-color: #00d4ff;
 }
 
-/* Fix phantom scrollbar on right TOC */
-.md-sidebar--secondary {
-  overflow: hidden;
-}
-
-.md-sidebar--secondary .md-sidebar__scrollwrap {
-  overflow-y: auto;
-}
-
 /* Dark navy background to match logo */
 [data-md-color-scheme="slate"] {
   --md-default-bg-color:        #070c18;
