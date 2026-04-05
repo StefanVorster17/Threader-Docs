@@ -16,6 +16,32 @@
   --md-code-bg-color:           #0d1525;
 }
 
+/* Page headings — more distinct */
+.md-content h1 {
+  color: #ffffff;
+  font-size: 2rem;
+  border-bottom: 2px solid #1a6ff5;
+  padding-bottom: 0.4rem;
+}
+
+.md-content h2 {
+  color: #c8d8f0;
+  font-size: 1.35rem;
+  border-bottom: 1px solid rgba(26, 111, 245, 0.3);
+  padding-bottom: 0.25rem;
+  margin-top: 2rem;
+}
+
+.md-content h3 {
+  color: #8ab4f8;
+  font-size: 1.05rem;
+}
+
+.md-content h4 {
+  color: #6b8fcc;
+  font-size: 0.95rem;
+}
+
 /* TOC: bullet points for top-level section links (h2) — white */
 .md-nav--secondary > .md-nav__list > .md-nav__item > .md-nav__link::before {
   content: "• ";
