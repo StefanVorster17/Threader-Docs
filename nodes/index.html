@@ -90,7 +90,9 @@
     
       
 
-<header class="md-header" data-md-component="header">
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href=".." title="Threader - Dialogue Kit" class="md-header__button md-logo" aria-label="Threader - Dialogue Kit" data-md-component="logo">
       
@@ -168,14 +170,8 @@
     
   </nav>
   
-</header>
     
-    <div class="md-container" data-md-component="container">
       
-      
-        
-          
-            
 <nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
   <div class="md-grid">
     <ul class="md-tabs__list">
@@ -284,7 +280,13 @@
     </ul>
   </div>
 </nav>
-          
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
         
       
       <main class="md-main" data-md-component="main">
@@ -301,9 +303,7 @@
   
 
 
-  
-
-<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
     <a href=".." title="Threader - Dialogue Kit" class="md-nav__button md-logo" aria-label="Threader - Dialogue Kit" data-md-component="logo">
       
@@ -1677,6 +1677,708 @@
               </div>
             
             
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#npc-node-n" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NPC Node [N]
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="NPC Node [N]">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#execution-order" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Execution order
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fields" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fields
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Fields">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#speaker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Speaker
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#events-add" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Events (+ Add)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#set-vars-add" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Set Vars (+ Add)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#animators-add" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Animators (+ Add)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lines-add-line" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lines (+ Add Line)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#player-choice-node-c" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Player Choice Node [C]
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Player Choice Node [C]">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#execution-order_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Execution order
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fields_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fields
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Fields">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#choice-cards-add-choice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Choice cards (+ Add Choice)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conditions-add-inside-a-choice-card" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conditions (+ Add inside a choice card)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#condition-definition-custom-foldout-inside-each-choice-card" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Condition Definition [Custom] (foldout inside each choice card)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#end-node-e" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        End Node [E]
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="End Node [E]">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fields_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fields
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Fields">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#next-entry-dropdown" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Next entry (dropdown)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#branch-node-b" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Branch Node [B]
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Branch Node [B]">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#execution-order_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Execution order
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fields_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fields
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#set-variable-node-v" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Set Variable Node [V]
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Set Variable Node [V]">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fields_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fields
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#random-node-r" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Random Node [R]
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Random Node [R]">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fields_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fields
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#jump-node-j" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Jump Node [J]
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Jump Node [J]">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fields_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fields
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#debug-node-d" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Debug Node [D]
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Debug Node [D]">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fields_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fields
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wait-node-f5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Wait Node [F5]
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Wait Node [F5]">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fields_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fields
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fire-event-node-f2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fire Event Node [F2]
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Fire Event Node [F2]">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fields_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fields
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#play-audio-node-f3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Play Audio Node [F3]
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Play Audio Node [F3]">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fields_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fields
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#animator-trigger-node-f4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Animator Trigger Node [F4]
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Animator Trigger Node [F4]">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fields_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fields
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#shared-return-tag-tag-field" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Shared: Return Tag (⚐ Tag field)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#jump-node-j_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Jump Node [J]
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Jump Node [J]">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fields_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fields
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#debug-node-d_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Debug Node [D]
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Debug Node [D]">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fields_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fields
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wait-node-f5_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Wait Node [F5]
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Wait Node [F5]">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fields_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fields
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fire-event-node-f2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fire Event Node [F2]
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Fire Event Node [F2]">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fields_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fields
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#play-audio-node-f3_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Play Audio Node [F3]
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Play Audio Node [F3]">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fields_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fields
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#animator-trigger-node-f4_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Animator Trigger Node [F4]
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Animator Trigger Node [F4]">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fields_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fields
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#shared-return-tag-tag-field_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Shared: Return Tag (⚐ Tag field)
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           
             <div class="md-content" data-md-component="content">
@@ -2454,7 +3156,7 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "toc.integrate", "search.suggest", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.top", "search.suggest", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
       <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>

@@ -90,7 +90,9 @@
     
       
 
-<header class="md-header" data-md-component="header">
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href=".." title="Threader - Dialogue Kit" class="md-header__button md-logo" aria-label="Threader - Dialogue Kit" data-md-component="logo">
       
@@ -168,14 +170,8 @@
     
   </nav>
   
-</header>
     
-    <div class="md-container" data-md-component="container">
       
-      
-        
-          
-            
 <nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
   <div class="md-grid">
     <ul class="md-tabs__list">
@@ -284,7 +280,13 @@
     </ul>
   </div>
 </nav>
-          
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
         
       
       <main class="md-main" data-md-component="main">
@@ -301,9 +303,7 @@
   
 
 
-  
-
-<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
     <a href=".." title="Threader - Dialogue Kit" class="md-nav__button md-logo" aria-label="Threader - Dialogue Kit" data-md-component="logo">
       
@@ -1217,6 +1217,248 @@
               </div>
             
             
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-happens-when-a-condition-fails" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What happens when a condition fails
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inline-variable-conditions-no-c-required" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Inline variable conditions (no C# required)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Inline variable conditions (no C# required)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#setup-in-3-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Setup in 3 steps
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#and-logic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AND logic
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-names-are-case-sensitive" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Variable names are case-sensitive
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#branch-node-conditions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Branch Node conditions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#custom-conditions-c-required" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Custom conditions (C# required)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Custom conditions (C# required)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-register-a-handler" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1 — Register a handler
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 1 — Register a handler">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#option-a-delegate-simplest" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Option A: Delegate (simplest)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#option-b-conditionprovider-subclass-all-conditions-in-one-asset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Option B: ConditionProvider subclass (all conditions in one asset)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#evaluation-order" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Evaluation order
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-create-a-conditiondefinition-asset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2 — Create a ConditionDefinition asset
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-link-the-asset-to-a-choice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3 — Link the asset to a choice
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conditionstoreprovider-built-in-provider" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ConditionStoreProvider (built-in provider)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#variableconditiondefinition-no-code-asset-condition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VariableConditionDefinition (no-code asset condition)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#combining-both-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Combining both systems
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#debugging-conditions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Debugging conditions
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           
             <div class="md-content" data-md-component="content">
@@ -1560,7 +1802,7 @@ ConditionStore.Set(&quot;QuestState&quot;, questManager.ActiveQuest);
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "toc.integrate", "search.suggest", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.top", "search.suggest", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
       <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>

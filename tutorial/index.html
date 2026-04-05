@@ -90,7 +90,9 @@
     
       
 
-<header class="md-header" data-md-component="header">
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href=".." title="Threader - Dialogue Kit" class="md-header__button md-logo" aria-label="Threader - Dialogue Kit" data-md-component="logo">
       
@@ -168,14 +170,8 @@
     
   </nav>
   
-</header>
     
-    <div class="md-container" data-md-component="container">
       
-      
-        
-          
-            
 <nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
   <div class="md-grid">
     <ul class="md-tabs__list">
@@ -284,7 +280,13 @@
     </ul>
   </div>
 </nav>
-          
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
         
       
       <main class="md-main" data-md-component="main">
@@ -301,9 +303,7 @@
   
 
 
-  
-
-<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
     <a href=".." title="Threader - Dialogue Kit" class="md-nav__button md-logo" aria-label="Threader - Dialogue Kit" data-md-component="logo">
       
@@ -1211,6 +1211,242 @@
               </div>
             
             
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-plan-the-conversation-tree" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Plan the conversation tree
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-create-the-dialoguevariables-asset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Create the DialogueVariables asset
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-create-the-graph" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Create the graph
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-build-branch-1-first-meeting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Build Branch 1 — First meeting
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Build Branch 1 — First meeting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#npc-greeting-node" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NPC greeting node
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#player-choice-node" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Player choice node
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#two-end-nodes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Two end nodes
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-build-branch-2-quest-in-progress" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Build Branch 2 — Quest in progress
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Build Branch 2 — Quest in progress">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mark-an-entry-point" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mark an entry point
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#player-choice-node-with-a-condition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Player choice node with a condition
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#two-end-nodes_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Two end nodes
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-build-branch-3-quest-complete" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Build Branch 3 — Quest complete
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-add-a-fire-event-node-for-the-quest-reward" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Add a fire-event node for the quest reward
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-set-hascat-from-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Set hasCat from code
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-add-the-npc-to-the-scene" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Add the NPC to the scene
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-hook-up-the-ui" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Hook up the UI
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-test-the-full-loop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Test the full loop
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-to-try-next" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What to try next
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           
             <div class="md-content" data-md-component="content">
@@ -1505,7 +1741,7 @@ void ShowChoices(List&lt;ChoiceData&gt; choices)
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "toc.integrate", "search.suggest", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.top", "search.suggest", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
       <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>

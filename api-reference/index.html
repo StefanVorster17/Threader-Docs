@@ -90,7 +90,9 @@
     
       
 
-<header class="md-header" data-md-component="header">
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href=".." title="Threader - Dialogue Kit" class="md-header__button md-logo" aria-label="Threader - Dialogue Kit" data-md-component="logo">
       
@@ -168,14 +170,8 @@
     
   </nav>
   
-</header>
     
-    <div class="md-container" data-md-component="container">
       
-      
-        
-          
-            
 <nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
   <div class="md-grid">
     <ul class="md-tabs__list">
@@ -284,7 +280,13 @@
     </ul>
   </div>
 </nav>
-          
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
         
       
       <main class="md-main" data-md-component="main">
@@ -301,9 +303,7 @@
   
 
 
-  
-
-<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
     <a href=".." title="Threader - Dialogue Kit" class="md-nav__button md-logo" aria-label="Threader - Dialogue Kit" data-md-component="logo">
       
@@ -1472,6 +1472,503 @@
               </div>
             
             
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#dialoguemanager" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DialogueManager
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="DialogueManager">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#singleton-access" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Singleton access
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inspector-fields" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Inspector fields
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#events-c-subscriptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Events (C# subscriptions)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Properties
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#audio-behaviour" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Audio behaviour
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#idialogueactor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        IDialogueActor
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#idialogue" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        IDialogue
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#idialoguefocus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        IDialogueFocus
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#idialogueready" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        IDialogueReady
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#npcdialogue" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NPCDialogue
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="NPCDialogue">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inspector-fields_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Inspector fields
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#methods_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dialoguetrigger" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DialogueTrigger
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="DialogueTrigger">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inspector-fields_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Inspector fields
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Validation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#methods_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dialoguegraph" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DialogueGraph
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="DialogueGraph">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inspector-fields_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Inspector fields
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#methods_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dialoguevariables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DialogueVariables
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="DialogueVariables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inspector-fields_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Inspector fields
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#methods_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#runtime-lifecycle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Runtime lifecycle
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#speakerroster" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SpeakerRoster
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conditionservice-static" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ConditionService (static)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ConditionService (static)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#property" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Property
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#methods_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conditionprovider-abstract" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ConditionProvider (abstract)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conditiondefinition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ConditionDefinition
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ConditionDefinition">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#methods_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conditionstore-static" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ConditionStore (static)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dialoguechoicehistory-static" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DialogueChoiceHistory (static)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#npcline-data-class" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NPCLine (data class)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#choicedata-data-class" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ChoiceData (data class)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#variable-substitution-in-text" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Variable substitution in text
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dialogueentrypoint" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DialogueEntryPoint
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#enums" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Enums
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           
             <div class="md-content" data-md-component="content">
@@ -2206,7 +2703,7 @@ public enum NodeType
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "toc.integrate", "search.suggest", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.top", "search.suggest", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
       <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>

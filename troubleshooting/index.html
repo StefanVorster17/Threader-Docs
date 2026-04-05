@@ -90,7 +90,9 @@
     
       
 
-<header class="md-header" data-md-component="header">
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href=".." title="Threader - Dialogue Kit" class="md-header__button md-logo" aria-label="Threader - Dialogue Kit" data-md-component="logo">
       
@@ -168,14 +170,8 @@
     
   </nav>
   
-</header>
     
-    <div class="md-container" data-md-component="container">
       
-      
-        
-          
-            
 <nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
   <div class="md-grid">
     <ul class="md-tabs__list">
@@ -284,7 +280,13 @@
     </ul>
   </div>
 </nav>
-          
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
         
       
       <main class="md-main" data-md-component="main">
@@ -301,9 +303,7 @@
   
 
 
-  
-
-<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
     <a href=".." title="Threader - Dialogue Kit" class="md-nav__button md-logo" aria-label="Threader - Dialogue Kit" data-md-component="logo">
       
@@ -1340,6 +1340,371 @@
               </div>
             
             
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#dialogue-wont-start" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dialogue won't start
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Dialogue won&#39;t start">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#no-dialoguemanager-found-in-the-scene" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        "No DialogueManager found in the scene"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#no-dialoguegraph-assigned" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        "No DialogueGraph assigned"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dialoguegraph-has-no-start-node-set" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        "DialogueGraph has no start node set"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dialoguetrigger-does-nothing-when-the-player-walks-in" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DialogueTrigger does nothing when the player walks in
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#startonenter-is-ticked-but-dialogue-starts-repeatedly" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        startOnEnter is ticked but dialogue starts repeatedly
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#speaker-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Speaker issues
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Speaker issues">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#speaker-name-shows-blank-or-graph-default" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Speaker name shows blank or "(Graph Default: )"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#animator-not-found-no-animation-triggers-firing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Animator not found / no animation triggers firing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#audio-clips-not-playing-from-the-speakers-position" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Audio clips not playing from the speaker's position
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Variables
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Variables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-condition-has-no-effect-the-choice-always-appears" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A condition has no effect — the choice always appears
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-changes-in-the-graph-are-lost-after-play-mode-ends" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Variable changes in the graph are lost after Play mode ends
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#varname-token-shows-as-literal-text-in-dialogue" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        {varName} token shows as literal text in dialogue
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conditions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conditions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Conditions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#custom-condition-always-passes-always-blocks-unexpectedly" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Custom condition always passes / always blocks unexpectedly
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#condition-handler-stops-working-after-a-scene-reload" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Condition handler stops working after a scene reload
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#graph-editor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Graph editor
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Graph editor">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#unsaved-changes-keep-reappearing-after-save" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Unsaved changes keep reappearing after save
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#graph-editor-is-blank-wont-load" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Graph editor is blank / won't load
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#node-connections-disappear-after-duplicating-a-node" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Node connections disappear after duplicating a node
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#entry-points" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Entry points
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Entry points">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#entry-point-key-does-nothing-dialogue-always-starts-from-the-beginning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Entry point key does nothing — dialogue always starts from the beginning
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#next-entry-dropdown-on-end-nodes-is-empty" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        "Next entry" dropdown on End nodes is empty
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#general" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        General
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="General">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#everything-was-working-and-suddenly-nothing-runs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Everything was working and suddenly nothing runs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#console-is-spamming-warnings-every-frame" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Console is spamming warnings every frame
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           
             <div class="md-content" data-md-component="content">
@@ -1540,7 +1905,7 @@ void OnDestroy() =&gt; ConditionService.Unregister(&quot;MyKey&quot;);
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "toc.integrate", "search.suggest", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.top", "search.suggest", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
       <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
