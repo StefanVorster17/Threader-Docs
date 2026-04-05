@@ -1,16 +1,22 @@
 site_name: Threader
 site_description: Threader — Visual Dialogue System for Unity
+site_url: https://stefanvorster17.github.io/Threader-Docs/
 
 markdown_extensions:
   - attr_list
   - md_in_html
 
+extra_css:
+  - assets/extra.css
+
 theme:
   name: material
+  logo: assets/images/logo.png
+  favicon: assets/images/logo.png
   palette:
     scheme: slate
-    primary: deep purple
-    accent: purple
+    primary: custom
+    accent: custom
   features:
     - navigation.tabs
     - navigation.sections
