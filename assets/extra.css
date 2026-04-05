@@ -23,7 +23,7 @@
 }
 
 .md-nav--secondary > .md-nav__list > .md-nav__item > .md-nav__link {
-  color: #e8f0fe;
+  color: #ffffff;
 }
 
 /* TOC: h3 — dash prefix, indented, light grey */
@@ -54,6 +54,9 @@
 .md-nav--secondary .md-nav__link:hover,
 .md-nav--secondary .md-nav__link:focus {
   color: #ffffff !important;
+  border-left: 3px solid rgba(255, 255, 255, 0.5);
+  padding-left: calc(0.75rem - 3px);
+  background: rgba(255, 255, 255, 0.06);
 }
 
 /* TOC: active item — cyan left bar + white text at all levels */
