@@ -1144,6 +1144,7 @@ actor.SetEntryPoint(&quot;RepeatBranch&quot;);
 <hr />
 <h2 id="auto-switching-with-end-nodes">Auto-switching with End nodes</h2>
 <p>Every <strong>End Node</strong> has a <strong>Next entry</strong> dropdown. When dialogue reaches this end node, the runner automatically calls <code>actor.SetEntryPoint(key)</code> with the selected key.</p>
+<p><img alt="End node with Next entry dropdown" src="../assets/images/entry-point-end-node.png" width="320" /></p>
 <pre><code class="language-csharp">// DialogueRunner.cs (simplified)
 if (!string.IsNullOrEmpty(endNode.SetEntryPointOnComplete))
     actor?.SetEntryPoint(endNode.SetEntryPointOnComplete);
