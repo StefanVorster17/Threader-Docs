@@ -23,7 +23,7 @@
 }
 
 .md-nav--secondary > .md-nav__list > .md-nav__item > .md-nav__link {
-  color: #c8d8f0;
+  color: #e8f0fe;
 }
 
 /* TOC: h3 — dash prefix, indented, light grey */
@@ -35,7 +35,7 @@
 .md-nav--secondary .md-nav__item .md-nav__item > .md-nav__link {
   padding-left: 0.5rem;
   font-size: 0.73rem;
-  color: #aac4e8;
+  color: #7a90aa;
 }
 
 /* TOC: h4 — deeper indent, dimmer grey */
