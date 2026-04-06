@@ -144,12 +144,10 @@ body {
   background: transparent !important;
 }
 
-/* Home top-level nav title when active */
-.md-nav--primary .md-nav__title {
+/* Home top-level nav title when active — remove box, keep section headers intact */
+.md-nav[data-md-level="0"] > .md-nav__title {
   background: transparent !important;
   box-shadow: none !important;
-  color: #ffffff !important;
-  font-weight: 600;
   border-left: 3px solid #ffffff;
 }
 
