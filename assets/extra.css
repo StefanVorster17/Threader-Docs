@@ -74,12 +74,12 @@ body {
 }
 
 .md-content h3 {
-  color: #8ab4f8;
+  color: #5a90e8;
   font-size: 1.05rem;
 }
 
 .md-content h4 {
-  color: #6b8fcc;
+  color: #3d6db8;
   font-size: 0.95rem;
 }
 
@@ -96,7 +96,7 @@ body {
 /* TOC: h3 — dash prefix, indented, light grey */
 .md-nav--secondary .md-nav__item .md-nav__item > .md-nav__link::before {
   content: "– ";
-  color: #8ab4f8;
+  color: #5a90e8;
 }
 
 .md-nav--secondary .md-nav__item .md-nav__item > .md-nav__link {
@@ -108,7 +108,7 @@ body {
 /* TOC: h4 — deeper indent, dimmer grey */
 .md-nav--secondary .md-nav__item .md-nav__item .md-nav__item > .md-nav__link::before {
   content: "– ";
-  color: #556a88;
+  color: #3d6db8;
 }
 
 .md-nav--secondary .md-nav__item .md-nav__item .md-nav__item > .md-nav__link {
