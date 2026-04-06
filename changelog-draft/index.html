@@ -1035,6 +1035,7 @@
 <h3 id="improved">Improved</h3>
 <ul>
 <li><strong>Richer runtime error messages</strong> — all <code>Debug.LogError</code> / <code>Debug.LogWarning</code> calls now include the graph name, node type, and short GUID prefix. Clicking the console entry in the Project window pings the source graph asset.</li>
+<li><strong>Animator lookup cached at registration</strong> — <code>DialogueManager</code> now caches each speaker's <code>Animator</code> component when <code>RegisterSpeaker</code> is called (once at scene start). Animator actions no longer walk the NPC's child hierarchy on every dialogue node.</li>
 <li><strong>Graph Validator</strong> — new checks added:<ul>
 <li>Jump node has no target tag set.</li>
 <li>Jump node targets a tag that doesn't exist on any node in the graph.</li>
