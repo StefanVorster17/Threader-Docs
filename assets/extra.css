@@ -32,7 +32,7 @@
   --md-default-bg-color:        rgba(7, 12, 24, 0.82);
   --md-default-bg-color--light: rgba(12, 18, 32, 0.80);
   --md-default-bg-color--dark:  rgba(4, 8, 16, 0.88);
-  --md-code-bg-color:           #0b1628;
+  --md-code-bg-color:           #060d1a;
 }
 
 /* Code blocks and inline code — match table background */
@@ -40,11 +40,11 @@
 .md-content pre > code,
 .highlight,
 .highlight pre {
-  background-color: #0b1628 !important;
+  background-color: #060d1a !important;
 }
 
 .md-content code {
-  background-color: #0b1628 !important;
+  background-color: #060d1a !important;
 }
 
 /* Background image on the root */
