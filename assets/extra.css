@@ -128,26 +128,10 @@ body {
   background: rgba(255, 255, 255, 0.05);
 }
 
-/* Left sidebar: active item — bold white only, no stripe (stripe is reserved for section headers) */
-.md-nav--primary .md-nav__link--active,
-.md-nav--primary .md-nav__item--active > .md-nav__link {
+/* Left sidebar: active PAGE link only — bold white, no other changes */
+.md-nav--primary .md-nav__item .md-nav__link--active {
   color: #ffffff !important;
   font-weight: 700;
-  background: transparent !important;
-  text-decoration: none;
-  box-shadow: none !important;
-  border-left: none !important;
-}
-
-.md-nav--primary .md-nav__item--active {
-  background: transparent !important;
-}
-
-/* Home top-level nav title when active — remove box, keep section headers intact */
-.md-nav[data-md-level="0"] > .md-nav__title {
-  background: transparent !important;
-  box-shadow: none !important;
-  border-left: 3px solid #ffffff;
 }
 
 /* ── Header ─────────────────────────────────────────────────────────────── */
