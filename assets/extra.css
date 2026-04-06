@@ -102,13 +102,13 @@
   background: rgba(255, 255, 255, 0.05);
 }
 
-/* TOC: active item — cyan left bar + white text at all levels */
+/* TOC: active item — white left bar + white text at all levels */
 .md-nav--secondary .md-nav__link--active {
   color: #ffffff !important;
   font-weight: 600;
-  border-left: 3px solid #00d4ff;
+  border-left: 3px solid #ffffff;
   padding-left: calc(0.75rem - 3px);
-  background: rgba(0, 212, 255, 0.07);
+  background: rgba(255, 255, 255, 0.06);
 }
 
 /* Left sidebar: same hover style as TOC */
