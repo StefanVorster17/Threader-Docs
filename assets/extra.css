@@ -117,3 +117,44 @@
   color: #ffffff !important;
   background: rgba(255, 255, 255, 0.05);
 }
+
+/* ── Header ─────────────────────────────────────────────────────────────── */
+
+/* Deeper, richer header background with subtle bottom glow */
+.md-header {
+  background: linear-gradient(180deg, #0d1a3a 0%, #0a1528 100%);
+  border-bottom: 1px solid rgba(26, 111, 245, 0.35);
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.5), 0 1px 0 rgba(26, 111, 245, 0.2);
+}
+
+/* Site title — bolder and slightly larger */
+.md-header__title {
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: 0.01em;
+  color: #ffffff;
+}
+
+/* Nav tabs bar — slightly darker than header for separation */
+.md-tabs {
+  background: rgba(6, 10, 22, 0.85);
+  border-bottom: 1px solid rgba(26, 111, 245, 0.18);
+}
+
+/* Nav tab items — softer inactive, crisp active */
+.md-tabs__link {
+  color: rgba(255, 255, 255, 0.65) !important;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  transition: color 0.15s ease;
+}
+
+.md-tabs__link:hover {
+  color: #ffffff !important;
+}
+
+.md-tabs__link--active {
+  color: #ffffff !important;
+  border-bottom: 2px solid #1a6ff5;
+}
