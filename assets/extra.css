@@ -129,13 +129,28 @@ body {
 }
 
 /* Left sidebar: active item — white left bar to match TOC */
-.md-nav--primary .md-nav__link--active {
+.md-nav--primary .md-nav__link--active,
+.md-nav--primary .md-nav__item--active > .md-nav__link {
   color: #ffffff !important;
   font-weight: 600;
   border-left: 3px solid #ffffff;
   padding-left: calc(0.75rem - 3px);
   background: transparent !important;
   text-decoration: none;
+  box-shadow: none !important;
+}
+
+.md-nav--primary .md-nav__item--active {
+  background: transparent !important;
+}
+
+/* Home top-level nav title when active */
+.md-nav--primary .md-nav__title {
+  background: transparent !important;
+  box-shadow: none !important;
+  color: #ffffff !important;
+  font-weight: 600;
+  border-left: 3px solid #ffffff;
 }
 
 /* ── Header ─────────────────────────────────────────────────────────────── */
