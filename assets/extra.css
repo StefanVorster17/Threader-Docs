@@ -29,10 +29,20 @@
 
 /* Dark navy background to match logo */
 [data-md-color-scheme="slate"] {
-  --md-default-bg-color:        #070c18;
-  --md-default-bg-color--light: #0c1220;
-  --md-default-bg-color--dark:  #040810;
+  --md-default-bg-color:        rgba(7, 12, 24, 0.82);
+  --md-default-bg-color--light: rgba(12, 18, 32, 0.80);
+  --md-default-bg-color--dark:  rgba(4, 8, 16, 0.88);
   --md-code-bg-color:           #0d1525;
+}
+
+/* Background image on the root */
+body {
+  background-image: url("images/threader-background.png");
+  background-size: cover;
+  background-position: center top;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-color: #070c18;
 }
 
 /* Page headings — more distinct */
