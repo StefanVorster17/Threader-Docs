@@ -134,7 +134,7 @@ body {
   font-weight: 600;
   border-left: 3px solid #ffffff;
   padding-left: calc(0.75rem - 3px);
-  background: rgba(255, 255, 255, 0.06) !important;
+  background: transparent !important;
   text-decoration: none;
 }
 
