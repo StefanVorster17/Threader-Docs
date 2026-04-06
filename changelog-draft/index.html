@@ -83,6 +83,10 @@
       
     </div>
     
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
     
       
 
@@ -1036,6 +1040,9 @@
 <ul>
 <li><strong>Richer runtime error messages</strong> — all <code>Debug.LogError</code> / <code>Debug.LogWarning</code> calls now include the graph name, node type, and short GUID prefix. Clicking the console entry in the Project window pings the source graph asset.</li>
 <li><strong>Animator lookup cached at registration</strong> — <code>DialogueManager</code> now caches each speaker's <code>Animator</code> component when <code>RegisterSpeaker</code> is called (once at scene start). Animator actions no longer walk the NPC's child hierarchy on every dialogue node.</li>
+<li><strong>Eliminated list allocations in <code>RunRandomNode</code> and <code>RunPlayAudioNode</code></strong> — both methods previously allocated temporary lists at runtime (via <code>.Where().ToList()</code> and <code>FindAll()</code>) just to read a count or pick an index. Replaced with direct iteration — no heap allocation.</li>
+<li><strong>Typewriter uses <code>StringBuilder</code></strong> — replaced <code>text.Substring(0, i+1)</code> with an appending <code>StringBuilder</code>. Previously allocated a new string every character reveal; now appends one character per tick.</li>
+<li><strong>Help &amp; Documentation opens online docs</strong> — the in-editor help window (1300+ lines of duplicated content) has been replaced with a direct link to the online documentation. <code>Threader &gt; Help &amp; Documentation</code> now opens the docs site in the default browser.</li>
 <li><strong>Graph Validator</strong> — new checks added:<ul>
 <li>Jump node has no target tag set.</li>
 <li>Jump node targets a tag that doesn't exist on any node in the graph.</li>
@@ -1106,7 +1113,7 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.top", "toc.follow", "search.suggest", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.top", "toc.follow", "search.suggest", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": "1.0.1"}</script>
     
     
       <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
