@@ -134,6 +134,11 @@ body {
   font-weight: 700;
 }
 
+/* Section headers and active top-level title — white text, keep the box */
+.md-nav--primary .md-nav__title {
+  color: #ffffff !important;
+}
+
 /* ── Header ─────────────────────────────────────────────────────────────── */
 
 /* Deeper, richer header background with subtle bottom glow */
