@@ -35,6 +35,18 @@
   --md-code-bg-color:           #0b1628;
 }
 
+/* Code blocks and inline code — match table background */
+.md-content pre,
+.md-content pre > code,
+.highlight,
+.highlight pre {
+  background-color: #0b1628 !important;
+}
+
+.md-content code {
+  background-color: #0b1628 !important;
+}
+
 /* Background image on the root */
 body {
   background-image: url("images/threader-background.png");
