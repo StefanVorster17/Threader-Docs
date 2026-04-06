@@ -134,9 +134,12 @@ body {
   font-weight: 700;
 }
 
-/* Section headers and active top-level title — white text, keep the box */
+/* Section headers and active top-level title — white text, keep the box, fix padding */
 .md-nav--primary .md-nav__title {
   color: #ffffff !important;
+  padding-top: 0.6rem !important;
+  padding-bottom: 0.6rem !important;
+  line-height: 1 !important;
 }
 
 /* ── Header ─────────────────────────────────────────────────────────────── */
