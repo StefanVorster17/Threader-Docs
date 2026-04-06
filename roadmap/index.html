@@ -1036,13 +1036,30 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#console-error-navigation-v101" class="md-nav__link">
+  <a href="#v101" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Console error navigation — v1.0.1
+        v1.0.1
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="v1.0.1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#console-error-navigation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Console error navigation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -1064,13 +1081,30 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#sub-graph-support-v11-target" class="md-nav__link">
+  <a href="#v11" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Sub-Graph support — v1.1 target
+        v1.1
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="v1.1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sub-graph-support" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sub-Graph support
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -1092,10 +1126,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#localization-support-v1x" class="md-nav__link">
+  <a href="#localization-support" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Localization support — v1.x
+        Localization support
       
     </span>
   </a>
@@ -1229,13 +1263,30 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#console-error-navigation-v101" class="md-nav__link">
+  <a href="#v101" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Console error navigation — v1.0.1
+        v1.0.1
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="v1.0.1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#console-error-navigation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Console error navigation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -1257,13 +1308,30 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#sub-graph-support-v11-target" class="md-nav__link">
+  <a href="#v11" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Sub-Graph support — v1.1 target
+        v1.1
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="v1.1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sub-graph-support" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sub-Graph support
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -1285,10 +1353,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#localization-support-v1x" class="md-nav__link">
+  <a href="#localization-support" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Localization support — v1.x
+        Localization support
       
     </span>
   </a>
@@ -1358,11 +1426,11 @@
 
 <h1 id="roadmap">Roadmap</h1>
 <p>This page tracks what's coming to Threader, what's being considered, and what's intentionally out of scope. It's updated as plans change.</p>
-<p>If you have a feature request, raise it on the <a href="https://github.com/StefanVorster17/Threader-Docs/issues">GitHub repository</a> — community requests that get traction move into <strong>Considering</strong>.</p>
+<p>If you have a feature request, raise it on the <a href="https://github.com/StefanVorster17/Threader-Docs/issues">GitHub repository</a> — community requests that get traction move up into a planned release.</p>
 <hr />
 <h2 id="upcoming">Upcoming</h2>
-<p>Features that are fully implemented and queued for the next release.</p>
-<h3 id="console-error-navigation-v101">Console error navigation — v1.0.1</h3>
+<h3 id="v101">v1.0.1</h3>
+<h4 id="console-error-navigation">Console error navigation</h4>
 <p>Runtime errors (missing tags, unregistered speakers, unresolved entry points, etc.) now include the source graph name, node type, and a short node ID in the message. Clicking the error in the Unity console pings the source graph asset in the Project window.</p>
 <blockquote>
 <p><strong>Note:</strong> Unity does not support opening a custom editor window directly from a console double-click — that callback is reserved for C# source files. The asset ping is the closest supported equivalent.</p>
@@ -1370,8 +1438,8 @@
 <p><strong>Status:</strong> Complete. Releasing in v1.0.1.</p>
 <hr />
 <h2 id="planned">Planned</h2>
-<p>Features that are confirmed and targeted for a specific version.</p>
-<h3 id="sub-graph-support-v11-target">Sub-Graph support — v1.1 target</h3>
+<h3 id="v11">v1.1</h3>
+<h4 id="sub-graph-support">Sub-Graph support</h4>
 <p>Call a separate <code>SubGraph</code> asset from within a running dialogue graph, then return to the calling graph when it ends.</p>
 <p><strong>Design intent:</strong>
 - A new <code>SubGraph</code> graph type that carries no actor, no LookAt setting, and fires no <code>OnDialogueStarted</code> / <code>OnDialogueEnded</code> events of its own
@@ -1385,8 +1453,8 @@
 <p><strong>Status:</strong> Architecture designed. Implementation planned for v1.1.</p>
 <hr />
 <h2 id="considering">Considering</h2>
-<p>Features that are on the radar but not yet committed. These may or may not ship depending on scope, community interest, and architectural fit.</p>
-<h3 id="localization-support-v1x">Localization support — v1.x</h3>
+<p>Features on the radar but not yet committed to a version. These may or may not ship depending on scope, community interest, and architectural fit.</p>
+<h3 id="localization-support">Localization support</h3>
 <p>Allow all dialogue text to be translated and swapped at runtime by language.</p>
 <p><strong>Two approaches are being considered:</strong></p>
 <p><strong>Option A — Built-in (no dependency)</strong>
