@@ -1164,6 +1164,7 @@
 <h2 id="101-unreleased">[1.0.1] — Unreleased</h2>
 <h3 id="added">Added</h3>
 <ul>
+<li><strong>Cancel dialogue at any time</strong> — players can now press Escape to exit a conversation immediately. <code>DialogueManager.CancelDialogue()</code> is the backing API for custom UIs. Per-node <strong>Lock Cancel</strong> toggle (visible on every node in the graph editor, below the ⚐ Tag field) prevents cancellation while that node is active — use this to protect sections that write variables or grant rewards.</li>
 <li><strong>Show GUIDs toggle</strong> (NAVIGATE sidebar) — displays the full node GUID in small text at the bottom of every node. Toggle persists across editor sessions via EditorPrefs.</li>
 <li><strong>Search GUID field</strong> (NAVIGATE sidebar) — paste a full GUID or the 8-char prefix from an error message and press Go/Enter to jump directly to that node.</li>
 <li><strong>Copy GUID</strong> (node right-click context menu) — copies the node's full GUID to the clipboard.</li>
@@ -1190,6 +1191,7 @@
 <ul>
 <li>Show GUIDs state was lost when loading a different graph — now re-applied after every <code>LoadGraph</code> call.</li>
 <li><code>DialogueLogContext</code> GUID stash was never cleared if no double-click followed a log — now auto-clears after the next log message fires.</li>
+<li><strong>Pressing Space to skip a line did not stop the audio clip</strong> — the clip always played to completion before the skip was honoured. The <code>WaitWhile</code> audio waits now exit immediately when a skip is requested, and the audio source is stopped before moving to the next line.</li>
 </ul>
 
 
