@@ -2343,7 +2343,7 @@ void UnregisterSpeaker(string name)
     void ReleaseFocus();
 }
 </code></pre>
-<p>Implement alongside <code>IDialogue</code> on your player camera controller. When <code>DialogueGraph.LookAtSpeaker = true</code> and a speaker transform is registered, <code>FocusOn</code> is called each time a new NPC node is reached. <code>ReleaseFocus</code> is called when dialogue ends.</p>
+<p>Implement alongside <code>IDialogue</code> on your player camera controller. When <strong>Look At Speaker</strong> is enabled in the Graph Editor sidebar and a speaker transform is registered, <code>FocusOn</code> is called each time a new NPC node is reached. <code>ReleaseFocus</code> is called when dialogue ends.</p>
 <hr />
 <h2 id="idialogueready">IDialogueReady</h2>
 <pre><code class="language-csharp">public interface IDialogueReady
@@ -2499,7 +2499,7 @@ void UnregisterSpeaker(string name)
 <tr>
 <td><code>LookAtSpeaker</code></td>
 <td><code>bool</code></td>
-<td>When true, calls <code>IDialogueFocus.FocusOn</code> on the speaking NPC's transform</td>
+<td>When true, calls <code>IDialogueFocus.FocusOn</code> on the speaking NPC's transform. Set via the <strong>Look At Speaker</strong> toggle in the Graph Editor sidebar.</td>
 </tr>
 <tr>
 <td><code>EntryPoints</code></td>
