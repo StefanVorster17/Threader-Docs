@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#npc-node-n" class="md-skip">
+        <a href="#node-reference" class="md-skip">
           Skip to content
         </a>
       
@@ -660,6 +660,8 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
           
@@ -701,6 +703,8 @@
 <nav class="md-nav md-nav--secondary" aria-label="Table of contents">
   
   
+  
+    
   
   
     <label class="md-nav__title" for="__toc">
@@ -1196,10 +1200,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#shared-return-tag-aaa-tag-field" class="md-nav__link">
+  <a href="#shared-return-tag-tag-field" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Shared: Return Tag (Ã¢Å¡Â Tag field)
+        Shared: Return Tag (⚐ Tag field)
       
     </span>
   </a>
@@ -1633,6 +1637,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -2127,10 +2133,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#shared-return-tag-aaa-tag-field" class="md-nav__link">
+  <a href="#shared-return-tag-tag-field" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Shared: Return Tag (Ã¢Å¡Â Tag field)
+        Shared: Return Tag (⚐ Tag field)
       
     </span>
   </a>
@@ -2154,14 +2160,12 @@
 
 
 
-  <h1>Node Reference</h1>
-
-<p>ï»¿# Node Reference</p>
+<h1 id="node-reference">Node Reference</h1>
 <p>Threader has 12 node types. This page documents every field and the exact order in which things happen at runtime.</p>
 <p>All nodes share:</p>
 <ul>
-<li><strong>Ã¢Å¡Â Tag field</strong> Ã¢â‚¬â€ a string identifier used as a Jump target. Set this on any node you want a Jump Node to redirect to. Leave blank if this node is never a jump target. Tags must be unique within a graph.</li>
-<li><strong>Right-click context menu</strong> Ã¢â‚¬â€ Set as Start Node, Set as Entry Point, Remove Entry Point, Set Colour, Duplicate, Delete.</li>
+<li><strong>⚐ Tag field</strong> — a string identifier used as a Jump target. Set this on any node you want a Jump Node to redirect to. Leave blank if this node is never a jump target. Tags must be unique within a graph.</li>
+<li><strong>Right-click context menu</strong> — Set as Start Node, Set as Entry Point, Remove Entry Point, Set Colour, Duplicate, Delete.</li>
 </ul>
 <hr />
 <h2 id="npc-node-n">NPC Node <code>[N]</code></h2>
@@ -2170,10 +2174,10 @@
 <h3 id="execution-order">Execution order</h3>
 <ol>
 <li><strong>Set Vars</strong> actions are applied to <code>DialogueVariables</code> (in list order)</li>
-<li><strong>Events</strong> are fired Ã¢â‚¬â€ local events trigger <code>OnNodeEvent</code>; global events also trigger <code>OnGlobalNodeEvent</code></li>
+<li><strong>Events</strong> are fired — local events trigger <code>OnNodeEvent</code>; global events also trigger <code>OnGlobalNodeEvent</code></li>
 <li><strong>Animator</strong> actions are sent to the matching speaker's <code>Animator</code> component</li>
 <li><code>OnNPCNode</code> fires on the <code>DialogueRunner</code>, which the <code>DialogueManager</code> catches to begin line playback</li>
-<li>Each <strong>Line</strong> in the list is displayed in sequence Ã¢â‚¬â€ <code>OnNPCLine</code> fires per line, then the UI typewriter runs, then the per-line <code>linePause</code> delay, then the player advances (or space-to-skip)</li>
+<li>Each <strong>Line</strong> in the list is displayed in sequence — <code>OnNPCLine</code> fires per line, then the UI typewriter runs, then the per-line <code>linePause</code> delay, then the player advances (or space-to-skip)</li>
 <li>After the last line, <code>Continue()</code> is called and execution moves to the next connected node</li>
 </ol>
 <h3 id="fields">Fields</h3>
@@ -2200,7 +2204,7 @@
 </tr>
 <tr>
 <td>Global</td>
-<td>Off = Local: only fires <code>OnNodeEvent</code>. Guard your handler with <code>CurrentActor</code> to scope it to this NPC. On = Global: also fires <code>OnGlobalNodeEvent</code>. No guard needed Ã¢â‚¬â€ intentionally broadcast to all listeners.</td>
+<td>Off = Local: only fires <code>OnNodeEvent</code>. Guard your handler with <code>CurrentActor</code> to scope it to this NPC. On = Global: also fires <code>OnGlobalNodeEvent</code>. No guard needed — intentionally broadcast to all listeners.</td>
 </tr>
 </tbody>
 </table>
@@ -2297,21 +2301,21 @@
 <h4 id="lines-add-line">Lines (+ Add Line)</h4>
 <p>The spoken text. Each entry has:</p>
 <ul>
-<li><strong>Text field</strong> Ã¢â‚¬â€ the dialogue string. Multiline. Supports <code>{varName}</code> and <code>{varName:name}</code> tokens (see <a href="../variables/#variable-substitution-in-text">Variables Ã¢â‚¬â€ text substitution</a>).</li>
-<li><strong>Audio Clip</strong> Ã¢â‚¬â€ one optional <code>AudioClip</code> slot per line, matched by list position. If set, the clip plays from the speaker's world position (3D spatial), or from the 2D fallback <code>AudioSource</code> if no matching speaker transform is registered.</li>
+<li><strong>Text field</strong> — the dialogue string. Multiline. Supports <code>{varName}</code> and <code>{varName:name}</code> tokens (see <a href="../variables/#variable-substitution-in-text">Variables — text substitution</a>).</li>
+<li><strong>Audio Clip</strong> — one optional <code>AudioClip</code> slot per line, matched by list position. If set, the clip plays from the speaker's world position (3D spatial), or from the 2D fallback <code>AudioSource</code> if no matching speaker transform is registered.</li>
 <li>If a clip is assigned, the runner waits for the clip to finish before pausing for <code>linePause</code>. If no clip, it waits for the typewriter to complete.</li>
 </ul>
 <hr />
 <h2 id="player-choice-node-c">Player Choice Node <code>[C]</code></h2>
 <p><img alt="Player Choice Node" src="../assets/images/nodes/player-choice.png" width="260" /></p>
-<p>Presents the player with a list of choices. Each choice is its own output port connecting to a separate branch. Unlike NPC nodes, the runner does <strong>not</strong> auto-advance Ã¢â‚¬â€ it waits for <code>SelectChoice(index)</code> to be called, which your UI does when the player clicks a button.</p>
+<p>Presents the player with a list of choices. Each choice is its own output port connecting to a separate branch. Unlike NPC nodes, the runner does <strong>not</strong> auto-advance — it waits for <code>SelectChoice(index)</code> to be called, which your UI does when the player clicks a button.</p>
 <h3 id="execution-order_1">Execution order</h3>
 <ol>
 <li>Runtime keys are stamped on each choice: <code>{nodeGuid}:{choiceIndex}</code></li>
 <li>Conditions are evaluated on each choice (inline variable conditions first, then ConditionDefinition)</li>
 <li><code>OnChoiceNode</code> fires with the evaluated list</li>
 <li>UI displays choices; player picks one</li>
-<li><code>SelectChoice(index)</code> is called Ã¢â€ â€™ execution follows that choice's output port</li>
+<li><code>SelectChoice(index)</code> is called → execution follows that choice's output port</li>
 </ol>
 <h3 id="fields_1">Fields</h3>
 <h4 id="choice-cards-add-choice">Choice cards (+ Add Choice)</h4>
@@ -2333,13 +2337,13 @@
 <td>Drag from this port to the node for this branch</td>
 </tr>
 <tr>
-<td>Ã¢Å“â€¢ button</td>
+<td>✕ button</td>
 <td>Removes this choice card and its output port</td>
 </tr>
 </tbody>
 </table>
 <h4 id="conditions-add-inside-a-choice-card">Conditions (+ Add inside a choice card)</h4>
-<p>All condition rows use AND logic Ã¢â‚¬â€ every row must pass for the choice to be selectable.</p>
+<p>All condition rows use AND logic — every row must pass for the choice to be selectable.</p>
 <table>
 <thead>
 <tr>
@@ -2369,12 +2373,12 @@
 <td>Inverts this individual row's result before it contributes to the AND chain</td>
 </tr>
 <tr>
-<td>Ã¢Å“â€¢</td>
+<td>✕</td>
 <td>Removes this condition row</td>
 </tr>
 </tbody>
 </table>
-<p>When a condition fails and <strong>Hide is unchecked</strong>, the choice shows in the UI with an <code>is-locked</code> USS class Ã¢â‚¬â€ typically rendered greyed out and unclickable, with <code>IsLocked = true</code> on the <code>ChoiceData</code>.</p>
+<p>When a condition fails and <strong>Hide is unchecked</strong>, the choice shows in the UI with an <code>is-locked</code> USS class — typically rendered greyed out and unclickable, with <code>IsLocked = true</code> on the <code>ChoiceData</code>.</p>
 <p>When <strong>Hide is checked</strong>, <code>IsHidden = true</code> on the <code>ChoiceData</code> and the built-in <code>DialogueUI</code> removes it from the list entirely. If you build a custom UI, filter out <code>IsHidden</code> choices before rendering.</p>
 <h4 id="condition-definition-custom-foldout-inside-each-choice-card">Condition Definition <code>[Custom]</code> (foldout inside each choice card)</h4>
 <p>An optional advanced condition linking a <code>ConditionDefinition</code> asset to a C# handler. Expand the <strong>Condition Definition [Custom]</strong> foldout inside the choice card.</p>
@@ -2388,7 +2392,7 @@
 <tbody>
 <tr>
 <td>Asset field</td>
-<td>Click the object picker (Ã¢Å â„¢) and select a <code>ConditionDefinition</code> ScriptableObject</td>
+<td>Click the object picker (⊙) and select a <code>ConditionDefinition</code> ScriptableObject</td>
 </tr>
 <tr>
 <td>Parameter</td>
@@ -2434,16 +2438,16 @@
 <hr />
 <h2 id="branch-node-b">Branch Node <code>[B]</code></h2>
 <p><img alt="Branch Node" src="../assets/images/nodes/branch.png" width="260" /></p>
-<p>Silently evaluates one or more variable conditions and routes execution to a <strong>True</strong> or <strong>False</strong> output port. No dialogue is shown Ã¢â‚¬â€ execution passes through immediately.</p>
+<p>Silently evaluates one or more variable conditions and routes execution to a <strong>True</strong> or <strong>False</strong> output port. No dialogue is shown — execution passes through immediately.</p>
 <h3 id="execution-order_2">Execution order</h3>
 <ol>
 <li>All condition rows are evaluated in list order (AND logic)</li>
-<li>If all pass Ã¢â€ â€™ True port is followed</li>
-<li>If any fail Ã¢â€ â€™ False port is followed</li>
-<li>If a port has no connection Ã¢â€ â€™ dialogue ends</li>
+<li>If all pass → True port is followed</li>
+<li>If any fail → False port is followed</li>
+<li>If a port has no connection → dialogue ends</li>
 </ol>
 <h3 id="fields_3">Fields</h3>
-<p>Conditions use the same fields as Player Choice inline conditions (Variable, Operator, Value, NOT, Ã¢Å“â€¢), but there is no Hide checkbox Ã¢â‚¬â€ Branch nodes are never visible to the player.</p>
+<p>Conditions use the same fields as Player Choice inline conditions (Variable, Operator, Value, NOT, ✕), but there is no Hide checkbox — Branch nodes are never visible to the player.</p>
 <p><img alt="Branch node wired to two paths" src="../assets/images/branch-node-wired.png" width="600" /></p>
 <hr />
 <h2 id="set-variable-node-v">Set Variable Node <code>[V]</code></h2>
@@ -2460,7 +2464,7 @@
 <hr />
 <h2 id="random-node-r">Random Node <code>[R]</code></h2>
 <p><img alt="Random Node" src="../assets/images/nodes/random.png" width="260" /></p>
-<p>Picks one of its output ports at random each time it is reached. Every output has <strong>equal probability</strong> Ã¢â‚¬â€ there is no weighting system.</p>
+<p>Picks one of its output ports at random each time it is reached. Every output has <strong>equal probability</strong> — there is no weighting system.</p>
 <h3 id="fields_5">Fields</h3>
 <table>
 <thead>
@@ -2472,10 +2476,10 @@
 <tbody>
 <tr>
 <td><strong>+ Output</strong></td>
-<td>Adds a new output port (labelled Output 1, Output 2, Ã¢â‚¬Â¦)</td>
+<td>Adds a new output port (labelled Output 1, Output 2, …)</td>
 </tr>
 <tr>
-<td><strong>Ã¢Ë†â€™ Output</strong></td>
+<td><strong>− Output</strong></td>
 <td>Removes the last output port</td>
 </tr>
 </tbody>
@@ -2485,7 +2489,7 @@
 <hr />
 <h2 id="jump-node-j">Jump Node <code>[J]</code></h2>
 <p><img alt="Jump Node" src="../assets/images/nodes/jump.png" width="260" /></p>
-<p>Redirects execution to any node in the same graph identified by its <strong>Ã¢Å¡Â Tag</strong> (Return Tag). Has no output port. Execution jumps immediately Ã¢â‚¬â€ no dialogue is shown.</p>
+<p>Redirects execution to any node in the same graph identified by its <strong>⚐ Tag</strong> (Return Tag). Has no output port. Execution jumps immediately — no dialogue is shown.</p>
 <p>Use Jump nodes to:</p>
 <ul>
 <li><strong>Loop</strong> back to an earlier part of the graph (e.g. repeat a menu until the player picks "Goodbye")</li>
@@ -2503,22 +2507,22 @@
 <tbody>
 <tr>
 <td><strong>Jumps to</strong> (dropdown)</td>
-<td>Lists every Ã¢Å¡Â Tag set on a node in this graph. Select the target tag.</td>
+<td>Lists every ⚐ Tag set on a node in this graph. Select the target tag.</td>
 </tr>
 <tr>
-<td><strong>Ã¢â€ Âº Refresh</strong></td>
+<td><strong>↺ Refresh</strong></td>
 <td>Re-scans the graph for tags added after this Jump Node was placed</td>
 </tr>
 </tbody>
 </table>
 <p>The jump target is resolved by tag string at runtime. If the tag no longer exists in the graph when dialogue runs, the runner logs an error and ends the dialogue.</p>
 <blockquote>
-<p>Set the Ã¢Å¡Â Tag on the <strong>target node</strong>, not on the Jump Node itself.</p>
+<p>Set the ⚐ Tag on the <strong>target node</strong>, not on the Jump Node itself.</p>
 </blockquote>
 <hr />
 <h2 id="debug-node-d">Debug Node <code>[D]</code></h2>
 <p><img alt="Debug Node" src="../assets/images/nodes/debug.png" width="260" /></p>
-<p>Logs a message to the Unity Console when reached. Passes through silently Ã¢â‚¬â€ the player never sees it. Execution continues to the connected output node immediately.</p>
+<p>Logs a message to the Unity Console when reached. Passes through silently — the player never sees it. Execution continues to the connected output node immediately.</p>
 <h3 id="fields_7">Fields</h3>
 <table>
 <thead>
@@ -2530,7 +2534,7 @@
 <tbody>
 <tr>
 <td><strong>Level</strong></td>
-<td>Info (white), Warning (yellow Ã¢â‚¬â€ node title bar turns yellow), Error (red Ã¢â‚¬â€ node title bar turns red)</td>
+<td>Info (white), Warning (yellow — node title bar turns yellow), Error (red — node title bar turns red)</td>
 </tr>
 <tr>
 <td><strong>Message</strong></td>
@@ -2550,7 +2554,7 @@
 <h2 id="wait-node-f5">Wait Node <code>[F5]</code></h2>
 <p><img alt="Wait Node" src="../assets/images/nodes/wait.png" width="260" /></p>
 <p>Pauses execution for a set duration in real-time seconds, then advances silently. No dialogue is shown.</p>
-<p>Internally, <code>DialogueManager</code> starts a coroutine that calls <code>runner.Continue()</code> after the delay. The wait cannot be skipped by the player Ã¢â‚¬â€ it runs to completion regardless of input.</p>
+<p>Internally, <code>DialogueManager</code> starts a coroutine that calls <code>runner.Continue()</code> after the delay. The wait cannot be skipped by the player — it runs to completion regardless of input.</p>
 <p>In the <strong>Dialogue Preview Window</strong>, the wait is skipped instantly so you can step through graphs without sitting through delays.</p>
 <h3 id="fields_8">Fields</h3>
 <table>
@@ -2572,7 +2576,7 @@
 <h2 id="fire-event-node-f2">Fire Event Node <code>[F2]</code></h2>
 <p><img alt="Fire Event Node" src="../assets/images/nodes/fire-event.png" width="260" /></p>
 <p>Silently broadcasts one or more named events and advances. No dialogue is shown. Uses the same <code>OnNodeEvent</code> / <code>OnGlobalNodeEvent</code> callbacks as NPC node events.</p>
-<p>Use this when you need to trigger a game system at a precise point in the conversation flow without attaching the event to an NPC speak node Ã¢â‚¬â€ for example, triggering a door to open between two branches, or spawning an enemy after a dramatic reveal.</p>
+<p>Use this when you need to trigger a game system at a precise point in the conversation flow without attaching the event to an NPC speak node — for example, triggering a door to open between two branches, or spawning an enemy after a dramatic reveal.</p>
 <h3 id="fields_9">Fields</h3>
 <table>
 <thead>
@@ -2591,7 +2595,7 @@
 <td>Off = Local (fires <code>OnNodeEvent</code> only). On = Global (fires both <code>OnNodeEvent</code> and <code>OnGlobalNodeEvent</code>).</td>
 </tr>
 <tr>
-<td><strong>Ã¢Å“â€¢</strong></td>
+<td><strong>✕</strong></td>
 <td>Removes this event row</td>
 </tr>
 </tbody>
@@ -2600,7 +2604,7 @@
 <hr />
 <h2 id="play-audio-node-f3">Play Audio Node <code>[F3]</code></h2>
 <p><img alt="Play Audio Node" src="../assets/images/nodes/play-audio.png" width="260" /></p>
-<p>Plays one or more <code>AudioClip</code> assets and <strong>advances immediately</strong> Ã¢â‚¬â€ it does not wait for playback to finish. All clips fire in list order via the <code>DialogueManager</code>'s audio sources.</p>
+<p>Plays one or more <code>AudioClip</code> assets and <strong>advances immediately</strong> — it does not wait for playback to finish. All clips fire in list order via the <code>DialogueManager</code>'s audio sources.</p>
 <h3 id="fields_10">Fields</h3>
 <table>
 <thead>
@@ -2619,7 +2623,7 @@
 <td><code>AudioClip</code> object fields. Drag assets in. Null slots are skipped.</td>
 </tr>
 <tr>
-<td><strong>Ã¢Å“â€¢</strong></td>
+<td><strong>✕</strong></td>
 <td>Removes a slot</td>
 </tr>
 </tbody>
@@ -2632,7 +2636,7 @@
 <h2 id="animator-trigger-node-f4">Animator Trigger Node <code>[F4]</code></h2>
 <p><img alt="Animator Trigger Node" src="../assets/images/nodes/animator-trigger.png" width="260" /></p>
 <p>Silently sets one or more Animator parameters on registered speakers and advances. No dialogue is shown.</p>
-<p>Use this to trigger animations at precise moments in dialogue flow without tying them to an NPC speak node Ã¢â‚¬â€ for example, playing a gesture animation between two NPC lines, or triggering a walk cycle after a dialogue branch resolves.</p>
+<p>Use this to trigger animations at precise moments in dialogue flow without tying them to an NPC speak node — for example, playing a gesture animation between two NPC lines, or triggering a walk cycle after a dialogue branch resolves.</p>
 <h3 id="fields_11">Fields</h3>
 <p>Each action card has:</p>
 <table>
@@ -2660,19 +2664,19 @@
 <td>Name of the registered speaker whose Animator to target. Blank = uses the graph's Default Speaker.</td>
 </tr>
 <tr>
-<td><strong>Ã¢Å“â€¢</strong></td>
+<td><strong>✕</strong></td>
 <td>Removes this action card</td>
 </tr>
 </tbody>
 </table>
 <p>The Animator is found by calling <code>GetComponentInChildren&lt;Animator&gt;()</code> on the speaker's registered transform. If no Animator is found, a warning is logged and the action is skipped.</p>
 <hr />
-<h2 id="shared-return-tag-aaa-tag-field">Shared: Return Tag (Ã¢Å¡Â Tag field)</h2>
-<p>Every node has a <strong>Ã¢Å¡Â Tag</strong> field at the top. This is the node's <strong>Return Tag</strong> Ã¢â‚¬â€ a string identifier used exclusively as a Jump Node target.</p>
+<h2 id="shared-return-tag-tag-field">Shared: Return Tag (⚐ Tag field)</h2>
+<p>Every node has a <strong>⚐ Tag</strong> field at the top. This is the node's <strong>Return Tag</strong> — a string identifier used exclusively as a Jump Node target.</p>
 <ul>
 <li>Leave blank if no Jump Node needs to target this node</li>
 <li>Tags must be unique within a graph (the validator will warn you about duplicates)</li>
-<li>Tags are resolved at runtime by string comparison Ã¢â‚¬â€ renaming a tag after a Jump Node references it will break the jump</li>
+<li>Tags are resolved at runtime by string comparison — renaming a tag after a Jump Node references it will break the jump</li>
 </ul>
 <p>The tag is displayed as a small badge on the node in the graph editor when set.</p>
 <hr />

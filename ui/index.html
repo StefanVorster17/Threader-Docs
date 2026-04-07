@@ -1587,11 +1587,29 @@
 <h2 id="building-a-custom-ui">Building a custom UI</h2>
 <p>You only need three event subscriptions and one method call. Everything else is up to you — UGUI, UI Toolkit, third-party frameworks, whatever your project uses.</p>
 <h3 id="minimum-implementation">Minimum implementation</h3>
+<p>This example uses <strong>UI Toolkit</strong> (<code>UIDocument</code>), which is what the built-in <code>DialogueUI</code> uses as well. If you prefer UGUI or another framework the same event subscriptions apply — just swap out the UI calls.</p>
 <pre><code class="language-csharp">using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
+[RequireComponent(typeof(UIDocument))]
 public class MyDialogueUI : MonoBehaviour
 {
+    Label          _textLabel;
+    Label          _speakerLabel;
+    VisualElement  _panel;
+    VisualElement  _choicesContainer;
+
+    void Awake()
+    {
+        var root       = GetComponent&lt;UIDocument&gt;().rootVisualElement;
+        _panel             = root.Q&lt;VisualElement&gt;(&quot;Root&quot;);
+        _textLabel         = root.Q&lt;Label&gt;(&quot;Text&quot;);
+        _speakerLabel      = root.Q&lt;Label&gt;(&quot;SpeakerName&quot;);
+        _choicesContainer  = root.Q&lt;VisualElement&gt;(&quot;Choices&quot;);
+        _panel.style.display = DisplayStyle.None;
+    }
+
     void OnEnable()
     {
         DialogueManager.Instance.OnNPCLine     += HandleLine;
@@ -1608,33 +1626,33 @@ public class MyDialogueUI : MonoBehaviour
 
     void HandleLine(NPCLine line)
     {
-        // line.Text  — fully resolved string (variable tokens already substituted)
-        // line.Clip  — AudioClip, may be null
-        myTextLabel.text        = line.Text;
-        mySpeakerLabel.text     = &quot;&quot;; // set separately if needed — see note below
-        myDialoguePanel.SetActive(true);
+        // line.Text — fully resolved string (variable tokens already substituted)
+        // line.Clip — AudioClip, may be null
+        _panel.style.display = DisplayStyle.Flex;
+        _textLabel.text      = line.Text;
+        _choicesContainer.Clear();
     }
 
     void HandleChoices(List&lt;ChoiceData&gt; choices)
     {
-        foreach (var choice in choices)
+        _choicesContainer.Clear();
+        for (int i = 0; i &lt; choices.Count; i++)
         {
-            // choice.IsHidden  — filter these out before rendering
-            if (choice.IsHidden) continue;
+            var choice = choices[i];
+            if (choice.IsHidden) continue;  // filter hidden choices before rendering
 
-            var btn = Instantiate(choiceButtonPrefab, choiceContainer);
-            btn.GetComponentInChildren&lt;TMP_Text&gt;().text = choice.Text;
-            btn.interactable = !choice.IsLocked;
-
-            int capturedIndex = choices.IndexOf(choice);
-            btn.onClick.AddListener(() =&gt; DialogueManager.Instance.SelectChoice(capturedIndex));
+            int capturedIndex = i;
+            var btn = new Button(() =&gt; DialogueManager.Instance.SelectChoice(capturedIndex));
+            btn.text = choice.Text;
+            btn.SetEnabled(!choice.IsLocked);
+            _choicesContainer.Add(btn);
         }
     }
 
     void HandleEnd()
     {
-        myDialoguePanel.SetActive(false);
-        // clear choices, reset labels, etc.
+        _panel.style.display = DisplayStyle.None;
+        _choicesContainer.Clear();
     }
 }
 </code></pre>
@@ -1734,7 +1752,7 @@ DialogueManager.Instance.SelectChoice(index);
     }
 }
 </code></pre>
-<p>Enable <strong>Look At Speaker</strong> on the <code>DialogueGraph</code> asset (Inspector field), then make sure every NPC has their <strong>Speaker Name</strong> set on <code>NPCDialogue</code> so the manager can resolve their transform.</p>
+<p>Enable <strong>Look At Speaker</strong> in the <strong>Graph Editor</strong> sidebar (the toggle is in the graph settings panel on the left), then make sure every NPC has their <strong>Speaker Name</strong> set on <code>NPCDialogue</code> so the manager can resolve their transform.</p>
 
 
 
