@@ -1390,9 +1390,9 @@ void OnInteract()
 </code></pre>
 <hr />
 <h2 id="step-5-set-up-the-ui">Step 5 — Set up the UI</h2>
-<p>Add the built-in <strong>DialogueUI</strong> component to a GameObject and wire up the UIDocument and field references in the Inspector — it handles everything automatically.</p>
+<p>Add the built-in <strong>DialogueUI</strong> component to a GameObject that also has a <code>UIDocument</code> component. Assign the <code>UI_Dialogue.uxml</code> asset to the <code>UIDocument</code> — no additional field references are needed. <code>DialogueUI</code> queries all named elements from the UXML automatically at startup.</p>
 <blockquote>
-<p>Want a fully custom UI? The <a href="../api-reference/">API Reference</a> lists all events (<code>OnNPCLine</code>, <code>OnChoiceNode</code>, <code>OnDialogueEnd</code>) you can subscribe to instead.</p>
+<p>Want a fully custom UI? The <a href="../ui/">UI</a> page walks through a minimum implementation, and the <a href="../api-reference/">API Reference</a> lists all events (<code>OnNPCLine</code>, <code>OnChoiceNode</code>, <code>OnDialogueEnd</code>) you can subscribe to.</p>
 </blockquote>
 <hr />
 <h2 id="done">Done!</h2>

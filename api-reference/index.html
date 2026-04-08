@@ -2171,6 +2171,7 @@
 event Action&lt;NPCLine&gt; OnNPCLine;
 </code></pre>
 <ul>
+<li><code>NPCLine.SpeakerName</code> — resolved speaker name (graph default applied when the node's Speaker field is blank)</li>
 <li><code>NPCLine.Text</code> — fully resolved text (variable tokens already substituted)</li>
 <li><code>NPCLine.Clip</code> — optional <code>AudioClip</code>. May be null.</li>
 </ul>
@@ -2228,6 +2229,11 @@ event Action OnDialogueStartedEvent;
 <td><code>true</code> while dialogue is running (blockables are blocked)</td>
 </tr>
 <tr>
+<td><code>CanCancel</code></td>
+<td><code>bool</code></td>
+<td><code>true</code> while dialogue is active <strong>and</strong> the current node does not have <strong>Prevent Dialogue Exit</strong> enabled</td>
+</tr>
+<tr>
 <td><code>ConditionProvider</code></td>
 <td><code>ConditionProvider</code></td>
 <td>The provider assigned in the Inspector (read-only)</td>
@@ -2258,6 +2264,10 @@ event Action OnDialogueStartedEvent;
 </code></pre>
 <p>Tells the runner which choice the player made. Call from your choice button callbacks. <code>index</code> is the 0-based position in the list passed to <code>OnChoiceNode</code>. Calling with an out-of-range index is silently ignored.</p>
 <hr />
+<pre><code class="language-csharp">void CancelDialogue()
+</code></pre>
+<p>Immediately ends active dialogue — stops all coroutines and audio, then fires <code>OnDialogueEnd</code>. No-op if no dialogue is running or if the current node has <strong>Prevent Dialogue Exit</strong> enabled. Safe to call from any UI button or key handler.</p>
+<hr />
 <pre><code class="language-csharp">void RegisterBlockable(IDialogue blockable)
 void UnregisterBlockable(IDialogue blockable)
 </code></pre>
@@ -2279,7 +2289,7 @@ void UnregisterSpeaker(string name)
 <ul>
 <li>When a line has an <code>AudioClip</code> and the speaker's <code>Transform</code> is in the registry, the clip plays from a hidden spatial <code>AudioSource</code> repositioned to the speaker's world position (<code>spatialBlend = 1</code>, <code>rolloffMode = Linear</code>).</li>
 <li>If no speaker transform is known, the clip plays from the 2D <code>audioSource</code> component.</li>
-<li>The runner waits for the clip to finish (<code>WaitWhile(() =&gt; audioSource.isPlaying)</code>) before advancing. <code>linePause</code> is applied <strong>after</strong> the clip ends.</li>
+<li>The runner waits for the clip to finish (<code>WaitWhile(() =&gt; audioSource.isPlaying &amp;&amp; !DialogueUI.SkipLineRequested)</code>) before advancing. If a skip is requested mid-clip, the source is stopped immediately. <code>linePause</code> is applied <strong>after</strong> the clip ends (also skippable).</li>
 <li>When no clip exists, the runner waits for <code>DialogueUI.IsTyping</code> to become false, then waits <code>linePause</code> seconds before advancing.</li>
 </ul>
 <hr />
@@ -2706,11 +2716,12 @@ static void   LoadSaveData(IEnumerable&lt;string&gt; keys)           // restore 
 <h2 id="npcline-data-class">NPCLine (data class)</h2>
 <pre><code class="language-csharp">public class NPCLine
 {
-    public string    Text;  // resolved display text (tokens substituted)
-    public AudioClip Clip;  // may be null
+    public string    Text;        // resolved display text (tokens substituted)
+    public string    SpeakerName; // resolved speaker name (graph default applied)
+    public AudioClip Clip;        // may be null
 }
 </code></pre>
-<p>Passed to <code>OnNPCLine</code> subscribers and <code>DialogueUI.SetText</code>.</p>
+<p>Passed to <code>OnNPCLine</code> subscribers.</p>
 <hr />
 <h2 id="choicedata-data-class">ChoiceData (data class)</h2>
 <pre><code class="language-csharp">public class ChoiceData

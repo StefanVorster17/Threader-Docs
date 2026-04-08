@@ -932,6 +932,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#cancelling-dialogue" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cancelling dialogue
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#choices-selectchoice" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1422,6 +1433,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#cancelling-dialogue" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cancelling dialogue
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#choices-selectchoice" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1509,6 +1531,8 @@
 <li>Shows speaker name</li>
 <li>Renders player choice buttons with staggered fade-in, visited/locked states, and an animated dismiss on selection</li>
 <li>Handles <strong>Space</strong> to skip the current typewriter animation or advance the line</li>
+<li>Handles <strong>Escape</strong> to call <code>DialogueManager.CancelDialogue()</code> (respects per-node <strong>Prevent Dialogue Exit</strong>)</li>
+<li>Manages optional <strong>Skip</strong> and <strong>Exit</strong> HUD elements automatically (shown/hidden as dialogue state changes)</li>
 </ul>
 <h3 id="inspector-fields">Inspector fields</h3>
 <table>
@@ -1578,6 +1602,16 @@
 <td><code>VisualElement</code></td>
 <td>Reserved for fades. Not filled automatically — available for your USS transitions.</td>
 </tr>
+<tr>
+<td><code>Skip</code></td>
+<td><code>VisualElement</code></td>
+<td>Shown during NPC lines; hidden during choice nodes. Optional — omit from UXML to disable.</td>
+</tr>
+<tr>
+<td><code>Exit</code></td>
+<td><code>VisualElement</code></td>
+<td>Shown when <code>DialogueManager.CanCancel</code> is <code>true</code> (dialogue is active and the current node allows cancellation). Optional — omit from UXML to disable.</td>
+</tr>
 </tbody>
 </table>
 <p>If any element is missing from the UXML, that feature silently does nothing rather than throwing an error.</p>
@@ -1626,10 +1660,12 @@ public class MyDialogueUI : MonoBehaviour
 
     void HandleLine(NPCLine line)
     {
+        // line.SpeakerName — resolved speaker name (graph default applied when node Speaker is blank)
         // line.Text — fully resolved string (variable tokens already substituted)
         // line.Clip — AudioClip, may be null
-        _panel.style.display = DisplayStyle.Flex;
-        _textLabel.text      = line.Text;
+        _panel.style.display  = DisplayStyle.Flex;
+        _speakerLabel.text    = line.SpeakerName;
+        _textLabel.text       = line.Text;
         _choicesContainer.Clear();
     }
 
@@ -1671,8 +1707,19 @@ public class MyDialogueUI : MonoBehaviour
 <li>Provide Space-to-advance input on your own — the runner will hold at step 3/4 until <code>linePause</code> elapses regardless.</li>
 </ul>
 <h3 id="speaker-name">Speaker name</h3>
-<p><code>OnNPCLine</code> does not carry the speaker name — it is fired by the manager after calling <code>DialogueUI.SetSpeakerName</code>. If you need the speaker name in your custom UI, subscribe to <code>OnNPCNode</code> on the <code>DialogueRunner</code> directly, or read <code>DialogueManager.Instance.CurrentActor</code> to infer the speaker.</p>
-<p>The simplest approach is to set the speaker label separately from a local event on your <code>NPCDialogue</code> component.</p>
+<p><code>OnNPCLine</code> carries the speaker name in <code>line.SpeakerName</code> alongside <code>line.Text</code> and <code>line.Clip</code>. Use it directly in your <code>HandleLine</code> handler:</p>
+<pre><code class="language-csharp">void HandleLine(NPCLine line)
+{
+    _speakerLabel.text = line.SpeakerName;
+    _textLabel.text    = line.Text;
+}
+</code></pre>
+<h3 id="cancelling-dialogue">Cancelling dialogue</h3>
+<p><code>DialogueManager.CancelDialogue()</code> immediately ends active dialogue. Call it from any button click or key handler in your custom UI:</p>
+<pre><code class="language-csharp">// Example: Escape key in Update(), or a cancel button callback
+DialogueManager.Instance.CancelDialogue();
+</code></pre>
+<p>The call is a no-op if no dialogue is running, or if the current node has <strong>Prevent Dialogue Exit</strong> enabled. Check <code>DialogueManager.Instance.CanCancel</code> first if you want to show or hide a cancel button reactively.</p>
 <h3 id="choices-selectchoice">Choices — <code>SelectChoice</code></h3>
 <pre><code class="language-csharp">// Call this from whichever button the player presses
 DialogueManager.Instance.SelectChoice(index);

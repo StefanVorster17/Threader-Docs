@@ -1698,7 +1698,7 @@
 <table>
 <thead>
 <tr>
-<th>Button</th>
+<th>Button / Control</th>
 <th>What it does</th>
 </tr>
 </thead>
@@ -1718,6 +1718,14 @@
 <tr>
 <td><strong>Snap to Grid</strong></td>
 <td>Snaps all node movement to a 20 px grid (preference saved per session)</td>
+</tr>
+<tr>
+<td><strong>Show GUIDs</strong></td>
+<td>Displays each node's full GUID as small text at the bottom of the node header. Useful when cross-referencing GUIDs from error messages. Preference is saved via EditorPrefs and restored across sessions.</td>
+</tr>
+<tr>
+<td><strong>Search GUID</strong></td>
+<td>Text field + <strong>Go</strong> button. Paste a full GUID or the 8-character prefix shown in error messages, then press Go or Enter to pan and select the matching node.</td>
 </tr>
 </tbody>
 </table>
@@ -1866,6 +1874,10 @@
 <td>Creates a copy of the node with a new GUID, positioned slightly offset</td>
 </tr>
 <tr>
+<td><strong>Copy GUID</strong></td>
+<td>Copies the node's full GUID to the clipboard. Useful for pasting into the <strong>Search GUID</strong> field or external tools.</td>
+</tr>
+<tr>
 <td><strong>Delete</strong></td>
 <td>Removes the node and all edges connected to it</td>
 </tr>
@@ -1988,16 +2000,28 @@
 <p>The preview window is covered on its own page — see <a href="../preview-window/">Dialogue Preview Window</a>.</p>
 <hr />
 <h2 id="validation">Validation</h2>
-<p>Click <strong>Validate</strong> in the sidebar PROJECT section to run a static check over the loaded graph. The validator looks for:</p>
+<p>Click <strong>Validate</strong> in the sidebar PROJECT section to run a static check over the loaded graph. Results appear in a panel at the bottom of the editor window. Each issue lists a description and a <strong>Go</strong> button to jump directly to the offending node.</p>
+<p>The validator checks for:</p>
 <ul>
-<li>Nodes with no outgoing connection (potential dead ends other than End nodes)</li>
-<li>Choice nodes with no choices defined</li>
-<li>Jump nodes pointing at tags that don't exist</li>
-<li>Branch or condition variables that don't exist in any assigned <code>DialogueVariables</code> asset</li>
-<li>Missing audio clips in Play Audio nodes</li>
-<li>NPC nodes with no lines</li>
+<li>No Start node set on the graph</li>
+<li>NPC node has no lines, or all lines have blank text</li>
+<li>NPC node output is not connected</li>
+<li>NPC node speaker name is not found in any assigned Speaker Roster (only checked when a roster is assigned)</li>
+<li>Player Choice node has no choices</li>
+<li>Player Choice node has a choice with blank text (reported as “choice N has blank text”)</li>
+<li>Player Choice node has a choice with no outgoing connection</li>
+<li>Branch node has no conditions (always takes False path)</li>
+<li>Branch node True or False output is not connected</li>
+<li>Jump node has no target tag set</li>
+<li>Jump node target tag does not exist on any node in the graph</li>
+<li>Set Variable node has no actions</li>
+<li>Set Variable node output is not connected</li>
+<li>Random node has no outputs, or all outputs are unconnected</li>
+<li>End node <strong>Next entry</strong> key references an entry point not defined in this graph</li>
+<li>Named entry point references a node that no longer exists</li>
+<li>A node with <strong>Prevent Dialogue Exit</strong> enabled has no reachable End node (would leave the player permanently stuck)</li>
 </ul>
-<p>Each issue is listed inline with a <strong>Go</strong> button to jump directly to the offending node.</p>
+<p><strong>Live validation</strong>: while the validator panel is open, it re-runs automatically whenever nodes or edges change. Close the panel to stop live updates.</p>
 <hr />
 <h2 id="after-a-script-recompile">After a script recompile</h2>
 <p>Unity recompiles all scripts when you save a <code>.cs</code> file. The graph editor re-loads automatically after a recompile. If the canvas appears empty after a recompile, click <strong>Load</strong> in the sidebar or close and re-open the window.</p>
