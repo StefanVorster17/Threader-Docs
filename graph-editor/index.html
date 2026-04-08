@@ -791,6 +791,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Validation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#reading-console-errors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reading console errors
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1544,6 +1561,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Validation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#reading-console-errors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reading console errors
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1579,6 +1613,7 @@
 <hr />
 <h2 id="opening-the-editor">Opening the editor</h2>
 <p>Double-click any <strong>Dialogue Graph</strong> asset in the Project window. The editor opens and loads that graph automatically. You can also open it via <strong>Threader → Graph Editor</strong> in the Unity menu bar and then load a graph from the sidebar.</p>
+<p><strong>Threader → Help &amp; Documentation</strong> opens the online documentation in your default browser.</p>
 <hr />
 <h2 id="layout">Layout</h2>
 <p>The editor is split into two panels separated by a draggable divider:</p>
@@ -1604,7 +1639,7 @@
 </tr>
 <tr>
 <td>Zoom</td>
-<td>Scroll wheel</td>
+<td>Scroll wheel. Range: 0.05× to 5×</td>
 </tr>
 <tr>
 <td>Select a node</td>
@@ -2001,6 +2036,14 @@
 <hr />
 <h2 id="validation">Validation</h2>
 <p>Click <strong>Validate</strong> in the sidebar PROJECT section to run a static check over the loaded graph. Results appear in a panel at the bottom of the editor window. Each issue lists a description and a <strong>Go</strong> button to jump directly to the offending node.</p>
+<h3 id="reading-console-errors">Reading console errors</h3>
+<p>All runtime <code>LogError</code> and <code>LogWarning</code> messages from Threader include the <strong>graph name</strong>, <strong>node type</strong>, and a <strong>short node ID</strong> (8-character GUID prefix). Example:</p>
+<pre><code>[Threader] JumpNode 'a3f9c812' in graph 'VillagerGraph': tag 'shop_loop' not found on any node.
+</code></pre>
+<p>Paste the 8-char prefix into the <strong>Search GUID</strong> field in the NAVIGATE sidebar and press <strong>Go</strong> to jump straight to that node. Clicking the console entry pings the source graph asset in the Project window.</p>
+<blockquote>
+<p>Unity does not support opening a custom editor window from a console double-click (that callback is reserved for <code>.cs</code> files). The asset ping is the closest equivalent.</p>
+</blockquote>
 <p>The validator checks for:</p>
 <ul>
 <li>No Start node set on the graph</li>

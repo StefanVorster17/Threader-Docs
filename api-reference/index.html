@@ -2189,7 +2189,8 @@ event Action&lt;string&gt; OnGlobalNodeEvent;
 </code></pre>
 <p>No actor guard needed — these are intentionally broadcast to all listeners.</p>
 <pre><code class="language-csharp">// A Player Choice node has become active.
-// The list contains only the visible choices (IsHidden = false is filtered upstream).
+// The list contains all choices, including those with IsHidden = true.
+// Custom UIs must filter out IsHidden = true entries before rendering.
 event Action&lt;List&lt;ChoiceData&gt;&gt; OnChoiceNode;
 </code></pre>
 <p>Each <code>ChoiceData</code> in the list:
@@ -2262,11 +2263,11 @@ event Action OnDialogueStartedEvent;
 <hr />
 <pre><code class="language-csharp">void SelectChoice(int index)
 </code></pre>
-<p>Tells the runner which choice the player made. Call from your choice button callbacks. <code>index</code> is the 0-based position in the list passed to <code>OnChoiceNode</code>. Calling with an out-of-range index is silently ignored.</p>
+<p>Tells the runner which choice the player made. Call from your choice button callbacks. <code>index</code> is the 0-based position in the list passed to <code>OnChoiceNode</code>. Calling with an out-of-range index logs an error and is ignored.</p>
 <hr />
 <pre><code class="language-csharp">void CancelDialogue()
 </code></pre>
-<p>Immediately ends active dialogue — stops all coroutines and audio, then fires <code>OnDialogueEnd</code>. No-op if no dialogue is running or if the current node has <strong>Prevent Dialogue Exit</strong> enabled. Safe to call from any UI button or key handler.</p>
+<p>Immediately ends active dialogue — stops all coroutines and audio, then fires <code>OnDialogueEnd</code> and <code>OnDialogueEnded</code>. No-op if no dialogue is running or if the current node has <strong>Prevent Dialogue Exit</strong> enabled. Safe to call from any UI button or key handler.</p>
 <hr />
 <pre><code class="language-csharp">void RegisterBlockable(IDialogue blockable)
 void UnregisterBlockable(IDialogue blockable)
@@ -2781,9 +2782,17 @@ public class DialogueEntryPoint
 public enum SetOperator    { Set, Add, Subtract, Toggle }
 public enum WhenMissingBehaviour { Allow, Block }
 public enum AnimatorParamType    { Trigger, Bool, Int, Float }
+public enum CompareOperator
+{
+    Equal, NotEqual,
+    GreaterThan, GreaterOrEqual,
+    LessThan, LessOrEqual
+}
+// Note: Bool and String support only Equal / NotEqual. GreaterThan/etc. are effective on Int only.
+public enum DebugLogType { Log, Warning, Error }
 public enum NodeType
 {
-    Start, NPC, PlayerChoice, End,
+    NPC, PlayerChoice, End,
     Branch, SetVariable, Random, Jump,
     Debug, Wait, FireEvent, PlayAudio, AnimatorTrigger
 }

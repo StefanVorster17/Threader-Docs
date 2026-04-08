@@ -2434,7 +2434,7 @@
 <hr />
 <h2 id="end-node-e">End Node <code>[E]</code></h2>
 <p><img alt="End Node" src="../assets/images/nodes/end.png" width="260" /></p>
-<p>Terminates the current dialogue. Fires <code>OnDialogueEnd</code> and <code>OnDialogueEnded</code>, hides the UI, releases blocking, and clears <code>CurrentActor</code>.</p>
+<p>Terminates the current dialogue. Clears <code>CurrentActor</code>, releases blocking, hides the UI, then fires <code>OnDialogueEnd</code> and <code>OnDialogueEnded</code>. <code>CurrentActor</code> is already <code>null</code> by the time <code>OnDialogueEnd</code> subscribers are notified.</p>
 <h3 id="fields_2">Fields</h3>
 <h4 id="next-entry-dropdown">Next entry (dropdown)</h4>
 <p>Sets the actor's active entry point for the <strong>next</strong> conversation <strong>before</strong> dialogue ends.</p>
@@ -2557,7 +2557,7 @@
 <tbody>
 <tr>
 <td><strong>Level</strong></td>
-<td>Info (white), Warning (yellow — node title bar turns yellow), Error (red — node title bar turns red)</td>
+<td>Log (white), Warning (yellow — node title bar turns yellow), Error (red — node title bar turns red)</td>
 </tr>
 <tr>
 <td><strong>Message</strong></td>
@@ -2639,7 +2639,7 @@
 <tbody>
 <tr>
 <td><strong>Speaker</strong></td>
-<td>Name of the registered speaker whose world position is used for 3D spatial audio. Leave blank to use the 2D fallback <code>AudioSource</code> on the <code>DialogueManager</code>.</td>
+<td>Name of the registered speaker whose world position is used for 3D spatial audio. Leave blank to use the graph's <strong>Default Speaker</strong>. If no default is set or no matching speaker is registered, the 2D fallback <code>AudioSource</code> on the <code>DialogueManager</code> is used instead.</td>
 </tr>
 <tr>
 <td><strong>Audio Clips</strong> (+ Add)</td>

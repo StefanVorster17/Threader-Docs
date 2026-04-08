@@ -1759,9 +1759,10 @@ public class GameConditionProvider : ConditionProvider
 <h3 id="evaluation-order">Evaluation order</h3>
 <p>When a choice has a <code>ConditionDefinition</code>, <code>ConditionService.Evaluate</code> resolves in this priority order:</p>
 <ol>
+<li><strong>VariableConditionDefinition</strong> — if the asset is a <code>VariableConditionDefinition</code>, it self-evaluates directly (no delegate or provider needed)</li>
 <li><strong>Registered delegate</strong> — if a delegate is registered for this key, it runs</li>
 <li><strong>Active ConditionProvider</strong> — if a provider is assigned and no delegate matched, the provider's <code>Evaluate</code> is called</li>
-<li><strong><code>WhenMissing</code> fallback</strong> — if neither a delegate nor a provider handled this key, the definition's <code>WhenMissing</code> setting decides the result</li>
+<li><strong><code>WhenMissing</code> fallback</strong> — if none of the above handled this key, the definition's <code>WhenMissing</code> setting decides the result</li>
 </ol>
 <h3 id="step-2-create-a-conditiondefinition-asset">Step 2 — Create a ConditionDefinition asset</h3>
 <p>Right-click in the Project window → <strong>Create → Threader → Condition (Custom)</strong>.</p>
@@ -1813,16 +1814,36 @@ public class GameConditionProvider : ConditionProvider
 <p>Threader ships with <code>ConditionStoreProvider</code> — a ready-to-use <code>ConditionProvider</code> subclass that evaluates against <code>ConditionStore</code>, a static in-memory key/value dictionary.</p>
 <p>Assign <code>ConditionStoreProvider</code> to <strong>DialogueManager → Condition Provider</strong> and then write your game state into <code>ConditionStore</code> from anywhere:</p>
 <pre><code class="language-csharp">// Write from your game code
-ConditionStore.SetInt(&quot;Gold&quot;,    economy.Gold);
-ConditionStore.Set(&quot;HasSword&quot;,   inventory.Has(&quot;sword&quot;) ? &quot;true&quot; : &quot;false&quot;);
-ConditionStore.Set(&quot;QuestState&quot;, questManager.ActiveQuest);
-
-// ConditionStoreProvider supports these condition key patterns:
-// &quot;Exists:KeyName&quot;          → true if the key is present at all
-// &quot;Bool:KeyName&quot;            → true if the stored value is &quot;true&quot; (case-insensitive)
-// &quot;GTE:KeyName:50&quot;          → true if stored value &gt;= 50 (numeric)
-// &quot;Equal:KeyName:someValue&quot; → true if stored string == someValue
+ConditionStore.SetInt(&quot;Gold&quot;,  economy.Gold);
+ConditionStore.Set(&quot;HasSword&quot;, inventory.Has(&quot;sword&quot;) ? &quot;true&quot; : &quot;false&quot;);
 </code></pre>
+<p>In the graph, set the <strong>ConditionDefinition</strong> key to the same string you used in <code>ConditionStore.Set/SetInt</code>. The <strong>Parameter</strong> field on the choice card controls how the stored value is tested:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Behaviour</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>(empty)</em></td>
+<td>Key must exist and be truthy — non-empty, not <code>"0"</code>, not <code>"false"</code></td>
+</tr>
+<tr>
+<td><code>"true"</code></td>
+<td>Stored value equals <code>"true"</code> (case-insensitive)</td>
+</tr>
+<tr>
+<td><code>"Excalibur"</code></td>
+<td>Stored value equals the string exactly (case-insensitive)</td>
+</tr>
+<tr>
+<td><code>"&gt;= 50"</code></td>
+<td>Numeric comparison — also supports <code>&gt;</code>, <code>&lt;=</code>, <code>&lt;</code>, <code>==</code>, <code>!=</code></td>
+</tr>
+</tbody>
+</table>
 <p><code>ConditionStore</code> is in-memory only — it resets when you start Play mode. After loading a save, repopulate it before starting any dialogue.</p>
 <hr />
 <h2 id="variableconditiondefinition-no-code-asset-condition">VariableConditionDefinition (no-code asset condition)</h2>

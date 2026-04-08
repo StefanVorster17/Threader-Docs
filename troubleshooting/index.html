@@ -1218,6 +1218,17 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#reading-console-errors-from-threader" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reading console errors from Threader
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#unsaved-changes-keep-reappearing-after-save" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1712,6 +1723,17 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#reading-console-errors-from-threader" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reading console errors from Threader
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#unsaved-changes-keep-reappearing-after-save" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1938,6 +1960,17 @@ void OnDestroy() =&gt; ConditionService.Unregister(&quot;MyKey&quot;);
 </code></pre>
 <hr />
 <h2 id="graph-editor">Graph editor</h2>
+<h3 id="reading-console-errors-from-threader">Reading console errors from Threader</h3>
+<p>All <code>LogError</code> and <code>LogWarning</code> messages from Threader include three pieces of identifying information:</p>
+<ul>
+<li><strong>Graph name</strong> — the asset that was running when the error occurred</li>
+<li><strong>Node type</strong> — e.g. <code>JumpNode</code>, <code>NPCNode</code>, <code>EndNode</code></li>
+<li><strong>Short node ID</strong> — the first 8 characters of the node's GUID</li>
+</ul>
+<p>Example: <code>[Threader] JumpNode 'a3f9c812' in graph 'VillagerGraph': tag 'shop_loop' not found on any node.</code></p>
+<p>To locate the node: open the graph in the Graph Editor, paste the 8-char ID into the <strong>Search GUID</strong> field in the NAVIGATE sidebar, and press <strong>Go</strong>.</p>
+<p><strong>Clicking the console entry</strong> pings the source graph asset in the Project window. Unity does not support opening a custom editor window from a console double-click (that callback is reserved for <code>.cs</code> files) — the asset ping is the closest supported equivalent.</p>
+<hr />
 <h3 id="unsaved-changes-keep-reappearing-after-save">Unsaved changes keep reappearing after save</h3>
 <p>If you press <strong>Save</strong> but the orange <strong>● Unsaved</strong> dot returns immediately, a script recompile is triggering a graph reload. This is normal — recompiles force a full editor refresh. Save again after the compile finishes.</p>
 <hr />
