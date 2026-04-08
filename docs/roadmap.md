@@ -2,15 +2,23 @@
 
 This page tracks what's coming to Threader, what's being considered, and what's intentionally out of scope. It's updated as plans change.
 
-If you have a feature request, raise it on the [GitHub repository](https://github.com/StefanVorster17/Threader-Docs/issues) — community requests that get traction move into **Considering**.
+If you have a feature request, raise it on the [GitHub repository](https://github.com/StefanVorster17/Threader-Docs/issues) — community requests that get traction move up into a planned release.
+
+---
+
+## Upcoming
+
+### v1.0.1
+
+Editor debugging improvements: GUID tooling (show, search, copy), validator enhancements with new checks and live updates, enriched runtime error messages, and runtime performance optimisations. See the [Changelog](changelog.md) for the full list on release.
 
 ---
 
 ## Planned
 
-Features that are confirmed and targeted for a specific version.
+### v1.1
 
-### Sub-Graph support — v1.1 target
+#### Sub-Graph support
 
 Call a separate `SubGraph` asset from within a running dialogue graph, then return to the calling graph when it ends.
 
@@ -31,9 +39,9 @@ Call a separate `SubGraph` asset from within a running dialogue graph, then retu
 
 ## Considering
 
-Features that are on the radar but not yet committed. These may or may not ship depending on scope, community interest, and architectural fit.
+Features on the radar but not yet committed to a version. These may or may not ship depending on scope, community interest, and architectural fit.
 
-### Localization support — v1.x
+### Localization support
 
 Allow all dialogue text to be translated and swapped at runtime by language.
 

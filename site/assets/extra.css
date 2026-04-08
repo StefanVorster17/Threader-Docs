@@ -5,7 +5,7 @@
 }
 
 [data-md-color-accent="custom"] {
-  --md-accent-fg-color: #00d4ff;
+  --md-accent-fg-color: #1a6ff5;
 }
 
 /* Hide native scrollbar track on right TOC */
@@ -29,10 +29,32 @@
 
 /* Dark navy background to match logo */
 [data-md-color-scheme="slate"] {
-  --md-default-bg-color:        #070c18;
-  --md-default-bg-color--light: #0c1220;
-  --md-default-bg-color--dark:  #040810;
-  --md-code-bg-color:           #0d1525;
+  --md-default-bg-color:        rgba(7, 12, 24, 0.82);
+  --md-default-bg-color--light: rgba(12, 18, 32, 0.80);
+  --md-default-bg-color--dark:  rgba(4, 8, 16, 0.88);
+  --md-code-bg-color:           #060d1a;
+}
+
+/* Code blocks and inline code — match table background */
+.md-content pre,
+.md-content pre > code,
+.highlight,
+.highlight pre {
+  background-color: #060d1a !important;
+}
+
+.md-content code {
+  background-color: #060d1a !important;
+}
+
+/* Background image on the root */
+body {
+  background-image: url("images/threader-background.png");
+  background-size: cover;
+  background-position: center top;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-color: #070c18;
 }
 
 /* Page headings — more distinct */
@@ -52,12 +74,12 @@
 }
 
 .md-content h3 {
-  color: #8ab4f8;
+  color: #5a90e8;
   font-size: 1.05rem;
 }
 
 .md-content h4 {
-  color: #6b8fcc;
+  color: #3d6db8;
   font-size: 0.95rem;
 }
 
@@ -74,7 +96,7 @@
 /* TOC: h3 — dash prefix, indented, light grey */
 .md-nav--secondary .md-nav__item .md-nav__item > .md-nav__link::before {
   content: "– ";
-  color: #8ab4f8;
+  color: #5a90e8;
 }
 
 .md-nav--secondary .md-nav__item .md-nav__item > .md-nav__link {
@@ -86,7 +108,7 @@
 /* TOC: h4 — deeper indent, dimmer grey */
 .md-nav--secondary .md-nav__item .md-nav__item .md-nav__item > .md-nav__link::before {
   content: "– ";
-  color: #556a88;
+  color: #3d6db8;
 }
 
 .md-nav--secondary .md-nav__item .md-nav__item .md-nav__item > .md-nav__link {
@@ -102,13 +124,13 @@
   background: rgba(255, 255, 255, 0.05);
 }
 
-/* TOC: active item — cyan left bar + white text at all levels */
+/* TOC: active item — white left bar + white text at all levels */
 .md-nav--secondary .md-nav__link--active {
   color: #ffffff !important;
   font-weight: 600;
-  border-left: 3px solid #00d4ff;
+  border-left: 3px solid #ffffff;
   padding-left: calc(0.75rem - 3px);
-  background: rgba(0, 212, 255, 0.07);
+  background: rgba(255, 255, 255, 0.06);
 }
 
 /* Left sidebar: same hover style as TOC */
@@ -116,4 +138,59 @@
 .md-nav--primary .md-nav__link:focus {
   color: #ffffff !important;
   background: rgba(255, 255, 255, 0.05);
+}
+
+/* Left sidebar: active PAGE link only — bold white, no other changes */
+.md-nav--primary .md-nav__item .md-nav__link--active {
+  color: #ffffff !important;
+  font-weight: 700;
+}
+
+/* Section headers and active top-level title — white text, keep the box, fix padding */
+.md-nav--primary .md-nav__title {
+  color: #ffffff !important;
+  padding-top: 0.6rem !important;
+  padding-bottom: 0.6rem !important;
+  line-height: 1 !important;
+}
+
+/* ── Header ─────────────────────────────────────────────────────────────── */
+
+/* Deeper, richer header background with subtle bottom glow */
+.md-header {
+  background: #06090f;
+  border-bottom: 1px solid rgba(26, 111, 245, 0.35);
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.5), 0 1px 0 rgba(26, 111, 245, 0.2);
+}
+
+/* Site title — bolder and slightly larger */
+.md-header__title {
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: 0.01em;
+  color: #ffffff;
+}
+
+/* Nav tabs bar — slightly darker than header for separation */
+.md-tabs {
+  background: #06090f;
+  border-bottom: 1px solid rgba(26, 111, 245, 0.18);
+}
+
+/* Nav tab items — softer inactive, crisp active */
+.md-tabs__link {
+  color: rgba(255, 255, 255, 0.65) !important;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  transition: color 0.15s ease;
+}
+
+.md-tabs__link:hover {
+  color: #ffffff !important;
+}
+
+.md-tabs__link--active {
+  color: #ffffff !important;
+  border-bottom: 2px solid #1a6ff5;
 }

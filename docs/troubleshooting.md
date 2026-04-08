@@ -130,6 +130,22 @@ void OnDestroy() => ConditionService.Unregister("MyKey");
 
 ## Graph editor
 
+### Reading console errors from Threader
+
+All `LogError` and `LogWarning` messages from Threader include three pieces of identifying information:
+
+- **Graph name** — the asset that was running when the error occurred
+- **Node type** — e.g. `JumpNode`, `NPCNode`, `EndNode`
+- **Short node ID** — the first 8 characters of the node's GUID
+
+Example: `[Threader] JumpNode 'a3f9c812' in graph 'VillagerGraph': tag 'shop_loop' not found on any node.`
+
+To locate the node: open the graph in the Graph Editor, paste the 8-char ID into the **Search GUID** field in the NAVIGATE sidebar, and press **Go**.
+
+**Clicking the console entry** pings the source graph asset in the Project window. Unity does not support opening a custom editor window from a console double-click (that callback is reserved for `.cs` files) — the asset ping is the closest supported equivalent.
+
+---
+
 ### Unsaved changes keep reappearing after save
 
 If you press **Save** but the orange **● Unsaved** dot returns immediately, a script recompile is triggering a graph reload. This is normal — recompiles force a full editor refresh. Save again after the compile finishes.

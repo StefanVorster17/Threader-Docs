@@ -152,9 +152,10 @@ Create an instance of this asset and assign it to **DialogueManager → Conditio
 
 When a choice has a `ConditionDefinition`, `ConditionService.Evaluate` resolves in this priority order:
 
-1. **Registered delegate** — if a delegate is registered for this key, it runs
-2. **Active ConditionProvider** — if a provider is assigned and no delegate matched, the provider's `Evaluate` is called
-3. **`WhenMissing` fallback** — if neither a delegate nor a provider handled this key, the definition's `WhenMissing` setting decides the result
+1. **VariableConditionDefinition** — if the asset is a `VariableConditionDefinition`, it self-evaluates directly (no delegate or provider needed)
+2. **Registered delegate** — if a delegate is registered for this key, it runs
+3. **Active ConditionProvider** — if a provider is assigned and no delegate matched, the provider's `Evaluate` is called
+4. **`WhenMissing` fallback** — if none of the above handled this key, the definition's `WhenMissing` setting decides the result
 
 ### Step 2 — Create a ConditionDefinition asset
 
@@ -191,16 +192,18 @@ Assign `ConditionStoreProvider` to **DialogueManager → Condition Provider** an
 
 ```csharp
 // Write from your game code
-ConditionStore.SetInt("Gold",    economy.Gold);
-ConditionStore.Set("HasSword",   inventory.Has("sword") ? "true" : "false");
-ConditionStore.Set("QuestState", questManager.ActiveQuest);
-
-// ConditionStoreProvider supports these condition key patterns:
-// "Exists:KeyName"          → true if the key is present at all
-// "Bool:KeyName"            → true if the stored value is "true" (case-insensitive)
-// "GTE:KeyName:50"          → true if stored value >= 50 (numeric)
-// "Equal:KeyName:someValue" → true if stored string == someValue
+ConditionStore.SetInt("Gold",  economy.Gold);
+ConditionStore.Set("HasSword", inventory.Has("sword") ? "true" : "false");
 ```
+
+In the graph, set the **ConditionDefinition** key to the same string you used in `ConditionStore.Set/SetInt`. The **Parameter** field on the choice card controls how the stored value is tested:
+
+| Parameter | Behaviour |
+|---|---|
+| *(empty)* | Key must exist and be truthy — non-empty, not `"0"`, not `"false"` |
+| `"true"` | Stored value equals `"true"` (case-insensitive) |
+| `"Excalibur"` | Stored value equals the string exactly (case-insensitive) |
+| `">= 50"` | Numeric comparison — also supports `>`, `<=`, `<`, `==`, `!=` |
 
 `ConditionStore` is in-memory only — it resets when you start Play mode. After loading a save, repopulate it before starting any dialogue.
 

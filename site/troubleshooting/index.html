@@ -87,6 +87,10 @@
       
     </div>
     
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
     
       
 
@@ -270,6 +274,26 @@
   
   
   Support
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../roadmap/" class="md-tabs__link">
+          
+  
+  
+  Release
 
         </a>
       </li>
@@ -689,6 +713,62 @@
     
   
     Conditions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../events/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Events
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ui/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UI
   
 
     
@@ -1138,6 +1218,17 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#reading-console-errors-from-threader" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reading console errors from Threader
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#unsaved-changes-keep-reappearing-after-save" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1261,6 +1352,63 @@
   
 
               
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Release
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Release
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
             
               
                 
@@ -1575,6 +1723,17 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#reading-console-errors-from-threader" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reading console errors from Threader
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#unsaved-changes-keep-reappearing-after-save" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1801,6 +1960,17 @@ void OnDestroy() =&gt; ConditionService.Unregister(&quot;MyKey&quot;);
 </code></pre>
 <hr />
 <h2 id="graph-editor">Graph editor</h2>
+<h3 id="reading-console-errors-from-threader">Reading console errors from Threader</h3>
+<p>All <code>LogError</code> and <code>LogWarning</code> messages from Threader include three pieces of identifying information:</p>
+<ul>
+<li><strong>Graph name</strong> — the asset that was running when the error occurred</li>
+<li><strong>Node type</strong> — e.g. <code>JumpNode</code>, <code>NPCNode</code>, <code>EndNode</code></li>
+<li><strong>Short node ID</strong> — the first 8 characters of the node's GUID</li>
+</ul>
+<p>Example: <code>[Threader] JumpNode 'a3f9c812' in graph 'VillagerGraph': tag 'shop_loop' not found on any node.</code></p>
+<p>To locate the node: open the graph in the Graph Editor, paste the 8-char ID into the <strong>Search GUID</strong> field in the NAVIGATE sidebar, and press <strong>Go</strong>.</p>
+<p><strong>Clicking the console entry</strong> pings the source graph asset in the Project window. Unity does not support opening a custom editor window from a console double-click (that callback is reserved for <code>.cs</code> files) — the asset ping is the closest supported equivalent.</p>
+<hr />
 <h3 id="unsaved-changes-keep-reappearing-after-save">Unsaved changes keep reappearing after save</h3>
 <p>If you press <strong>Save</strong> but the orange <strong>● Unsaved</strong> dot returns immediately, a script recompile is triggering a graph reload. This is normal — recompiles force a full editor refresh. Save again after the compile finishes.</p>
 <hr />
@@ -1876,6 +2046,10 @@ void OnDestroy() =&gt; ConditionService.Unregister(&quot;MyKey&quot;);
     <div class="md-footer-meta__inner md-grid">
       <div class="md-copyright">
   
+    <div class="md-copyright__highlight">
+      Threader Dialogue Kit &nbsp;·&nbsp; v1.0 (Unreleased)
+    </div>
+  
   
     Made with
     <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
@@ -1897,7 +2071,7 @@ void OnDestroy() =&gt; ConditionService.Unregister(&quot;MyKey&quot;);
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.top", "toc.follow", "search.suggest", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.top", "toc.follow", "search.suggest", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": "1.0"}</script>
     
     
       <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>

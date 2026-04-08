@@ -87,6 +87,10 @@
       
     </div>
     
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
     
       
 
@@ -270,6 +274,26 @@
   
   
   Support
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../roadmap/" class="md-tabs__link">
+          
+  
+  
+  Release
 
         </a>
       </li>
@@ -767,6 +791,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Validation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#reading-console-errors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reading console errors
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -965,6 +1006,62 @@
   
   
     <li class="md-nav__item">
+      <a href="../events/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Events
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ui/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../entry-points/" class="md-nav__link">
         
   
@@ -1126,6 +1223,63 @@
   
 
               
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Release
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Release
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
             
               
                 
@@ -1407,6 +1561,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Validation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#reading-console-errors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reading console errors
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1442,6 +1613,7 @@
 <hr />
 <h2 id="opening-the-editor">Opening the editor</h2>
 <p>Double-click any <strong>Dialogue Graph</strong> asset in the Project window. The editor opens and loads that graph automatically. You can also open it via <strong>Threader → Graph Editor</strong> in the Unity menu bar and then load a graph from the sidebar.</p>
+<p><strong>Threader → Help &amp; Documentation</strong> opens the online documentation in your default browser.</p>
 <hr />
 <h2 id="layout">Layout</h2>
 <p>The editor is split into two panels separated by a draggable divider:</p>
@@ -1467,7 +1639,7 @@
 </tr>
 <tr>
 <td>Zoom</td>
-<td>Scroll wheel</td>
+<td>Scroll wheel. Range: 0.05× to 5×</td>
 </tr>
 <tr>
 <td>Select a node</td>
@@ -1561,7 +1733,7 @@
 <table>
 <thead>
 <tr>
-<th>Button</th>
+<th>Button / Control</th>
 <th>What it does</th>
 </tr>
 </thead>
@@ -1581,6 +1753,14 @@
 <tr>
 <td><strong>Snap to Grid</strong></td>
 <td>Snaps all node movement to a 20 px grid (preference saved per session)</td>
+</tr>
+<tr>
+<td><strong>Show GUIDs</strong></td>
+<td>Displays each node's full GUID as small text at the bottom of the node header. Useful when cross-referencing GUIDs from error messages. Preference is saved via EditorPrefs and restored across sessions.</td>
+</tr>
+<tr>
+<td><strong>Search GUID</strong></td>
+<td>Text field + <strong>Go</strong> button. Paste a full GUID or the 8-character prefix shown in error messages, then press Go or Enter to pan and select the matching node.</td>
 </tr>
 </tbody>
 </table>
@@ -1729,6 +1909,10 @@
 <td>Creates a copy of the node with a new GUID, positioned slightly offset</td>
 </tr>
 <tr>
+<td><strong>Copy GUID</strong></td>
+<td>Copies the node's full GUID to the clipboard. Useful for pasting into the <strong>Search GUID</strong> field or external tools.</td>
+</tr>
+<tr>
 <td><strong>Delete</strong></td>
 <td>Removes the node and all edges connected to it</td>
 </tr>
@@ -1851,16 +2035,36 @@
 <p>The preview window is covered on its own page — see <a href="../preview-window/">Dialogue Preview Window</a>.</p>
 <hr />
 <h2 id="validation">Validation</h2>
-<p>Click <strong>Validate</strong> in the sidebar PROJECT section to run a static check over the loaded graph. The validator looks for:</p>
+<p>Click <strong>Validate</strong> in the sidebar PROJECT section to run a static check over the loaded graph. Results appear in a panel at the bottom of the editor window. Each issue lists a description and a <strong>Go</strong> button to jump directly to the offending node.</p>
+<h3 id="reading-console-errors">Reading console errors</h3>
+<p>All runtime <code>LogError</code> and <code>LogWarning</code> messages from Threader include the <strong>graph name</strong>, <strong>node type</strong>, and a <strong>short node ID</strong> (8-character GUID prefix). Example:</p>
+<pre><code>[Threader] JumpNode 'a3f9c812' in graph 'VillagerGraph': tag 'shop_loop' not found on any node.
+</code></pre>
+<p>Paste the 8-char prefix into the <strong>Search GUID</strong> field in the NAVIGATE sidebar and press <strong>Go</strong> to jump straight to that node. Clicking the console entry pings the source graph asset in the Project window.</p>
+<blockquote>
+<p>Unity does not support opening a custom editor window from a console double-click (that callback is reserved for <code>.cs</code> files). The asset ping is the closest equivalent.</p>
+</blockquote>
+<p>The validator checks for:</p>
 <ul>
-<li>Nodes with no outgoing connection (potential dead ends other than End nodes)</li>
-<li>Choice nodes with no choices defined</li>
-<li>Jump nodes pointing at tags that don't exist</li>
-<li>Branch or condition variables that don't exist in any assigned <code>DialogueVariables</code> asset</li>
-<li>Missing audio clips in Play Audio nodes</li>
-<li>NPC nodes with no lines</li>
+<li>No Start node set on the graph</li>
+<li>NPC node has no lines, or all lines have blank text</li>
+<li>NPC node output is not connected</li>
+<li>NPC node speaker name is not found in any assigned Speaker Roster (only checked when a roster is assigned)</li>
+<li>Player Choice node has no choices</li>
+<li>Player Choice node has a choice with blank text (reported as “choice N has blank text”)</li>
+<li>Player Choice node has a choice with no outgoing connection</li>
+<li>Branch node has no conditions (always takes False path)</li>
+<li>Branch node True or False output is not connected</li>
+<li>Jump node has no target tag set</li>
+<li>Jump node target tag does not exist on any node in the graph</li>
+<li>Set Variable node has no actions</li>
+<li>Set Variable node output is not connected</li>
+<li>Random node has no outputs, or all outputs are unconnected</li>
+<li>End node <strong>Next entry</strong> key references an entry point not defined in this graph</li>
+<li>Named entry point references a node that no longer exists</li>
+<li>A node with <strong>Prevent Dialogue Exit</strong> enabled has no reachable End node (would leave the player permanently stuck)</li>
 </ul>
-<p>Each issue is listed inline with a <strong>Go</strong> button to jump directly to the offending node.</p>
+<p><strong>Live validation</strong>: while the validator panel is open, it re-runs automatically whenever nodes or edges change. Close the panel to stop live updates.</p>
 <hr />
 <h2 id="after-a-script-recompile">After a script recompile</h2>
 <p>Unity recompiles all scripts when you save a <code>.cs</code> file. The graph editor re-loads automatically after a recompile. If the canvas appears empty after a recompile, click <strong>Load</strong> in the sidebar or close and re-open the window.</p>
@@ -1898,6 +2102,10 @@
     <div class="md-footer-meta__inner md-grid">
       <div class="md-copyright">
   
+    <div class="md-copyright__highlight">
+      Threader Dialogue Kit &nbsp;·&nbsp; v1.0 (Unreleased)
+    </div>
+  
   
     Made with
     <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
@@ -1919,7 +2127,7 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.top", "toc.follow", "search.suggest", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.top", "toc.follow", "search.suggest", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": "1.0"}</script>
     
     
       <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>

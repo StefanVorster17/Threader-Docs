@@ -38,6 +38,7 @@ Subscribe in `OnEnable`, unsubscribe in `OnDisable`.
 // Each dialogue line as it becomes current.
 event Action<NPCLine> OnNPCLine;
 ```
+- `NPCLine.SpeakerName` — resolved speaker name (graph default applied when the node's Speaker field is blank)
 - `NPCLine.Text` — fully resolved text (variable tokens already substituted)
 - `NPCLine.Clip` — optional `AudioClip`. May be null.
 
@@ -61,7 +62,8 @@ No actor guard needed — these are intentionally broadcast to all listeners.
 
 ```csharp
 // A Player Choice node has become active.
-// The list contains only the visible choices (IsHidden = false is filtered upstream).
+// The list contains all choices, including those with IsHidden = true.
+// Custom UIs must filter out IsHidden = true entries before rendering.
 event Action<List<ChoiceData>> OnChoiceNode;
 ```
 Each `ChoiceData` in the list:
@@ -87,6 +89,7 @@ event Action OnDialogueStartedEvent;
 | `Instance` | `DialogueManager` | Static singleton reference |
 | `CurrentActor` | `IDialogueActor` | The actor currently running dialogue. `null` between conversations. |
 | `IsDialogueActive` | `bool` | `true` while dialogue is running (blockables are blocked) |
+| `CanCancel` | `bool` | `true` while dialogue is active **and** the current node does not have **Prevent Dialogue Exit** enabled |
 | `ConditionProvider` | `ConditionProvider` | The provider assigned in the Inspector (read-only) |
 | `VariablesList` | `IReadOnlyList<DialogueVariables>` | All assigned variable assets |
 | `SpeakerRosters` | `IReadOnlyList<SpeakerRoster>` | All assigned roster assets |
@@ -107,7 +110,14 @@ Starts a dialogue. Resolves the entry point, fires `OnDialogueStarted`, blocks a
 ```csharp
 void SelectChoice(int index)
 ```
-Tells the runner which choice the player made. Call from your choice button callbacks. `index` is the 0-based position in the list passed to `OnChoiceNode`. Calling with an out-of-range index is silently ignored.
+Tells the runner which choice the player made. Call from your choice button callbacks. `index` is the 0-based position in the list passed to `OnChoiceNode`. Calling with an out-of-range index logs an error and is ignored.
+
+---
+
+```csharp
+void CancelDialogue()
+```
+Immediately ends active dialogue — stops all coroutines and audio, then fires `OnDialogueEnd` and `OnDialogueEnded`. No-op if no dialogue is running or if the current node has **Prevent Dialogue Exit** enabled. Safe to call from any UI button or key handler.
 
 ---
 
@@ -142,7 +152,7 @@ Manually block or unblock all registered blockables. Call if you need to freeze 
 
 - When a line has an `AudioClip` and the speaker's `Transform` is in the registry, the clip plays from a hidden spatial `AudioSource` repositioned to the speaker's world position (`spatialBlend = 1`, `rolloffMode = Linear`).
 - If no speaker transform is known, the clip plays from the 2D `audioSource` component.
-- The runner waits for the clip to finish (`WaitWhile(() => audioSource.isPlaying)`) before advancing. `linePause` is applied **after** the clip ends.
+- The runner waits for the clip to finish (`WaitWhile(() => audioSource.isPlaying && !DialogueUI.SkipLineRequested)`) before advancing. If a skip is requested mid-clip, the source is stopped immediately. `linePause` is applied **after** the clip ends (also skippable).
 - When no clip exists, the runner waits for `DialogueUI.IsTyping` to become false, then waits `linePause` seconds before advancing.
 
 ---
@@ -199,7 +209,7 @@ public interface IDialogueFocus
 }
 ```
 
-Implement alongside `IDialogue` on your player camera controller. When `DialogueGraph.LookAtSpeaker = true` and a speaker transform is registered, `FocusOn` is called each time a new NPC node is reached. `ReleaseFocus` is called when dialogue ends.
+Implement alongside `IDialogue` on your player camera controller. When **Look At Speaker** is enabled in the Graph Editor sidebar and a speaker transform is registered, `FocusOn` is called each time a new NPC node is reached. `ReleaseFocus` is called when dialogue ends.
 
 ---
 
@@ -289,7 +299,7 @@ Create via **Assets → Create → Threader → Dialogue Graph**.
 | `Nodes` | `List<DialogueNode>` | All nodes in the graph (SerializeReference) |
 | `StartNodeGuid` | `string` | GUID of the default start node |
 | `DefaultSpeakerName` | `string` | Fallback speaker name for NPC nodes with no speaker override |
-| `LookAtSpeaker` | `bool` | When true, calls `IDialogueFocus.FocusOn` on the speaking NPC's transform |
+| `LookAtSpeaker` | `bool` | When true, calls `IDialogueFocus.FocusOn` on the speaking NPC's transform. Set via the **Look At Speaker** toggle in the Graph Editor sidebar. |
 | `EntryPoints` | `List<DialogueEntryPoint>` | Named entry points. Set via right-click in the editor. |
 | `Groups` | `List<DialogueGroupData>` | Comment boxes (editor-only) |
 | `StickyNotes` | `List<StickyNoteData>` | Sticky notes (editor-only) |
@@ -512,12 +522,13 @@ Key format: `"{choiceNodeGuid}:{choiceIndex}"`. Stable unless the node is delete
 ```csharp
 public class NPCLine
 {
-    public string    Text;  // resolved display text (tokens substituted)
-    public AudioClip Clip;  // may be null
+    public string    Text;        // resolved display text (tokens substituted)
+    public string    SpeakerName; // resolved speaker name (graph default applied)
+    public AudioClip Clip;        // may be null
 }
 ```
 
-Passed to `OnNPCLine` subscribers and `DialogueUI.SetText`.
+Passed to `OnNPCLine` subscribers.
 
 ---
 
@@ -580,9 +591,17 @@ public enum VariableType   { Bool, Int, String }
 public enum SetOperator    { Set, Add, Subtract, Toggle }
 public enum WhenMissingBehaviour { Allow, Block }
 public enum AnimatorParamType    { Trigger, Bool, Int, Float }
+public enum CompareOperator
+{
+    Equal, NotEqual,
+    GreaterThan, GreaterOrEqual,
+    LessThan, LessOrEqual
+}
+// Note: Bool and String support only Equal / NotEqual. GreaterThan/etc. are effective on Int only.
+public enum DebugLogType { Log, Warning, Error }
 public enum NodeType
 {
-    Start, NPC, PlayerChoice, End,
+    NPC, PlayerChoice, End,
     Branch, SetVariable, Random, Jump,
     Debug, Wait, FireEvent, PlayAudio, AnimatorTrigger
 }

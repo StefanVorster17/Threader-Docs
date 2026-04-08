@@ -2,6 +2,8 @@
 
 **Visual Dialogue System for Unity** — build branching conversations with a node-based graph editor, no boilerplate required.
 
+<span style="background:#2d6a9f;color:#fff;padding:3px 10px;border-radius:4px;font-size:0.85em;font-weight:bold;">v1.0 (Unreleased)</span>
+
 ![Threader graph editor](assets/images/hero-graph.png){ width="720" }
 
 ---

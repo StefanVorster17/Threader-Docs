@@ -2,6 +2,11 @@ site_name: Threader - Dialogue Kit
 site_description: Threader — Visual Dialogue System for Unity
 site_url: https://stefanvorster17.github.io/Threader-Docs/
 
+extra:
+  version: "1.0"
+
+copyright: "Threader Dialogue Kit &nbsp;·&nbsp; v1.0 (Unreleased)"
+
 markdown_extensions:
   - attr_list
   - md_in_html
@@ -37,10 +42,13 @@ nav:
     - Node Reference: nodes.md
     - Variables: variables.md
     - Conditions: conditions.md
+    - Events: events.md
+    - UI: ui.md
     - Entry Points: entry-points.md
     - Saving: saving.md
     - API Reference: api-reference.md
   - Support:
     - Troubleshooting: troubleshooting.md
+  - Release:
     - Roadmap: roadmap.md
     - Changelog: changelog.md

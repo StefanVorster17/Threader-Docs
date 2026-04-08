@@ -5,7 +5,8 @@ Threader has 12 node types. This page documents every field and the exact order 
 All nodes share:
 
 - **⚐ Tag field** — a string identifier used as a Jump target. Set this on any node you want a Jump Node to redirect to. Leave blank if this node is never a jump target. Tags must be unique within a graph.
-- **Right-click context menu** — Set as Start Node, Set as Entry Point, Remove Entry Point, Set Colour, Duplicate, Delete.
+- **Prevent Dialogue Exit toggle** — when enabled, `DialogueManager.CancelDialogue()` and the built-in Escape-key handler are ignored while this node is active. Use to protect nodes that write variables, grant rewards, or play mandatory cutscene lines. The validator will warn you if a locked node has no reachable End node (which would leave the player permanently stuck).
+- **Right-click context menu** — Set as Start Node, Set as Entry Point, Remove Entry Point, Set Colour, Duplicate, Delete, Copy GUID.
 
 ---
 
@@ -148,7 +149,7 @@ This condition is evaluated **after** all inline variable conditions. If any inl
 
 ![End Node](assets/images/nodes/end.png){ width="260" }
 
-Terminates the current dialogue. Fires `OnDialogueEnd` and `OnDialogueEnded`, hides the UI, releases blocking, and clears `CurrentActor`.
+Terminates the current dialogue. Clears `CurrentActor`, releases blocking, hides the UI, then fires `OnDialogueEnd` and `OnDialogueEnded`. `CurrentActor` is already `null` by the time `OnDialogueEnd` subscribers are notified.
 
 ### Fields
 
@@ -260,7 +261,7 @@ Logs a message to the Unity Console when reached. Passes through silently — th
 
 | Field | Description |
 |---|---|
-| **Level** | Info (white), Warning (yellow — node title bar turns yellow), Error (red — node title bar turns red) |
+| **Level** | Log (white), Warning (yellow — node title bar turns yellow), Error (red — node title bar turns red) |
 | **Message** | Text written to the Console. Multiline. |
 | **Include Node ID** | Prepends the node's short GUID to the message, useful when multiple Debug nodes log similar text |
 | **Watch Vars** (+ Add) | Variable name dropdown. The current runtime value of each listed variable is appended to the log output, e.g. `[foundCat=true] [gold=42]` |
@@ -317,7 +318,7 @@ Plays one or more `AudioClip` assets and **advances immediately** — it does no
 
 | Field | Description |
 |---|---|
-| **Speaker** | Name of the registered speaker whose world position is used for 3D spatial audio. Leave blank to use the 2D fallback `AudioSource` on the `DialogueManager`. |
+| **Speaker** | Name of the registered speaker whose world position is used for 3D spatial audio. Leave blank to use the graph's **Default Speaker**. If no default is set or no matching speaker is registered, the 2D fallback `AudioSource` on the `DialogueManager` is used instead. |
 | **Audio Clips** (+ Add) | `AudioClip` object fields. Drag assets in. Null slots are skipped. |
 | **✕** | Removes a slot |
 
@@ -347,7 +348,7 @@ Each action card has:
 | **Speaker (override)** | Name of the registered speaker whose Animator to target. Blank = uses the graph's Default Speaker. |
 | **✕** | Removes this action card |
 
-The Animator is found by calling `GetComponentInChildren<Animator>()` on the speaker's registered transform. If no Animator is found, a warning is logged and the action is skipped.
+The Animator is found via `GetComponentInChildren<Animator>()` called on the speaker's transform at `RegisterSpeaker` time (i.e. when the `NPCDialogue` component starts) and cached for the duration of the session. If no Animator is found at registration, a warning is logged and the action is skipped.
 
 ---
 
@@ -363,138 +364,14 @@ The tag is displayed as a small badge on the node in the graph editor when set.
 
 ---
 
-## Jump Node `[J]`
+## Shared: Prevent Dialogue Exit
 
-![Jump Node](assets/images/nodes/jump.png){ width="260" }
+Every node also has a **Prevent Dialogue Exit** toggle (shown below the ⚐ Tag field). When enabled:
 
-Redirects execution to any node in the same graph identified by its **⚐ Tag** (Return Tag). Has no output port. Execution jumps immediately — no dialogue is shown.
+- `DialogueManager.CancelDialogue()` is a no-op while this node is active
+- The built-in Escape-key handler in `DialogueUI` is ignored
+- `DialogueManager.CanCancel` returns `false`
 
-Use Jump nodes to:
-
-- **Loop** back to an earlier part of the graph (e.g. repeat a menu until the player picks "Goodbye")
-- **Share a common ending** branch from multiple paths without drawing crossing edges
-- **Avoid long edges** across large graphs
-
-### Fields
-
-| Field | Description |
-|---|---|
-| **Jumps to** (dropdown) | Lists every ⚐ Tag set on a node in this graph. Select the target tag. |
-| **↺ Refresh** | Re-scans the graph for tags added after this Jump Node was placed |
-
-The jump target is resolved by tag string at runtime. If the tag no longer exists in the graph when dialogue runs, the runner logs an error and ends the dialogue.
-
-> Set the ⚐ Tag on the **target node**, not on the Jump Node itself.
+Use this to protect nodes that write variables, grant quest rewards, or play mandatory story beats that must not be interrupted. The validator will flag any locked node that has no reachable End node, since that would leave the player permanently stuck.
 
 ---
-
-## Debug Node `[D]`
-
-![Debug Node](assets/images/nodes/debug.png){ width="260" }
-
-Logs a message to the Unity Console when reached. Passes through silently — the player never sees it. Execution continues to the connected output node immediately.
-
-### Fields
-
-| Field | Description |
-|---|---|
-| **Level** | Info (white), Warning (yellow — node title bar turns yellow), Error (red — node title bar turns red) |
-| **Message** | Text written to the Console. Multiline. |
-| **Include Node ID** | Prepends the node's short GUID to the message, useful when multiple Debug nodes log similar text |
-| **Watch Vars** (+ Add) | Variable name dropdown. The current runtime value of each listed variable is appended to the log output, e.g. `[foundCat=true] [gold=42]` |
-
----
-
-## Wait Node `[F5]`
-
-![Wait Node](assets/images/nodes/wait.png){ width="260" }
-
-Pauses execution for a set duration in real-time seconds, then advances silently. No dialogue is shown.
-
-Internally, `DialogueManager` starts a coroutine that calls `runner.Continue()` after the delay. The wait cannot be skipped by the player — it runs to completion regardless of input.
-
-In the **Dialogue Preview Window**, the wait is skipped instantly so you can step through graphs without sitting through delays.
-
-### Fields
-
-| Field | Description |
-|---|---|
-| **Seconds** | Float, minimum 0. A value of 0 advances on the next frame. |
-
-**Practical uses**: dramatic pauses between automatic lines, pacing cutscene sequences, spacing between timed Play Audio clips.
-
----
-
-## Fire Event Node `[F2]`
-
-![Fire Event Node](assets/images/nodes/fire-event.png){ width="260" }
-
-Silently broadcasts one or more named events and advances. No dialogue is shown. Uses the same `OnNodeEvent` / `OnGlobalNodeEvent` callbacks as NPC node events.
-
-Use this when you need to trigger a game system at a precise point in the conversation flow without attaching the event to an NPC speak node — for example, triggering a door to open between two branches, or spawning an enemy after a dramatic reveal.
-
-### Fields
-
-| Field | Description |
-|---|---|
-| **Key** | The event string. Received by `OnNodeEvent` subscribers. |
-| **Global** | Off = Local (fires `OnNodeEvent` only). On = Global (fires both `OnNodeEvent` and `OnGlobalNodeEvent`). |
-| **✕** | Removes this event row |
-
-Multiple events are fired in list order.
-
----
-
-## Play Audio Node `[F3]`
-
-![Play Audio Node](assets/images/nodes/play-audio.png){ width="260" }
-
-Plays one or more `AudioClip` assets and **advances immediately** — it does not wait for playback to finish. All clips fire in list order via the `DialogueManager`'s audio sources.
-
-### Fields
-
-| Field | Description |
-|---|---|
-| **Speaker** | Name of the registered speaker whose world position is used for 3D spatial audio. Leave blank to use the 2D fallback `AudioSource` on the `DialogueManager`. |
-| **Audio Clips** (+ Add) | `AudioClip` object fields. Drag assets in. Null slots are skipped. |
-| **✕** | Removes a slot |
-
-If a matching speaker transform is found, the spatial `AudioSource` is repositioned to that transform and plays with full 3D (`spatialBlend = 1`). If not, the 2D `AudioSource` plays instead.
-
-> Because Play Audio Node advances immediately, it's best for short stings and sound effects. For voice lines that the dialogue should wait for, use an AudioClip slot on an NPC line instead.
-
----
-
-## Animator Trigger Node `[F4]`
-
-![Animator Trigger Node](assets/images/nodes/animator-trigger.png){ width="260" }
-
-Silently sets one or more Animator parameters on registered speakers and advances. No dialogue is shown.
-
-Use this to trigger animations at precise moments in dialogue flow without tying them to an NPC speak node — for example, playing a gesture animation between two NPC lines, or triggering a walk cycle after a dialogue branch resolves.
-
-### Fields
-
-Each action card has:
-
-| Field | Description |
-|---|---|
-| **Parameter Name** | Exact Animator parameter name (case-sensitive) |
-| **Type** | Trigger / Bool / Int / Float |
-| **Value** | Visible and editable for Bool, Int, Float. Hidden for Trigger. |
-| **Speaker (override)** | Name of the registered speaker whose Animator to target. Blank = uses the graph's Default Speaker. |
-| **✕** | Removes this action card |
-
-The Animator is found by calling `GetComponentInChildren<Animator>()` on the speaker's registered transform. If no Animator is found, a warning is logged and the action is skipped.
-
----
-
-## Shared: Return Tag (⚐ Tag field)
-
-Every node has a **⚐ Tag** field at the top. This is the node's **Return Tag** — a string identifier used exclusively as a Jump Node target.
-
-- Leave blank if no Jump Node needs to target this node
-- Tags must be unique within a graph (the validator will warn you about duplicates)
-- Tags are resolved at runtime by string comparison — renaming a tag after a Jump Node references it will break the jump
-
-The tag is displayed as a small badge on the node in the graph editor when set.

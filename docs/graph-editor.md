@@ -8,6 +8,8 @@ The graph editor is the primary authoring tool in Threader. It opens as a Unity 
 
 Double-click any **Dialogue Graph** asset in the Project window. The editor opens and loads that graph automatically. You can also open it via **Threader → Graph Editor** in the Unity menu bar and then load a graph from the sidebar.
 
+**Threader → Help & Documentation** opens the online documentation in your default browser.
+
 ---
 
 ## Layout
@@ -28,7 +30,7 @@ Both panels remember their sizes between sessions via EditorPrefs.
 | Action | How |
 |---|---|
 | Pan | Middle-mouse drag, or Alt + left-drag |
-| Zoom | Scroll wheel |
+| Zoom | Scroll wheel. Range: 0.05× to 5× |
 | Select a node | Left-click |
 | Multi-select | Left-drag a box, or Shift+click individual nodes |
 | Move nodes | Left-drag selected nodes |
@@ -65,12 +67,14 @@ An orange **● Unsaved** indicator appears in the toolbar whenever the graph ha
 
 ### NAVIGATE
 
-| Button | What it does |
+| Button / Control | What it does |
 |---|---|
 | **Go to Start** | Pans and zooms the canvas to frame the start node |
 | **Entry Points** | Lists all named entry points defined in the graph; click any to jump there |
 | **Minimap** | Toggles the floating minimap overlay (preference saved per session) |
 | **Snap to Grid** | Snaps all node movement to a 20 px grid (preference saved per session) |
+| **Show GUIDs** | Displays each node's full GUID as small text at the bottom of the node header. Useful when cross-referencing GUIDs from error messages. Preference is saved via EditorPrefs and restored across sessions. |
+| **Search GUID** | Text field + **Go** button. Paste a full GUID or the 8-character prefix shown in error messages, then press Go or Enter to pan and select the matching node. |
 
 ### CREATE
 
@@ -128,6 +132,7 @@ Right-click any node to open its context menu:
 | **Remove Entry Point** | Clears the entry point key from this node |
 | **Set Colour** | Opens the colour picker (None / Red / Orange / Yellow / Green / Blue / Purple) |
 | **Duplicate** | Creates a copy of the node with a new GUID, positioned slightly offset |
+| **Copy GUID** | Copies the node's full GUID to the clipboard. Useful for pasting into the **Search GUID** field or external tools. |
 | **Delete** | Removes the node and all edges connected to it |
 
 A 4 px accent border on the left side of the node shows any assigned colour. The colour is purely organisational — it has no effect on execution.
@@ -243,16 +248,41 @@ The preview window is covered on its own page — see [Dialogue Preview Window](
 
 ## Validation
 
-Click **Validate** in the sidebar PROJECT section to run a static check over the loaded graph. The validator looks for:
+Click **Validate** in the sidebar PROJECT section to run a static check over the loaded graph. Results appear in a panel at the bottom of the editor window. Each issue lists a description and a **Go** button to jump directly to the offending node.
 
-- Nodes with no outgoing connection (potential dead ends other than End nodes)
-- Choice nodes with no choices defined
-- Jump nodes pointing at tags that don't exist
-- Branch or condition variables that don't exist in any assigned `DialogueVariables` asset
-- Missing audio clips in Play Audio nodes
-- NPC nodes with no lines
+### Reading console errors
 
-Each issue is listed inline with a **Go** button to jump directly to the offending node.
+All runtime `LogError` and `LogWarning` messages from Threader include the **graph name**, **node type**, and a **short node ID** (8-character GUID prefix). Example:
+
+```
+[Threader] JumpNode 'a3f9c812' in graph 'VillagerGraph': tag 'shop_loop' not found on any node.
+```
+
+Paste the 8-char prefix into the **Search GUID** field in the NAVIGATE sidebar and press **Go** to jump straight to that node. Clicking the console entry pings the source graph asset in the Project window.
+
+> Unity does not support opening a custom editor window from a console double-click (that callback is reserved for `.cs` files). The asset ping is the closest equivalent.
+
+The validator checks for:
+
+- No Start node set on the graph
+- NPC node has no lines, or all lines have blank text
+- NPC node output is not connected
+- NPC node speaker name is not found in any assigned Speaker Roster (only checked when a roster is assigned)
+- Player Choice node has no choices
+- Player Choice node has a choice with blank text (reported as “choice N has blank text”)
+- Player Choice node has a choice with no outgoing connection
+- Branch node has no conditions (always takes False path)
+- Branch node True or False output is not connected
+- Jump node has no target tag set
+- Jump node target tag does not exist on any node in the graph
+- Set Variable node has no actions
+- Set Variable node output is not connected
+- Random node has no outputs, or all outputs are unconnected
+- End node **Next entry** key references an entry point not defined in this graph
+- Named entry point references a node that no longer exists
+- A node with **Prevent Dialogue Exit** enabled has no reachable End node (would leave the player permanently stuck)
+
+**Live validation**: while the validator panel is open, it re-runs automatically whenever nodes or edges change. Close the panel to stop live updates.
 
 ---
 

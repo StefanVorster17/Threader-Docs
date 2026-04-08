@@ -10,13 +10,13 @@
       
       
       
-        <link rel="canonical" href="https://stefanvorster17.github.io/Threader-Docs/entry-points/">
+        <link rel="canonical" href="https://stefanvorster17.github.io/Threader-Docs/ui/">
       
       
-        <link rel="prev" href="../ui/">
+        <link rel="prev" href="../events/">
       
       
-        <link rel="next" href="../saving/">
+        <link rel="next" href="../entry-points/">
       
       
         
@@ -27,7 +27,7 @@
     
     
       
-        <title>Entry Points - Threader - Dialogue Kit</title>
+        <title>UI - Threader - Dialogue Kit</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#entry-points" class="md-skip">
+        <a href="#ui" class="md-skip">
           Skip to content
         </a>
       
@@ -117,7 +117,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Entry Points
+              UI
             
           </span>
         </div>
@@ -763,34 +763,6 @@
                 
   
   
-  
-  
-    <li class="md-nav__item">
-      <a href="../ui/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    UI
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
     
   
   
@@ -810,7 +782,7 @@
   <span class="md-ellipsis">
     
   
-    Entry Points
+    UI
   
 
     
@@ -828,7 +800,7 @@
   <span class="md-ellipsis">
     
   
-    Entry Points
+    UI
   
 
     
@@ -854,33 +826,22 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#concepts" class="md-nav__link">
+  <a href="#the-built-in-dialogueui" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Concepts
+        The built-in DialogueUI
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#creating-an-entry-point" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Creating an entry point
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Creating an entry point">
+    <nav class="md-nav" aria-label="The built-in DialogueUI">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#step-1-mark-a-node" class="md-nav__link">
+  <a href="#what-it-does" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 1 — Mark a node
+        What it does
       
     </span>
   </a>
@@ -888,10 +849,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#step-2-verify-in-the-graph-editor" class="md-nav__link">
+  <a href="#inspector-fields" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 2 — Verify in the graph editor
+        Inspector fields
       
     </span>
   </a>
@@ -899,10 +860,21 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#step-3-use-the-key" class="md-nav__link">
+  <a href="#expected-uxml-element-names" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 3 — Use the key
+        Expected UXML element names
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#it-is-for-the-demo-scene" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        It is for the demo scene
       
     </span>
   </a>
@@ -915,33 +887,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#how-the-runner-resolves-an-entry-point" class="md-nav__link">
+  <a href="#building-a-custom-ui" class="md-nav__link">
     <span class="md-ellipsis">
       
-        How the runner resolves an entry point
+        Building a custom UI
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#runtime-api" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Runtime API
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Runtime API">
+    <nav class="md-nav" aria-label="Building a custom UI">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#setentrypointstring-key" class="md-nav__link">
+  <a href="#minimum-implementation" class="md-nav__link">
     <span class="md-ellipsis">
       
-        SetEntryPoint(string key)
+        Minimum implementation
       
     </span>
   </a>
@@ -949,10 +910,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#resetentrypoint" class="md-nav__link">
+  <a href="#the-line-advance-contract" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ResetEntryPoint()
+        The line advance contract
       
     </span>
   </a>
@@ -960,10 +921,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#activeentrypointkey" class="md-nav__link">
+  <a href="#speaker-name" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ActiveEntryPointKey
+        Speaker name
       
     </span>
   </a>
@@ -971,10 +932,32 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#directly-via-dialoguemanager" class="md-nav__link">
+  <a href="#cancelling-dialogue" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Directly via DialogueManager
+        Cancelling dialogue
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#choices-selectchoice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Choices — SelectChoice
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#show-hide-the-panel-from-the-inspector" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Show / hide the panel from the Inspector
       
     </span>
   </a>
@@ -987,38 +970,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#auto-switching-with-end-nodes" class="md-nav__link">
+  <a href="#blocking-player-input-during-dialogue" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Auto-switching with End nodes
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Auto-switching with End nodes">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#example-pattern-quest-aware-npc" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Example pattern — quest-aware NPC
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#dialoguetrigger-specific-fields" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        DialogueTrigger-specific fields
+        Blocking player input during dialogue
       
     </span>
   </a>
@@ -1026,10 +981,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#saving-and-restoring-the-active-entry-point" class="md-nav__link">
+  <a href="#camera-transitions-before-the-first-line" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Saving and restoring the active entry point
+        Camera transitions before the first line
       
     </span>
   </a>
@@ -1037,74 +992,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#multiple-entry-points-on-the-same-graph" class="md-nav__link">
+  <a href="#camera-look-at-during-dialogue" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Multiple entry points on the same graph
+        Camera look-at during dialogue
       
     </span>
   </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#edge-cases" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Edge cases
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Edge cases">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#entry-point-on-a-jump-node" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Entry point on a Jump Node
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#entry-point-on-an-end-node" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Entry point on an End Node
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#changing-the-entry-point-mid-dialogue" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Changing the entry point mid-dialogue
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#entry-point-not-found-warning-not-error" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Entry point not found — warning, not error
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -1112,6 +1006,34 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../entry-points/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Entry Points
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -1405,33 +1327,22 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#concepts" class="md-nav__link">
+  <a href="#the-built-in-dialogueui" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Concepts
+        The built-in DialogueUI
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#creating-an-entry-point" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Creating an entry point
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Creating an entry point">
+    <nav class="md-nav" aria-label="The built-in DialogueUI">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#step-1-mark-a-node" class="md-nav__link">
+  <a href="#what-it-does" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 1 — Mark a node
+        What it does
       
     </span>
   </a>
@@ -1439,10 +1350,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#step-2-verify-in-the-graph-editor" class="md-nav__link">
+  <a href="#inspector-fields" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 2 — Verify in the graph editor
+        Inspector fields
       
     </span>
   </a>
@@ -1450,10 +1361,21 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#step-3-use-the-key" class="md-nav__link">
+  <a href="#expected-uxml-element-names" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 3 — Use the key
+        Expected UXML element names
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#it-is-for-the-demo-scene" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        It is for the demo scene
       
     </span>
   </a>
@@ -1466,33 +1388,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#how-the-runner-resolves-an-entry-point" class="md-nav__link">
+  <a href="#building-a-custom-ui" class="md-nav__link">
     <span class="md-ellipsis">
       
-        How the runner resolves an entry point
+        Building a custom UI
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#runtime-api" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Runtime API
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Runtime API">
+    <nav class="md-nav" aria-label="Building a custom UI">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#setentrypointstring-key" class="md-nav__link">
+  <a href="#minimum-implementation" class="md-nav__link">
     <span class="md-ellipsis">
       
-        SetEntryPoint(string key)
+        Minimum implementation
       
     </span>
   </a>
@@ -1500,10 +1411,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#resetentrypoint" class="md-nav__link">
+  <a href="#the-line-advance-contract" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ResetEntryPoint()
+        The line advance contract
       
     </span>
   </a>
@@ -1511,10 +1422,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#activeentrypointkey" class="md-nav__link">
+  <a href="#speaker-name" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ActiveEntryPointKey
+        Speaker name
       
     </span>
   </a>
@@ -1522,10 +1433,32 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#directly-via-dialoguemanager" class="md-nav__link">
+  <a href="#cancelling-dialogue" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Directly via DialogueManager
+        Cancelling dialogue
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#choices-selectchoice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Choices — SelectChoice
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#show-hide-the-panel-from-the-inspector" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Show / hide the panel from the Inspector
       
     </span>
   </a>
@@ -1538,38 +1471,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#auto-switching-with-end-nodes" class="md-nav__link">
+  <a href="#blocking-player-input-during-dialogue" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Auto-switching with End nodes
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Auto-switching with End nodes">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#example-pattern-quest-aware-npc" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Example pattern — quest-aware NPC
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#dialoguetrigger-specific-fields" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        DialogueTrigger-specific fields
+        Blocking player input during dialogue
       
     </span>
   </a>
@@ -1577,10 +1482,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#saving-and-restoring-the-active-entry-point" class="md-nav__link">
+  <a href="#camera-transitions-before-the-first-line" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Saving and restoring the active entry point
+        Camera transitions before the first line
       
     </span>
   </a>
@@ -1588,74 +1493,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#multiple-entry-points-on-the-same-graph" class="md-nav__link">
+  <a href="#camera-look-at-during-dialogue" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Multiple entry points on the same graph
+        Camera look-at during dialogue
       
     </span>
   </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#edge-cases" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Edge cases
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Edge cases">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#entry-point-on-a-jump-node" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Entry point on a Jump Node
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#entry-point-on-an-end-node" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Entry point on an End Node
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#changing-the-entry-point-mid-dialogue" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Changing the entry point mid-dialogue
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#entry-point-not-found-warning-not-error" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Entry point not found — warning, not error
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -1676,215 +1520,286 @@
 
 
 
-<h1 id="entry-points">Entry Points</h1>
-<p>Entry points let you jump to any node in a graph instead of always starting from the default start node. They are the primary mechanism for <strong>branching narrative across multiple conversations</strong> — an NPC who says different things before and after a quest, a cutscene that can start from different beats, a shop NPC with a special line once you've been friends for a while.</p>
+<h1 id="ui">UI</h1>
+<p>Threader ships with a built-in <code>DialogueUI</code> component that powers the demo scene. It is there to get something on screen immediately — <strong>it is not intended to be your final UI</strong>. Most projects will replace it entirely with a custom implementation to match their own visual style and UI framework.</p>
 <hr />
-<h2 id="concepts">Concepts</h2>
+<h2 id="the-built-in-dialogueui">The built-in DialogueUI</h2>
+<p><code>DialogueUI</code> is a <strong>Unity UI Toolkit</strong> component (<code>UIDocument</code>-based). It is <code>[RequireComponent(typeof(UIDocument))]</code>, so it must live on a GameObject that already has a <code>UIDocument</code>.</p>
+<h3 id="what-it-does">What it does</h3>
+<ul>
+<li>Displays NPC lines with a configurable typewriter effect</li>
+<li>Shows speaker name</li>
+<li>Renders player choice buttons with staggered fade-in, visited/locked states, and an animated dismiss on selection</li>
+<li>Handles <strong>Space</strong> to skip the current typewriter animation or advance the line</li>
+<li>Handles <strong>Escape</strong> to call <code>DialogueManager.CancelDialogue()</code> (respects per-node <strong>Prevent Dialogue Exit</strong>)</li>
+<li>Manages optional <strong>Skip</strong> and <strong>Exit</strong> HUD elements automatically (shown/hidden as dialogue state changes)</li>
+</ul>
+<h3 id="inspector-fields">Inspector fields</h3>
 <table>
 <thead>
 <tr>
-<th>Term</th>
-<th>Meaning</th>
+<th>Field</th>
+<th>Default</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><strong>Start node</strong></td>
-<td>Every graph has one — the node with the Start badge. This is the default entry.</td>
+<td><strong>Choice Button Template</strong></td>
+<td>none</td>
+<td>A <code>VisualTreeAsset</code> UXML template used for each choice button. If left blank, plain <code>Button</code> elements are created.</td>
 </tr>
 <tr>
-<td><strong>Entry point</strong></td>
-<td>A named alias that maps a key string to a specific node GUID. Stored on the graph asset.</td>
+<td><strong>Chars Per Second</strong></td>
+<td><code>10</code></td>
+<td>Typewriter speed.</td>
 </tr>
 <tr>
-<td><strong>Active entry point key</strong></td>
-<td>A string held per-actor at runtime. When dialogue starts, this key is resolved to a node. Empty/null = use start node.</td>
+<td><strong>Punctuation Pause</strong></td>
+<td><code>0.15</code></td>
+<td>Extra seconds added after <code>.</code> <code>,</code> <code>!</code> <code>?</code> <code>;</code></td>
 </tr>
 <tr>
-<td><strong>Auto-switching</strong></td>
-<td>End nodes have a <strong>Next entry</strong> dropdown — selecting a key automatically updates the actor's active entry point when that end node is reached.</td>
+<td><strong>Choice Stagger Delay</strong></td>
+<td><code>0.5</code></td>
+<td>Seconds between each choice card fading in.</td>
 </tr>
 </tbody>
 </table>
+<h3 id="expected-uxml-element-names">Expected UXML element names</h3>
+<p><code>DialogueUI</code> queries these named elements from the <code>UIDocument</code> root at startup:</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Root</code></td>
+<td><code>VisualElement</code></td>
+<td>Top-level container. Shown/hidden when dialogue starts/ends.</td>
+</tr>
+<tr>
+<td><code>Text</code></td>
+<td><code>Label</code></td>
+<td>Receives the typewritten line text.</td>
+</tr>
+<tr>
+<td><code>SpeakerName</code></td>
+<td><code>Label</code></td>
+<td>Displays the speaking character's name. Hidden automatically when blank.</td>
+</tr>
+<tr>
+<td><code>ChoicesContainer</code></td>
+<td><code>ScrollView</code></td>
+<td>Choice buttons are instantiated and added here.</td>
+</tr>
+<tr>
+<td><code>ScreenFader</code></td>
+<td><code>VisualElement</code></td>
+<td>Reserved for fades. Not filled automatically — available for your USS transitions.</td>
+</tr>
+<tr>
+<td><code>Skip</code></td>
+<td><code>VisualElement</code></td>
+<td>Shown during NPC lines; hidden during choice nodes. Optional — omit from UXML to disable.</td>
+</tr>
+<tr>
+<td><code>Exit</code></td>
+<td><code>VisualElement</code></td>
+<td>Shown when <code>DialogueManager.CanCancel</code> is <code>true</code> (dialogue is active and the current node allows cancellation). Optional — omit from UXML to disable.</td>
+</tr>
+</tbody>
+</table>
+<p>If any element is missing from the UXML, that feature silently does nothing rather than throwing an error.</p>
+<h3 id="it-is-for-the-demo-scene">It is for the demo scene</h3>
+<p>The demo scene ships with <code>DialogueUI</code> already set up. <strong>Remove or replace it in your own scene.</strong> The <code>DialogueUI</code> component is not required by any other part of Threader — the dialogue runner operates entirely through C# events described below.</p>
 <hr />
-<h2 id="creating-an-entry-point">Creating an entry point</h2>
-<h3 id="step-1-mark-a-node">Step 1 — Mark a node</h3>
-<p>Right-click any node in the graph editor canvas → <strong>Set as Entry Point</strong>.</p>
-<p>A text field appears in the popup. Type a short, descriptive key — e.g. <code>QuestDone</code>, <code>Repeat</code>, <code>PostBattle</code>. The key is case-sensitive everywhere.</p>
-<p>The node gets a <strong>yellow ⚑ badge</strong> in the top-right corner. The key label is also displayed on the badge so you can see at a glance which entry points exist in the graph.</p>
-<h3 id="step-2-verify-in-the-graph-editor">Step 2 — Verify in the graph editor</h3>
-<p>The Inspector shows a summary count of entry points on the graph asset but not the individual keys. To verify, open the graph in the editor and look for the <strong>yellow ⚑ badges</strong> on nodes — each badge displays the key assigned to that node. If a node you intended to mark as an entry point has no badge, right-click it and set it again.</p>
-<h3 id="step-3-use-the-key">Step 3 — Use the key</h3>
-<p>Leave the <strong>Active Entry Point Key</strong> field on <code>DialogueTrigger</code> or <code>NPCDialogue</code> empty to use the start node. Type any of your defined keys to start there instead. This field is directly editable and saved in the scene — useful for authoring a component that always starts partway through a graph (e.g. a tutorial skip).</p>
-<hr />
-<h2 id="how-the-runner-resolves-an-entry-point">How the runner resolves an entry point</h2>
-<p><code>DialogueGraph.ResolveEntryPointGuid(key)</code> is called at the start of every dialogue:</p>
-<pre><code class="language-csharp">public string ResolveEntryPointGuid(string key)
+<h2 id="building-a-custom-ui">Building a custom UI</h2>
+<p>You only need three event subscriptions and one method call. Everything else is up to you — UGUI, UI Toolkit, third-party frameworks, whatever your project uses.</p>
+<h3 id="minimum-implementation">Minimum implementation</h3>
+<p>This example uses <strong>UI Toolkit</strong> (<code>UIDocument</code>), which is what the built-in <code>DialogueUI</code> uses as well. If you prefer UGUI or another framework the same event subscriptions apply — just swap out the UI calls.</p>
+<pre><code class="language-csharp">using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UIElements;
+
+[RequireComponent(typeof(UIDocument))]
+public class MyDialogueUI : MonoBehaviour
 {
-    if (!string.IsNullOrEmpty(key))
+    Label          _textLabel;
+    Label          _speakerLabel;
+    VisualElement  _panel;
+    VisualElement  _choicesContainer;
+
+    void Awake()
     {
-        foreach (var ep in EntryPoints)
-        {
-            if (ep.Key == key)
-                return ep.NodeGuid;
-        }
-        Debug.LogWarning($&quot;[DialogueGraph] Entry point key '{key}' not found in '{name}'. &quot; +
-                         &quot;Falling back to start node.&quot;);
+        var root       = GetComponent&lt;UIDocument&gt;().rootVisualElement;
+        _panel             = root.Q&lt;VisualElement&gt;(&quot;Root&quot;);
+        _textLabel         = root.Q&lt;Label&gt;(&quot;Text&quot;);
+        _speakerLabel      = root.Q&lt;Label&gt;(&quot;SpeakerName&quot;);
+        _choicesContainer  = root.Q&lt;VisualElement&gt;(&quot;Choices&quot;);
+        _panel.style.display = DisplayStyle.None;
     }
-    return StartNodeGuid;
+
+    void OnEnable()
+    {
+        DialogueManager.Instance.OnNPCLine     += HandleLine;
+        DialogueManager.Instance.OnChoiceNode  += HandleChoices;
+        DialogueManager.Instance.OnDialogueEnd += HandleEnd;
+    }
+
+    void OnDisable()
+    {
+        DialogueManager.Instance.OnNPCLine     -= HandleLine;
+        DialogueManager.Instance.OnChoiceNode  -= HandleChoices;
+        DialogueManager.Instance.OnDialogueEnd -= HandleEnd;
+    }
+
+    void HandleLine(NPCLine line)
+    {
+        // line.SpeakerName — resolved speaker name (graph default applied when node Speaker is blank)
+        // line.Text — fully resolved string (variable tokens already substituted)
+        // line.Clip — AudioClip, may be null
+        _panel.style.display  = DisplayStyle.Flex;
+        _speakerLabel.text    = line.SpeakerName;
+        _textLabel.text       = line.Text;
+        _choicesContainer.Clear();
+    }
+
+    void HandleChoices(List&lt;ChoiceData&gt; choices)
+    {
+        _choicesContainer.Clear();
+        for (int i = 0; i &lt; choices.Count; i++)
+        {
+            var choice = choices[i];
+            if (choice.IsHidden) continue;  // filter hidden choices before rendering
+
+            int capturedIndex = i;
+            var btn = new Button(() =&gt; DialogueManager.Instance.SelectChoice(capturedIndex));
+            btn.text = choice.Text;
+            btn.SetEnabled(!choice.IsLocked);
+            _choicesContainer.Add(btn);
+        }
+    }
+
+    void HandleEnd()
+    {
+        _panel.style.display = DisplayStyle.None;
+        _choicesContainer.Clear();
+    }
 }
 </code></pre>
-<p>Key points:
-- If <code>key</code> is null or empty, start node is used (no warning)
-- If <code>key</code> is non-empty but not found in the <code>EntryPoints</code> list, a warning is printed and the start node is used — it does not throw
-- Entry point lookup is a simple linear scan — keep count small; performance only matters for very large graphs with many entry points</p>
-<hr />
-<h2 id="runtime-api">Runtime API</h2>
-<p>Both <code>DialogueTrigger</code> and <code>NPCDialogue</code> implement <code>IDialogueActor</code>:</p>
-<pre><code class="language-csharp">public interface IDialogueActor
+<h3 id="the-line-advance-contract">The line advance contract</h3>
+<p>The runner handles line timing internally — <strong>you do not call <code>Continue()</code></strong>. After <code>OnNPCLine</code> fires the runner:</p>
+<ol>
+<li>If the line has an <code>AudioClip</code>, waits for the clip to finish playing.</li>
+<li>Otherwise, waits until <code>DialogueUI.IsTyping</code> is <code>false</code>.</li>
+<li>Waits <code>linePause</code> seconds (set on the <code>DialogueManager</code> Inspector).</li>
+<li>Checks <code>DialogueUI.SkipLineRequested</code> (set by Space key in the built-in UI).</li>
+<li>Calls <code>runner.Continue()</code> itself and moves to the next node.</li>
+</ol>
+<p><strong>If you have no <code>DialogueUI</code> in the scene</strong>, step 2 resolves immediately (the static <code>IsTyping</code> flag is <code>false</code> by default), so lines advance after only the <code>linePause</code> delay. If your custom UI has a typewriter and you want the runner to wait for it, you have two options:</p>
+<ul>
+<li>Set <code>linePause</code> long enough to cover the typewriter duration (simple, not dynamic).</li>
+<li>Provide Space-to-advance input on your own — the runner will hold at step 3/4 until <code>linePause</code> elapses regardless.</li>
+</ul>
+<h3 id="speaker-name">Speaker name</h3>
+<p><code>OnNPCLine</code> carries the speaker name in <code>line.SpeakerName</code> alongside <code>line.Text</code> and <code>line.Clip</code>. Use it directly in your <code>HandleLine</code> handler:</p>
+<pre><code class="language-csharp">void HandleLine(NPCLine line)
 {
-    DialogueGraph Graph               { get; }
-    string        ActiveEntryPointKey { get; }
-
-    void SetEntryPoint(string key);   // switch to named branch
-    void ResetEntryPoint();           // revert to default start node (sets key to null)
-    void StartDialogue();             // begin dialogue from current entry point key
+    _speakerLabel.text = line.SpeakerName;
+    _textLabel.text    = line.Text;
 }
 </code></pre>
-<p>From any script:</p>
-<pre><code class="language-csharp">// Get the component — works whether it's a DialogueTrigger or NPCDialogue
-IDialogueActor actor = npcObject.GetComponent&lt;IDialogueActor&gt;();
-
-// Change the branch
-actor.SetEntryPoint(&quot;QuestDone&quot;);
-
-// Start immediately
-actor.StartDialogue();
-
-// Or just set it and let the player trigger it naturally
-actor.SetEntryPoint(&quot;RepeatBranch&quot;);
+<h3 id="cancelling-dialogue">Cancelling dialogue</h3>
+<p><code>DialogueManager.CancelDialogue()</code> immediately ends active dialogue. Call it from any button click or key handler in your custom UI:</p>
+<pre><code class="language-csharp">// Example: Escape key in Update(), or a cancel button callback
+DialogueManager.Instance.CancelDialogue();
 </code></pre>
-<p>Using <code>IDialogueActor</code> rather than the concrete type means your quest system, save system, and cutscene scripts don't need to know whether the NPC uses <code>DialogueTrigger</code> or <code>NPCDialogue</code> — the interface is the same.</p>
-<h3 id="setentrypointstring-key"><code>SetEntryPoint(string key)</code></h3>
-<p>Sets the actor's <code>ActiveEntryPointKey</code> to <code>key</code>. The change takes effect the next time <code>StartDialogue()</code> is called — it does not interrupt an in-progress dialogue.</p>
-<h3 id="resetentrypoint"><code>ResetEntryPoint()</code></h3>
-<p>Sets <code>ActiveEntryPointKey</code> to <code>null</code>. The next dialogue start will use the graph's default start node.</p>
-<h3 id="activeentrypointkey"><code>ActiveEntryPointKey</code></h3>
-<p>Read-only property. Reflects the current key. Always check this when saving (see <a href="../saving/">Saving</a>).</p>
-<h3 id="directly-via-dialoguemanager">Directly via <code>DialogueManager</code></h3>
-<p>You can also call <code>StartDialogue</code> directly on the manager without going through the actor:</p>
-<pre><code class="language-csharp">DialogueManager.Instance.StartDialogue(graph, &quot;QuestDone&quot;, actorComponent);
+<p>The call is a no-op if no dialogue is running, or if the current node has <strong>Prevent Dialogue Exit</strong> enabled. Check <code>DialogueManager.Instance.CanCancel</code> first if you want to show or hide a cancel button reactively.</p>
+<h3 id="choices-selectchoice">Choices — <code>SelectChoice</code></h3>
+<pre><code class="language-csharp">// Call this from whichever button the player presses
+DialogueManager.Instance.SelectChoice(index);
 </code></pre>
-<p>This does not update the actor's <code>ActiveEntryPointKey</code> — it just runs from that key for this one call. If you want the key to persist for next time, call <code>actor.SetEntryPoint("QuestDone")</code> first.</p>
-<hr />
-<h2 id="auto-switching-with-end-nodes">Auto-switching with End nodes</h2>
-<p>Every <strong>End Node</strong> has a <strong>Next entry</strong> dropdown. When dialogue reaches this end node, the runner automatically calls <code>actor.SetEntryPoint(key)</code> with the selected key.</p>
-<p><img alt="End node with Next entry dropdown" src="../assets/images/entry-point-end-node.png" width="320" /></p>
-<pre><code class="language-csharp">// DialogueRunner.cs (simplified)
-if (!string.IsNullOrEmpty(endNode.SetEntryPointOnComplete))
-    actor?.SetEntryPoint(endNode.SetEntryPointOnComplete);
-</code></pre>
-<h3 id="example-pattern-quest-aware-npc">Example pattern — quest-aware NPC</h3>
-<p>Suppose an NPC has three phases:</p>
+<p><code>index</code> is the <strong>0-based position</strong> in the list passed to <code>OnChoiceNode</code> — not the position of the button in your layout (which may differ if you filtered out hidden choices). Store the original index when creating buttons, as shown in the example above.</p>
+<h3 id="show-hide-the-panel-from-the-inspector">Show / hide the panel from the Inspector</h3>
+<p>For simple show/hide without any C#, use the <code>UnityEvent</code> fields on <code>DialogueManager</code>:</p>
 <table>
 <thead>
 <tr>
-<th>When</th>
-<th>Key</th>
-<th>Branch content</th>
+<th>Field</th>
+<th>Fires when</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>First meeting</td>
-<td><em>(empty, start node)</em></td>
-<td>Introductory dialogue</td>
+<td><strong>On Dialogue Started</strong></td>
+<td>Any conversation begins</td>
 </tr>
 <tr>
-<td>Quest in progress</td>
-<td><code>InProgress</code></td>
-<td>Brief reminder</td>
-</tr>
-<tr>
-<td>Quest complete</td>
-<td><code>QuestDone</code></td>
-<td>Reward dialogue + closure</td>
+<td><strong>On Dialogue Ended</strong></td>
+<td>Any conversation ends</td>
 </tr>
 </tbody>
 </table>
-<p>Graph setup:</p>
-<ol>
-<li><strong>Start node</strong> → introductory conversation → <strong>End node</strong> with <strong>Next entry = InProgress</strong></li>
-<li><code>InProgress</code> entry point → reminder branch → <strong>End node</strong> with <strong>Next entry = InProgress</strong> <em>(stays in "in progress" branch until something changes it)</em></li>
-<li><code>QuestDone</code> entry point → reward branch → <strong>End node</strong> <em>(leave Next entry as (keep current) — quest is done, no further switching needed)</em></li>
-</ol>
-<p>Your quest system changes the actor:</p>
-<pre><code class="language-csharp">void OnQuestCompleted()
+<p>Drag your UI panel GameObject into either slot and call <code>SetActive(true)</code> / <code>SetActive(false)</code>.</p>
+<hr />
+<h2 id="blocking-player-input-during-dialogue">Blocking player input during dialogue</h2>
+<p>Implement <code>IDialogue</code> on any component that should pause when dialogue is active (player movement, hotkeys, inventory, etc.):</p>
+<pre><code class="language-csharp">public class PlayerController : MonoBehaviour, IDialogue
 {
-    IDialogueActor npc = questNpc.GetComponent&lt;IDialogueActor&gt;();
-    npc.SetEntryPoint(&quot;QuestDone&quot;);
+    void OnEnable()  =&gt; DialogueManager.Instance.RegisterBlockable(this);
+    void OnDisable() =&gt; DialogueManager.Instance.UnregisterBlockable(this);
+
+    public void Block()   { /* disable movement */ }
+    public void Unblock() { /* re-enable movement */ }
 }
 </code></pre>
-<p>The NPC now runs <code>QuestDone</code> on the player's next interaction, regardless of whether they spoke to him before or after completing the quest.</p>
+<p><code>RegisterBlockable</code> in <code>OnEnable</code>, <code>UnregisterBlockable</code> in <code>OnDisable</code>. The manager calls <code>Block()</code> on all registered blockables when <code>StartDialogue</code> is called and <code>Unblock()</code> when dialogue ends.</p>
 <hr />
-<h2 id="dialoguetrigger-specific-fields">DialogueTrigger-specific fields</h2>
-<p><code>DialogueTrigger</code> has an <strong>Active Entry Point Key</strong> field directly in the Inspector. This is a serialized field — you can set it at design time for NPCs that always start partway through a graph without any C# code.</p>
-<p>At runtime, <code>TriggerDialogue()</code> always passes <code>activeEntryPointKey</code> to <code>DialogueManager.StartDialogue</code>. If <code>DialogueManager</code> is missing or <code>graph</code> is null, an error is logged and nothing happens.</p>
-<p>Interaction flow with a trigger collider:</p>
-<ol>
-<li>Player enters trigger zone → <code>playerInRange = true</code>, interact prompt shown (if assigned)</li>
-<li>Player presses <code>InteractKey</code> (or <code>Start On Enter = true</code>) → <code>TriggerDialogue()</code> is called</li>
-<li><code>TriggerDialogue</code> calls <code>DialogueManager.Instance.StartDialogue(graph, activeEntryPointKey, this)</code></li>
-<li>Dialogue runs from the resolved node</li>
-</ol>
-<hr />
-<h2 id="saving-and-restoring-the-active-entry-point">Saving and restoring the active entry point</h2>
-<p>The <code>ActiveEntryPointKey</code> is a plain string at runtime — not automatically persisted. Save and restore it with your existing save system:</p>
-<pre><code class="language-csharp">// --- Saving ---
-string savedKey = npc.GetComponent&lt;IDialogueActor&gt;().ActiveEntryPointKey;
-// Write savedKey to PlayerPrefs, JSON, etc.
-
-// --- Loading ---
-string savedKey = /* load from your save system */;
-npc.GetComponent&lt;IDialogueActor&gt;().SetEntryPoint(savedKey); // null or &quot;&quot; restores the default
-</code></pre>
-<p>For a convenient wrapper, implement save/load directly on the actor:</p>
-<pre><code class="language-csharp">public class NPCDialogueWithSave : NPCDialogue
+<h2 id="camera-transitions-before-the-first-line">Camera transitions before the first line</h2>
+<p>Implement <code>IDialogueReady</code> alongside <code>IDialogue</code> when your UI or camera needs a moment (a fade, a dolly move) before the first line should display. The manager waits on <code>IsDialogueReady</code> before starting the runner:</p>
+<pre><code class="language-csharp">public class DialogueCamera : MonoBehaviour, IDialogue, IDialogueReady
 {
-    public string SaveKey =&gt; $&quot;ep_{gameObject.name}&quot;;
+    bool _ready;
+    public bool IsDialogueReady =&gt; _ready;
 
-    public void Save() =&gt;
-        PlayerPrefs.SetString(SaveKey, ActiveEntryPointKey ?? &quot;&quot;);
+    public void Block()
+    {
+        _ready = false;
+        StartCoroutine(TransitionIn());
+    }
 
-    public void Load() =&gt;
-        SetEntryPoint(PlayerPrefs.GetString(SaveKey, &quot;&quot;));
+    IEnumerator TransitionIn()
+    {
+        // play camera cut, fade, etc.
+        yield return new WaitForSeconds(0.4f);
+        _ready = true;
+    }
+
+    public void Unblock() { /* reverse transition */ }
 }
 </code></pre>
-<p>See <a href="../saving/">Saving</a> for a full discussion including variables and choice history.</p>
 <hr />
-<h2 id="multiple-entry-points-on-the-same-graph">Multiple entry points on the same graph</h2>
-<p>There is no limit to the number of entry points on a graph. Complex NPCs might have ten or more:</p>
-<pre><code>Start        — first meeting
-AfterBanquet — next morning after the banquet scene
-QuestActive  — while quest is running
-QuestDone    — after quest is complete
-Hostile      — if player attacked a villager
-Friend       — high affinity branch
+<h2 id="camera-look-at-during-dialogue">Camera look-at during dialogue</h2>
+<p>Implement <code>IDialogueFocus</code> on your camera controller. When a graph has <strong>Look At Speaker</strong> enabled and a speaker transform is registered, the manager calls <code>FocusOn</code> each time a new NPC node is reached:</p>
+<pre><code class="language-csharp">public class DialogueCamera : MonoBehaviour, IDialogue, IDialogueFocus
+{
+    public void FocusOn(Transform target)
+    {
+        // smoothly look at target, or cut — your choice
+    }
+
+    public void ReleaseFocus()
+    {
+        // return to default camera behaviour
+    }
+}
 </code></pre>
-<p>Use the <strong>yellow badges</strong> and the Entry Points list on the graph asset to keep track of them. Group related branches with <strong>Comment Boxes</strong> in the editor so the canvas doesn't become confusing.</p>
-<hr />
-<h2 id="edge-cases">Edge cases</h2>
-<h3 id="entry-point-on-a-jump-node">Entry point on a Jump Node</h3>
-<p>You can set an entry point on a Jump Node. Execution will immediately jump to the tagged node — it will never display any content at the entry point node itself. This can be used as an indirection layer:</p>
-<pre><code>Entry &quot;Retry&quot; → Jump Node [tag: FirstLine]
-              → First NPC Node
-</code></pre>
-<h3 id="entry-point-on-an-end-node">Entry point on an End Node</h3>
-<p>Technically valid. Dialogue will end immediately on starting. Rarely useful, but it won't crash — the runner sees the end node and calls <code>HandleEnd</code>.</p>
-<h3 id="changing-the-entry-point-mid-dialogue">Changing the entry point mid-dialogue</h3>
-<p>Calling <code>actor.SetEntryPoint(key)</code> while a dialogue is running is safe (it's just a string assignment) but the current dialogue is not affected. The key only takes effect on the <em>next</em> <code>StartDialogue</code> call. If you need to jump within a running dialogue, use a <strong>Jump Node</strong> connected by the graph.</p>
-<h3 id="entry-point-not-found-warning-not-error">Entry point not found — warning, not error</h3>
-<p>If you call <code>SetEntryPoint("Typo")</code> and <code>"Typo"</code> doesn't exist in the graph, <code>ResolveEntryPointGuid</code> logs a warning and falls back to the start node. Check the Console for these warnings during QA — they signal a graph/code mismatch.</p>
+<p>Enable <strong>Look At Speaker</strong> in the <strong>Graph Editor</strong> sidebar (the toggle is in the graph settings panel on the left), then make sure every NPC has their <strong>Speaker Name</strong> set on <code>NPCDialogue</code> so the manager can resolve their transform.</p>
 
 
 

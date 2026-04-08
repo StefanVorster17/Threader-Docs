@@ -87,6 +87,10 @@
       
     </div>
     
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
     
       
 
@@ -270,6 +274,26 @@
   
   
   Support
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../roadmap/" class="md-tabs__link">
+          
+  
+  
+  Release
 
         </a>
       </li>
@@ -694,6 +718,62 @@
     
   
     Conditions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../events/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Events
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ui/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UI
   
 
     
@@ -1394,6 +1474,63 @@
 
               
             
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Release
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Release
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
               
                 
   
@@ -2034,6 +2171,7 @@
 event Action&lt;NPCLine&gt; OnNPCLine;
 </code></pre>
 <ul>
+<li><code>NPCLine.SpeakerName</code> — resolved speaker name (graph default applied when the node's Speaker field is blank)</li>
 <li><code>NPCLine.Text</code> — fully resolved text (variable tokens already substituted)</li>
 <li><code>NPCLine.Clip</code> — optional <code>AudioClip</code>. May be null.</li>
 </ul>
@@ -2051,7 +2189,8 @@ event Action&lt;string&gt; OnGlobalNodeEvent;
 </code></pre>
 <p>No actor guard needed — these are intentionally broadcast to all listeners.</p>
 <pre><code class="language-csharp">// A Player Choice node has become active.
-// The list contains only the visible choices (IsHidden = false is filtered upstream).
+// The list contains all choices, including those with IsHidden = true.
+// Custom UIs must filter out IsHidden = true entries before rendering.
 event Action&lt;List&lt;ChoiceData&gt;&gt; OnChoiceNode;
 </code></pre>
 <p>Each <code>ChoiceData</code> in the list:
@@ -2091,6 +2230,11 @@ event Action OnDialogueStartedEvent;
 <td><code>true</code> while dialogue is running (blockables are blocked)</td>
 </tr>
 <tr>
+<td><code>CanCancel</code></td>
+<td><code>bool</code></td>
+<td><code>true</code> while dialogue is active <strong>and</strong> the current node does not have <strong>Prevent Dialogue Exit</strong> enabled</td>
+</tr>
+<tr>
 <td><code>ConditionProvider</code></td>
 <td><code>ConditionProvider</code></td>
 <td>The provider assigned in the Inspector (read-only)</td>
@@ -2119,7 +2263,11 @@ event Action OnDialogueStartedEvent;
 <hr />
 <pre><code class="language-csharp">void SelectChoice(int index)
 </code></pre>
-<p>Tells the runner which choice the player made. Call from your choice button callbacks. <code>index</code> is the 0-based position in the list passed to <code>OnChoiceNode</code>. Calling with an out-of-range index is silently ignored.</p>
+<p>Tells the runner which choice the player made. Call from your choice button callbacks. <code>index</code> is the 0-based position in the list passed to <code>OnChoiceNode</code>. Calling with an out-of-range index logs an error and is ignored.</p>
+<hr />
+<pre><code class="language-csharp">void CancelDialogue()
+</code></pre>
+<p>Immediately ends active dialogue — stops all coroutines and audio, then fires <code>OnDialogueEnd</code> and <code>OnDialogueEnded</code>. No-op if no dialogue is running or if the current node has <strong>Prevent Dialogue Exit</strong> enabled. Safe to call from any UI button or key handler.</p>
 <hr />
 <pre><code class="language-csharp">void RegisterBlockable(IDialogue blockable)
 void UnregisterBlockable(IDialogue blockable)
@@ -2142,7 +2290,7 @@ void UnregisterSpeaker(string name)
 <ul>
 <li>When a line has an <code>AudioClip</code> and the speaker's <code>Transform</code> is in the registry, the clip plays from a hidden spatial <code>AudioSource</code> repositioned to the speaker's world position (<code>spatialBlend = 1</code>, <code>rolloffMode = Linear</code>).</li>
 <li>If no speaker transform is known, the clip plays from the 2D <code>audioSource</code> component.</li>
-<li>The runner waits for the clip to finish (<code>WaitWhile(() =&gt; audioSource.isPlaying)</code>) before advancing. <code>linePause</code> is applied <strong>after</strong> the clip ends.</li>
+<li>The runner waits for the clip to finish (<code>WaitWhile(() =&gt; audioSource.isPlaying &amp;&amp; !DialogueUI.SkipLineRequested)</code>) before advancing. If a skip is requested mid-clip, the source is stopped immediately. <code>linePause</code> is applied <strong>after</strong> the clip ends (also skippable).</li>
 <li>When no clip exists, the runner waits for <code>DialogueUI.IsTyping</code> to become false, then waits <code>linePause</code> seconds before advancing.</li>
 </ul>
 <hr />
@@ -2206,7 +2354,7 @@ void UnregisterSpeaker(string name)
     void ReleaseFocus();
 }
 </code></pre>
-<p>Implement alongside <code>IDialogue</code> on your player camera controller. When <code>DialogueGraph.LookAtSpeaker = true</code> and a speaker transform is registered, <code>FocusOn</code> is called each time a new NPC node is reached. <code>ReleaseFocus</code> is called when dialogue ends.</p>
+<p>Implement alongside <code>IDialogue</code> on your player camera controller. When <strong>Look At Speaker</strong> is enabled in the Graph Editor sidebar and a speaker transform is registered, <code>FocusOn</code> is called each time a new NPC node is reached. <code>ReleaseFocus</code> is called when dialogue ends.</p>
 <hr />
 <h2 id="idialogueready">IDialogueReady</h2>
 <pre><code class="language-csharp">public interface IDialogueReady
@@ -2362,7 +2510,7 @@ void UnregisterSpeaker(string name)
 <tr>
 <td><code>LookAtSpeaker</code></td>
 <td><code>bool</code></td>
-<td>When true, calls <code>IDialogueFocus.FocusOn</code> on the speaking NPC's transform</td>
+<td>When true, calls <code>IDialogueFocus.FocusOn</code> on the speaking NPC's transform. Set via the <strong>Look At Speaker</strong> toggle in the Graph Editor sidebar.</td>
 </tr>
 <tr>
 <td><code>EntryPoints</code></td>
@@ -2569,11 +2717,12 @@ static void   LoadSaveData(IEnumerable&lt;string&gt; keys)           // restore 
 <h2 id="npcline-data-class">NPCLine (data class)</h2>
 <pre><code class="language-csharp">public class NPCLine
 {
-    public string    Text;  // resolved display text (tokens substituted)
-    public AudioClip Clip;  // may be null
+    public string    Text;        // resolved display text (tokens substituted)
+    public string    SpeakerName; // resolved speaker name (graph default applied)
+    public AudioClip Clip;        // may be null
 }
 </code></pre>
-<p>Passed to <code>OnNPCLine</code> subscribers and <code>DialogueUI.SetText</code>.</p>
+<p>Passed to <code>OnNPCLine</code> subscribers.</p>
 <hr />
 <h2 id="choicedata-data-class">ChoiceData (data class)</h2>
 <pre><code class="language-csharp">public class ChoiceData
@@ -2633,9 +2782,17 @@ public class DialogueEntryPoint
 public enum SetOperator    { Set, Add, Subtract, Toggle }
 public enum WhenMissingBehaviour { Allow, Block }
 public enum AnimatorParamType    { Trigger, Bool, Int, Float }
+public enum CompareOperator
+{
+    Equal, NotEqual,
+    GreaterThan, GreaterOrEqual,
+    LessThan, LessOrEqual
+}
+// Note: Bool and String support only Equal / NotEqual. GreaterThan/etc. are effective on Int only.
+public enum DebugLogType { Log, Warning, Error }
 public enum NodeType
 {
-    Start, NPC, PlayerChoice, End,
+    NPC, PlayerChoice, End,
     Branch, SetVariable, Random, Jump,
     Debug, Wait, FireEvent, PlayAudio, AnimatorTrigger
 }
@@ -2674,6 +2831,10 @@ public enum NodeType
     <div class="md-footer-meta__inner md-grid">
       <div class="md-copyright">
   
+    <div class="md-copyright__highlight">
+      Threader Dialogue Kit &nbsp;·&nbsp; v1.0 (Unreleased)
+    </div>
+  
   
     Made with
     <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
@@ -2695,7 +2856,7 @@ public enum NodeType
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.top", "toc.follow", "search.suggest", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.top", "toc.follow", "search.suggest", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": "1.0"}</script>
     
     
       <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>

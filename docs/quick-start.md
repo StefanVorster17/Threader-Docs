@@ -67,9 +67,9 @@ void OnInteract()
 
 ## Step 5 — Set up the UI
 
-Add the built-in **DialogueUI** component to a GameObject and wire up the UIDocument and field references in the Inspector — it handles everything automatically.
+Add the built-in **DialogueUI** component to a GameObject that also has a `UIDocument` component. Assign the `UI_Dialogue.uxml` asset to the `UIDocument` — no additional field references are needed. `DialogueUI` queries all named elements from the UXML automatically at startup.
 
-> Want a fully custom UI? The [API Reference](api-reference.md) lists all events (`OnNPCLine`, `OnChoiceNode`, `OnDialogueEnd`) you can subscribe to instead.
+> Want a fully custom UI? The [UI](ui.md) page walks through a minimum implementation, and the [API Reference](api-reference.md) lists all events (`OnNPCLine`, `OnChoiceNode`, `OnDialogueEnd`) you can subscribe to.
 
 ---
 
