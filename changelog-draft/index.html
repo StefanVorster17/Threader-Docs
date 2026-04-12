@@ -1092,6 +1092,45 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#11-unreleased" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        [1.1] — Unreleased
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="[1.1] — Unreleased">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#added" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Added
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-to-use-sub-graphs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How to use Sub Graphs
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#101-unreleased" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1104,7 +1143,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#added" class="md-nav__link">
+  <a href="#added_1" class="md-nav__link">
     <span class="md-ellipsis">
       
         Added
@@ -1126,7 +1165,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#added_1" class="md-nav__link">
+  <a href="#added_2" class="md-nav__link">
     <span class="md-ellipsis">
       
         Added
@@ -1183,8 +1222,22 @@
 <h1 id="changelog-draft">Changelog Draft</h1>
 <p><em>Internal working doc — not in nav. Copy entries to changelog.md before release.</em></p>
 <hr />
-<h2 id="101-unreleased">[1.0.1] — Unreleased</h2>
+<h2 id="11-unreleased">[1.1] — Unreleased</h2>
 <h3 id="added">Added</h3>
+<ul>
+<li><strong>Sub Graph Node</strong> — a new node type that delegates execution to another <code>DialogueGraph</code> asset, then returns and continues from the next node — exactly like a function call. Assign any graph asset and an optional entry point key directly on the node. Enables shared dialogue libraries: create a single "GenericGuardIdle" graph and reference it from any number of NPC-specific router graphs without duplicating content.</li>
+<li><strong>Graph stack with depth guard</strong> — the runtime maintains a call stack when sub-graphs are nested. The stack supports up to 16 levels of nesting; exceeding this logs an error and ends dialogue cleanly to prevent infinite loops.</li>
+<li><strong>Caller speaker fallback</strong> — NPC nodes and all speaker-dependent actions (camera look-at, animator triggers, positional audio) now resolve speaker name through a three-level hierarchy: <strong>node speaker → graph <code>DefaultSpeakerName</code> → calling actor's speaker name</strong>. Shared graphs with blank speaker fields automatically display and look at whoever triggered the dialogue — no extra setup required.</li>
+<li><strong>End Node: "On end →" sub-graph slot</strong> — the End node now has an optional <code>DialogueGraph</code> object field and entry point key. When a graph asset is assigned, that graph runs as a sub-routine before the conversation truly ends. Useful for routing important NPCs back to generic idle lines at the conclusion of a quest conversation. The <code>Next entry:</code> switch fires first so the actor's state is already updated while the sub-graph plays.</li>
+<li><strong><code>SpeakerName</code> on <code>IDialogueActor</code></strong> — the interface now exposes a <code>SpeakerName</code> property, implemented by both <code>NPCDialogue</code> and <code>DialogueTrigger</code>. This is what powers the caller fallback above and allows any custom actor to participate in speaker resolution without extra wiring.</li>
+</ul>
+<h3 id="how-to-use-sub-graphs">How to use Sub Graphs</h3>
+<p><strong>Unimportant NPC (no unique dialogue):</strong> Assign your shared graph directly to the NPC's <code>NPCDialogue</code> component. Their own <code>Speaker Name</code> field is used as the fallback, so the UI and camera resolve to the correct individual automatically.</p>
+<p><strong>Important NPC (quest-driven):</strong> Give them a personal "router" graph containing only a Branch or Entry Point chain — no dialogue lines. Each branch leads to a Sub Graph Node pointing at the relevant asset (generic idle, quest intro, quest done, etc.). Your quest system calls <code>npc.SetEntryPoint("QuestDone")</code> to switch routing; the router graph handles the rest.</p>
+<p><strong>End-of-quest fallback:</strong> On the End node of a quest-specific graph, set <code>On end →</code> to your generic idle graph. After the unique lines finish, the player hears the NPC's normal idle response before dialogue closes — all without duplicating a single line.</p>
+<hr />
+<h2 id="101-unreleased">[1.0.1] — Unreleased</h2>
+<h3 id="added_1">Added</h3>
 <ul>
 <li><strong>Cancel dialogue at any time</strong> — players can now press Escape to exit a conversation immediately. <code>DialogueManager.CancelDialogue()</code> is the backing API for custom UIs. Per-node <strong>Prevent Dialogue Exit</strong> toggle (visible on every node in the graph editor, below the ⚐ Tag field) blocks cancellation while that node is active — use this to protect sections that write variables or grant rewards.</li>
 <li><strong>Show GUIDs toggle</strong> (NAVIGATE sidebar) — displays the full node GUID in small text at the bottom of every node. Toggle persists across editor sessions via EditorPrefs.</li>
@@ -1209,7 +1262,7 @@
 </li>
 <li><strong>Live validation</strong> — the validator panel now re-runs automatically whenever nodes or edges change, as long as the panel is open. The Run button always re-opens and refreshes the panel; the ✕ button closes it.</li>
 </ul>
-<h3 id="added_1">Added</h3>
+<h3 id="added_2">Added</h3>
 <ul>
 <li><strong>Skip / Exit HUD elements</strong> — <code>DialogueUI</code> now queries optional <code>"Skip"</code> and <code>"Exit"</code> named elements from the UXML and manages their visibility automatically. Skip is shown during NPC lines and hidden during choice nodes. Exit is shown whenever <code>DialogueManager.CanCancel</code> is true (dialogue active and current node does not have <strong>Prevent Dialogue Exit</strong> set).</li>
 </ul>

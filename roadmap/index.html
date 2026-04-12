@@ -1092,10 +1092,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#v101" class="md-nav__link">
+  <a href="#v11" class="md-nav__link">
     <span class="md-ellipsis">
       
-        v1.0.1
+        v1.1
       
     </span>
   </a>
@@ -1120,7 +1120,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#v11" class="md-nav__link">
+  <a href="#v11_1" class="md-nav__link">
     <span class="md-ellipsis">
       
         v1.1
@@ -1302,10 +1302,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#v101" class="md-nav__link">
+  <a href="#v11" class="md-nav__link">
     <span class="md-ellipsis">
       
-        v1.0.1
+        v1.1
       
     </span>
   </a>
@@ -1330,7 +1330,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#v11" class="md-nav__link">
+  <a href="#v11_1" class="md-nav__link">
     <span class="md-ellipsis">
       
         v1.1
@@ -1451,23 +1451,25 @@
 <p>If you have a feature request, raise it on the <a href="https://github.com/StefanVorster17/Threader-Docs/issues">GitHub repository</a> — community requests that get traction move up into a planned release.</p>
 <hr />
 <h2 id="upcoming">Upcoming</h2>
-<h3 id="v101">v1.0.1</h3>
-<p>Editor debugging improvements: GUID tooling (show, search, copy), validator enhancements with new checks and live updates, enriched runtime error messages, and runtime performance optimisations. See the <a href="../changelog/">Changelog</a> for the full list on release.</p>
+<h3 id="v11">v1.1</h3>
+<p>Sub-graph support and editor quality-of-life. Highlights: <strong>Sub Graph Node</strong> to call any dialogue graph as a reusable sub-routine and return to the caller; <strong>End Node sub-graph slot</strong> to route NPCs back to generic idle lines after a quest conversation ends; <strong>caller speaker fallback</strong> so shared graphs automatically inherit the calling actor's name; GUID tooling (show, search, copy), validator enhancements with new checks and live updates, richer runtime error messages, and assorted performance fixes. See the <a href="../changelog/">Changelog</a> for the full list on release.</p>
 <hr />
 <h2 id="planned">Planned</h2>
-<h3 id="v11">v1.1</h3>
+<h3 id="v11_1">v1.1</h3>
 <h4 id="sub-graph-support">Sub-Graph support</h4>
-<p>Call a separate <code>SubGraph</code> asset from within a running dialogue graph, then return to the calling graph when it ends.</p>
-<p><strong>Design intent:</strong>
-- A new <code>SubGraph</code> graph type that carries no actor, no LookAt setting, and fires no <code>OnDialogueStarted</code> / <code>OnDialogueEnded</code> events of its own
-- The calling graph passes its actor, LookAt state, and blocked state into the sub-graph automatically
-- A <strong>Call Graph node</strong> in the main graph triggers the call and resumes on the next connected node when the sub-graph ends
-- Existing graphs are completely unaffected — this is additive, nothing breaks</p>
+<p>Call any <code>DialogueGraph</code> asset from within a running dialogue graph, then return to the calling graph when it ends.</p>
+<p><strong>What ships:</strong>
+- <strong>Sub Graph Node</strong> — a new node type that delegates execution to another graph asset. Wire it like any other node; assign a target graph and an optional entry point key. The conversation resumes on the connected output when the sub-graph reaches its End node.
+- <strong>End Node sub-graph slot</strong> — an optional graph reference on the End node. When set, that graph runs as a sub-routine before the conversation truly closes — useful for routing an NPC back to generic idle lines after a quest-specific conversation.
+- <strong>Caller speaker fallback</strong> — NPC nodes in shared graphs resolve speaker name through a three-level chain: node → graph default → calling actor. Shared graphs with blank speaker fields automatically display and look at whoever triggered the dialogue.
+- <strong>Graph call stack with depth guard</strong> — the runtime tracks nested sub-graph calls up to 16 levels deep and ends dialogue cleanly if the limit is exceeded.
+- Existing graphs are completely unaffected — this is additive, nothing breaks.</p>
 <p><strong>Use cases this enables:</strong>
 - Shared "rumour" or "ambient" dialogue that any NPC can invoke mid-conversation
 - Reusable shop, trade, or minigame dialogue sequences called from multiple graphs
-- Breaking very large story graphs into smaller chapter graphs that chain together</p>
-<p><strong>Status:</strong> Architecture designed. Implementation planned for v1.1.</p>
+- Breaking very large story graphs into smaller chapter graphs that chain together
+- Quest NPCs that fall back to generic idle lines automatically when the quest conversation ends</p>
+<p><strong>Status:</strong> Implemented. Ships with v1.1.</p>
 <hr />
 <h2 id="considering">Considering</h2>
 <p>Features on the radar but not yet committed to a version. These may or may not ship depending on scope, community interest, and architectural fit.</p>
