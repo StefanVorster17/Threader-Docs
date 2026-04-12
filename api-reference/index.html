@@ -1314,6 +1314,28 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#npcline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NPCLine
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#choicedata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ChoiceData
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#conditionprovider-abstract" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2017,6 +2039,28 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#npcline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NPCLine
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#choicedata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ChoiceData
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#conditionprovider-abstract" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2681,10 +2725,83 @@ static void ClearDelegates()
 <pre><code class="language-csharp">static bool Evaluate(ConditionDefinition definition, string parameter)
 </code></pre>
 <p>Resolution order:
-1. <code>VariableConditionDefinition</code> — self-evaluates (no delegate/provider needed)
-2. Registered delegate for <code>definition.GetKey()</code>
-3. Active <code>Provider.Evaluate(definition, parameter)</code>
-4. <code>definition.WhenMissing</code> fallback (<code>Allow</code> → true, <code>Block</code> → false + warning)</p>
+1. <code>VariableConditionDefinition</code> — self-evaluates against <code>DialogueManager.VariablesList</code> (no delegate or provider needed)
+2. Registered delegate for <code>definition.GetKey()</code> — if found, the delegate is invoked with <code>parameter</code> and its result returned
+3. Active <code>ConditionProvider</code> asset — <code>provider.Evaluate(definition.GetKey(), parameter)</code> is called if no delegate is registered
+4. If none of the above match, returns <code>true</code> (condition passes) and logs a warning</p>
+<hr />
+<h2 id="npcline">NPCLine</h2>
+<p>Data struct passed to <code>OnNPCLine</code> each time a dialogue line becomes active.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>SpeakerName</code></td>
+<td><code>string</code></td>
+<td>Resolved speaker name. Graph <code>DefaultSpeakerName</code> is applied when the node's own Speaker field is blank.</td>
+</tr>
+<tr>
+<td><code>Text</code></td>
+<td><code>string</code></td>
+<td>Fully resolved line text. Variable tokens (<code>{varName}</code>, <code>{varName:name}</code>) are already substituted.</td>
+</tr>
+<tr>
+<td><code>Clip</code></td>
+<td><code>AudioClip</code></td>
+<td>Optional voice clip assigned on the NPC node line. <code>null</code> when no clip is set.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="choicedata">ChoiceData</h2>
+<p>Data object passed per-item in the <code>List&lt;ChoiceData&gt;</code> delivered to <code>OnChoiceNode</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Text</code></td>
+<td><code>string</code></td>
+<td>Resolved display text for the choice button. Variable tokens already substituted.</td>
+</tr>
+<tr>
+<td><code>IsLocked</code></td>
+<td><code>bool</code></td>
+<td><code>true</code> when a non-hiding condition failed. The choice is shown but should be rendered as unavailable (greyed out).</td>
+</tr>
+<tr>
+<td><code>IsHidden</code></td>
+<td><code>bool</code></td>
+<td><code>true</code> when a hiding condition failed. The choice should not be rendered at all. Filter these before creating buttons.</td>
+</tr>
+<tr>
+<td><code>ChoiceKey</code></td>
+<td><code>string</code></td>
+<td>Stable identifier in the format <code>"{nodeGuid}:{index}"</code>. Used as the key for choice history tracking.</td>
+</tr>
+<tr>
+<td>3. Active <code>Provider.Evaluate(definition, parameter)</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>4. <code>definition.WhenMissing</code> fallback (<code>Allow</code> → true, <code>Block</code> → false + warning)</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
 <p>Returns <code>true</code> if <code>definition</code> is <code>null</code>.</p>
 <hr />
 <h2 id="conditionprovider-abstract">ConditionProvider (abstract)</h2>
