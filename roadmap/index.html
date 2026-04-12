@@ -1514,8 +1514,8 @@
 - Ambient NPC chatter as the player moves through the world
 - Guard alert or suspicion reactions without interrupting gameplay
 - Merchant and shopkeeper callouts
-- Randomised flavour lines driven by game state via Branch and condition nodes
-- <strong>NPC-to-NPC / overheard dialogue</strong> — because the bark runner waits for each audio clip to finish before advancing, a bark graph naturally scripts sequential conversations between NPCs (e.g. two guards talking as the player walks past) with no extra code</p>
+- Randomised flavour lines driven by game state via Branch and condition nodes</p>
+<p><strong>NPC-to-NPC / overheard dialogue</strong> — because the bark runner waits for each audio clip to finish before the next line plays, a bark graph can script a full back-and-forth exchange between two NPCs (e.g. two guards talking as the player walks past). Wire <code>OnBark</code> to read the <code>SpeakerName</code> field and route each line to the right overhead bubble. No extra code or special mode needed.</p>
 <hr />
 <h2 id="considering">Considering</h2>
 <p>Features on the radar but not yet committed to a version. These may or may not ship depending on scope, community interest, and architectural fit.</p>
