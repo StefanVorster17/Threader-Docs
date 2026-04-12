@@ -46,7 +46,7 @@ Press **Ctrl+S** to save.
 Create an empty GameObject in the scene and add the **DialogueManager** component.  
 This is a singleton — **one per scene is enough**. It drives conversations and fires events that your UI listens to.
 
-Optionally assign a **Speaker Roster** asset to the **Speaker Rosters** slot — this populates all speaker dropdowns in the graph editor. See [Graph Editor — Speaker Roster assets](graph-editor.md#speaker-roster-assets) for details.
+Optionally assign a **Speaker Roster** asset to the **Speaker Rosters** slot — this populates all speaker dropdowns in the graph editor. See [Speaker Roster](speaker-roster.md) for details.
 
 ---
 

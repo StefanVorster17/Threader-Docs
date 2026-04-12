@@ -2,6 +2,8 @@
 
 Threader ships with a built-in `DialogueUI` component that powers the demo scene. It is there to get something on screen immediately — **it is not intended to be your final UI**. Most projects will replace it entirely with a custom implementation to match their own visual style and UI framework.
 
+> **UI Toolkit is not required for runtime UI.** The built-in `DialogueUI` uses UI Toolkit, but `DialogueManager` is fully event-driven and has no dependency on it. You can drive a Unity Canvas (uGUI), a third-party UI framework, or any other system by subscribing to the runtime events described in [Building a custom UI](#building-a-custom-ui). Both approaches are shown with code examples below.
+
 ---
 
 ## The built-in DialogueUI
@@ -50,11 +52,81 @@ The demo scene ships with `DialogueUI` already set up. **Remove or replace it in
 
 ## Building a custom UI
 
-You only need three event subscriptions and one method call. Everything else is up to you — UGUI, UI Toolkit, third-party frameworks, whatever your project uses.
+You only need three event subscriptions and one method call. Everything else is up to you — uGUI (Canvas), UI Toolkit, third-party frameworks, whatever your project uses.
 
-### Minimum implementation
+### Canvas / uGUI example
 
-This example uses **UI Toolkit** (`UIDocument`), which is what the built-in `DialogueUI` uses as well. If you prefer UGUI or another framework the same event subscriptions apply — just swap out the UI calls.
+```csharp
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
+
+public class MyDialogueUI : MonoBehaviour
+{
+    [SerializeField] GameObject    _panel;
+    [SerializeField] TMP_Text      _textLabel;
+    [SerializeField] TMP_Text      _speakerLabel;
+    [SerializeField] Transform     _choicesContainer;
+    [SerializeField] Button        _choiceButtonPrefab;
+
+    void OnEnable()
+    {
+        DialogueManager.Instance.OnNPCLine     += HandleLine;
+        DialogueManager.Instance.OnChoiceNode  += HandleChoices;
+        DialogueManager.Instance.OnDialogueEnd += HandleEnd;
+    }
+
+    void OnDisable()
+    {
+        DialogueManager.Instance.OnNPCLine     -= HandleLine;
+        DialogueManager.Instance.OnChoiceNode  -= HandleChoices;
+        DialogueManager.Instance.OnDialogueEnd -= HandleEnd;
+    }
+
+    void HandleLine(NPCLine line)
+    {
+        _panel.SetActive(true);
+        _speakerLabel.text = line.SpeakerName;
+        _textLabel.text    = line.Text;
+
+        foreach (Transform child in _choicesContainer)
+            Destroy(child.gameObject);
+    }
+
+    void HandleChoices(List<ChoiceData> choices)
+    {
+        foreach (Transform child in _choicesContainer)
+            Destroy(child.gameObject);
+
+        for (int i = 0; i < choices.Count; i++)
+        {
+            var choice = choices[i];
+            if (choice.IsHidden) continue;
+
+            int capturedIndex = i;
+            var btn = Instantiate(_choiceButtonPrefab, _choicesContainer);
+            btn.GetComponentInChildren<TMP_Text>().text = choice.Text;
+            btn.interactable = !choice.IsLocked;
+            btn.onClick.AddListener(() => DialogueManager.Instance.SelectChoice(capturedIndex));
+        }
+    }
+
+    void HandleEnd()
+    {
+        _panel.SetActive(false);
+
+        foreach (Transform child in _choicesContainer)
+            Destroy(child.gameObject);
+    }
+}
+```
+
+Assign your Canvas panel, TextMeshPro labels, choices container `Transform`, and a Button prefab in the Inspector. No UI Toolkit or UIDocument required.
+
+### UI Toolkit example
+
+This is what the built-in `DialogueUI` uses internally. If you prefer to stay in UI Toolkit:
 
 ```csharp
 using System.Collections.Generic;

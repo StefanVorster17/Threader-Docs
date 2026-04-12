@@ -43,10 +43,11 @@ nav:
     - Variables: variables.md
     - Conditions: conditions.md
     - Events: events.md
+    - Speaker Roster: speaker-roster.md
     - UI: ui.md
     - Entry Points: entry-points.md
     - Saving: saving.md
-    - API Reference: api-reference.md
+  - API: api-reference.md
   - Support:
     - Troubleshooting: troubleshooting.md
   - Release:

@@ -13,7 +13,7 @@
         <link rel="canonical" href="https://stefanvorster17.github.io/Threader-Docs/ui/">
       
       
-        <link rel="prev" href="../events/">
+        <link rel="prev" href="../speaker-roster/">
       
       
         <link rel="next" href="../entry-points/">
@@ -258,6 +258,25 @@
         </a>
       </li>
     
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../api-reference/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  API
+
+      </a>
+    </li>
   
 
       
@@ -763,6 +782,34 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../speaker-roster/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Speaker Roster
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -899,10 +946,21 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#minimum-implementation" class="md-nav__link">
+  <a href="#canvas-ugui-example" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Minimum implementation
+        Canvas / uGUI example
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ui-toolkit-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        UI Toolkit example
       
     </span>
   </a>
@@ -1067,8 +1125,15 @@
 
               
             
-              
-                
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
   
   
   
@@ -1081,7 +1146,7 @@
   <span class="md-ellipsis">
     
   
-    API Reference
+    API
   
 
     
@@ -1090,14 +1155,6 @@
   
 
       </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
     </li>
   
 
@@ -1120,10 +1177,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
         
           
-          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
             
   
   
@@ -1141,8 +1198,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1205,10 +1262,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
         
           
-          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
             
   
   
@@ -1226,8 +1283,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1400,10 +1457,21 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#minimum-implementation" class="md-nav__link">
+  <a href="#canvas-ugui-example" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Minimum implementation
+        Canvas / uGUI example
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ui-toolkit-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        UI Toolkit example
       
     </span>
   </a>
@@ -1522,6 +1590,9 @@
 
 <h1 id="ui">UI</h1>
 <p>Threader ships with a built-in <code>DialogueUI</code> component that powers the demo scene. It is there to get something on screen immediately — <strong>it is not intended to be your final UI</strong>. Most projects will replace it entirely with a custom implementation to match their own visual style and UI framework.</p>
+<blockquote>
+<p><strong>UI Toolkit is not required for runtime UI.</strong> The built-in <code>DialogueUI</code> uses UI Toolkit, but <code>DialogueManager</code> is fully event-driven and has no dependency on it. You can drive a Unity Canvas (uGUI), a third-party UI framework, or any other system by subscribing to the runtime events described in <a href="#building-a-custom-ui">Building a custom UI</a>. Both approaches are shown with code examples below.</p>
+</blockquote>
 <hr />
 <h2 id="the-built-in-dialogueui">The built-in DialogueUI</h2>
 <p><code>DialogueUI</code> is a <strong>Unity UI Toolkit</strong> component (<code>UIDocument</code>-based). It is <code>[RequireComponent(typeof(UIDocument))]</code>, so it must live on a GameObject that already has a <code>UIDocument</code>.</p>
@@ -1619,9 +1690,75 @@
 <p>The demo scene ships with <code>DialogueUI</code> already set up. <strong>Remove or replace it in your own scene.</strong> The <code>DialogueUI</code> component is not required by any other part of Threader — the dialogue runner operates entirely through C# events described below.</p>
 <hr />
 <h2 id="building-a-custom-ui">Building a custom UI</h2>
-<p>You only need three event subscriptions and one method call. Everything else is up to you — UGUI, UI Toolkit, third-party frameworks, whatever your project uses.</p>
-<h3 id="minimum-implementation">Minimum implementation</h3>
-<p>This example uses <strong>UI Toolkit</strong> (<code>UIDocument</code>), which is what the built-in <code>DialogueUI</code> uses as well. If you prefer UGUI or another framework the same event subscriptions apply — just swap out the UI calls.</p>
+<p>You only need three event subscriptions and one method call. Everything else is up to you — uGUI (Canvas), UI Toolkit, third-party frameworks, whatever your project uses.</p>
+<h3 id="canvas-ugui-example">Canvas / uGUI example</h3>
+<pre><code class="language-csharp">using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
+
+public class MyDialogueUI : MonoBehaviour
+{
+    [SerializeField] GameObject    _panel;
+    [SerializeField] TMP_Text      _textLabel;
+    [SerializeField] TMP_Text      _speakerLabel;
+    [SerializeField] Transform     _choicesContainer;
+    [SerializeField] Button        _choiceButtonPrefab;
+
+    void OnEnable()
+    {
+        DialogueManager.Instance.OnNPCLine     += HandleLine;
+        DialogueManager.Instance.OnChoiceNode  += HandleChoices;
+        DialogueManager.Instance.OnDialogueEnd += HandleEnd;
+    }
+
+    void OnDisable()
+    {
+        DialogueManager.Instance.OnNPCLine     -= HandleLine;
+        DialogueManager.Instance.OnChoiceNode  -= HandleChoices;
+        DialogueManager.Instance.OnDialogueEnd -= HandleEnd;
+    }
+
+    void HandleLine(NPCLine line)
+    {
+        _panel.SetActive(true);
+        _speakerLabel.text = line.SpeakerName;
+        _textLabel.text    = line.Text;
+
+        foreach (Transform child in _choicesContainer)
+            Destroy(child.gameObject);
+    }
+
+    void HandleChoices(List&lt;ChoiceData&gt; choices)
+    {
+        foreach (Transform child in _choicesContainer)
+            Destroy(child.gameObject);
+
+        for (int i = 0; i &lt; choices.Count; i++)
+        {
+            var choice = choices[i];
+            if (choice.IsHidden) continue;
+
+            int capturedIndex = i;
+            var btn = Instantiate(_choiceButtonPrefab, _choicesContainer);
+            btn.GetComponentInChildren&lt;TMP_Text&gt;().text = choice.Text;
+            btn.interactable = !choice.IsLocked;
+            btn.onClick.AddListener(() =&gt; DialogueManager.Instance.SelectChoice(capturedIndex));
+        }
+    }
+
+    void HandleEnd()
+    {
+        _panel.SetActive(false);
+
+        foreach (Transform child in _choicesContainer)
+            Destroy(child.gameObject);
+    }
+}
+</code></pre>
+<p>Assign your Canvas panel, TextMeshPro labels, choices container <code>Transform</code>, and a Button prefab in the Inspector. No UI Toolkit or UIDocument required.</p>
+<h3 id="ui-toolkit-example">UI Toolkit example</h3>
+<p>This is what the built-in <code>DialogueUI</code> uses internally. If you prefer to stay in UI Toolkit:</p>
 <pre><code class="language-csharp">using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;

@@ -8,32 +8,31 @@ If you have a feature request, raise it on the [GitHub repository](https://githu
 
 ## Upcoming
 
-### v1.0.1
-
-Editor debugging improvements: GUID tooling (show, search, copy), validator enhancements with new checks and live updates, enriched runtime error messages, and runtime performance optimisations. See the [Changelog](changelog.md) for the full list on release.
-
----
-
-## Planned
-
 ### v1.1
+
+Sub-graph support and editor quality-of-life. See the [Changelog](changelog.md) for the full list on release.
 
 #### Sub-Graph support
 
-Call a separate `SubGraph` asset from within a running dialogue graph, then return to the calling graph when it ends.
+Call any `DialogueGraph` asset from within a running dialogue graph, then return to the calling graph when it ends.
 
-**Design intent:**
-- A new `SubGraph` graph type that carries no actor, no LookAt setting, and fires no `OnDialogueStarted` / `OnDialogueEnded` events of its own
-- The calling graph passes its actor, LookAt state, and blocked state into the sub-graph automatically
-- A **Call Graph node** in the main graph triggers the call and resumes on the next connected node when the sub-graph ends
-- Existing graphs are completely unaffected — this is additive, nothing breaks
+**What ships:**
+
+- **Sub Graph Node** — a new node type that delegates execution to another graph asset. Wire it like any other node; assign a target graph and an optional entry point key. The conversation resumes on the connected output when the sub-graph reaches its End node.
+
+- **End Node sub-graph slot** — an optional graph reference on the End node. When set, that graph runs as a sub-routine before the conversation truly closes — useful for routing an NPC back to generic idle lines after a quest-specific conversation.
+
+- **Caller speaker fallback** — NPC nodes in shared graphs resolve speaker name through a three-level chain: node → graph default → calling actor. Shared graphs with blank speaker fields automatically display and look at whoever triggered the dialogue.
+
+- **Graph call stack with depth guard** — the runtime tracks nested sub-graph calls up to 16 levels deep and ends dialogue cleanly if the limit is exceeded.
+
+- Existing graphs are completely unaffected — this is additive, nothing breaks.
 
 **Use cases this enables:**
 - Shared "rumour" or "ambient" dialogue that any NPC can invoke mid-conversation
 - Reusable shop, trade, or minigame dialogue sequences called from multiple graphs
 - Breaking very large story graphs into smaller chapter graphs that chain together
-
-**Status:** Architecture designed. Implementation planned for v1.1.
+- Quest NPCs that fall back to generic idle lines automatically when the quest conversation ends
 
 ---
 

@@ -266,6 +266,25 @@
   
   
   
+    <li class="md-tabs__item">
+      <a href="../api-reference/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  API
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
     
     
       <li class="md-tabs__item">
@@ -717,28 +736,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#speaker-roster-assets" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Speaker Roster assets
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#setting-up-speakers" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Setting up speakers
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#find-replace" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1034,6 +1031,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../speaker-roster/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Speaker Roster
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../ui/" class="md-nav__link">
         
   
@@ -1111,8 +1136,15 @@
 
               
             
-              
-                
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
   
   
   
@@ -1125,7 +1157,7 @@
   <span class="md-ellipsis">
     
   
-    API Reference
+    API
   
 
     
@@ -1134,14 +1166,6 @@
   
 
       </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
     </li>
   
 
@@ -1164,10 +1188,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
         
           
-          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
             
   
   
@@ -1185,8 +1209,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1249,10 +1273,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
         
           
-          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
             
   
   
@@ -1270,8 +1294,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1480,28 +1504,6 @@
     <span class="md-ellipsis">
       
         Node context menu
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#speaker-roster-assets" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Speaker Roster assets
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#setting-up-speakers" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Setting up speakers
       
     </span>
   </a>
@@ -1919,38 +1921,6 @@
 </tbody>
 </table>
 <p>A 4 px accent border on the left side of the node shows any assigned colour. The colour is purely organisational — it has no effect on execution.</p>
-<hr />
-<h2 id="speaker-roster-assets">Speaker Roster assets</h2>
-<p>Speaker Roster assets define the valid speaker names in your project. Without one, the Speaker dropdowns across all node types fall back to scanning all <code>SpeakerRoster</code> assets in the project — which still works, but is slower and may pick up unrelated assets.</p>
-<p><strong>Setup:</strong></p>
-<ol>
-<li>Right-click in the Project window → <strong>Create → Threader → Speaker Roster</strong></li>
-<li>Click <strong>+</strong> in the Inspector and type each speaker name exactly as it appears on the corresponding <code>NPCDialogue</code> component in the scene</li>
-<li>Assign the asset to <strong>DialogueManager → Speaker Rosters</strong> in the Inspector</li>
-</ol>
-<p>Once assigned, every Speaker dropdown in the graph editor shows only names from your roster. A ⚠ prefix on a dropdown entry means the stored value doesn't match any roster entry — the old value is preserved (never silently lost), but you should resolve the mismatch.</p>
-<p>You can assign <strong>multiple</strong> roster assets to the <code>DialogueManager</code> — all are combined into one list for the dropdowns.</p>
-<hr />
-<h2 id="setting-up-speakers">Setting up speakers</h2>
-<p>Every speaker name used in the graph must have a matching <strong>NPCDialogue</strong> component in the scene with the identical name in its <strong>Speaker Name</strong> field. This is how the system finds the character's transform for camera look-at, spatial audio positioning, and Animator targeting.</p>
-<p><strong>Primary NPC</strong> (the character the player talks to directly):</p>
-<ul>
-<li>Add <code>NPCDialogue</code> to the NPC's root GameObject</li>
-<li><strong>Graph</strong> — drag the <code>DialogueGraph</code> asset here</li>
-<li><strong>Speaker Name</strong> — type the name exactly, e.g. <code>"Villager"</code> — must match the NPC node's Speaker field</li>
-<li><strong>Is Interactable</strong> — leave checked</li>
-</ul>
-<p><strong>Secondary speaker</strong> (appears in the same graph but is not a directly interactable NPC):</p>
-<ul>
-<li>Add <code>NPCDialogue</code> to that character's GameObject too</li>
-<li><strong>Graph</strong> — leave empty (secondary speakers don't own the graph)</li>
-<li><strong>Speaker Name</strong> — must exactly match the name used in the graph node</li>
-<li><strong>Is Interactable</strong> — uncheck this</li>
-</ul>
-<p>Without the <code>NPCDialogue</code> component on a secondary speaker, the system has no transform to target — look-at and Animator actions for that name silently do nothing. No errors are thrown, but a warning will appear in the Console.</p>
-<blockquote>
-<p>Speaker Name matching is <strong>case-sensitive</strong>. If look-at or Animators aren't working, a name mismatch is the first thing to check.</p>
-</blockquote>
 <hr />
 <h2 id="find-replace">Find &amp; Replace</h2>
 <p>Open via <strong>PROJECT → Find &amp; Replace</strong> in the sidebar. Searches all NPC line text and Player Choice button text in the currently loaded graph.</p>

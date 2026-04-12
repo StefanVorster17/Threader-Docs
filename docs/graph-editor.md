@@ -139,46 +139,6 @@ A 4 px accent border on the left side of the node shows any assigned colour. The
 
 ---
 
-## Speaker Roster assets
-
-Speaker Roster assets define the valid speaker names in your project. Without one, the Speaker dropdowns across all node types fall back to scanning all `SpeakerRoster` assets in the project — which still works, but is slower and may pick up unrelated assets.
-
-**Setup:**
-
-1. Right-click in the Project window → **Create → Threader → Speaker Roster**
-2. Click **+** in the Inspector and type each speaker name exactly as it appears on the corresponding `NPCDialogue` component in the scene
-3. Assign the asset to **DialogueManager → Speaker Rosters** in the Inspector
-
-Once assigned, every Speaker dropdown in the graph editor shows only names from your roster. A ⚠ prefix on a dropdown entry means the stored value doesn't match any roster entry — the old value is preserved (never silently lost), but you should resolve the mismatch.
-
-You can assign **multiple** roster assets to the `DialogueManager` — all are combined into one list for the dropdowns.
-
----
-
-## Setting up speakers
-
-Every speaker name used in the graph must have a matching **NPCDialogue** component in the scene with the identical name in its **Speaker Name** field. This is how the system finds the character's transform for camera look-at, spatial audio positioning, and Animator targeting.
-
-**Primary NPC** (the character the player talks to directly):
-
-- Add `NPCDialogue` to the NPC's root GameObject
-- **Graph** — drag the `DialogueGraph` asset here
-- **Speaker Name** — type the name exactly, e.g. `"Villager"` — must match the NPC node's Speaker field
-- **Is Interactable** — leave checked
-
-**Secondary speaker** (appears in the same graph but is not a directly interactable NPC):
-
-- Add `NPCDialogue` to that character's GameObject too
-- **Graph** — leave empty (secondary speakers don't own the graph)
-- **Speaker Name** — must exactly match the name used in the graph node
-- **Is Interactable** — uncheck this
-
-Without the `NPCDialogue` component on a secondary speaker, the system has no transform to target — look-at and Animator actions for that name silently do nothing. No errors are thrown, but a warning will appear in the Console.
-
-> Speaker Name matching is **case-sensitive**. If look-at or Animators aren't working, a name mismatch is the first thing to check.
-
----
-
 ## Find & Replace
 
 Open via **PROJECT → Find & Replace** in the sidebar. Searches all NPC line text and Player Choice button text in the currently loaded graph.

@@ -4,6 +4,26 @@
 
 ---
 
+## [1.1] — Unreleased
+
+### Added
+
+- **Sub Graph Node** — a new node type that delegates execution to another `DialogueGraph` asset, then returns and continues from the next node — exactly like a function call. Assign any graph asset and an optional entry point key directly on the node. Enables shared dialogue libraries: create a single "GenericGuardIdle" graph and reference it from any number of NPC-specific router graphs without duplicating content.
+- **Graph stack with depth guard** — the runtime maintains a call stack when sub-graphs are nested. The stack supports up to 16 levels of nesting; exceeding this logs an error and ends dialogue cleanly to prevent infinite loops.
+- **Caller speaker fallback** — NPC nodes and all speaker-dependent actions (camera look-at, animator triggers, positional audio) now resolve speaker name through a three-level hierarchy: **node speaker → graph `DefaultSpeakerName` → calling actor's speaker name**. Shared graphs with blank speaker fields automatically display and look at whoever triggered the dialogue — no extra setup required.
+- **End Node: "On end →" sub-graph slot** — the End node now has an optional `DialogueGraph` object field and entry point key. When a graph asset is assigned, that graph runs as a sub-routine before the conversation truly ends. Useful for routing important NPCs back to generic idle lines at the conclusion of a quest conversation. The `Next entry:` switch fires first so the actor's state is already updated while the sub-graph plays.
+- **`SpeakerName` on `IDialogueActor`** — the interface now exposes a `SpeakerName` property, implemented by both `NPCDialogue` and `DialogueTrigger`. This is what powers the caller fallback above and allows any custom actor to participate in speaker resolution without extra wiring.
+
+### How to use Sub Graphs
+
+**Unimportant NPC (no unique dialogue):** Assign your shared graph directly to the NPC's `NPCDialogue` component. Their own `Speaker Name` field is used as the fallback, so the UI and camera resolve to the correct individual automatically.
+
+**Important NPC (quest-driven):** Give them a personal "router" graph containing only a Branch or Entry Point chain — no dialogue lines. Each branch leads to a Sub Graph Node pointing at the relevant asset (generic idle, quest intro, quest done, etc.). Your quest system calls `npc.SetEntryPoint("QuestDone")` to switch routing; the router graph handles the rest.
+
+**End-of-quest fallback:** On the End node of a quest-specific graph, set `On end →` to your generic idle graph. After the unique lines finish, the player hears the NPC's normal idle response before dialogue closes — all without duplicating a single line.
+
+---
+
 ## [1.0.1] — Unreleased
 
 ### Added

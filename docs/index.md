@@ -43,10 +43,18 @@ Five steps to a working dialogue:
 | Section | What's in it |
 |---|---|
 | [Quick Start](quick-start.md) | End-to-end setup in ~10 minutes |
+| [Tutorial](tutorial.md) | Guided walkthrough building a complete dialogue scene |
 | [Graph Editor](graph-editor.md) | Canvas controls, sidebar, shortcuts, tools |
+| [Dialogue Preview](preview-window.md) | Step through graphs in edit mode without entering Play mode |
 | [Node Reference](nodes.md) | All 12 node types with field descriptions |
 | [Variables](variables.md) | Variable store, set actions, text tokens |
 | [Conditions](conditions.md) | Inline conditions and C# custom conditions |
+| [Events](events.md) | Node events, global events, and C# event subscriptions |
+| [Speaker Roster](speaker-roster.md) | Speaker name assets, NPCDialogue setup, and name resolution |
+| [UI](ui.md) | Built-in DialogueUI, Canvas/uGUI custom UI, and event hooks |
 | [Entry Points](entry-points.md) | Multi-branch graphs and state persistence |
 | [Saving](saving.md) | Persisting variables, choices, and entry points |
 | [API Reference](api-reference.md) | Events, interfaces, and code API |
+| [Troubleshooting](troubleshooting.md) | Solutions to common problems and how to report bugs |
+| [Roadmap](roadmap.md) | What's coming in upcoming releases |
+| [Changelog](changelog.md) | Full version history |

@@ -437,8 +437,35 @@ Register/unregister inline delegates by key. The delegate receives the parameter
 static bool Evaluate(ConditionDefinition definition, string parameter)
 ```
 Resolution order:
-1. `VariableConditionDefinition` — self-evaluates (no delegate/provider needed)
-2. Registered delegate for `definition.GetKey()`
+1. `VariableConditionDefinition` — self-evaluates against `DialogueManager.VariablesList` (no delegate or provider needed)
+2. Registered delegate for `definition.GetKey()` — if found, the delegate is invoked with `parameter` and its result returned
+3. Active `ConditionProvider` asset — `provider.Evaluate(definition.GetKey(), parameter)` is called if no delegate is registered
+4. If none of the above match, returns `true` (condition passes) and logs a warning
+
+---
+
+## NPCLine
+
+Data struct passed to `OnNPCLine` each time a dialogue line becomes active.
+
+| Property | Type | Description |
+|---|---|---|
+| `SpeakerName` | `string` | Resolved speaker name. Graph `DefaultSpeakerName` is applied when the node's own Speaker field is blank. |
+| `Text` | `string` | Fully resolved line text. Variable tokens (`{varName}`, `{varName:name}`) are already substituted. |
+| `Clip` | `AudioClip` | Optional voice clip assigned on the NPC node line. `null` when no clip is set. |
+
+---
+
+## ChoiceData
+
+Data object passed per-item in the `List<ChoiceData>` delivered to `OnChoiceNode`.
+
+| Property | Type | Description |
+|---|---|---|
+| `Text` | `string` | Resolved display text for the choice button. Variable tokens already substituted. |
+| `IsLocked` | `bool` | `true` when a non-hiding condition failed. The choice is shown but should be rendered as unavailable (greyed out). |
+| `IsHidden` | `bool` | `true` when a hiding condition failed. The choice should not be rendered at all. Filter these before creating buttons. |
+| `ChoiceKey` | `string` | Stable identifier in the format `"{nodeGuid}:{index}"`. Used as the key for choice history tracking. |
 3. Active `Provider.Evaluate(definition, parameter)`
 4. `definition.WhenMissing` fallback (`Allow` → true, `Block` → false + warning)
 

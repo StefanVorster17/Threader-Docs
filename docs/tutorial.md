@@ -63,7 +63,7 @@ Name it `VillagerDialogue`. Double-click to open.
 
 Press **N** to create an NPC node. Click it to select, then in the inspector sidebar:
 
-- **Speaker:** `Villager` (type the name, or pick from a roster if you have one set up)
+- **Speaker:** select `Villager` from the dropdown (populated from your Speaker Roster)
 - Click **+ Add Line** and enter: `Oh, a traveller! You haven't seen a small orange cat around here, have you?`
 
 ### Player choice node

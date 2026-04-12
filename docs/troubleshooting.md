@@ -2,6 +2,8 @@
 
 Answers to the most common problems. Check the Unity **Console** window first — Threader logs specific warnings and errors for most failure cases.
 
+If your issue isn't covered here, or you've found a bug, open an issue on the [GitHub repository](https://github.com/StefanVorster17/Threader-Docs/issues) — include your Unity version, a description of what you expected, and what actually happened.
+
 ---
 
 ## Dialogue won't start
