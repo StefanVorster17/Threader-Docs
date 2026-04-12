@@ -1405,7 +1405,7 @@
 
 
 <h1 id="speaker-roster">Speaker Roster</h1>
-<p>A <strong>Speaker Roster</strong> is a ScriptableObject asset that declares the valid speaker names in your project. It is the link between the string names you type in graph nodes and the actual <code>NPCDialogue</code> components in your scenes.</p>
+<p>A <strong>Speaker Roster</strong> is a ScriptableObject asset that declares the valid speaker names in your project. It populates the Speaker dropdowns in graph nodes and on <code>NPCDialogue</code> components, so you select a name rather than type one.</p>
 <hr />
 <h2 id="why-it-exists">Why it exists</h2>
 <p>Every NPC node and player choice node references a speaker by name — a plain string like <code>"Villager"</code> or <code>"BlacksmithMira"</code>. At runtime, <code>DialogueManager</code> uses that string to find the matching <code>NPCDialogue</code> component in the scene, which provides the transform for camera look-at, spatial audio source, and Animator targeting.</p>
@@ -1415,7 +1415,7 @@
 <ol>
 <li>Right-click in the Project window → <strong>Create → Threader → Speaker Roster</strong></li>
 <li>Name the asset something descriptive, e.g. <code>VillageRoster</code> or <code>Chapter1Speakers</code></li>
-<li>In the Inspector, click <strong>+</strong> and add each speaker name exactly as it will appear on the <code>NPCDialogue</code> component in the scene</li>
+<li>In the Inspector, click <strong>+</strong> and type each speaker name you want to use — these become the options in every Speaker dropdown across the graph editor and <code>NPCDialogue</code> components</li>
 </ol>
 <p>Speaker names are <strong>case-sensitive</strong>. <code>"Villager"</code> and <code>"villager"</code> are treated as different speakers.</p>
 <hr />
@@ -1439,7 +1439,7 @@
 <ul>
 <li>Add <code>NPCDialogue</code> to the NPC's root GameObject</li>
 <li><strong>Graph</strong> — drag the <code>DialogueGraph</code> asset here</li>
-<li><strong>Speaker Name</strong> — type the name exactly as used in the graph, e.g. <code>"Villager"</code></li>
+<li><strong>Speaker Name</strong> — select from the dropdown populated by your assigned Speaker Roster</li>
 <li><strong>Is Interactable</strong> — leave checked</li>
 </ul>
 <h3 id="secondary-speaker">Secondary speaker</h3>
@@ -1447,7 +1447,7 @@
 <ul>
 <li>Add <code>NPCDialogue</code> to that character's GameObject</li>
 <li><strong>Graph</strong> — leave empty (secondary speakers don't own the graph)</li>
-<li><strong>Speaker Name</strong> — must exactly match the name used in the graph node</li>
+<li><strong>Speaker Name</strong> — select from the dropdown; must be the same name used in the graph node</li>
 <li><strong>Is Interactable</strong> — uncheck</li>
 </ul>
 <p>Without an <code>NPCDialogue</code> component on a secondary speaker, the runtime has no transform to target — look-at and Animator actions for that name silently do nothing and a warning is logged to the Console.</p>
