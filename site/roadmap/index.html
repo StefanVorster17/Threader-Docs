@@ -1160,6 +1160,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#bark-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bark system
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1342,6 +1353,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#bark-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bark system
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1442,7 +1464,7 @@
 <hr />
 <h2 id="upcoming">Upcoming</h2>
 <h3 id="v11">v1.1</h3>
-<p>Sub-graph support and editor quality-of-life. See the <a href="../changelog/">Changelog</a> for the full list on release.</p>
+<p>Sub-graph support, bark system, and editor quality-of-life. See the <a href="../changelog/">Changelog</a> for the full list on release.</p>
 <h4 id="sub-graph-support">Sub-Graph support</h4>
 <p>Call any <code>DialogueGraph</code> asset from within a running dialogue graph, then return to the calling graph when it ends.</p>
 <p><strong>What ships:</strong></p>
@@ -1468,6 +1490,32 @@
 - Reusable shop, trade, or minigame dialogue sequences called from multiple graphs
 - Breaking very large story graphs into smaller chapter graphs that chain together
 - Quest NPCs that fall back to generic idle lines automatically when the quest conversation ends</p>
+<h4 id="bark-system">Bark system</h4>
+<p>Fire-and-forget ambient lines that play without entering a full conversation — an NPC mutters as you walk past, a guard reacts to a sound, a merchant calls out. Barks run in parallel to the world; they never block the player or trigger <code>OnDialogueStarted</code>.</p>
+<p><strong>What ships:</strong></p>
+<ul>
+<li>
+<p><strong><code>IsBark</code> flag on <code>DialogueGraph</code></strong> — mark any graph as a bark graph. The validator enforces that bark graphs contain no Player Choice nodes (which would be unreachable in a non-blocking flow).</p>
+</li>
+<li>
+<p><strong><code>BarkSource</code> component</strong> — attach to any NPC alongside <code>NPCDialogue</code>. Holds a bark graph reference, a cooldown timer, and a trigger mode (<code>OnEnter</code>, <code>OnTimer</code>, <code>Manual</code>). Calls <code>DialogueManager.PlayBark()</code> automatically or on demand.</p>
+</li>
+<li>
+<p><strong>Non-blocking bark runner</strong> — a second lightweight runner path in <code>DialogueManager</code> that traverses NPC, Random, Branch, Set Variable, and End nodes from a bark graph and fires <code>OnBark</code> instead of <code>OnNPCLine</code>. The main conversation runner is completely unaffected.</p>
+</li>
+<li>
+<p><strong><code>OnBark</code> event</strong> — a separate <code>Action&lt;NPCLine&gt;</code> event so bark output is handled independently of the main dialogue panel. Wire it to a floating world-space speech bubble, a HUD ticker, or nothing at all.</p>
+</li>
+<li>
+<p>Barks are suppressed automatically while a full conversation is active (configurable).</p>
+</li>
+</ul>
+<p><strong>Use cases this enables:</strong>
+- Ambient NPC chatter as the player moves through the world
+- Guard alert or suspicion reactions without interrupting gameplay
+- Merchant and shopkeeper callouts
+- Randomised flavour lines driven by game state via Branch and condition nodes</p>
+<p><strong>NPC-to-NPC / overheard dialogue</strong> — because the bark runner waits for each audio clip to finish before the next line plays, a bark graph can script a full back-and-forth exchange between two NPCs (e.g. two guards talking as the player walks past). Wire <code>OnBark</code> to read the <code>SpeakerName</code> field and route each line to the right overhead bubble. No extra code or special mode needed.</p>
 <hr />
 <h2 id="considering">Considering</h2>
 <p>Features on the radar but not yet committed to a version. These may or may not ship depending on scope, community interest, and architectural fit.</p>

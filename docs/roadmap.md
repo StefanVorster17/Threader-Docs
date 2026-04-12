@@ -10,7 +10,7 @@ If you have a feature request, raise it on the [GitHub repository](https://githu
 
 ### v1.1
 
-Sub-graph support and editor quality-of-life. See the [Changelog](changelog.md) for the full list on release.
+Sub-graph support, bark system, and editor quality-of-life. See the [Changelog](changelog.md) for the full list on release.
 
 #### Sub-Graph support
 
@@ -33,6 +33,30 @@ Call any `DialogueGraph` asset from within a running dialogue graph, then return
 - Reusable shop, trade, or minigame dialogue sequences called from multiple graphs
 - Breaking very large story graphs into smaller chapter graphs that chain together
 - Quest NPCs that fall back to generic idle lines automatically when the quest conversation ends
+
+#### Bark system
+
+Fire-and-forget ambient lines that play without entering a full conversation — an NPC mutters as you walk past, a guard reacts to a sound, a merchant calls out. Barks run in parallel to the world; they never block the player or trigger `OnDialogueStarted`.
+
+**What ships:**
+
+- **`IsBark` flag on `DialogueGraph`** — mark any graph as a bark graph. The validator enforces that bark graphs contain no Player Choice nodes (which would be unreachable in a non-blocking flow).
+
+- **`BarkSource` component** — attach to any NPC alongside `NPCDialogue`. Holds a bark graph reference, a cooldown timer, and a trigger mode (`OnEnter`, `OnTimer`, `Manual`). Calls `DialogueManager.PlayBark()` automatically or on demand.
+
+- **Non-blocking bark runner** — a second lightweight runner path in `DialogueManager` that traverses NPC, Random, Branch, Set Variable, and End nodes from a bark graph and fires `OnBark` instead of `OnNPCLine`. The main conversation runner is completely unaffected.
+
+- **`OnBark` event** — a separate `Action<NPCLine>` event so bark output is handled independently of the main dialogue panel. Wire it to a floating world-space speech bubble, a HUD ticker, or nothing at all.
+
+- Barks are suppressed automatically while a full conversation is active (configurable).
+
+**Use cases this enables:**
+- Ambient NPC chatter as the player moves through the world
+- Guard alert or suspicion reactions without interrupting gameplay
+- Merchant and shopkeeper callouts
+- Randomised flavour lines driven by game state via Branch and condition nodes
+
+**NPC-to-NPC / overheard dialogue** — because the bark runner waits for each audio clip to finish before the next line plays, a bark graph can script a full back-and-forth exchange between two NPCs (e.g. two guards talking as the player walks past). Wire `OnBark` to read the `SpeakerName` field and route each line to the right overhead bubble. No extra code or special mode needed.
 
 ---
 
