@@ -67,3 +67,14 @@
 - **`StartDialogue` called while dialogue already active** — previously would silently stomp the running conversation. Now logs a warning and returns early.
 - **`_cancelLocked` state not reset on `Awake`** — if `DialogueManager` persisted across scenes, the cancel lock could carry stale state. Now explicitly reset to `false` in `Awake`.
 - **Validator false positive — 'Prevent Dialogue Exit' with Jump Node** — the reachability walk did not follow Jump nodes, causing false "no End node reachable" warnings on graphs that route through a jump to a branch with an End node. Jump targets are now resolved correctly during traversal.
+
+### Changed
+
+- **Graph Type dropdown** — the "Is Bark Graph" toggle in the GRAPH sidebar has been replaced with a **Graph Type** dropdown (`Dialogue` / `Bark`). The underlying data (`IsBark` on `DialogueGraph`) is unchanged; existing graphs are unaffected.
+- **Sidebar default width doubled** — the graph editor sidebar opens at 312 px wide by default (previously 156 px) with a minimum of 240 px, giving condition rows and dropdowns more room without needing to resize manually.
+
+### Fixed
+
+- **Snap to Grid had no live effect** — nodes moved freely regardless of the Snap to Grid setting; positions were only rounded at save time. Snapping now happens immediately on drag-end so nodes lock to the 20 px grid as expected.
+- **Nodes could not be removed from a Group box** — the only way to remove a node from a group was to delete the entire group. Right-clicking a node that is inside a group now shows a **Remove from Group** option directly in the node context menu.
+- **Set Colour / Tag had no effect when right-clicking a node** — the colour picker was only reachable by right-clicking the graph canvas background with nodes selected, which was not discoverable. **Set Colour / Tag** and **Clear Colour / Tag** are now available directly in the node's right-click context menu.
