@@ -10,7 +10,7 @@ If you have a feature request, raise it on the [GitHub repository](https://githu
 
 ### v1.1
 
-Sub-graph support, bark system, and editor quality-of-life. See the [Changelog](changelog.md) for the full list on release.
+Sub-graph support, bark system, node templates, bookmarks, export script, and editor quality-of-life. See the [Changelog](changelog.md) for the full list on release.
 
 #### Sub-Graph support
 
@@ -57,6 +57,43 @@ Fire-and-forget ambient lines that play without entering a full conversation —
 - Randomised flavour lines driven by game state via Branch and condition nodes
 
 **NPC-to-NPC / overheard dialogue** — because the bark runner waits for each audio clip to finish before the next line plays, a bark graph can script a full back-and-forth exchange between two NPCs (e.g. two guards talking as the player walks past). Wire `OnBark` to read the `SpeakerName` field and route each line to the right overhead bubble. No extra code or special mode needed.
+
+#### Node Template System
+
+Save any selection of nodes as a reusable template asset, then drag it back onto any graph to stamp out a fresh copy — wired internally, new GUIDs, ready to use.
+
+**What ships:**
+
+- **`DialogueNodeTemplate` ScriptableObject** — stores a deep-copy snapshot of one or more nodes and their internal connections. Created automatically when you save a selection, or manually via `Assets > Create > Threader > Dialogue Node Template`.
+- **Save Selection as Template** — select nodes in the graph and click "Save Selection" in the NODE TEMPLATES sidebar panel. Internal connections (edges within the selection) are preserved; external connections are dropped.
+- **Drag-to-stamp** — drag a template pill from the NODE TEMPLATES sidebar onto the canvas to instantiate it at the drop position. All nodes get fresh GUIDs; internal wiring is re-connected automatically.
+- **Project window drag** — dragging a `.asset` directly from Unity's Project window onto the canvas also works.
+- **Rename and Delete** — right-click any template pill to rename it (updates both the display name and the `.asset` filename) or delete it with a confirmation dialog.
+
+Templates are *stamp-and-detach* — once placed, the copy is completely independent of the original. For *live-linked* reuse (one graph called from many places), use the Sub Graph Node instead.
+
+#### Bookmark System
+
+Quickly navigate large graphs by bookmarking nodes and jumping back to them from the sidebar.
+
+**What ships:**
+
+- Right-click any node → **Bookmark this Node** — adds it to the BOOKMARKS sidebar panel.
+- Click a bookmark row to select and frame that node in the canvas.
+- **Custom bookmark names** — click the ✎ button on a row to rename it inline. Empty name reverts to the auto-generated label.
+- Bookmarks are removed automatically when the bookmarked node is deleted.
+- Persisted per-graph in EditorPrefs; survive editor restarts.
+
+#### Export Script
+
+Export a graph's dialogue content as a human-readable plain-text screenplay — useful for VO sessions, narrative review, and writer feedback.
+
+**What ships:**
+
+- **Export Script** button in the PROJECT sidebar — walks the graph from the start node in execution order and writes a `.txt` file.
+- Output format: `[Speaker Name]` on one line, dialogue text on the next, blank line between entries. Player choices are listed with numbers; each branch is indented below its option. Silent nodes (SetVariable, FireEvent, Wait, etc.) are invisible in the output.
+- Any nodes unreachable from the start node are appended at the bottom with a separator.
+- File opens in Explorer/Finder after export and can be uploaded to Google Drive and opened in Google Docs.
 
 ---
 

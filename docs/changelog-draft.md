@@ -78,3 +78,37 @@
 - **Snap to Grid had no live effect** — nodes moved freely regardless of the Snap to Grid setting; positions were only rounded at save time. Snapping now happens immediately on drag-end so nodes lock to the 20 px grid as expected.
 - **Nodes could not be removed from a Group box** — the only way to remove a node from a group was to delete the entire group. Right-clicking a node that is inside a group now shows a **Remove from Group** option directly in the node context menu.
 - **Set Colour / Tag had no effect when right-clicking a node** — the colour picker was only reachable by right-clicking the graph canvas background with nodes selected, which was not discoverable. **Set Colour / Tag** and **Clear Colour / Tag** are now available directly in the node's right-click context menu.
+- **`CloneNode` for NPCNode** silently dropped `SpeakerName`, `SetActions`, and `AnimatorActions` on every copy/paste, duplicate (Ctrl+D), and template save. All three fields are now correctly copied.
+
+### Node Template System
+
+- **`DialogueNodeTemplate` ScriptableObject** — stores a deep-copy snapshot of one or more nodes and their internal connections. Created automatically when saving a selection, or manually via `Assets > Create > Threader > Dialogue Node Template`.
+- **Save Selection as Template** — select nodes in the graph and click "Save Selection" in the NODE TEMPLATES sidebar panel. Internal connections are preserved; external connections are dropped.
+- **Drag-to-stamp** — drag a template pill from the NODE TEMPLATES sidebar onto the canvas to instantiate it. All nodes receive fresh GUIDs; internal wiring is re-connected automatically.
+- **Project window drag** — dragging a `DialogueNodeTemplate` `.asset` directly from the Project window onto the canvas also works.
+- **NODE TEMPLATES sidebar panel** — one pill per discovered template asset, showing name and node count `[N]`. Refresh button re-scans the project.
+- **Rename and Delete** — right-click any template pill to rename it (updates display name and `.asset` filename via a modal window) or delete it with a confirmation dialog.
+
+### Bookmark System
+
+- Right-click any node → **Bookmark this Node** — adds it to the BOOKMARKS sidebar panel.
+- Click a bookmark row to select and frame that node on the canvas.
+- **Custom bookmark names** — click the ✎ pencil button on a row to rename it inline. Press Enter or click away to confirm; Escape to cancel. Empty name reverts to the auto-generated node label.
+- Bookmarks are removed automatically when the bookmarked node is deleted.
+- Persisted per-graph in `EditorPrefs` (keyed by graph asset GUID); survive editor restarts.
+
+### Export Script
+
+- **Export Script** button in the PROJECT sidebar — walks the graph from the start node in execution order and writes a plain-text `.txt` screenplay file.
+- Output: `[Speaker Name]` / dialogue text / blank line. Player choices are numbered; each branch is indented below its option header. Branch nodes show `(True path)` / `(False path)`. Silent nodes (SetVariable, FireEvent, Wait, etc.) are invisible in the output.
+- Nodes unreachable from the start node are appended at the bottom with a `--- (unreachable from start) ---` separator.
+- File opens in Explorer/Finder immediately after export.
+
+### Editor / UX
+
+- **Jump node right-click → "Go to Target (tagname)"** — selects and frames the node that owns the jump's target tag. Greyed out if the tag is unset or not found.
+- **End node right-click → "Go to Entry Point (keyname)"** — selects and frames the node that owns the entry point key. Greyed out if the key is unset or not found.
+- **Sidebar order** — PROJECT → GRAPH → NAVIGATE → BOOKMARKS → CREATE → NODE TEMPLATES. "Referenced by" moved into the PROJECT collapsible section.
+- Sidebar node pills and action pills (CREATE section) are now **drag-only**; click-to-create removed.
+- **GUID label** on nodes now appears above the Tag field.
+- `BaseDialogueNodeView` exposes a `protected virtual AppendNodeContextMenu()` hook for subclass context menu extensions.

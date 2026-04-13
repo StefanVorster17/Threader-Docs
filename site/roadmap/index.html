@@ -1171,6 +1171,39 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#node-template-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Node Template System
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bookmark-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bookmark System
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#export-script" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Export Script
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1364,6 +1397,39 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#node-template-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Node Template System
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bookmark-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bookmark System
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#export-script" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Export Script
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1464,7 +1530,7 @@
 <hr />
 <h2 id="upcoming">Upcoming</h2>
 <h3 id="v11">v1.1</h3>
-<p>Sub-graph support, bark system, and editor quality-of-life. See the <a href="../changelog/">Changelog</a> for the full list on release.</p>
+<p>Sub-graph support, bark system, node templates, bookmarks, export script, and editor quality-of-life. See the <a href="../changelog/">Changelog</a> for the full list on release.</p>
 <h4 id="sub-graph-support">Sub-Graph support</h4>
 <p>Call any <code>DialogueGraph</code> asset from within a running dialogue graph, then return to the calling graph when it ends.</p>
 <p><strong>What ships:</strong></p>
@@ -1516,6 +1582,36 @@
 - Merchant and shopkeeper callouts
 - Randomised flavour lines driven by game state via Branch and condition nodes</p>
 <p><strong>NPC-to-NPC / overheard dialogue</strong> — because the bark runner waits for each audio clip to finish before the next line plays, a bark graph can script a full back-and-forth exchange between two NPCs (e.g. two guards talking as the player walks past). Wire <code>OnBark</code> to read the <code>SpeakerName</code> field and route each line to the right overhead bubble. No extra code or special mode needed.</p>
+<h4 id="node-template-system">Node Template System</h4>
+<p>Save any selection of nodes as a reusable template asset, then drag it back onto any graph to stamp out a fresh copy — wired internally, new GUIDs, ready to use.</p>
+<p><strong>What ships:</strong></p>
+<ul>
+<li><strong><code>DialogueNodeTemplate</code> ScriptableObject</strong> — stores a deep-copy snapshot of one or more nodes and their internal connections. Created automatically when you save a selection, or manually via <code>Assets &gt; Create &gt; Threader &gt; Dialogue Node Template</code>.</li>
+<li><strong>Save Selection as Template</strong> — select nodes in the graph and click "Save Selection" in the NODE TEMPLATES sidebar panel. Internal connections (edges within the selection) are preserved; external connections are dropped.</li>
+<li><strong>Drag-to-stamp</strong> — drag a template pill from the NODE TEMPLATES sidebar onto the canvas to instantiate it at the drop position. All nodes get fresh GUIDs; internal wiring is re-connected automatically.</li>
+<li><strong>Project window drag</strong> — dragging a <code>.asset</code> directly from Unity's Project window onto the canvas also works.</li>
+<li><strong>Rename and Delete</strong> — right-click any template pill to rename it (updates both the display name and the <code>.asset</code> filename) or delete it with a confirmation dialog.</li>
+</ul>
+<p>Templates are <em>stamp-and-detach</em> — once placed, the copy is completely independent of the original. For <em>live-linked</em> reuse (one graph called from many places), use the Sub Graph Node instead.</p>
+<h4 id="bookmark-system">Bookmark System</h4>
+<p>Quickly navigate large graphs by bookmarking nodes and jumping back to them from the sidebar.</p>
+<p><strong>What ships:</strong></p>
+<ul>
+<li>Right-click any node → <strong>Bookmark this Node</strong> — adds it to the BOOKMARKS sidebar panel.</li>
+<li>Click a bookmark row to select and frame that node in the canvas.</li>
+<li><strong>Custom bookmark names</strong> — click the ✎ button on a row to rename it inline. Empty name reverts to the auto-generated label.</li>
+<li>Bookmarks are removed automatically when the bookmarked node is deleted.</li>
+<li>Persisted per-graph in EditorPrefs; survive editor restarts.</li>
+</ul>
+<h4 id="export-script">Export Script</h4>
+<p>Export a graph's dialogue content as a human-readable plain-text screenplay — useful for VO sessions, narrative review, and writer feedback.</p>
+<p><strong>What ships:</strong></p>
+<ul>
+<li><strong>Export Script</strong> button in the PROJECT sidebar — walks the graph from the start node in execution order and writes a <code>.txt</code> file.</li>
+<li>Output format: <code>[Speaker Name]</code> on one line, dialogue text on the next, blank line between entries. Player choices are listed with numbers; each branch is indented below its option. Silent nodes (SetVariable, FireEvent, Wait, etc.) are invisible in the output.</li>
+<li>Any nodes unreachable from the start node are appended at the bottom with a separator.</li>
+<li>File opens in Explorer/Finder after export and can be uploaded to Google Drive and opened in Google Docs.</li>
+</ul>
 <hr />
 <h2 id="considering">Considering</h2>
 <p>Features on the radar but not yet committed to a version. These may or may not ship depending on scope, community interest, and architectural fit.</p>

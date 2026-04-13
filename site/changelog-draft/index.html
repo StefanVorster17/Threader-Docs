@@ -1243,6 +1243,72 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#changed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Changed
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixed_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fixed
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#node-template-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Node Template System
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bookmark-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bookmark System
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#export-script" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Export Script
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#editor-ux" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Editor / UX
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1326,6 +1392,51 @@
 <li><strong><code>StartDialogue</code> called while dialogue already active</strong> — previously would silently stomp the running conversation. Now logs a warning and returns early.</li>
 <li><strong><code>_cancelLocked</code> state not reset on <code>Awake</code></strong> — if <code>DialogueManager</code> persisted across scenes, the cancel lock could carry stale state. Now explicitly reset to <code>false</code> in <code>Awake</code>.</li>
 <li><strong>Validator false positive — 'Prevent Dialogue Exit' with Jump Node</strong> — the reachability walk did not follow Jump nodes, causing false "no End node reachable" warnings on graphs that route through a jump to a branch with an End node. Jump targets are now resolved correctly during traversal.</li>
+</ul>
+<h3 id="changed">Changed</h3>
+<ul>
+<li><strong>Graph Type dropdown</strong> — the "Is Bark Graph" toggle in the GRAPH sidebar has been replaced with a <strong>Graph Type</strong> dropdown (<code>Dialogue</code> / <code>Bark</code>). The underlying data (<code>IsBark</code> on <code>DialogueGraph</code>) is unchanged; existing graphs are unaffected.</li>
+<li><strong>Sidebar default width doubled</strong> — the graph editor sidebar opens at 312 px wide by default (previously 156 px) with a minimum of 240 px, giving condition rows and dropdowns more room without needing to resize manually.</li>
+</ul>
+<h3 id="fixed_1">Fixed</h3>
+<ul>
+<li><strong>Snap to Grid had no live effect</strong> — nodes moved freely regardless of the Snap to Grid setting; positions were only rounded at save time. Snapping now happens immediately on drag-end so nodes lock to the 20 px grid as expected.</li>
+<li><strong>Nodes could not be removed from a Group box</strong> — the only way to remove a node from a group was to delete the entire group. Right-clicking a node that is inside a group now shows a <strong>Remove from Group</strong> option directly in the node context menu.</li>
+<li><strong>Set Colour / Tag had no effect when right-clicking a node</strong> — the colour picker was only reachable by right-clicking the graph canvas background with nodes selected, which was not discoverable. <strong>Set Colour / Tag</strong> and <strong>Clear Colour / Tag</strong> are now available directly in the node's right-click context menu.</li>
+<li><strong><code>CloneNode</code> for NPCNode</strong> silently dropped <code>SpeakerName</code>, <code>SetActions</code>, and <code>AnimatorActions</code> on every copy/paste, duplicate (Ctrl+D), and template save. All three fields are now correctly copied.</li>
+</ul>
+<h3 id="node-template-system">Node Template System</h3>
+<ul>
+<li><strong><code>DialogueNodeTemplate</code> ScriptableObject</strong> — stores a deep-copy snapshot of one or more nodes and their internal connections. Created automatically when saving a selection, or manually via <code>Assets &gt; Create &gt; Threader &gt; Dialogue Node Template</code>.</li>
+<li><strong>Save Selection as Template</strong> — select nodes in the graph and click "Save Selection" in the NODE TEMPLATES sidebar panel. Internal connections are preserved; external connections are dropped.</li>
+<li><strong>Drag-to-stamp</strong> — drag a template pill from the NODE TEMPLATES sidebar onto the canvas to instantiate it. All nodes receive fresh GUIDs; internal wiring is re-connected automatically.</li>
+<li><strong>Project window drag</strong> — dragging a <code>DialogueNodeTemplate</code> <code>.asset</code> directly from the Project window onto the canvas also works.</li>
+<li><strong>NODE TEMPLATES sidebar panel</strong> — one pill per discovered template asset, showing name and node count <code>[N]</code>. Refresh button re-scans the project.</li>
+<li><strong>Rename and Delete</strong> — right-click any template pill to rename it (updates display name and <code>.asset</code> filename via a modal window) or delete it with a confirmation dialog.</li>
+</ul>
+<h3 id="bookmark-system">Bookmark System</h3>
+<ul>
+<li>Right-click any node → <strong>Bookmark this Node</strong> — adds it to the BOOKMARKS sidebar panel.</li>
+<li>Click a bookmark row to select and frame that node on the canvas.</li>
+<li><strong>Custom bookmark names</strong> — click the ✎ pencil button on a row to rename it inline. Press Enter or click away to confirm; Escape to cancel. Empty name reverts to the auto-generated node label.</li>
+<li>Bookmarks are removed automatically when the bookmarked node is deleted.</li>
+<li>Persisted per-graph in <code>EditorPrefs</code> (keyed by graph asset GUID); survive editor restarts.</li>
+</ul>
+<h3 id="export-script">Export Script</h3>
+<ul>
+<li><strong>Export Script</strong> button in the PROJECT sidebar — walks the graph from the start node in execution order and writes a plain-text <code>.txt</code> screenplay file.</li>
+<li>Output: <code>[Speaker Name]</code> / dialogue text / blank line. Player choices are numbered; each branch is indented below its option header. Branch nodes show <code>(True path)</code> / <code>(False path)</code>. Silent nodes (SetVariable, FireEvent, Wait, etc.) are invisible in the output.</li>
+<li>Nodes unreachable from the start node are appended at the bottom with a <code>--- (unreachable from start) ---</code> separator.</li>
+<li>File opens in Explorer/Finder immediately after export.</li>
+</ul>
+<h3 id="editor-ux">Editor / UX</h3>
+<ul>
+<li><strong>Jump node right-click → "Go to Target (tagname)"</strong> — selects and frames the node that owns the jump's target tag. Greyed out if the tag is unset or not found.</li>
+<li><strong>End node right-click → "Go to Entry Point (keyname)"</strong> — selects and frames the node that owns the entry point key. Greyed out if the key is unset or not found.</li>
+<li><strong>Sidebar order</strong> — PROJECT → GRAPH → NAVIGATE → BOOKMARKS → CREATE → NODE TEMPLATES. "Referenced by" moved into the PROJECT collapsible section.</li>
+<li>Sidebar node pills and action pills (CREATE section) are now <strong>drag-only</strong>; click-to-create removed.</li>
+<li><strong>GUID label</strong> on nodes now appears above the Tag field.</li>
+<li><code>BaseDialogueNodeView</code> exposes a <code>protected virtual AppendNodeContextMenu()</code> hook for subclass context menu extensions.</li>
 </ul>
 
 
