@@ -10,13 +10,13 @@
       
       
       
-        <link rel="canonical" href="https://stefanvorster17.github.io/Threader-Docs/conditions/">
+        <link rel="canonical" href="https://stefanvorster17.github.io/Threader-Docs/sub-graph/">
       
       
-        <link rel="prev" href="../variables/">
+        <link rel="prev" href="../speaker-roster/">
       
       
-        <link rel="next" href="../events/">
+        <link rel="next" href="../bark/">
       
       
         
@@ -27,7 +27,7 @@
     
     
       
-        <title>Conditions - Threader - Dialogue Kit</title>
+        <title>Sub-Graph - Threader - Dialogue Kit</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#conditions" class="md-skip">
+        <a href="#sub-graph-system" class="md-skip">
           Skip to content
         </a>
       
@@ -117,7 +117,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Conditions
+              Sub-Graph
             
           </span>
         </div>
@@ -726,37 +726,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Conditions
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../conditions/" class="md-nav__link">
         
   
   
@@ -772,242 +745,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#what-happens-when-a-condition-fails" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        What happens when a condition fails
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#inline-variable-conditions-no-c-required" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Inline variable conditions (no C# required)
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Inline variable conditions (no C# required)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#setup-in-3-steps" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Setup in 3 steps
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#and-logic" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        AND logic
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#variable-names-are-case-sensitive" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Variable names are case-sensitive
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#example" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Example
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#branch-node-conditions" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Branch Node conditions
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#custom-conditions-c-required" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Custom conditions (C# required)
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Custom conditions (C# required)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#step-1-register-a-handler" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 1 — Register a handler
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Step 1 — Register a handler">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#option-a-delegate-simplest" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Option A: Delegate (simplest)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#option-b-conditionprovider-subclass-all-conditions-in-one-asset" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Option B: ConditionProvider subclass (all conditions in one asset)
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#evaluation-order" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Evaluation order
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-2-create-a-conditiondefinition-asset" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 2 — Create a ConditionDefinition asset
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-3-link-the-asset-to-a-choice" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 3 — Link the asset to a choice
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#conditionstoreprovider-built-in-provider" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ConditionStoreProvider (built-in provider)
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#variableconditiondefinition-no-code-asset-condition" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        VariableConditionDefinition (no-code asset condition)
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#combining-both-systems" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Combining both systems
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#debugging-conditions" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Debugging conditions
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1073,10 +810,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../sub-graph/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sub-Graph
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1092,6 +856,142 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#how-it-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How it works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#speaker-resolution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Speaker resolution
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#end-node-on-end-sub-graph-slot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        End Node "On end →" sub-graph slot
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#depth-limit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Depth limit
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Patterns
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Patterns">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#unimportant-npc-no-unique-dialogue" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Unimportant NPC — no unique dialogue
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#important-npc-quest-driven-routing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Important NPC — quest-driven routing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#end-of-quest-fallback" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        End-of-quest fallback
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shared-shop-or-trade-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Shared shop or trade flow
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#editor-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Editor notes
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1496,10 +1396,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#what-happens-when-a-condition-fails" class="md-nav__link">
+  <a href="#how-it-works" class="md-nav__link">
     <span class="md-ellipsis">
       
-        What happens when a condition fails
+        How it works
       
     </span>
   </a>
@@ -1507,22 +1407,55 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#inline-variable-conditions-no-c-required" class="md-nav__link">
+  <a href="#speaker-resolution" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Inline variable conditions (no C# required)
+        Speaker resolution
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Inline variable conditions (no C# required)">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#end-node-on-end-sub-graph-slot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        End Node "On end →" sub-graph slot
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#depth-limit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Depth limit
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Patterns
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Patterns">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#setup-in-3-steps" class="md-nav__link">
+  <a href="#unimportant-npc-no-unique-dialogue" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Setup in 3 steps
+        Unimportant NPC — no unique dialogue
       
     </span>
   </a>
@@ -1530,10 +1463,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#and-logic" class="md-nav__link">
+  <a href="#important-npc-quest-driven-routing" class="md-nav__link">
     <span class="md-ellipsis">
       
-        AND logic
+        Important NPC — quest-driven routing
       
     </span>
   </a>
@@ -1541,10 +1474,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#variable-names-are-case-sensitive" class="md-nav__link">
+  <a href="#end-of-quest-fallback" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Variable names are case-sensitive
+        End-of-quest fallback
       
     </span>
   </a>
@@ -1552,10 +1485,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#example" class="md-nav__link">
+  <a href="#shared-shop-or-trade-flow" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Example
+        Shared shop or trade flow
       
     </span>
   </a>
@@ -1568,143 +1501,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#branch-node-conditions" class="md-nav__link">
+  <a href="#editor-notes" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Branch Node conditions
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#custom-conditions-c-required" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Custom conditions (C# required)
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Custom conditions (C# required)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#step-1-register-a-handler" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 1 — Register a handler
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Step 1 — Register a handler">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#option-a-delegate-simplest" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Option A: Delegate (simplest)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#option-b-conditionprovider-subclass-all-conditions-in-one-asset" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Option B: ConditionProvider subclass (all conditions in one asset)
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#evaluation-order" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Evaluation order
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-2-create-a-conditiondefinition-asset" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 2 — Create a ConditionDefinition asset
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-3-link-the-asset-to-a-choice" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 3 — Link the asset to a choice
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#conditionstoreprovider-built-in-provider" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ConditionStoreProvider (built-in provider)
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#variableconditiondefinition-no-code-asset-condition" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        VariableConditionDefinition (no-code asset condition)
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#combining-both-systems" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Combining both systems
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#debugging-conditions" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Debugging conditions
+        Editor notes
       
     </span>
   </a>
@@ -1728,305 +1528,82 @@
 
 
 
-<h1 id="conditions">Conditions</h1>
-<p>Conditions control whether a player choice is <strong>available</strong> at runtime. Threader has two distinct systems — you can use either or both on the same choice.</p>
-<table>
-<thead>
-<tr>
-<th>System</th>
-<th>Requires C#?</th>
-<th>Best for</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Inline variable conditions</td>
-<td>No</td>
-<td>Checking <code>DialogueVariables</code> values set from the graph</td>
-</tr>
-<tr>
-<td>Custom conditions (C#)</td>
-<td>Yes</td>
-<td>Anything that lives in your game code — inventory, quests, reputation, time of day</td>
-</tr>
-</tbody>
-</table>
-<p>When both are used on the same choice, <strong>all</strong> must pass for the choice to be selectable.</p>
+<h1 id="sub-graph-system">Sub-Graph System</h1>
+<p>The Sub Graph Node lets one <code>DialogueGraph</code> call another as a sub-routine, then return and continue — exactly like a function call in code. Use it to share common dialogue sequences (generic greetings, shop flows, idle lines) across many different NPC graphs without duplicating content.</p>
 <hr />
-<h2 id="what-happens-when-a-condition-fails">What happens when a condition fails</h2>
-<p>Each inline condition row has a <strong>Hide</strong> checkbox that controls the UI presentation:</p>
-<table>
-<thead>
-<tr>
-<th>Hide checked</th>
-<th>The choice is completely removed from the list (<code>IsHidden = true</code>)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Hide unchecked</td>
-<td>The choice is shown greyedout and locked (<code>IsLocked = true</code>, unclickable)</td>
-</tr>
-</tbody>
-</table>
-<p>The custom ConditionDefinition slot has a <strong>Negate</strong> toggle and the definition asset has a <strong>When Missing</strong> setting (see below), but no per-definition Hide — if it fails, the choice is locked but not hidden. If you need hiding behaviour from a custom condition, use the <strong>Negate</strong> toggle combined with a variable that your C# code writes.</p>
-<hr />
-<h2 id="inline-variable-conditions-no-c-required">Inline variable conditions (no C# required)</h2>
-<p>These are added directly inside each choice card in the Player Choice node editor.</p>
-<h3 id="setup-in-3-steps">Setup in 3 steps</h3>
-<p><strong>Step 1 — Create a DialogueVariables asset</strong> (if you haven't already):</p>
-<p>Right-click in the Project window → <strong>Create → Threader → Variables Store</strong>.<br />
-Add variables in the Inspector. See <a href="../variables/">Variables</a> for full detail.</p>
-<p><strong>Step 2 — Assign the asset to DialogueManager:</strong></p>
-<p>Drag the asset into <strong>DialogueManager → Variables List</strong>.</p>
-<p><strong>Step 3 — Add conditions in the graph:</strong></p>
-<p>Open a Player Choice node. Inside each choice card, click <strong>+ Add</strong> in the Conditions box.</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Variable</td>
-<td>Dropdown of all variable names from assigned assets</td>
-</tr>
-<tr>
-<td>Operator</td>
-<td>Equal / NotEqual / GreaterThan / GreaterOrEqual / LessThan / LessOrEqual</td>
-</tr>
-<tr>
-<td>Value</td>
-<td>The comparison value — <code>true</code>/<code>false</code>, a number, or a string</td>
-</tr>
-<tr>
-<td>Hide</td>
-<td>Hides the choice entirely when this row fails</td>
-</tr>
-<tr>
-<td>NOT</td>
-<td>Inverts this row's result before it contributes</td>
-</tr>
-<tr>
-<td>✕</td>
-<td>Removes this row</td>
-</tr>
-</tbody>
-</table>
-<h3 id="and-logic">AND logic</h3>
-<p>All rows on a choice must pass for the choice to be selectable. There is no built-in OR. To achieve OR logic, duplicate the choice and put a different condition on each copy — they lead to the same branch.</p>
-<h3 id="variable-names-are-case-sensitive">Variable names are case-sensitive</h3>
-<p><code>foundCat</code> ≠ <code>FoundCat</code>. If you type a name that doesn't exist in any assigned asset, the row is silently skipped and the choice always appears — double-check spelling if a condition has no effect.</p>
-<h3 id="example">Example</h3>
-<pre><code>Choice:  &quot;Offer the fish&quot;
-
-Conditions:
-  hasFish   Equal   true       Hide = ✓
-  gold      GreaterOrEqual  10  Hide = ✗
-</code></pre>
-<p>Result: the choice is hidden until <code>hasFish</code> is true. Once <code>hasFish</code> is true, if <code>gold &lt; 10</code> the choice shows but is greyed out.</p>
-<hr />
-<h2 id="branch-node-conditions">Branch Node conditions</h2>
-<p>The <strong>Branch Node <code>[B]</code></strong> uses the same condition system (Variable / Operator / Value / NOT), but instead of locking/hiding a choice it routes execution to a True or False output port. All rows are AND logic — True port if all pass, False port if any fail.</p>
-<p>See <a href="../nodes/#branch-node-b">Node Reference — Branch Node</a> for full field details.</p>
-<hr />
-<h2 id="custom-conditions-c-required">Custom conditions (C# required)</h2>
-<p>Use this when the state you need to check lives in your game code — an inventory system, a quest log, a reputation tracker, etc.</p>
-<p>The workflow has two parts:
-1. <strong>Register a handler</strong> in C# that evaluates the condition
-2. <strong>Link a ConditionDefinition asset</strong> to a choice in the graph</p>
-<h3 id="step-1-register-a-handler">Step 1 — Register a handler</h3>
-<h4 id="option-a-delegate-simplest">Option A: Delegate (simplest)</h4>
-<p>Call <code>ConditionService.Register</code> from <code>Awake</code> on any <code>MonoBehaviour</code>. The lambda closes over whatever your game code exposes.</p>
-<pre><code class="language-csharp">public class PlayerWallet : MonoBehaviour
-{
-    public int Gold = 100;
-
-    void Awake()
-    {
-        ConditionService.Register(&quot;GoldGTE&quot;, param =&gt;
-        {
-            int.TryParse(param, out int needed);
-            return Gold &gt;= needed;
-        });
-    }
-
-    void OnDestroy() =&gt; ConditionService.Unregister(&quot;GoldGTE&quot;);
-}
-</code></pre>
-<p>The delegate is stored in a static dictionary keyed by the condition key string. Multiple delegates can be registered from multiple MonoBehaviours — each has its own key.</p>
-<blockquote>
-<p>Always <code>Unregister</code> in <code>OnDestroy</code> (or <code>OnDisable</code> if your object might be disabled). Failing to unregister means the delegate persists even after the object is destroyed — the next scene load might fail with a null reference if the lambda captures a destroyed object.</p>
-</blockquote>
-<h4 id="option-b-conditionprovider-subclass-all-conditions-in-one-asset">Option B: ConditionProvider subclass (all conditions in one asset)</h4>
-<p>Create a <code>ScriptableObject</code> that inherits <code>ConditionProvider</code> and override <code>Evaluate</code>. Good when you have many conditions and want them in one organized, inspectable place.</p>
-<pre><code class="language-csharp">[CreateAssetMenu(menuName = &quot;Threader/My Condition Provider&quot;)]
-public class GameConditionProvider : ConditionProvider
-{
-    public override bool Evaluate(ConditionDefinition def, string param)
-    {
-        switch (def.GetKey())
-        {
-            case &quot;GoldGTE&quot;:
-                return int.TryParse(param, out int n) &amp;&amp; Economy.Instance.Gold &gt;= n;
-
-            case &quot;HasItem&quot;:
-                return Inventory.Instance.Has(param);
-
-            case &quot;QuestComplete&quot;:
-                return QuestManager.Instance.IsComplete(param);
-
-            default:
-                // Fall back to the definition's WhenMissing setting
-                return def.WhenMissing == WhenMissingBehaviour.Allow;
-        }
-    }
-}
-</code></pre>
-<p>Create an instance of this asset and assign it to <strong>DialogueManager → Condition Provider</strong> in the Inspector, or call <code>ConditionService.SetProvider(myProvider)</code> from a bootstrap script.</p>
-<h3 id="evaluation-order">Evaluation order</h3>
-<p>When a choice has a <code>ConditionDefinition</code>, <code>ConditionService.Evaluate</code> resolves in this priority order:</p>
+<h2 id="how-it-works">How it works</h2>
+<p>Place a <strong>Sub Graph Node</strong> in your graph, assign a target <code>DialogueGraph</code> asset, and wire it like any other node. When the runner reaches the Sub Graph Node:</p>
 <ol>
-<li><strong>VariableConditionDefinition</strong> — if the asset is a <code>VariableConditionDefinition</code>, it self-evaluates directly (no delegate or provider needed)</li>
-<li><strong>Registered delegate</strong> — if a delegate is registered for this key, it runs</li>
-<li><strong>Active ConditionProvider</strong> — if a provider is assigned and no delegate matched, the provider's <code>Evaluate</code> is called</li>
-<li><strong><code>WhenMissing</code> fallback</strong> — if none of the above handled this key, the definition's <code>WhenMissing</code> setting decides the result</li>
+<li>The current graph is pushed onto the call stack</li>
+<li>The target graph starts at its default start node (or at a named entry point if one is set)</li>
+<li>When the target graph's End node is reached, the call stack pops back to the calling graph</li>
+<li>Execution resumes on the output connected to the Sub Graph Node</li>
 </ol>
-<h3 id="step-2-create-a-conditiondefinition-asset">Step 2 — Create a ConditionDefinition asset</h3>
-<p>Right-click in the Project window → <strong>Create → Threader → Condition (Custom)</strong>.</p>
+<p>The Sub Graph Node has a single output port. When the sub-graph ends, execution always continues from that output. If the output has no connection, the conversation ends normally.</p>
+<hr />
+<h2 id="speaker-resolution">Speaker resolution</h2>
+<p>NPC nodes inside a sub-graph resolve their speaker name through a three-level chain:</p>
 <table>
 <thead>
 <tr>
-<th>Field</th>
-<th>Description</th>
+<th>Priority</th>
+<th>Source</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><strong>Key</strong></td>
-<td>Must exactly match the string you used in <code>Register()</code> or <code>def.GetKey()</code>. Defaults to the asset file name.</td>
+<td>1</td>
+<td><strong>Node Speaker</strong> — the speaker set directly on that NPC node</td>
 </tr>
 <tr>
-<td><strong>Display Name</strong></td>
-<td>Human-readable label shown in the Inspector</td>
+<td>2</td>
+<td><strong>Graph Default Speaker</strong> — the <code>DefaultSpeakerName</code> on the sub-graph asset</td>
 </tr>
 <tr>
-<td><strong>Category</strong></td>
-<td>Groups assets in pickers as <code>Category/Name</code></td>
-</tr>
-<tr>
-<td><strong>Parameter Hint</strong></td>
-<td>Tooltip shown when browsing in the Inspector — describe what the parameter string means</td>
-</tr>
-<tr>
-<td><strong>When Missing</strong></td>
-<td><strong>Allow</strong> (default) — choice always shown when no handler is registered. Safe during development. <strong>Block</strong> — choice locked when no handler is registered. Use for must-be-earned conditions.</td>
+<td>3</td>
+<td><strong>Calling actor's speaker name</strong> — the <code>SpeakerName</code> from the <code>IDialogueActor</code> that started the top-level conversation</td>
 </tr>
 </tbody>
 </table>
-<h3 id="step-3-link-the-asset-to-a-choice">Step 3 — Link the asset to a choice</h3>
-<ol>
-<li>Open the graph in the <strong>Graph Editor</strong></li>
-<li>Click the Player Choice node to select it</li>
-<li>Inside the choice card, expand the <strong>Condition Definition [Custom]</strong> foldout</li>
-<li>Click the object picker (⊙) on the right of the asset slot and select your <code>ConditionDefinition</code> asset</li>
-<li>Type a value in <strong>Parameter</strong> — this is the string your lambda or <code>Evaluate</code> receives</li>
-<li>Check <strong>Negate</strong> if you want the result inverted</li>
-</ol>
-<p><img alt="ConditionDefinition foldout expanded with object picker" src="../assets/images/condition-picker.png" width="480" /></p>
-<blockquote>
-<p>The ConditionDefinition is set directly on the choice card in the graph editor canvas — not on the <code>.asset</code> file in the Inspector.</p>
-</blockquote>
+<p>This means a shared graph with blank speaker fields automatically displays and looks at whoever triggered the dialogue — no extra setup required.</p>
 <hr />
-<h2 id="conditionstoreprovider-built-in-provider">ConditionStoreProvider (built-in provider)</h2>
-<p>Threader ships with <code>ConditionStoreProvider</code> — a ready-to-use <code>ConditionProvider</code> subclass that evaluates against <code>ConditionStore</code>, a static in-memory key/value dictionary.</p>
-<p>Assign <code>ConditionStoreProvider</code> to <strong>DialogueManager → Condition Provider</strong> and then write your game state into <code>ConditionStore</code> from anywhere:</p>
-<pre><code class="language-csharp">// Write from your game code
-ConditionStore.SetInt(&quot;Gold&quot;,  economy.Gold);
-ConditionStore.Set(&quot;HasSword&quot;, inventory.Has(&quot;sword&quot;) ? &quot;true&quot; : &quot;false&quot;);
+<h2 id="end-node-on-end-sub-graph-slot">End Node "On end →" sub-graph slot</h2>
+<p>The <strong>End Node</strong> has an optional <strong>On end →</strong> section with a <code>DialogueGraph</code> field and entry point key. When a graph is assigned:</p>
+<ol>
+<li>The <code>Next entry</code> switch fires first — the actor's entry point is updated before the sub-graph runs</li>
+<li>The sub-graph runs as a sub-routine</li>
+<li>When the sub-graph's End node is reached, the conversation truly closes</li>
+</ol>
+<p>This is useful for routing quest NPCs back to generic idle lines automatically after a unique conversation ends.</p>
+<hr />
+<h2 id="depth-limit">Depth limit</h2>
+<p>Sub-graphs can be nested up to <strong>16 levels deep</strong>. Exceeding this limit logs an error and ends the dialogue cleanly to prevent infinite loops caused by circular references.</p>
+<hr />
+<h2 id="patterns">Patterns</h2>
+<h3 id="unimportant-npc-no-unique-dialogue">Unimportant NPC — no unique dialogue</h3>
+<p>Assign a shared generic graph directly to the NPC's <code>NPCDialogue</code> component. Leave speaker fields blank in the shared graph. The NPC's own <code>Speaker Name</code> field serves as the caller fallback so the UI, camera, and audio resolve correctly for each individual NPC without any additional setup.</p>
+<h3 id="important-npc-quest-driven-routing">Important NPC — quest-driven routing</h3>
+<p>Give the NPC a personal "router" graph that contains only Branch or Entry Point logic — no dialogue lines. Each branch leads to a Sub Graph Node pointing at the relevant content graph (generic idle, quest intro, quest done, etc.).</p>
+<pre><code>Router graph:
+  Start → Branch [questPhase == &quot;done&quot;]
+      True  → Sub Graph Node (QuestDone.graph)       → End
+      False → Sub Graph Node (GenericGreeting.graph) → End
 </code></pre>
-<p>In the graph, set the <strong>ConditionDefinition</strong> key to the same string you used in <code>ConditionStore.Set/SetInt</code>. The <strong>Parameter</strong> field on the choice card controls how the stored value is tested:</p>
-<table>
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Behaviour</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><em>(empty)</em></td>
-<td>Key must exist and be truthy — non-empty, not <code>"0"</code>, not <code>"false"</code></td>
-</tr>
-<tr>
-<td><code>"true"</code></td>
-<td>Stored value equals <code>"true"</code> (case-insensitive)</td>
-</tr>
-<tr>
-<td><code>"Excalibur"</code></td>
-<td>Stored value equals the string exactly (case-insensitive)</td>
-</tr>
-<tr>
-<td><code>"&gt;= 50"</code></td>
-<td>Numeric comparison — also supports <code>&gt;</code>, <code>&lt;=</code>, <code>&lt;</code>, <code>==</code>, <code>!=</code></td>
-</tr>
-</tbody>
-</table>
-<p><code>ConditionStore</code> is in-memory only — it resets when you start Play mode. After loading a save, repopulate it before starting any dialogue.</p>
+<p>Your quest system calls:</p>
+<pre><code class="language-csharp">npc.SetEntryPoint(&quot;QuestDone&quot;);
+</code></pre>
+<p>The router handles the rest — no graph duplication, no per-state NPC components.</p>
+<h3 id="end-of-quest-fallback">End-of-quest fallback</h3>
+<p>On the <strong>End Node</strong> of a quest-specific graph, set <strong>On end →</strong> to the generic idle graph. After the unique lines finish, the NPC delivers their normal ambient response before the conversation closes — automatically, with zero extra wiring.</p>
+<h3 id="shared-shop-or-trade-flow">Shared shop or trade flow</h3>
+<p>Build one <code>ShopDialogue.graph</code> with all the shop interaction lines. Any merchant NPC points their Sub Graph Node at this asset. Speaker resolution fills in the correct merchant name automatically.</p>
 <hr />
-<h2 id="variableconditiondefinition-no-code-asset-condition">VariableConditionDefinition (no-code asset condition)</h2>
-<p>If you want a reusable condition asset that checks a <code>DialogueVariables</code> store without any C# handler, create a <code>VariableConditionDefinition</code>:</p>
-<p>Right-click in the Project window → <strong>Create → Threader → Variable Condition</strong>.</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Variables</strong></td>
-<td>Drag a <code>DialogueVariables</code> asset here</td>
-</tr>
-<tr>
-<td><strong>Variable Name</strong></td>
-<td>The variable to check</td>
-</tr>
-<tr>
-<td><strong>Operator</strong></td>
-<td>Equal / NotEqual / GreaterThan / etc.</td>
-</tr>
-<tr>
-<td><strong>Value</strong></td>
-<td>The comparison value</td>
-</tr>
-</tbody>
-</table>
-<p>Drag this asset into a choice's <strong>Condition Definition</strong> slot. No <code>Register</code> call needed — it self-evaluates by calling the asset's <code>GetBool</code>/<code>GetInt</code>/<code>GetString</code> methods directly.</p>
-<p>This is useful for creating reusable condition assets that can be shared across multiple graphs — for example, a <code>HasGoldCond.asset</code> that multiple shops all reference.</p>
-<hr />
-<h2 id="combining-both-systems">Combining both systems</h2>
-<p>A choice can carry both inline conditions <strong>and</strong> a <code>ConditionDefinition</code>. The evaluation order is:</p>
-<ol>
-<li>All inline variable condition rows are checked (AND logic)</li>
-<li>If any inline condition fails → choice is locked/hidden immediately, <code>ConditionDefinition</code> is skipped</li>
-<li>If all inline conditions pass → <code>ConditionDefinition</code> is evaluated</li>
-<li>If that fails → choice is locked</li>
-</ol>
-<p>This means inline conditions act as a <strong>fast-path guard</strong> — expensive C# lookups in your provider are only reached if the cheap variable checks all pass.</p>
-<hr />
-<h2 id="debugging-conditions">Debugging conditions</h2>
-<p>If a condition isn't behaving as expected:</p>
-<ol>
-<li><strong>Open the Dialogue Preview Window</strong> (<code>Shift+Alt+P</code>) — enable <strong>Show hidden</strong> to see choices that are being hidden, and check which conditions are evaluated against your seeded variable values</li>
-<li><strong>Variable names are case-sensitive</strong> — double-check spelling in both the graph and the asset</li>
-<li><strong>Delegate not registered</strong> — if <code>WhenMissing = Block</code> and nothing is registered, the choice locks silently. Add a <code>Debug.Log</code> inside your delegate to confirm it fires.</li>
-<li><strong>Provider not assigned</strong> — if you use Option B, make sure the asset is in <strong>DialogueManager → Condition Provider</strong> or <code>ConditionService.SetProvider</code> was called. Check <code>ConditionService.Provider</code> in code to verify.</li>
-<li><strong>Multiple variables assets</strong> — the runner searches assets in list order. If two assets have the same variable name, only the first found is used.</li>
-</ol>
+<h2 id="editor-notes">Editor notes</h2>
+<ul>
+<li>The Sub Graph Node is <strong>not available in bark graphs</strong>. It is hidden from the sidebar and context menu when <strong>Graph Type</strong> is set to <strong>Bark</strong>.</li>
+<li>The validator checks for circular sub-graph references and warns if the depth limit could be exceeded.</li>
+<li>Sub-graphs can themselves contain Sub Graph Nodes (nested calls), up to the 16-level limit.</li>
+</ul>
 
 
 

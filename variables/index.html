@@ -1048,6 +1048,90 @@
   
   
     <li class="md-nav__item">
+      <a href="../sub-graph/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sub-Graph
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bark/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bark System
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../templates/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Node Templates
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../ui/" class="md-nav__link">
         
   
@@ -1630,7 +1714,7 @@
 </tbody>
 </table>
 <blockquote>
-<p>All three value fields (Bool, Int, String) are always visible. Only the field matching the selected Type is used at runtime — the others are ignored.</p>
+<p>The inspector is <strong>type-aware</strong> — it shows only the relevant value field for each variable: a checkbox for Bool, an integer field for Int, and a text field for String. Clean collapsible rows with a remove button and a <code>+ Add Variable</code> button at the bottom.</p>
 </blockquote>
 <p><img alt="DialogueVariables asset in the Inspector" src="../assets/images/variables-panel.png" width="480" /></p>
 <hr />
@@ -1667,11 +1751,11 @@ EconomyVariables.asset — gold, price, credits
 </tr>
 <tr>
 <td>Operator</td>
-<td>Equal / NotEqual / GreaterThan / GreaterOrEqual / LessThan / LessOrEqual</td>
+<td>Equal / NotEqual / GreaterThan / GreaterOrEqual / LessThan / LessOrEqual. Numeric operators (<code>GreaterThan</code>, <code>GreaterOrEqual</code>, etc.) are hidden automatically for Bool and String variables.</td>
 </tr>
 <tr>
 <td>Value</td>
-<td><code>true</code>/<code>false</code> for Bool; a number for Int; any string for String</td>
+<td><strong>Type-aware field</strong> — checkbox for Bool, integer field for Int, text field for String. Updates automatically when you change the variable.</td>
 </tr>
 <tr>
 <td>Hide</td>
@@ -1869,7 +1953,7 @@ foreach (var v in DialogueManager.Instance.VariablesList)
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Threader Dialogue Kit &nbsp;·&nbsp; v1.0 (Unreleased)
+      Threader Dialogue Kit &nbsp;·&nbsp; v1.0
     </div>
   
   

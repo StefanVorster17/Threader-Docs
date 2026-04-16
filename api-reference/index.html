@@ -808,6 +808,90 @@
   
   
     <li class="md-nav__item">
+      <a href="../sub-graph/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sub-Graph
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bark/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bark System
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../templates/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Node Templates
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../ui/" class="md-nav__link">
         
   
@@ -1214,15 +1298,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#dialoguevariables" class="md-nav__link">
+  <a href="#barksource" class="md-nav__link">
     <span class="md-ellipsis">
       
-        DialogueVariables
+        BarkSource
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="DialogueVariables">
+    <nav class="md-nav" aria-label="BarkSource">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1238,6 +1322,45 @@
         
           <li class="md-nav__item">
   <a href="#methods_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dialoguevariables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DialogueVariables
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="DialogueVariables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inspector-fields_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Inspector fields
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#methods_5" class="md-nav__link">
     <span class="md-ellipsis">
       
         Methods
@@ -1298,7 +1421,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#methods_5" class="md-nav__link">
+  <a href="#methods_6" class="md-nav__link">
     <span class="md-ellipsis">
       
         Methods
@@ -1359,7 +1482,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#methods_6" class="md-nav__link">
+  <a href="#methods_7" class="md-nav__link">
     <span class="md-ellipsis">
       
         Methods
@@ -1939,15 +2062,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#dialoguevariables" class="md-nav__link">
+  <a href="#barksource" class="md-nav__link">
     <span class="md-ellipsis">
       
-        DialogueVariables
+        BarkSource
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="DialogueVariables">
+    <nav class="md-nav" aria-label="BarkSource">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1963,6 +2086,45 @@
         
           <li class="md-nav__item">
   <a href="#methods_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dialoguevariables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DialogueVariables
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="DialogueVariables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inspector-fields_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Inspector fields
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#methods_5" class="md-nav__link">
     <span class="md-ellipsis">
       
         Methods
@@ -2023,7 +2185,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#methods_5" class="md-nav__link">
+  <a href="#methods_6" class="md-nav__link">
     <span class="md-ellipsis">
       
         Methods
@@ -2084,7 +2246,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#methods_6" class="md-nav__link">
+  <a href="#methods_7" class="md-nav__link">
     <span class="md-ellipsis">
       
         Methods
@@ -2289,6 +2451,10 @@ event Action OnDialogueEnd;
 <pre><code class="language-csharp">// Dialogue is starting. Also fires OnDialogueStarted (UnityEvent) in parallel.
 event Action OnDialogueStartedEvent;
 </code></pre>
+<pre><code class="language-csharp">// A bark line has become active (fired instead of OnNPCLine for bark graphs).
+event Action&lt;NPCLine&gt; OnBark;
+</code></pre>
+<p>Wire this to a world-space speech bubble, HUD ticker, or any component that should display ambient NPC lines. Bark output never reaches <code>OnNPCLine</code> or the main dialogue panel.</p>
 <h3 id="properties">Properties</h3>
 <table>
 <thead>
@@ -2354,6 +2520,14 @@ event Action OnDialogueStartedEvent;
 </code></pre>
 <p>Immediately ends active dialogue — stops all coroutines and audio, then fires <code>OnDialogueEnd</code> and <code>OnDialogueEnded</code>. No-op if no dialogue is running or if the current node has <strong>Prevent Dialogue Exit</strong> enabled. Safe to call from any UI button or key handler.</p>
 <hr />
+<pre><code class="language-csharp">void PlayBark(DialogueGraph graph, Transform speaker)
+</code></pre>
+<p>Runs a bark graph on a second non-blocking runner. The main conversation runner is completely unaffected — barks never block the player or fire <code>OnDialogueStarted</code>. Each line fires <code>OnBark</code> instead of <code>OnNPCLine</code>. Barks are automatically suppressed while a full conversation is active.</p>
+<ul>
+<li><code>graph</code> — must have <code>IsBark</code> set to <code>true</code>; passing a normal dialogue graph logs a warning</li>
+<li><code>speaker</code> — used to resolve the caller speaker fallback for NPC nodes with blank speaker fields</li>
+</ul>
+<hr />
 <pre><code class="language-csharp">void RegisterBlockable(IDialogue blockable)
 void UnregisterBlockable(IDialogue blockable)
 </code></pre>
@@ -2384,6 +2558,7 @@ void UnregisterSpeaker(string name)
 {
     DialogueGraph Graph               { get; }
     string        ActiveEntryPointKey { get; }
+    string        SpeakerName         { get; }
 
     void SetEntryPoint(string key);
     void ResetEntryPoint();
@@ -2406,6 +2581,10 @@ void UnregisterSpeaker(string name)
 <tr>
 <td><code>ActiveEntryPointKey</code></td>
 <td>Current entry point override. Null/empty = start node.</td>
+</tr>
+<tr>
+<td><code>SpeakerName</code></td>
+<td>The speaker name for this actor. Used as the third-level fallback in sub-graph speaker resolution.</td>
 </tr>
 <tr>
 <td><code>SetEntryPoint(key)</code></td>
@@ -2595,7 +2774,12 @@ void UnregisterSpeaker(string name)
 <tr>
 <td><code>LookAtSpeaker</code></td>
 <td><code>bool</code></td>
-<td>When true, calls <code>IDialogueFocus.FocusOn</code> on the speaking NPC's transform. Set via the <strong>Look At Speaker</strong> toggle in the Graph Editor sidebar.</td>
+<td>When true, calls <code>IDialogueFocus.FocusOn</code> on the speaking NPC's transform. Set via the <strong>Look At Speaker</strong> toggle in the Graph Editor sidebar. Hidden in the editor when <code>IsBark</code> is true.</td>
+</tr>
+<tr>
+<td><code>IsBark</code></td>
+<td><code>bool</code></td>
+<td>When true, this graph is treated as a bark graph. Set via the <strong>Graph Type</strong> dropdown in the GRAPH sidebar. <code>PlayBark()</code> requires this to be true.</td>
 </tr>
 <tr>
 <td><code>EntryPoints</code></td>
@@ -2619,10 +2803,50 @@ void UnregisterSpeaker(string name)
 </code></pre>
 <p>Returns the node GUID for <code>key</code>. Falls back to <code>StartNodeGuid</code> if <code>key</code> is null, empty, or not found. Logs a warning (not an error) on fallback when a non-empty key was supplied. Called by <code>DialogueManager.StartDialogue</code>.</p>
 <hr />
+<h2 id="barksource">BarkSource</h2>
+<p><code>BarkSource : MonoBehaviour</code></p>
+<p>Add to any NPC GameObject (alongside <code>NPCDialogue</code>) to automate bark playback without any C#. Calls <code>DialogueManager.PlayBark()</code> based on the configured trigger mode.</p>
+<h3 id="inspector-fields_4">Inspector fields</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>barkGraph</code></td>
+<td><code>DialogueGraph</code></td>
+<td>The bark graph to play. Must have <code>IsBark = true</code>.</td>
+</tr>
+<tr>
+<td><code>triggerMode</code></td>
+<td><code>BarkTriggerMode</code></td>
+<td><code>OnEnter</code> — fires when the player enters the trigger collider. <code>OnTimer</code> — fires on an interval. <code>Manual</code> — call <code>TriggerBark()</code> from script.</td>
+</tr>
+<tr>
+<td><code>cooldown</code></td>
+<td><code>float</code></td>
+<td>Minimum seconds between barks. Prevents rapid repeat firing regardless of trigger mode.</td>
+</tr>
+<tr>
+<td><code>suppressDuringDialogue</code></td>
+<td><code>bool</code></td>
+<td>When true (default), barks are silently skipped while a full conversation is active.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="methods_4">Methods</h3>
+<pre><code class="language-csharp">void TriggerBark()
+</code></pre>
+<p>Manually triggers the bark. Safe to call from a <code>UnityEvent</code>, animation event, or external script. Respects cooldown and the <code>suppressDuringDialogue</code> setting.</p>
+<hr />
 <h2 id="dialoguevariables">DialogueVariables</h2>
 <p><code>DialogueVariables : ScriptableObject</code></p>
 <p>Create via <strong>Assets → Create → Threader → Variables Store</strong>.</p>
-<h3 id="inspector-fields_4">Inspector fields</h3>
+<h3 id="inspector-fields_5">Inspector fields</h3>
 <table>
 <thead>
 <tr>
@@ -2639,7 +2863,7 @@ void UnregisterSpeaker(string name)
 </tr>
 </tbody>
 </table>
-<h3 id="methods_4">Methods</h3>
+<h3 id="methods_5">Methods</h3>
 <pre><code class="language-csharp">void InitRuntime()
 </code></pre>
 <p>Copies design-time defaults into runtime dictionaries. Call explicitly to reset all variables (new game). Called automatically on first access if not called manually.</p>
@@ -2706,7 +2930,7 @@ void SetString(string name, string value)
 <pre><code class="language-csharp">static ConditionProvider Provider { get; }
 </code></pre>
 <p>Returns the active provider. If none was explicitly set, attempts <code>Resources.Load&lt;ConditionProvider&gt;("DialogueSystem/DefaultConditionProvider")</code>.</p>
-<h3 id="methods_5">Methods</h3>
+<h3 id="methods_6">Methods</h3>
 <pre><code class="language-csharp">static void SetProvider(ConditionProvider provider)
 </code></pre>
 <p>Explicitly assign a provider. Called by <code>DialogueManager.Awake</code> if one is assigned in the Inspector. Pass <code>null</code> to clear and allow Resources lookup.</p>
@@ -2845,7 +3069,7 @@ static void ClearDelegates()
 </tr>
 </tbody>
 </table>
-<h3 id="methods_6">Methods</h3>
+<h3 id="methods_7">Methods</h3>
 <pre><code class="language-csharp">string GetKey()         // Key ?? name
 string GetDisplayName() // DisplayName ?? name
 </code></pre>
@@ -2990,7 +3214,7 @@ public enum NodeType
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Threader Dialogue Kit &nbsp;·&nbsp; v1.0 (Unreleased)
+      Threader Dialogue Kit &nbsp;·&nbsp; v1.0
     </div>
   
   

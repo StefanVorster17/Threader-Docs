@@ -698,10 +698,32 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#bookmarks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BOOKMARKS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#create" class="md-nav__link">
     <span class="md-ellipsis">
       
         CREATE
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#node-templates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NODE TEMPLATES
       
     </span>
   </a>
@@ -1039,6 +1061,90 @@
     
   
     Speaker Roster
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sub-graph/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sub-Graph
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bark/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bark System
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../templates/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Node Templates
   
 
     
@@ -1473,10 +1579,32 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#bookmarks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BOOKMARKS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#create" class="md-nav__link">
     <span class="md-ellipsis">
       
         CREATE
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#node-templates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NODE TEMPLATES
       
     </span>
   </a>
@@ -1703,11 +1831,15 @@
 </tr>
 <tr>
 <td><strong>Validate</strong></td>
-<td>Runs the graph validator and shows a list of warnings/errors inline</td>
+<td>Runs the graph validator and shows a list of warnings/errors inline. The validator re-runs automatically whenever nodes or edges change while the panel is open.</td>
 </tr>
 <tr>
 <td><strong>Find &amp; Replace</strong></td>
 <td>Opens the find/replace panel (see below)</td>
+</tr>
+<tr>
+<td><strong>Export Script</strong></td>
+<td>Walks the graph from the start node and writes a plain-text <code>.txt</code> screenplay file. Output includes <code>[Speaker Name]</code> headers, dialogue text, numbered player choices, and branch labels. Silent nodes are invisible. Unreachable nodes are appended at the bottom. The file opens in Explorer/Finder immediately after export.</td>
 </tr>
 </tbody>
 </table>
@@ -1726,8 +1858,12 @@
 <td>Fallback speaker name for any NPC node whose own Speaker field is blank. Populated from your SpeakerRoster assets. Nodes with no override show <code>(Graph Default: X)</code> in their dropdown, updating live as you change this value.</td>
 </tr>
 <tr>
+<td><strong>Graph Type</strong></td>
+<td>Dropdown — <code>Dialogue</code> or <code>Bark</code>. Bark graphs run on a non-blocking runner via <code>PlayBark()</code> and support NPC, Random, Branch, Set Variable, and End nodes only. Setting this to <strong>Bark</strong> hides the <strong>Look At Speaker</strong> row and removes Player Choice Node, Wait Node, and Sub Graph Node from the sidebar and context menu.</td>
+</tr>
+<tr>
 <td><strong>Look At Speaker</strong></td>
-<td>When ticked, any scene object that implements <code>IDialogueFocus</code> (e.g. a first-person camera controller) will automatically rotate to face the current speaker's transform each time an NPC node fires. Toggle this per-graph.</td>
+<td><em>(Dialogue graphs only.)</em> When ticked, any scene object that implements <code>IDialogueFocus</code> (e.g. a first-person camera controller) will automatically rotate to face the current speaker's transform each time an NPC node fires. Toggle this per-graph.</td>
 </tr>
 </tbody>
 </table>
@@ -1754,11 +1890,11 @@
 </tr>
 <tr>
 <td><strong>Snap to Grid</strong></td>
-<td>Snaps all node movement to a 20 px grid (preference saved per session)</td>
+<td>Snaps all node movement to a 20 px grid (preference saved per session). Takes effect immediately on drag-end.</td>
 </tr>
 <tr>
 <td><strong>Show GUIDs</strong></td>
-<td>Displays each node's full GUID as small text at the bottom of the node header. Useful when cross-referencing GUIDs from error messages. Preference is saved via EditorPrefs and restored across sessions.</td>
+<td>Displays each node's full GUID above the Tag field. Useful when cross-referencing GUIDs from error messages. Preference is saved via EditorPrefs and restored across sessions.</td>
 </tr>
 <tr>
 <td><strong>Search GUID</strong></td>
@@ -1766,16 +1902,35 @@
 </tr>
 </tbody>
 </table>
+<h3 id="bookmarks">BOOKMARKS</h3>
+<p>Lists all bookmarked nodes in the current graph. Click any row to select and frame that node on the canvas.</p>
+<ul>
+<li><strong>Bookmark a node</strong> — right-click any node → <strong>Bookmark this Node</strong></li>
+<li><strong>Rename</strong> — click the ✎ pencil button on a row to edit the name inline. Press Enter or click away to confirm; Escape to cancel. Empty names revert to the auto-generated node label.</li>
+<li>Bookmarks are removed automatically when the bookmarked node is deleted.</li>
+<li>Persisted per-graph in <code>EditorPrefs</code> (keyed by graph GUID); survive editor restarts.</li>
+</ul>
 <h3 id="create">CREATE</h3>
 <p>A set of colour-coded pills for every node type, grouped into categories:</p>
 <ul>
 <li><strong>Dialogue</strong> — NPC Node, Player Choice Node, End Node</li>
-<li><strong>Logic</strong> — Branch Node, Jump Node, Random Node</li>
+<li><strong>Logic</strong> — Branch Node, Jump Node, Random Node, Sub Graph Node</li>
 <li><strong>Data / Events</strong> — Set Variable Node, Fire Event Node, Play Audio Node, Animator Trigger Node</li>
 <li><strong>Utility</strong> — Debug Node, Wait Node, Group, Sticky Note</li>
 </ul>
-<p><strong>Click</strong> a pill to create the node at the canvas centre.<br />
-<strong>Drag</strong> a pill directly onto the canvas to place it at the drop position.</p>
+<p><strong>Drag</strong> a pill onto the canvas to place the node at the drop position.</p>
+<blockquote>
+<p>Player Choice Node, Wait Node, and Sub Graph Node are hidden automatically when <strong>Graph Type</strong> is set to <strong>Bark</strong>.</p>
+</blockquote>
+<h3 id="node-templates">NODE TEMPLATES</h3>
+<p>Lists all <code>DialogueNodeTemplate</code> assets found in the project. Each pill shows the template name and node count <code>[N]</code>.</p>
+<ul>
+<li><strong>Save a template</strong> — select nodes in the graph, then click <strong>Save Selection</strong>. Internal connections are preserved; external connections are dropped.</li>
+<li><strong>Stamp a template</strong> — drag a template pill from the sidebar onto the canvas. All nodes receive fresh GUIDs; internal wiring is re-connected automatically.</li>
+<li><strong>Project window drag</strong> — dragging a <code>.asset</code> from Unity's Project window onto the canvas also works.</li>
+<li><strong>Refresh</strong> — re-scans the project for template assets.</li>
+<li><strong>Right-click a pill</strong> — <strong>Rename…</strong> (updates display name and <code>.asset</code> filename via a modal window) or <strong>Delete</strong> (confirmation dialog).</li>
+</ul>
 <hr />
 <h2 id="keyboard-shortcuts">Keyboard shortcuts</h2>
 <table>
@@ -1881,7 +2036,7 @@
 </blockquote>
 <hr />
 <h2 id="node-context-menu">Node context menu</h2>
-<p>Right-click any node to open its context menu:</p>
+<p>Right-click any node to open its context menu. The menu is a styled dark panel grouped by category (Dialogue / Logic / Data &amp; Events / Utility / Selection) and filters out bark-incompatible nodes automatically when <strong>Graph Type</strong> is set to <strong>Bark</strong>.</p>
 <table>
 <thead>
 <tr>
@@ -1905,6 +2060,22 @@
 <tr>
 <td><strong>Set Colour</strong></td>
 <td>Opens the colour picker (None / Red / Orange / Yellow / Green / Blue / Purple)</td>
+</tr>
+<tr>
+<td><strong>Bookmark this Node</strong></td>
+<td>Adds this node to the BOOKMARKS sidebar panel</td>
+</tr>
+<tr>
+<td><strong>Go to Target (tagname)</strong></td>
+<td><em>(Jump nodes only)</em> Selects and frames the node that owns the jump's target tag. Greyed out if the tag is unset or not found.</td>
+</tr>
+<tr>
+<td><strong>Go to Entry Point (keyname)</strong></td>
+<td><em>(End nodes only)</em> Selects and frames the node that owns the entry point key. Greyed out if the key is unset or not found.</td>
+</tr>
+<tr>
+<td><strong>Remove from Group</strong></td>
+<td><em>(Nodes inside a group only)</em> Removes the node from its containing group box.</td>
 </tr>
 <tr>
 <td><strong>Duplicate</strong></td>
@@ -2073,7 +2244,7 @@
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Threader Dialogue Kit &nbsp;·&nbsp; v1.0 (Unreleased)
+      Threader Dialogue Kit &nbsp;·&nbsp; v1.0
     </div>
   
   
