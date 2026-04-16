@@ -2575,9 +2575,9 @@ void UnregisterSpeaker(string name)
 <hr />
 <h3 id="audio-behaviour">Audio behaviour</h3>
 <ul>
-<li>When a line has an <code>AudioClip</code> and the speaker's <code>Transform</code> is in the registry, the clip plays from a hidden spatial <code>AudioSource</code> repositioned to the speaker's world position (<code>spatialBlend = 1</code>, <code>rolloffMode = Linear</code>).</li>
-<li>If no speaker transform is known, the clip plays from the 2D <code>audioSource</code> component.</li>
-<li>The runner waits for the clip to finish (<code>WaitWhile(() =&gt; audioSource.isPlaying &amp;&amp; !DialogueUI.SkipLineRequested)</code>) before advancing. If a skip is requested mid-clip, the source is stopped immediately. <code>linePause</code> is applied <strong>after</strong> the clip ends (also skippable).</li>
+<li>When a line has an <code>AudioClip</code> and the speaker's <code>Transform</code> is in the registry, the clip plays from a hidden spatial <code>AudioSource</code> repositioned to the speaker's world position (<code>spatialBlend = 1</code>, <code>rolloffMode = Linear</code>). The runner waits with <code>WaitWhile(() =&gt; _spatialSource.isPlaying &amp;&amp; !DialogueUI.SkipLineRequested)</code>.</li>
+<li>If no speaker transform is known, the clip plays from the 2D <code>audioSource</code> component. The runner waits with <code>WaitWhile(() =&gt; audioSource.isPlaying &amp;&amp; !DialogueUI.SkipLineRequested)</code>.</li>
+<li>In both cases, if a skip is requested mid-clip, the source is stopped immediately. <code>linePause</code> is applied <strong>after</strong> the clip ends (also skippable).</li>
 <li>When no clip exists, the runner waits for <code>DialogueUI.IsTyping</code> to become false, then waits <code>linePause</code> seconds before advancing.</li>
 </ul>
 <hr />
@@ -2824,6 +2824,11 @@ void UnregisterSpeaker(string name)
 <td><code>List&lt;StickyNoteData&gt;</code></td>
 <td>Sticky notes (editor-only)</td>
 </tr>
+<tr>
+<td><code>LineSheet</code></td>
+<td><code>DialogueLineSheet</code></td>
+<td>Optional companion asset that stores per-speaker audio clips and animator actions for each NPC line in this graph.</td>
+</tr>
 </tbody>
 </table>
 <h3 id="methods_3">Methods</h3>
@@ -2851,7 +2856,7 @@ void UnregisterSpeaker(string name)
 </tr>
 <tr>
 <td><code>triggerMode</code></td>
-<td><code>BarkTriggerMode</code></td>
+<td><code>TriggerMode</code></td>
 <td><code>OnEnter</code> — fires when the player enters the trigger collider. <code>OnTimer</code> — fires on an interval. <code>Manual</code> — call <code>Bark()</code> from script.</td>
 </tr>
 <tr>
@@ -3142,7 +3147,7 @@ static void   LoadSaveData(IEnumerable&lt;string&gt; keys)           // restore 
     public string               ChoiceKey;           // &quot;{nodeGuid}:{index}&quot;
 }
 </code></pre>
-<p>The list passed to <code>OnChoiceNode</code> contains display copies — never the originals from the graph asset. Modifying these copies is safe and has no effect on the graph.</p>
+<p>When variable substitution is needed (<code>DialogueManager.VariablesList</code> is non-empty), a fresh list of display copies is created and passed to <code>OnChoiceNode</code> so the originals on the graph asset are never mutated. If no variables are assigned, the original list is passed directly — <code>IsLocked</code>, <code>IsHidden</code>, and <code>ChoiceKey</code> are <code>[NonSerialized]</code> runtime-only fields so they are never written back to disk regardless.</p>
 <hr />
 <h2 id="variable-substitution-in-text">Variable substitution in text</h2>
 <p><code>DialogueManager.ResolveText(string text)</code> and the equivalent in <code>DialoguePreviewWindow</code> handle <code>{token}</code> substitution.</p>
