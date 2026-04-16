@@ -16,7 +16,7 @@
         <link rel="prev" href="../sub-graph/">
       
       
-        <link rel="next" href="../templates/">
+        <link rel="next" href="../line-sheet/">
       
       
         
@@ -1021,6 +1021,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../line-sheet/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Line Sheet
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../templates/" class="md-nav__link">
         
   
@@ -1541,11 +1569,15 @@
 </tr>
 <tr>
 <td><strong>Trigger Mode</strong></td>
-<td><code>OnEnter</code> fires when the player enters the trigger collider. <code>OnTimer</code> fires on an interval. <code>Manual</code> — call <code>TriggerBark()</code> from script.</td>
+<td><code>OnEnter</code> fires when the player enters the trigger collider. <code>OnTimer</code> fires on an interval. <code>Manual</code> — call <code>Bark()</code> from script.</td>
 </tr>
 <tr>
 <td><strong>Cooldown</strong></td>
 <td>Minimum seconds between barks</td>
+</tr>
+<tr>
+<td><strong>Speaker Name</strong></td>
+<td>The speaker name this NPC is registered under — must match their <code>NPCDialogue</code> <strong>Speaker Name</strong>. Used to resolve audio clips and animator actions from the bark graph's Line Sheet when the NPC node and graph have no speaker set. Populated from your SpeakerRoster assets as a dropdown.</td>
 </tr>
 <tr>
 <td><strong>Suppress During Dialogue</strong></td>
@@ -1573,21 +1605,22 @@ void HandleBark(NPCLine line)
 </code></pre>
 <hr />
 <h2 id="playing-barks-from-code">Playing barks from code</h2>
-<pre><code class="language-csharp">DialogueManager.Instance.PlayBark(barkGraph, speakerTransform);
+<pre><code class="language-csharp">DialogueManager.Instance.PlayBark(barkGraph, speakerTransform, speakerName);
 </code></pre>
 <ul>
-<li><code>barkGraph</code> must have <code>IsBark = true</code> (Graph Type set to Bark)</li>
-<li><code>speakerTransform</code> is used for caller speaker fallback and 3D audio positioning</li>
+<li><code>barkGraph</code> — must have <code>IsBark = true</code> (Graph Type set to Bark)</li>
+<li><code>speakerTransform</code> — used for 3D audio positioning; may be <code>null</code> for 2D audio</li>
+<li><code>speakerName</code> — optional; used as the third-level speaker fallback for line sheet lookup (see below). <code>BarkSource</code> passes its <strong>Speaker Name</strong> field here automatically.</li>
 </ul>
 <hr />
 <h2 id="speaker-resolution-in-bark-graphs">Speaker resolution in bark graphs</h2>
-<p>NPC nodes inside a bark graph resolve their speaker name through the same three-level chain as sub-graphs:</p>
+<p>NPC nodes inside a bark graph resolve their speaker name through a three-level fallback chain:</p>
 <ol>
 <li><strong>Node Speaker</strong> — set directly on that NPC node</li>
 <li><strong>Graph Default Speaker</strong> — <code>DefaultSpeakerName</code> on the bark graph itself</li>
-<li><strong>Caller transform</strong> — the <code>Transform</code> passed to <code>PlayBark()</code>, used to look up a registered speaker name</li>
+<li><strong>BarkSource Speaker Name</strong> — the <strong>Speaker Name</strong> field on the <code>BarkSource</code> component (or the <code>speakerName</code> parameter passed to <code>PlayBark()</code> from code)</li>
 </ol>
-<p>A shared bark graph with blank speaker fields automatically voices and positions the line for whichever NPC triggered it.</p>
+<p>A shared bark graph with blank speaker fields automatically voices, positions, and resolves line sheet data for whichever NPC triggered it.</p>
 <hr />
 <h2 id="npc-to-npc-overheard-dialogue">NPC-to-NPC / overheard dialogue</h2>
 <p>Because the bark runner waits for each audio clip to finish before advancing, you can script a sequential back-and-forth exchange between two NPCs as a single bark graph — no extra code needed.</p>

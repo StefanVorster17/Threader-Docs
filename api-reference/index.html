@@ -864,6 +864,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../line-sheet/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Line Sheet
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../templates/" class="md-nav__link">
         
   
@@ -2520,12 +2548,13 @@ event Action&lt;NPCLine&gt; OnBark;
 </code></pre>
 <p>Immediately ends active dialogue — stops all coroutines and audio, then fires <code>OnDialogueEnd</code> and <code>OnDialogueEnded</code>. No-op if no dialogue is running or if the current node has <strong>Prevent Dialogue Exit</strong> enabled. Safe to call from any UI button or key handler.</p>
 <hr />
-<pre><code class="language-csharp">void PlayBark(DialogueGraph graph, Transform speaker)
+<pre><code class="language-csharp">void PlayBark(DialogueGraph graph, Transform actorTransform = null, string speakerName = null)
 </code></pre>
-<p>Runs a bark graph on a second non-blocking runner. The main conversation runner is completely unaffected — barks never block the player or fire <code>OnDialogueStarted</code>. Each line fires <code>OnBark</code> instead of <code>OnNPCLine</code>. Barks are automatically suppressed while a full conversation is active.</p>
+<p>Runs a bark graph on a second non-blocking runner. The main conversation runner is completely unaffected — barks never block the player or fire <code>OnDialogueStarted</code>. Each line fires <code>OnBark</code> instead of <code>OnNPCLine</code>.</p>
 <ul>
 <li><code>graph</code> — must have <code>IsBark</code> set to <code>true</code>; passing a normal dialogue graph logs a warning</li>
-<li><code>speaker</code> — used to resolve the caller speaker fallback for NPC nodes with blank speaker fields</li>
+<li><code>actorTransform</code> — optional; used for 3D audio positioning. May be <code>null</code> for 2D audio.</li>
+<li><code>speakerName</code> — optional; the third-level fallback in the bark speaker resolution chain (node speaker → graph default → this name). <code>BarkSource</code> passes its <strong>Speaker Name</strong> field automatically. Use this when calling <code>PlayBark()</code> from code to ensure correct line sheet lookup.</li>
 </ul>
 <hr />
 <pre><code class="language-csharp">void RegisterBlockable(IDialogue blockable)
