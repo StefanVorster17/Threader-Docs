@@ -2855,9 +2855,19 @@ void UnregisterSpeaker(string name)
 <td><code>OnEnter</code> — fires when the player enters the trigger collider. <code>OnTimer</code> — fires on an interval. <code>Manual</code> — call <code>TriggerBark()</code> from script.</td>
 </tr>
 <tr>
+<td><code>playerTag</code></td>
+<td><code>string</code></td>
+<td>Tag used to identify the player for <code>OnEnter</code> trigger mode. Default: <code>"Player"</code>.</td>
+</tr>
+<tr>
 <td><code>cooldown</code></td>
 <td><code>float</code></td>
 <td>Minimum seconds between barks. Prevents rapid repeat firing regardless of trigger mode.</td>
+</tr>
+<tr>
+<td><code>speakerName</code></td>
+<td><code>string</code></td>
+<td>The speaker name this NPC is registered under. Must match their <code>NPCDialogue</code> Speaker Name. Used for line sheet audio clip and animator action lookup.</td>
 </tr>
 <tr>
 <td><code>suppressDuringDialogue</code></td>
@@ -3003,11 +3013,6 @@ static void ClearDelegates()
 <td><code>string</code></td>
 <td>Fully resolved line text. Variable tokens (<code>{varName}</code>, <code>{varName:name}</code>) are already substituted.</td>
 </tr>
-<tr>
-<td><code>Clip</code></td>
-<td><code>AudioClip</code></td>
-<td>Optional voice clip assigned on the NPC node line. <code>null</code> when no clip is set.</td>
-</tr>
 </tbody>
 </table>
 <hr />
@@ -3127,9 +3132,8 @@ static void   LoadSaveData(IEnumerable&lt;string&gt; keys)           // restore 
 <h2 id="npcline-data-class">NPCLine (data class)</h2>
 <pre><code class="language-csharp">public class NPCLine
 {
-    public string    Text;        // resolved display text (tokens substituted)
-    public string    SpeakerName; // resolved speaker name (graph default applied)
-    public AudioClip Clip;        // may be null
+    public string Text;        // resolved display text (tokens substituted)
+    public string SpeakerName; // resolved speaker name (graph default applied)
 }
 </code></pre>
 <p>Passed to <code>OnNPCLine</code> subscribers.</p>
