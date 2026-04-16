@@ -801,17 +801,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#animators-add" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Animators (+ Add)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#lines-add-line" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1956,17 +1945,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#animators-add" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Animators (+ Add)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#lines-add-line" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2503,7 +2481,6 @@
 <ol>
 <li><strong>Set Vars</strong> actions are applied to <code>DialogueVariables</code> (in list order)</li>
 <li><strong>Events</strong> are fired — local events trigger <code>OnNodeEvent</code>; global events also trigger <code>OnGlobalNodeEvent</code></li>
-<li><strong>Animator</strong> actions are sent to the matching speaker's <code>Animator</code> component</li>
 <li><code>OnNPCNode</code> fires on the <code>DialogueRunner</code>, which the <code>DialogueManager</code> catches to begin line playback</li>
 <li>Each <strong>Line</strong> in the list is displayed in sequence — <code>OnNPCLine</code> fires per line, then the UI typewriter runs, then the per-line <code>linePause</code> delay, then the player advances (or space-to-skip)</li>
 <li>After the last line, <code>Continue()</code> is called and execution moves to the next connected node</li>
@@ -2595,34 +2572,6 @@
 <td><code>var = !var</code></td>
 <td><em>(unsupported)</em></td>
 <td><em>(unsupported)</em></td>
-</tr>
-</tbody>
-</table>
-<h4 id="animators-add">Animators (+ Add)</h4>
-<p>Sets Animator parameters on a speaker's <code>Animator</code> component, fired after events.</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Parameter Name</td>
-<td>Exact Animator parameter name (case-sensitive)</td>
-</tr>
-<tr>
-<td>Type</td>
-<td>Trigger / Bool / Int / Float</td>
-</tr>
-<tr>
-<td>Value</td>
-<td>Visible for Bool / Int / Float; hidden for Trigger</td>
-</tr>
-<tr>
-<td>Speaker (override)</td>
-<td>Target a different speaker's Animator. Leave blank to use the node's own Speaker field.</td>
 </tr>
 </tbody>
 </table>
