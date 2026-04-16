@@ -1593,7 +1593,7 @@
 </tr>
 </tbody>
 </table>
-<p>This means a shared graph with blank speaker fields automatically displays and looks at whoever triggered the dialogue — no extra setup required.</p>
+<p>This means a shared graph with blank speaker fields automatically resolves the display name and camera look-at to whoever triggered the dialogue. For audio clips and animator actions, the same resolved speaker name is used to look them up in the sub-graph's own Line Sheet — so if you need per-speaker audio, add entries for each speaker in that Line Sheet.</p>
 <hr />
 <h2 id="end-node-on-end-sub-graph-slot">End Node "On end →" sub-graph slot</h2>
 <p>The <strong>End Node</strong> has an optional <strong>On end →</strong> section with a <code>DialogueGraph</code> field and entry point key. When a graph is assigned:</p>
@@ -1609,7 +1609,7 @@
 <hr />
 <h2 id="patterns">Patterns</h2>
 <h3 id="unimportant-npc-no-unique-dialogue">Unimportant NPC — no unique dialogue</h3>
-<p>Assign a shared generic graph directly to the NPC's <code>NPCDialogue</code> component. Leave speaker fields blank in the shared graph. The NPC's own <code>Speaker Name</code> field serves as the caller fallback so the UI, camera, and audio resolve correctly for each individual NPC without any additional setup.</p>
+<p>Assign a shared generic graph directly to the NPC's <code>NPCDialogue</code> component. Leave speaker fields blank in the shared graph. The NPC's own <code>Speaker Name</code> field serves as the caller fallback so the UI and camera resolve correctly for each individual NPC automatically. If these NPCs need audio clips, open the shared graph's Line Sheet and add a speaker entry for each NPC's speaker name with the appropriate clips.</p>
 <h3 id="important-npc-quest-driven-routing">Important NPC — quest-driven routing</h3>
 <p>Give the NPC a personal "router" graph that contains only Branch or Entry Point logic — no dialogue lines. Each branch leads to a Sub Graph Node pointing at the relevant content graph (generic idle, quest intro, quest done, etc.).</p>
 <pre><code>Router graph:
@@ -1624,7 +1624,7 @@
 <h3 id="end-of-quest-fallback">End-of-quest fallback</h3>
 <p>On the <strong>End Node</strong> of a quest-specific graph, set <strong>On end →</strong> to the generic idle graph. After the unique lines finish, the NPC delivers their normal ambient response before the conversation closes — automatically, with zero extra wiring.</p>
 <h3 id="shared-shop-or-trade-flow">Shared shop or trade flow</h3>
-<p>Build one <code>ShopDialogue.graph</code> with all the shop interaction lines. Any merchant NPC points their Sub Graph Node at this asset. Speaker resolution fills in the correct merchant name automatically.</p>
+<p>Build one <code>ShopDialogue.graph</code> with all the shop interaction lines. Any merchant NPC points their Sub Graph Node at this asset. The speaker name resolves to each merchant automatically via the fallback chain. For audio clips and animator actions, open the shared graph's Line Sheet and add a speaker entry for each merchant — the runtime uses the resolved speaker name to look up the correct clips from that sheet.</p>
 <hr />
 <h2 id="editor-notes">Editor notes</h2>
 <ul>
