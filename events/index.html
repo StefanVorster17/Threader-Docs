@@ -1778,7 +1778,7 @@
 <p>When the dialogue system fires an event whose key matches an entry in this list, the corresponding UnityEvent is invoked automatically.</p>
 <p>You can add as many rows as you need — one per key.</p>
 <blockquote>
-<p><strong>This only works for Local events</strong> routed through <code>OnNodeEvent</code>. The <code>NPCDialogue</code> component subscribes to <code>OnNodeEvent</code> and checks whether <code>CurrentActor</code> is itself, so the response only fires when <em>this</em> NPC is the one speaking.</p>
+<p><strong>This only works for Local events</strong> routed through <code>OnNodeEvent</code>. The <code>NPCDialogue</code> component subscribes to <code>OnNodeEvent</code> and checks whether the currently running graph matches this NPC's assigned graph, so the response only fires during this NPC's own conversation.</p>
 </blockquote>
 <hr />
 <h2 id="responding-from-c-event-subscriptions">Responding from C# — event subscriptions</h2>

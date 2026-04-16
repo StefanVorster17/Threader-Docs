@@ -2987,7 +2987,7 @@ static void ClearDelegates()
 <pre><code class="language-csharp">static bool Evaluate(ConditionDefinition definition, string parameter)
 </code></pre>
 <p>Resolution order:
-1. <code>VariableConditionDefinition</code> — self-evaluates against <code>DialogueManager.VariablesList</code> (no delegate or provider needed)
+1. <code>VariableConditionDefinition</code> — self-evaluates against the <code>Variables</code> asset assigned directly on the definition asset (no delegate or provider needed)
 2. Registered delegate for <code>definition.GetKey()</code> — if found, the delegate is invoked with <code>parameter</code> and its result returned
 3. Active <code>ConditionProvider</code> asset — <code>provider.Evaluate(definition, parameter)</code> is called if no delegate is registered
 4. <code>WhenMissing</code> fallback — <code>Allow</code> returns <code>true</code> silently; <code>Block</code> returns <code>false</code> and logs a warning</p>
@@ -3198,7 +3198,8 @@ public enum NodeType
 {
     NPC, PlayerChoice, End,
     Branch, SetVariable, Random, Jump,
-    Debug, Wait, FireEvent, PlayAudio, AnimatorTrigger
+    Debug, Wait, FireEvent, PlayAudio, AnimatorTrigger,
+    SubGraph
 }
 </code></pre>
 
