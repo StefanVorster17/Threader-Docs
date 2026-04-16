@@ -2630,9 +2630,8 @@
 <p>The spoken text. Each entry has:</p>
 <ul>
 <li><strong>Text field</strong> — the dialogue string. Multiline. Supports <code>{varName}</code> and <code>{varName:name}</code> tokens (see <a href="../variables/#variable-substitution-in-text">Variables — text substitution</a>).</li>
-<li><strong>Audio Clip</strong> — one optional <code>AudioClip</code> slot per line, matched by list position. If set, the clip plays from the speaker's world position (3D spatial), or from the 2D fallback <code>AudioSource</code> if no matching speaker transform is registered.</li>
-<li>If a clip is assigned, the runner waits for the clip to finish before pausing for <code>linePause</code>. If no clip, it waits for the typewriter to complete.</li>
 </ul>
+<p>Audio clips and animator actions per line are managed through the <strong>Line Sheet</strong> — a companion asset created automatically alongside the graph. Open it via the <strong>Line Data</strong> button on the node, or via <strong>Line Sheet Editor</strong> in the graph editor sidebar. See <a href="../line-sheet/">Line Sheet</a> for details.</p>
 <hr />
 <h2 id="player-choice-node-c">Player Choice Node <code>[C]</code></h2>
 <p><img alt="Player Choice Node" src="../assets/images/nodes/player-choice.png" width="260" /></p>

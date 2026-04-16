@@ -1590,6 +1590,9 @@
 <li><strong>Calling actor's Speaker Name</strong> — used when the graph was invoked as a sub-graph; the speaker name of whoever started the top-level conversation is inherited automatically</li>
 </ol>
 <p>This means a shared graph (e.g. a generic idle sequence referenced by many NPCs) works correctly without setting any Speaker field on its nodes — each NPC supplies their own name as the final fallback.</p>
+<blockquote>
+<p><strong>Bark graphs</strong> use the same three-level chain, except the third fallback is the <strong>BarkSource Speaker Name</strong> field (not a calling actor). Set this on the <code>BarkSource</code> component to ensure shared bark graphs resolve the correct voice clips and animator actions per NPC. See <a href="../bark/">Bark System</a> for details.</p>
+</blockquote>
 <hr />
 <h2 id="tips">Tips</h2>
 <ul>

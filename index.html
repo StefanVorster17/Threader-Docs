@@ -1394,6 +1394,7 @@
 <li><strong>14 node types</strong> — NPC lines, player choices, branching, sub-graphs, variables, audio, animator triggers, events, waits, and more</li>
 <li><strong>Sub-graph system</strong> — call any dialogue graph from within another and return — exactly like a function call</li>
 <li><strong>Bark system</strong> — fire-and-forget ambient lines that run in parallel without blocking the player</li>
+<li><strong>Line Sheet system</strong> — per-graph companion assets that store per-speaker audio clips and animator actions for every NPC line; supports multiple speakers sharing the same graph</li>
 <li><strong>Node templates</strong> — save any selection of nodes as a reusable drag-to-stamp template</li>
 <li><strong>Built-in variable store</strong> — Bool / Int / String variables with inline type-aware conditions on choices — no C# needed</li>
 <li><strong>Text token substitution</strong> — embed variable values directly in dialogue: <code>You have {gold} {gold:name}</code></li>
@@ -1471,6 +1472,10 @@
 <tr>
 <td><a href="bark/">Bark System</a></td>
 <td>Ambient fire-and-forget lines that don't block the player</td>
+</tr>
+<tr>
+<td><a href="line-sheet/">Line Sheet</a></td>
+<td>Per-speaker audio clips and animator actions for NPC lines</td>
 </tr>
 <tr>
 <td><a href="templates/">Node Templates</a></td>
