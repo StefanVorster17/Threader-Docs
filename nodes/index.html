@@ -2991,7 +2991,7 @@
 <tbody>
 <tr>
 <td><strong>Speaker</strong></td>
-<td>Name of the registered speaker whose world position is used for 3D spatial audio. Leave blank to use the graph's <strong>Default Speaker</strong>. If no default is set or no matching speaker is registered, the 2D fallback <code>AudioSource</code> on the <code>DialogueManager</code> is used instead.</td>
+<td>Name of the registered speaker whose world position is used for 3D spatial audio. Leave blank to fall back through: graph's <strong>Default Speaker</strong> → current actor's speaker name. If none resolves or no matching speaker is registered, the 2D fallback <code>AudioSource</code> on the <code>DialogueManager</code> is used instead.</td>
 </tr>
 <tr>
 <td><strong>Audio Clips</strong> (+ Add)</td>
@@ -3005,7 +3005,7 @@
 </table>
 <p>If a matching speaker transform is found, the spatial <code>AudioSource</code> is repositioned to that transform and plays with full 3D (<code>spatialBlend = 1</code>). If not, the 2D <code>AudioSource</code> plays instead.</p>
 <blockquote>
-<p>Because Play Audio Node advances immediately, it's best for short stings and sound effects. For voice lines that the dialogue should wait for, use an AudioClip slot on an NPC line instead.</p>
+<p>Because Play Audio Node advances immediately, it's best for short stings and sound effects. For per-speaker voice lines that the dialogue waits for, assign clips in the graph's <a href="../line-sheet/">Line Sheet</a>.</p>
 </blockquote>
 <hr />
 <h2 id="animator-trigger-node-f4">Animator Trigger Node <code>[F4]</code></h2>
@@ -3036,7 +3036,7 @@
 </tr>
 <tr>
 <td><strong>Speaker (override)</strong></td>
-<td>Name of the registered speaker whose Animator to target. Blank = uses the graph's Default Speaker.</td>
+<td>Name of the registered speaker whose Animator to target. Blank = falls back through: graph's <strong>Default Speaker</strong> → current actor's speaker.</td>
 </tr>
 <tr>
 <td><strong>✕</strong></td>
