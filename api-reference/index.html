@@ -2852,7 +2852,7 @@ void UnregisterSpeaker(string name)
 <tr>
 <td><code>triggerMode</code></td>
 <td><code>BarkTriggerMode</code></td>
-<td><code>OnEnter</code> — fires when the player enters the trigger collider. <code>OnTimer</code> — fires on an interval. <code>Manual</code> — call <code>TriggerBark()</code> from script.</td>
+<td><code>OnEnter</code> — fires when the player enters the trigger collider. <code>OnTimer</code> — fires on an interval. <code>Manual</code> — call <code>Bark()</code> from script.</td>
 </tr>
 <tr>
 <td><code>playerTag</code></td>
@@ -2877,7 +2877,7 @@ void UnregisterSpeaker(string name)
 </tbody>
 </table>
 <h3 id="methods_4">Methods</h3>
-<pre><code class="language-csharp">void TriggerBark()
+<pre><code class="language-csharp">void Bark()
 </code></pre>
 <p>Manually triggers the bark. Safe to call from a <code>UnityEvent</code>, animation event, or external script. Respects cooldown and the <code>suppressDuringDialogue</code> setting.</p>
 <hr />
@@ -2989,8 +2989,9 @@ static void ClearDelegates()
 <p>Resolution order:
 1. <code>VariableConditionDefinition</code> — self-evaluates against <code>DialogueManager.VariablesList</code> (no delegate or provider needed)
 2. Registered delegate for <code>definition.GetKey()</code> — if found, the delegate is invoked with <code>parameter</code> and its result returned
-3. Active <code>ConditionProvider</code> asset — <code>provider.Evaluate(definition.GetKey(), parameter)</code> is called if no delegate is registered
-4. If none of the above match, returns <code>true</code> (condition passes) and logs a warning</p>
+3. Active <code>ConditionProvider</code> asset — <code>provider.Evaluate(definition, parameter)</code> is called if no delegate is registered
+4. <code>WhenMissing</code> fallback — <code>Allow</code> returns <code>true</code> silently; <code>Block</code> returns <code>false</code> and logs a warning</p>
+<p>Returns <code>true</code> if <code>definition</code> is <code>null</code>.</p>
 <hr />
 <h2 id="npcline">NPCLine</h2>
 <p>Data struct passed to <code>OnNPCLine</code> each time a dialogue line becomes active.</p>
@@ -3047,19 +3048,8 @@ static void ClearDelegates()
 <td><code>string</code></td>
 <td>Stable identifier in the format <code>"{nodeGuid}:{index}"</code>. Used as the key for choice history tracking.</td>
 </tr>
-<tr>
-<td>3. Active <code>Provider.Evaluate(definition, parameter)</code></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>4. <code>definition.WhenMissing</code> fallback (<code>Allow</code> → true, <code>Block</code> → false + warning)</td>
-<td></td>
-<td></td>
-</tr>
 </tbody>
 </table>
-<p>Returns <code>true</code> if <code>definition</code> is <code>null</code>.</p>
 <hr />
 <h2 id="conditionprovider-abstract">ConditionProvider (abstract)</h2>
 <pre><code class="language-csharp">public abstract class ConditionProvider : ScriptableObject
