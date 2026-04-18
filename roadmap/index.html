@@ -1316,6 +1316,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#abstract-audio-provider" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Abstract audio provider
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1481,6 +1492,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#abstract-audio-provider" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Abstract audio provider
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1556,6 +1578,15 @@
 <p>Threader ships built-in multi-language support via the <code>LineSheets</code> list and <code>SetActiveLanguage()</code>. This covers text, audio, and animator actions per language with no external dependencies.</p>
 <p>An optional bridge assembly that reads from <code>LocalizedString</code> fields via Unity's official Localization package is being considered for projects that already use it. This would be compiled only when the Unity Localization package is detected (<code>#if</code> conditional), so existing buyers are never affected and no unwanted dependencies are introduced.</p>
 <p><strong>Status:</strong> Under consideration. The built-in system covers most use cases; the bridge would be a convenience integration for teams already invested in Unity Localization.</p>
+<h3 id="abstract-audio-provider">Abstract audio provider</h3>
+<p>Threader currently plays audio through Unity's built-in <code>AudioSource</code>. Rather than hard-coding integrations for specific middleware (FMOD, Wwise, etc.) — which creates a maintenance burden every time those systems update — the plan is to introduce an <code>IAudioProvider</code> interface that Threader calls instead of <code>AudioSource</code> directly.</p>
+<ul>
+<li>The built-in <code>AudioSource</code> provider would ship as the default implementation</li>
+<li>Users implement the interface for their audio system (FMOD, Wwise, Master Audio, or any custom solution)</li>
+<li>Example adapters may be included as optional samples, but third-party dependencies are never required</li>
+</ul>
+<p>This follows the same pattern as <code>ConditionProvider</code> for custom conditions, and could extend to other "bring your own system" integration points (TTS, lip sync, etc.) in the future.</p>
+<p><strong>Status:</strong> Under consideration. Depends on community demand for middleware audio support.</p>
 <hr />
 <h2 id="out-of-scope">Out of scope</h2>
 <p>These are features that have been considered and deliberately won't be added to Threader core. If you need them, alternatives are noted.</p>
