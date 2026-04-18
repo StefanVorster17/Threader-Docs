@@ -1439,15 +1439,17 @@
 </ul>
 <hr />
 <h2 id="minimum-setup">Minimum setup</h2>
-<p>Five steps to a working dialogue:</p>
+<p>Seven steps to a working dialogue:</p>
 <ol>
-<li><strong>Create</strong> a <code>Dialogue Graph</code> asset — right-click in the Project window → <strong>Create → Threader → Dialogue Graph</strong></li>
-<li><strong>Build</strong> the conversation — double-click the asset to open the graph editor</li>
-<li><strong>Add</strong> a <code>DialogueManager</code> component to an empty GameObject in the scene</li>
-<li><strong>Call</strong> <code>DialogueManager.Instance.StartDialogue(graph)</code> from your interaction code</li>
-<li><strong>Wire</strong> the UI — add <code>DialogueUI</code> to a GameObject, or subscribe to <code>OnNPCLine</code> / <code>OnChoiceNode</code> for a fully custom UI</li>
+<li><strong>Create</strong> a <a href="speaker-roster/">Speaker Roster</a> — right-click in the Project window → <strong>Create → Threader → Speaker Roster</strong>, then add your speaker names</li>
+<li><strong>Create</strong> a <a href="variables/">Variables Store</a> <em>(optional)</em> — <strong>Create → Threader → Variables Store</strong>, then add any variables your dialogue needs</li>
+<li><strong>Create</strong> a <a href="graph-editor/">Dialogue Graph</a> — <strong>Create → Threader → Dialogue Graph</strong>, then double-click it to open the graph editor and build your conversation</li>
+<li><strong>Add</strong> a <code>DialogueManager</code> component to an empty GameObject in the scene — assign your Speaker Roster and Variables Store</li>
+<li><strong>Add</strong> an <code>NPCDialogue</code> or <code>DialogueTrigger</code> component to your NPC — assign the graph and speaker name</li>
+<li><strong>Wire</strong> the UI — add <code>DialogueUI</code> to a GameObject (with <code>UI_Dialogue.uxml</code>), or subscribe to <code>OnNPCLine</code> / <code>OnChoiceNode</code> for a fully custom UI</li>
+<li><strong>Play</strong> and interact with the NPC to start the conversation</li>
 </ol>
-<p>→ See <a href="quick-start/">Quick Start</a> for the full walkthrough.</p>
+<p>→ See <a href="quick-start/">Quick Start</a> for the full step-by-step walkthrough with detailed explanations.</p>
 <hr />
 <h2 id="navigation">Navigation</h2>
 <table>
