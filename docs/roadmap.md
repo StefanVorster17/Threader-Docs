@@ -38,6 +38,21 @@ This follows the same pattern as `ConditionProvider` for custom conditions, and 
 
 **Status:** Under consideration. Depends on community demand for middleware audio support.
 
+### Drag-to-create node spawner
+
+Currently, adding a connected node requires two separate steps: drag a new node from the CREATE panel onto the canvas, then manually wire it to an existing port.
+
+The plan is to make this a single gesture — drag from any output port, release on empty canvas space, and a context-sensitive searchable popup appears at the drop point listing only the node types valid for that connection. Selecting one creates the node already wired up.
+
+- The popup filters by port type so the list is always relevant, never overwhelming
+- A search field is auto-focused — type to filter, press Enter to create
+- Works in reverse: drag from an input port to spawn and connect a node behind it
+- Escape or click-away dismisses cleanly with no orphan wire left
+
+This collapses three steps (open CREATE panel → drag node → connect wire) into one gesture and matches how authors naturally think: "what happens after this line?"
+
+**Status:** Under consideration. High usability impact, particularly for writers and designers less familiar with node graph editors.
+
 ---
 
 ## Out of scope
