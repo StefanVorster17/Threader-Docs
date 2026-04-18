@@ -26,6 +26,18 @@ An optional bridge assembly that reads from `LocalizedString` fields via Unity's
 
 **Status:** Under consideration. The built-in system covers most use cases; the bridge would be a convenience integration for teams already invested in Unity Localization.
 
+### Abstract audio provider
+
+Threader currently plays audio through Unity's built-in `AudioSource`. Rather than hard-coding integrations for specific middleware (FMOD, Wwise, etc.) — which creates a maintenance burden every time those systems update — the plan is to introduce an `IAudioProvider` interface that Threader calls instead of `AudioSource` directly.
+
+- The built-in `AudioSource` provider would ship as the default implementation
+- Users implement the interface for their audio system (FMOD, Wwise, Master Audio, or any custom solution)
+- Example adapters may be included as optional samples, but third-party dependencies are never required
+
+This follows the same pattern as `ConditionProvider` for custom conditions, and could extend to other "bring your own system" integration points (TTS, lip sync, etc.) in the future.
+
+**Status:** Under consideration. Depends on community demand for middleware audio support.
+
 ---
 
 ## Out of scope
