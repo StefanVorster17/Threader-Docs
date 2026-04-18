@@ -2,7 +2,7 @@
 
 **Visual Dialogue System for Unity** — build branching conversations with a node-based graph editor, no boilerplate required.
 
-<span style="background:#2d6a9f;color:#fff;padding:3px 10px;border-radius:4px;font-size:0.85em;font-weight:bold;">v1.0</span> &nbsp; [Join the Discord](https://discord.gg/nb8HCuX2h5){ .md-button }
+<span style="background:#2d6a9f;color:#fff;padding:3px 10px;border-radius:4px;font-size:0.85em;font-weight:bold;">v1.0</span> &nbsp; <a href="https://discord.gg/nb8HCuX2h5" style="background:#5865F2;color:#fff;padding:3px 10px;border-radius:4px;font-size:0.85em;font-weight:bold;text-decoration:none;">Discord</a>
 
 ![Threader graph editor](assets/images/hero-graph.png){ width="720" }
 
