@@ -897,6 +897,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../translation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Translation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../templates/" class="md-nav__link">
         
   
@@ -1943,7 +1971,7 @@ public class MyDialogueUI : MonoBehaviour
 <h3 id="the-line-advance-contract">The line advance contract</h3>
 <p>The runner handles line timing internally — <strong>you do not call <code>Continue()</code></strong>. After <code>OnNPCLine</code> fires the runner:</p>
 <ol>
-<li>If the line has an <code>AudioClip</code>, waits for the clip to finish playing.</li>
+<li>If the line has an <code>AudioClip</code> (resolved from the graph's <a href="../line-sheet/">Line Sheet</a>), waits for the clip to finish playing.</li>
 <li>Otherwise, waits until <code>DialogueUI.IsTyping</code> is <code>false</code>.</li>
 <li>Waits <code>linePause</code> seconds (set on the <code>DialogueManager</code> Inspector).</li>
 <li>Checks <code>DialogueUI.SkipLineRequested</code> (set by Space key in the built-in UI).</li>
@@ -1955,7 +1983,7 @@ public class MyDialogueUI : MonoBehaviour
 <li>Provide Space-to-advance input on your own — the runner will hold at step 3/4 until <code>linePause</code> elapses regardless.</li>
 </ul>
 <h3 id="speaker-name">Speaker name</h3>
-<p><code>OnNPCLine</code> carries the speaker name in <code>line.SpeakerName</code> alongside <code>line.Text</code> and <code>line.Clip</code>. Use it directly in your <code>HandleLine</code> handler:</p>
+<p><code>OnNPCLine</code> carries the speaker name in <code>line.SpeakerName</code> alongside <code>line.Text</code>. Audio clips are resolved separately by the <code>DialogueManager</code> via the graph's <a href="../line-sheet/">Line Sheet</a> — the <code>NPCLine</code> struct itself contains only <code>Text</code> and <code>SpeakerName</code>. Use them directly in your <code>HandleLine</code> handler:</p>
 <pre><code class="language-csharp">void HandleLine(NPCLine line)
 {
     _speakerLabel.text = line.SpeakerName;

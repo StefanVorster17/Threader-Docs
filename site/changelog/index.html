@@ -890,6 +890,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../translation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Translation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../templates/" class="md-nav__link">
         
   
@@ -1298,6 +1326,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#line-sheet-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Line Sheet System
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#bark-system" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1500,6 +1539,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#line-sheet-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Line Sheet System
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#bark-system" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1672,7 +1722,9 @@
 - <strong>Wait Node</strong> — pauses execution for a configurable number of seconds (coroutine; skipped in preview window)
 - <strong>Fire Event Node</strong> — fires a named string event; local or global
 - <strong>Play Audio Node</strong> — plays an AudioClip at a speaker's position (spatial) or 2D fallback
-- <strong>Animator Trigger Node</strong> — sets any Animator parameter on any registered speaker by name</p>
+- <strong>Animator Trigger Node</strong> — sets any Animator parameter on any registered speaker by name
+- <strong>Switch Node</strong> — evaluates multiple named cases top-to-bottom; the first case whose conditions all pass is followed, otherwise the Default output fires. Uses the same condition system as Branch nodes.
+- <strong>Weighted Random Node</strong> — picks one output at random using weighted probability. Higher weights are selected more often. Weights are relative (do not need to sum to any specific value).</p>
 <p><strong>Variables</strong>
 - <code>DialogueVariables</code> ScriptableObject — Bool, Int, String variables with design-time defaults
 - Runtime dictionaries (never serialized back to the asset): <code>GetBool</code>/<code>GetInt</code>/<code>GetString</code>, <code>SetBool</code>/<code>SetInt</code>/<code>SetString</code>
@@ -1713,11 +1765,23 @@
 <li><strong>End Node "On end →" sub-graph slot</strong> — optional graph reference on the End node; that graph runs as a sub-routine before the conversation truly closes. Useful for routing NPCs back to generic idle lines after a quest conversation.</li>
 <li><strong><code>SpeakerName</code> on <code>IDialogueActor</code></strong> — the interface now exposes a <code>SpeakerName</code> property, implemented by <code>NPCDialogue</code> and <code>DialogueTrigger</code>.</li>
 </ul>
+<h3 id="line-sheet-system">Line Sheet System</h3>
+<ul>
+<li><strong><code>DialogueLineSheet</code> companion asset</strong> — per-graph asset that stores per-speaker audio clips and animator actions for every NPC line. Multiple speakers can share the same graph and each plays their own voice lines.</li>
+<li><strong>Line Data button</strong> — NPC nodes in the graph canvas have a <strong>Line Data</strong> button that opens a focused per-node editor (<code>NodeLineSheetPopup</code>).</li>
+<li><strong>Line Sheet Editor window</strong> — whole-graph overview of all NPC nodes and lines; accessible from the graph editor sidebar (PROJECT → Line Sheet Editor).</li>
+<li><strong>Batch sync</strong> — <code>Threader → Create &amp; Sync All Line Sheets</code> creates and syncs sheets for every graph in the project at once.</li>
+<li><strong>Multi-language support</strong> — <code>DialogueGraph</code> has a <code>LineSheets</code> list (<code>List&lt;NamedLineSheet&gt;</code>) allowing one line sheet per language. <code>DialogueManager.SetActiveLanguage(string)</code> selects the active language at runtime. The active sheet's <code>PreviewText</code> fields override NPC line text and choice text for localization. <code>DialogueManager.ActiveLanguage</code> reads the current language.</li>
+<li><strong>Choice text localization</strong> — <code>ChoiceSheetRow</code> class stores localized choice text per Player Choice node per language in the line sheet.</li>
+<li><strong>Redesigned <code>DialogueGraph</code> Inspector</strong> — dark header panel, stats row (nodes, NPC lines, entry points, groups), a "Used By" section showing all scene objects referencing the graph, and an editable Line Sheet field.</li>
+<li><strong>Redesigned <code>DialogueLineSheet</code> Inspector</strong> — stats row (lines, speakers, clips, orphaned rows), description, read-only source graph reference, and an <strong>Open Line Sheet Editor</strong> button.</li>
+</ul>
 <h3 id="bark-system">Bark System</h3>
 <ul>
 <li><strong><code>IsBark</code> flag on <code>DialogueGraph</code></strong> — mark any graph as a bark graph via the <strong>Graph Type</strong> dropdown in the GRAPH sidebar.</li>
 <li><strong><code>BarkSource</code> component</strong> — attach to any NPC. Holds a bark graph reference, cooldown, and trigger mode (<code>OnEnter</code>, <code>OnTimer</code>, <code>Manual</code>). Calls <code>PlayBark()</code> automatically or on demand. Suppresses barks automatically during active conversations.</li>
-<li><strong><code>DialogueManager.PlayBark(graph, transform)</code></strong> — runs a bark graph on a second non-blocking runner; fires <code>OnBark</code> for each line instead of <code>OnNPCLine</code>.</li>
+<li><strong><code>BarkSource</code> Speaker Name field</strong> — a roster dropdown on <code>BarkSource</code> that feeds the third-level speaker resolution fallback for bark graphs. Allows a shared bark graph with no speaker set on nodes to resolve the correct voice clips and animator actions per NPC.</li>
+<li><strong><code>DialogueManager.PlayBark(graph, transform, speakerName)</code></strong> — runs a bark graph on a second non-blocking runner; fires <code>OnBark</code> for each line instead of <code>OnNPCLine</code>. Optional <code>speakerName</code> parameter provides the third-level speaker fallback; <code>BarkSource</code> passes its Speaker Name automatically.</li>
 <li><strong><code>OnBark</code> event</strong> — separate <code>Action&lt;NPCLine&gt;</code> event for bark output (wire to a floating speech bubble, HUD ticker, or nothing).</li>
 <li><strong>Bark graph validator</strong> — warns when a bark graph contains a Player Choice node.</li>
 <li><strong>Bark runner</strong> — skips Wait nodes automatically; NPC, Random, Branch, Set Variable, and End nodes are all supported.</li>

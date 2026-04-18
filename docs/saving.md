@@ -201,8 +201,8 @@ If you use `ConditionStoreProvider` (see [Conditions](conditions.md)), its stati
 ```csharp
 // ─── Saving ──────────────────────────────────────────────────────────────
 // ConditionStore does not expose an enumerator — save the keys you care about manually
-int gold      = ConditionStore.GetInt("Gold");
-string quest  = ConditionStore.Get("QuestState");
+int gold = ConditionStore.GetInt("Gold");
+ConditionStore.TryGet("QuestState", out var quest);
 // … write to save data …
 
 // ─── Loading ──────────────────────────────────────────────────────────────

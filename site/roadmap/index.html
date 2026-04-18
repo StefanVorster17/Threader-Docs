@@ -892,6 +892,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../translation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Translation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../templates/" class="md-nav__link">
         
   
@@ -1266,34 +1294,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#upcoming" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Upcoming
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Upcoming">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#v11" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        v1.1
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#considering" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1306,10 +1306,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#localization-support" class="md-nav__link">
+  <a href="#unity-localization-package-integration" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Localization support
+        Unity Localization package integration
       
     </span>
   </a>
@@ -1459,34 +1459,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#upcoming" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Upcoming
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Upcoming">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#v11" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        v1.1
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#considering" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1499,10 +1471,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#localization-support" class="md-nav__link">
+  <a href="#unity-localization-package-integration" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Localization support
+        Unity Localization package integration
       
     </span>
   </a>
@@ -1576,25 +1548,14 @@
 <hr />
 <h2 id="released">Released</h2>
 <h3 id="v10-april-16-2026">v1.0 — April 16, 2026</h3>
-<p>Initial release. Full feature set including the visual graph editor, 14 node types, variable system, conditions, entry points, bark system, sub-graph system, node templates, bookmarks, export script, type-aware variable inspector, custom right-click context menu, and all associated components and APIs. See the <a href="../changelog/">Changelog</a> for the complete list.</p>
-<hr />
-<h2 id="upcoming">Upcoming</h2>
-<h3 id="v11">v1.1</h3>
-<p><strong>Line Sheet system</strong> — audio clips and animator actions per NPC line, per speaker, stored in a dedicated companion asset (<code>DialogueLineSheet</code>). Multiple speakers can share the same graph and each plays their own voice lines. Includes a per-node editor, a whole-graph Line Sheet Editor window, and a one-click batch sync utility (<code>Threader → Create &amp; Sync All Line Sheets</code>).</p>
-<p><strong>BarkSource Speaker Name</strong> — a roster dropdown on <code>BarkSource</code> that resolves the correct line sheet data when multiple NPCs share a bark graph.</p>
-<p><strong>Improved Inspectors</strong> — redesigned <code>DialogueGraph</code> and <code>DialogueLineSheet</code> inspectors with stats panels and a "Used By" scene scanner on the graph inspector.</p>
+<p>Initial release. Full feature set including the visual graph editor, 15 node types, variable system, conditions, entry points, bark system, sub-graph system, line sheet system with multi-language support, node templates, bookmarks, export script, type-aware variable inspector, custom right-click context menu, and all associated components and APIs. See the <a href="../changelog/">Changelog</a> for the complete list.</p>
 <hr />
 <h2 id="considering">Considering</h2>
 <p>Features on the radar but not yet committed to a version. These may or may not ship depending on scope, community interest, and architectural fit.</p>
-<h3 id="localization-support">Localization support</h3>
-<p>Allow all dialogue text to be translated and swapped at runtime by language.</p>
-<p><strong>Two approaches are being considered:</strong></p>
-<p><strong>Option A — Built-in (no dependency)</strong>
-Threader ships its own <code>LocalizationTable</code> ScriptableObject: a simple line ID → translated string mapping. Swap the active table at runtime and all dialogue text updates automatically. No external packages required — works for everyone out of the box.</p>
-<p><strong>Option B — Unity Localization package integration</strong>
-Threader reads from <code>LocalizedString</code> fields via Unity's official Localization package. Buyers who already use it get seamless integration with their existing workflow.</p>
-<p>The most likely approach is to ship both: Option A as the default with zero setup friction, and Option B as an optional bridge assembly compiled only when the Unity Localization package is detected (<code>#if</code> conditional). This way existing buyers are never affected and no unwanted dependencies are introduced.</p>
-<p><strong>Status:</strong> Under consideration. Dependency strategy needs to be resolved before implementation begins.</p>
+<h3 id="unity-localization-package-integration">Unity Localization package integration</h3>
+<p>Threader ships built-in multi-language support via the <code>LineSheets</code> list and <code>SetActiveLanguage()</code>. This covers text, audio, and animator actions per language with no external dependencies.</p>
+<p>An optional bridge assembly that reads from <code>LocalizedString</code> fields via Unity's official Localization package is being considered for projects that already use it. This would be compiled only when the Unity Localization package is detected (<code>#if</code> conditional), so existing buyers are never affected and no unwanted dependencies are introduced.</p>
+<p><strong>Status:</strong> Under consideration. The built-in system covers most use cases; the bridge would be a convenience integration for teams already invested in Unity Localization.</p>
 <hr />
 <h2 id="out-of-scope">Out of scope</h2>
 <p>These are features that have been considered and deliberately won't be added to Threader core. If you need them, alternatives are noted.</p>

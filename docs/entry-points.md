@@ -49,7 +49,7 @@ public string ResolveEntryPointGuid(string key)
             if (ep.Key == key)
                 return ep.NodeGuid;
         }
-        Debug.LogWarning($"[DialogueGraph] Entry point key '{key}' not found in '{name}'. " +
+        Debug.LogWarning($"[Threader] '{name}': Entry point key '{key}' not found. " +
                          "Falling back to start node.");
     }
     return StartNodeGuid;

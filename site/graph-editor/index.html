@@ -1165,6 +1165,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../translation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Translation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../templates/" class="md-nav__link">
         
   
@@ -1947,7 +1975,7 @@
 <p>A set of colour-coded pills for every node type, grouped into categories:</p>
 <ul>
 <li><strong>Dialogue</strong> — NPC Node, Player Choice Node, End Node</li>
-<li><strong>Logic</strong> — Branch Node, Jump Node, Random Node, Sub Graph Node</li>
+<li><strong>Logic</strong> — Branch Node, Jump Node, Random Node, Weighted Random Node, Switch Node, Sub Graph Node</li>
 <li><strong>Data / Events</strong> — Set Variable Node, Fire Event Node, Play Audio Node, Animator Trigger Node</li>
 <li><strong>Utility</strong> — Debug Node, Wait Node, Group, Sticky Note</li>
 </ul>
@@ -2025,6 +2053,14 @@
 <tr>
 <td><code>F6</code></td>
 <td>Create Sub Graph Node</td>
+</tr>
+<tr>
+<td><code>W</code></td>
+<td>Create Weighted Random Node</td>
+</tr>
+<tr>
+<td><code>S</code></td>
+<td>Create Switch Node</td>
 </tr>
 <tr>
 <td><code>G</code></td>
@@ -2246,6 +2282,8 @@
 <li>Set Variable node has no actions</li>
 <li>Set Variable node output is not connected</li>
 <li>Random node has no outputs, or all outputs are unconnected</li>
+<li>Weighted Random node has no outputs, all outputs are unconnected, or all weights are zero</li>
+<li>Switch node has no cases (always routes to Default), a case output is not connected, or the Default output is not connected</li>
 <li>A Bark graph contains a Player Choice node (choices are not supported in bark graphs and will never be reached)</li>
 <li>End node <strong>Next entry</strong> key references an entry point not defined in this graph</li>
 <li>Named entry point references a node that no longer exists</li>

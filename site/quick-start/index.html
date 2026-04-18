@@ -1038,6 +1038,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../translation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Translation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../templates/" class="md-nav__link">
         
   
@@ -1583,6 +1611,14 @@ This asset stores all nodes and connections for one NPC conversation.</p>
 <td><code>F6</code></td>
 <td>Sub Graph Node — call another Dialogue Graph</td>
 </tr>
+<tr>
+<td><code>W</code></td>
+<td>Weighted Random Node — weighted random output</td>
+</tr>
+<tr>
+<td><code>S</code></td>
+<td>Switch Node — multi-case condition routing</td>
+</tr>
 </tbody>
 </table>
 <p>Drag from the <strong>output port</strong> of one node to the <strong>input port</strong> of the next to connect them.<br />
@@ -1614,7 +1650,7 @@ This is a singleton — <strong>one per scene is enough</strong>. It drives conv
 </tr>
 <tr>
 <td><strong>Condition Provider</strong></td>
-<td>A <code>ConditionDefinition</code> asset. Required for C# custom conditions. See <a href="../conditions/">Conditions</a>.</td>
+<td>A <code>ConditionProvider</code> asset. Required for C# custom conditions. See <a href="../conditions/">Conditions</a>.</td>
 </tr>
 <tr>
 <td><strong>Audio Source</strong></td>

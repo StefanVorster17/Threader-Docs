@@ -47,6 +47,7 @@ nav:
     - Sub-Graph: sub-graph.md
     - Bark System: bark.md
     - Line Sheet: line-sheet.md
+    - Translation: translation.md
     - Node Templates: templates.md
     - UI: ui.md
     - Entry Points: entry-points.md

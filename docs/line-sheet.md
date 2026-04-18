@@ -69,7 +69,7 @@ Each `LineSheetRow` has a **PreviewText** field. When the active line sheet cont
 
 This is the primary mechanism for localising NPC dialogue text without editing the graph.
 
-### Choice text localization
+### Choice text localization (editor preview only)
 
 Each line sheet also stores **ChoiceSheetRow** entries for Player Choice nodes. A `ChoiceSheetRow` has:
 
@@ -80,6 +80,8 @@ Each line sheet also stores **ChoiceSheetRow** entries for Player Choice nodes. 
 | `PreviewText` | The localized choice label for this language |
 
 Choice rows are looked up via `sheet.LookupChoiceRow(nodeGuid, choiceIndex)`.
+
+> **Important:** Choice text localization via the line sheet is currently used for **editor preview only**. The graph editor reads `ChoiceSheetRow.PreviewText` so you can see translated choice text while authoring, but at runtime `DialogueManager.HandleChoices` takes choice text from `ChoiceData.Text` on the node (with `{variable}` token substitution). If you need localized choice text at runtime, override the text in your `OnChoiceNode` handler by looking up the active sheet yourself, or manage choice translations through your own localisation pipeline.
 
 ---
 
@@ -119,13 +121,26 @@ When an NPC node plays, the manager calls `graph.GetSheet(activeLanguage)` to re
 
 ### Fallback behaviour
 
-- If the active language has no matching sheet, or the sheet has no matching row, the system falls back to the original node text and plays silently (no audio)
-- If `ActiveLanguage` is null or empty, `GetSheet` returns `null` and the original node text is used
-- The language string comparison is exact (case-sensitive)
+`GetSheet(language)` resolves the sheet through this chain:
+
+1. If the graph has **no sheets at all** (`LineSheets` is empty) → returns the legacy single `LineSheet` field (or `null` if that is also unset)
+2. If `language` is **non-empty** and a matching `NamedLineSheet` entry exists → returns that sheet
+3. If `language` is **non-empty** but no match is found → falls back to the **first sheet** in the list (the primary/default language)
+4. If `language` is **null or empty** → returns the **first sheet** in the list
+
+This means the first entry in the `LineSheets` list acts as the default language. A graph with at least one sheet always returns a sheet — it never returns `null` unless the first entry's Sheet field is unassigned.
+
+For individual lines and rows:
+
+- If the resolved sheet has no matching row for a given node/line, or the row's `PreviewText` is empty, the system falls back to the original text on the NPC node
+- If the resolved sheet has no matching `LineSheetSpeakerEntry` for the current speaker, the line plays silently (no audio clip)
+- The language string comparison is **exact** (case-sensitive) — `"French"` ≠ `"french"`
 
 ### Legacy single-sheet field
 
-For backwards compatibility, `DialogueGraph` retains a legacy `LineSheet` field (hidden in the Inspector). Graphs created before multi-language support will continue to work. When migrating, move the existing sheet into the `LineSheets` list with an appropriate language label.
+For backwards compatibility, `DialogueGraph` retains a legacy `LineSheet` field (hidden in the Inspector). Graphs created before multi-language support will continue to work — `GetSheet` falls back to the legacy field when the `LineSheets` list is empty.
+
+When you open a graph with a legacy sheet in the Inspector, a warning box with a **Migrate to Multi-Language Sheets** button appears. Clicking it moves the existing sheet into the `LineSheets` list as the `"Default"` language entry and clears the legacy field.
 
 ---
 
@@ -137,9 +152,9 @@ The speaker name used for line sheet lookup follows the same resolution chain as
 |---|---|
 | 1 | NPC node's own **Speaker Name** field |
 | 2 | Graph's **Default Speaker** |
-| 3 | `BarkSource.speakerName` *(bark graphs only)* |
+| 3 | Current actor's **Speaker Name** *(main dialogue)* or `BarkSource.speakerName` *(bark graphs)* |
 
-This means a shared bark graph with no speaker set on nodes will automatically pick the correct speaker's clips based on which `BarkSource` triggered it.
+This means a shared graph with no speaker set on nodes will automatically pick the correct speaker's clips based on which actor triggered the dialogue.
 
 ---
 

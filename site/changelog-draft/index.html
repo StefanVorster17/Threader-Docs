@@ -886,6 +886,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../translation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Translation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../templates/" class="md-nav__link">
         
   
@@ -1243,42 +1271,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#11-unreleased" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        [1.1] -- Unreleased
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="[1.1] -- Unreleased">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#added" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Added
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -1297,21 +1289,7 @@
 <h1 id="changelog-draft">Changelog Draft</h1>
 <p><em>Internal working doc — not in nav. Copy entries to changelog.md before release.</em></p>
 <hr />
-<h2 id="11-unreleased">[1.1] -- Unreleased</h2>
-<h3 id="added">Added</h3>
-<ul>
-<li><strong>Line Sheet system</strong> — per-graph companion assets (<code>DialogueLineSheet</code>) that store per-speaker audio clips and animator actions for every NPC line. Multiple speakers can share the same graph and each plays their own voice lines.</li>
-<li>NPC nodes in the graph canvas now have a <strong>Line Data</strong> button that opens a focused per-node editor (<code>NodeLineSheetPopup</code>).</li>
-<li><strong>Line Sheet Editor</strong> window shows a whole-graph overview of all NPC nodes and lines; accessible from the graph editor sidebar (PROJECT → Line Sheet Editor).</li>
-<li><strong>Batch sync</strong> — <code>Threader → Create &amp; Sync All Line Sheets</code> creates and syncs sheets for every graph in the project at once.</li>
-<li><code>DialogueLineSheet</code> cannot be created from the Project window Create menu — sheets are always created automatically alongside their graph.</li>
-<li><code>LineSheet</code> field on <code>DialogueGraph</code> is now editable in the Inspector.</li>
-<li><strong><code>BarkSource</code> — Speaker Name field</strong> — a roster dropdown on <code>BarkSource</code> that feeds the third-level speaker resolution fallback for bark graphs. Allows a shared bark graph with no speaker set on nodes to resolve the correct voice clips and animator actions per NPC.</li>
-<li><strong><code>PlayBark()</code> — <code>speakerName</code> parameter</strong> — optional third argument; <code>BarkSource</code> passes its Speaker Name automatically. Speaker resolution chain for bark graphs is now: node speaker → graph default → BarkSource speaker name.</li>
-<li><strong>DialogueGraph Inspector</strong> — redesigned with a dark header panel, stats row (nodes, NPC lines, entry points, groups), a "Used By" section showing all scene objects currently referencing the graph (clickable links that ping and select in the Hierarchy), and an editable Line Sheet field.</li>
-<li><strong>DialogueLineSheet Inspector</strong> — redesigned with stats row (lines, speakers, clips, orphaned rows), description, read-only source graph reference, and an <strong>Open Line Sheet Editor</strong> button.</li>
-<li><strong><code>BarkSourceEditor</code></strong> — custom inspector that replaces the plain Speaker Name text field with a roster dropdown, mirroring <code>NPCDialogueEditor</code>.</li>
-</ul>
+<p><em>All entries merged into [1.0.0] changelog. Nothing pending.</em></p>
 <hr />
 
 

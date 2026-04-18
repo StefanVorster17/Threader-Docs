@@ -43,6 +43,7 @@ Add the `BarkSource` component to the NPC's GameObject (alongside `NPCDialogue`)
 |---|---|
 | **Bark Graph** | Assign the bark graph asset |
 | **Trigger Mode** | `OnEnter` fires when the player enters the trigger collider. `OnTimer` fires on an interval. `Manual` — call `Bark()` from script. |
+| **Player Tag** | The tag used to identify the player for `OnEnter` trigger detection. Default is `"Player"`. |
 | **Cooldown** | Minimum seconds between barks |
 | **Speaker Name** | The speaker name this NPC is registered under — must match their `NPCDialogue` **Speaker Name**. Used to resolve audio clips and animator actions from the bark graph's Line Sheet when the NPC node and graph have no speaker set. Populated from your SpeakerRoster assets as a dropdown. |
 | **Suppress During Dialogue** | When true (default), silently skips the bark while a full conversation is active |

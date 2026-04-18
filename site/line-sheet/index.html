@@ -16,7 +16,7 @@
         <link rel="prev" href="../bark/">
       
       
-        <link rel="next" href="../templates/">
+        <link rel="next" href="../translation/">
       
       
         
@@ -1009,6 +1009,95 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Runtime resolution">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#text-localization-via-previewtext" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Text localization via PreviewText
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#choice-text-localization-editor-preview-only" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Choice text localization (editor preview only)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#multi-language-support" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Multi-language support
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Multi-language support">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-it-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How it works
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Setup
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fallback-behaviour" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fallback behaviour
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#legacy-single-sheet-field" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Legacy single-sheet field
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1048,6 +1137,34 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../translation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Translation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -1504,6 +1621,95 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Runtime resolution">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#text-localization-via-previewtext" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Text localization via PreviewText
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#choice-text-localization-editor-preview-only" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Choice text localization (editor preview only)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#multi-language-support" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Multi-language support
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Multi-language support">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-it-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How it works
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Setup
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fallback-behaviour" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fallback behaviour
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#legacy-single-sheet-field" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Legacy single-sheet field
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1608,7 +1814,101 @@
 <pre><code class="language-csharp">sheet.Lookup(nodeGuid, lineIndex, speakerName)
 </code></pre>
 <p>The lookup returns a <code>LineSheetSpeakerEntry</code> containing the <code>Clip</code> and <code>AnimatorActions</code> for that exact node / line / speaker combination. If the graph has no sheet, or the sheet has no matching entry, the line plays silently — no crash.</p>
-<p>The <code>LineSheet</code> field on <code>DialogueGraph</code> is assignable in the Inspector. Sheets are created automatically next to their graph with the name <code>{graphName}_Sheet.asset</code>.</p>
+<p>Sheets are created automatically next to their graph with the name <code>{graphName}_Sheet.asset</code>.</p>
+<h3 id="text-localization-via-previewtext">Text localization via PreviewText</h3>
+<p>Each <code>LineSheetRow</code> has a <strong>PreviewText</strong> field. When the active line sheet contains a non-empty <code>PreviewText</code> for a given node/line, that text is used <strong>instead of</strong> the original text on the NPC node. The fallback chain is:</p>
+<ol>
+<li><code>LineSheetRow.PreviewText</code> from the active language's sheet (if non-empty)</li>
+<li><code>NPCLine.Text</code> on the node itself (the original/source language)</li>
+</ol>
+<p>This is the primary mechanism for localising NPC dialogue text without editing the graph.</p>
+<h3 id="choice-text-localization-editor-preview-only">Choice text localization (editor preview only)</h3>
+<p>Each line sheet also stores <strong>ChoiceSheetRow</strong> entries for Player Choice nodes. A <code>ChoiceSheetRow</code> has:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>NodeGuid</code></td>
+<td>The Player Choice node this row belongs to</td>
+</tr>
+<tr>
+<td><code>ChoiceIndex</code></td>
+<td>Which choice in the node (0-based)</td>
+</tr>
+<tr>
+<td><code>PreviewText</code></td>
+<td>The localized choice label for this language</td>
+</tr>
+</tbody>
+</table>
+<p>Choice rows are looked up via <code>sheet.LookupChoiceRow(nodeGuid, choiceIndex)</code>.</p>
+<blockquote>
+<p><strong>Important:</strong> Choice text localization via the line sheet is currently used for <strong>editor preview only</strong>. The graph editor reads <code>ChoiceSheetRow.PreviewText</code> so you can see translated choice text while authoring, but at runtime <code>DialogueManager.HandleChoices</code> takes choice text from <code>ChoiceData.Text</code> on the node (with <code>{variable}</code> token substitution). If you need localized choice text at runtime, override the text in your <code>OnChoiceNode</code> handler by looking up the active sheet yourself, or manage choice translations through your own localisation pipeline.</p>
+</blockquote>
+<hr />
+<h2 id="multi-language-support">Multi-language support</h2>
+<p>Threader supports multiple languages per graph using the <strong>LineSheets</strong> list on <code>DialogueGraph</code>. Instead of a single sheet, a graph can have one sheet per language — each sheet stores its own audio clips, animator actions, and localized text.</p>
+<h3 id="how-it-works">How it works</h3>
+<p>Each <code>DialogueGraph</code> has a <code>LineSheets</code> field: a <code>List&lt;NamedLineSheet&gt;</code>. Each entry pairs a <strong>Language</strong> string (e.g. <code>"English"</code>, <code>"French"</code>, <code>"Japanese"</code>) with a <code>DialogueLineSheet</code> asset.</p>
+<p>At runtime, <code>DialogueManager</code> has an <strong>active language</strong> that determines which sheet is used:</p>
+<pre><code class="language-csharp">// Set the active language (call once, e.g. from a settings menu)
+DialogueManager.Instance.SetActiveLanguage(&quot;French&quot;);
+
+// Read the current language
+string lang = DialogueManager.Instance.ActiveLanguage;
+</code></pre>
+<p>When an NPC node plays, the manager calls <code>graph.GetSheet(activeLanguage)</code> to retrieve the correct sheet. The sheet's <code>PreviewText</code> fields provide localised line text, and the sheet's <code>Clip</code> fields provide language-specific audio.</p>
+<h3 id="setup_1">Setup</h3>
+<ol>
+<li>Create one <code>DialogueLineSheet</code> per language for each graph (e.g. <code>VillagerGraph_EN.asset</code>, <code>VillagerGraph_FR.asset</code>)</li>
+<li>Open the graph in the Graph Editor, or edit the <code>DialogueGraph</code> asset directly in the Inspector</li>
+<li>In the <strong>LineSheets</strong> list, add one entry per language:</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Language</th>
+<th>Sheet</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>English</code></td>
+<td><code>VillagerGraph_EN</code></td>
+</tr>
+<tr>
+<td><code>French</code></td>
+<td><code>VillagerGraph_FR</code></td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>Fill in each sheet with the appropriate audio clips, animator actions, and <code>PreviewText</code> translations</li>
+<li>At runtime, call <code>DialogueManager.Instance.SetActiveLanguage("French")</code> to switch languages</li>
+</ol>
+<h3 id="fallback-behaviour">Fallback behaviour</h3>
+<p><code>GetSheet(language)</code> resolves the sheet through this chain:</p>
+<ol>
+<li>If the graph has <strong>no sheets at all</strong> (<code>LineSheets</code> is empty) → returns the legacy single <code>LineSheet</code> field (or <code>null</code> if that is also unset)</li>
+<li>If <code>language</code> is <strong>non-empty</strong> and a matching <code>NamedLineSheet</code> entry exists → returns that sheet</li>
+<li>If <code>language</code> is <strong>non-empty</strong> but no match is found → falls back to the <strong>first sheet</strong> in the list (the primary/default language)</li>
+<li>If <code>language</code> is <strong>null or empty</strong> → returns the <strong>first sheet</strong> in the list</li>
+</ol>
+<p>This means the first entry in the <code>LineSheets</code> list acts as the default language. A graph with at least one sheet always returns a sheet — it never returns <code>null</code> unless the first entry's Sheet field is unassigned.</p>
+<p>For individual lines and rows:</p>
+<ul>
+<li>If the resolved sheet has no matching row for a given node/line, or the row's <code>PreviewText</code> is empty, the system falls back to the original text on the NPC node</li>
+<li>If the resolved sheet has no matching <code>LineSheetSpeakerEntry</code> for the current speaker, the line plays silently (no audio clip)</li>
+<li>The language string comparison is <strong>exact</strong> (case-sensitive) — <code>"French"</code> ≠ <code>"french"</code></li>
+</ul>
+<h3 id="legacy-single-sheet-field">Legacy single-sheet field</h3>
+<p>For backwards compatibility, <code>DialogueGraph</code> retains a legacy <code>LineSheet</code> field (hidden in the Inspector). Graphs created before multi-language support will continue to work — <code>GetSheet</code> falls back to the legacy field when the <code>LineSheets</code> list is empty.</p>
+<p>When you open a graph with a legacy sheet in the Inspector, a warning box with a <strong>Migrate to Multi-Language Sheets</strong> button appears. Clicking it moves the existing sheet into the <code>LineSheets</code> list as the <code>"Default"</code> language entry and clears the legacy field.</p>
 <hr />
 <h2 id="speaker-name-fallback">Speaker name fallback</h2>
 <p>The speaker name used for line sheet lookup follows the same resolution chain as speaker registration:</p>
@@ -1630,11 +1930,11 @@
 </tr>
 <tr>
 <td>3</td>
-<td><code>BarkSource.speakerName</code> <em>(bark graphs only)</em></td>
+<td>Current actor's <strong>Speaker Name</strong> <em>(main dialogue)</em> or <code>BarkSource.speakerName</code> <em>(bark graphs)</em></td>
 </tr>
 </tbody>
 </table>
-<p>This means a shared bark graph with no speaker set on nodes will automatically pick the correct speaker's clips based on which <code>BarkSource</code> triggered it.</p>
+<p>This means a shared graph with no speaker set on nodes will automatically pick the correct speaker's clips based on which actor triggered the dialogue.</p>
 <hr />
 <h2 id="inspector">Inspector</h2>
 <p>Selecting a <code>DialogueLineSheet</code> asset shows:</p>
@@ -1650,7 +1950,8 @@
 <ul>
 <li>Each graph that needs audio has a <code>_Sheet.asset</code> next to it (created automatically on first open or via batch sync)</li>
 <li>Speaker names in the sheet match the <strong>Speaker Name</strong> fields in your <code>SpeakerRoster</code></li>
-<li>The <code>LineSheet</code> field on the <code>DialogueGraph</code> asset points to the correct sheet (set automatically on creation)</li>
+<li>The <code>LineSheets</code> list on the <code>DialogueGraph</code> asset has at least one entry pointing to the correct sheet</li>
+<li>For multi-language setups: one sheet per language is listed in <code>LineSheets</code>, and <code>SetActiveLanguage()</code> is called at runtime before dialogue starts</li>
 <li><code>BarkSource</code> components have their <strong>Speaker Name</strong> field set when using shared bark graphs</li>
 </ul>
 
