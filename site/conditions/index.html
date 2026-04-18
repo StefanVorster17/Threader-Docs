@@ -1076,6 +1076,118 @@
   
   
     <li class="md-nav__item">
+      <a href="../sub-graph/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sub-Graph
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bark/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bark System
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../line-sheet/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Line Sheet
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../templates/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Node Templates
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../ui/" class="md-nav__link">
         
   
@@ -1937,7 +2049,7 @@ ConditionStore.Set(&quot;HasSword&quot;, inventory.Has(&quot;sword&quot;) ? &quo
 <h2 id="debugging-conditions">Debugging conditions</h2>
 <p>If a condition isn't behaving as expected:</p>
 <ol>
-<li><strong>Open the Dialogue Preview Window</strong> (<code>Shift+Alt+P</code>) — enable <strong>Show hidden</strong> to see choices that are being hidden, and check which conditions are evaluated against your seeded variable values</li>
+<li><strong>Open the Dialogue Preview Window</strong> (<code>Ctrl+Shift+P</code>) — enable <strong>Show hidden</strong> to see choices that are being hidden, and check which conditions are evaluated against your seeded variable values</li>
 <li><strong>Variable names are case-sensitive</strong> — double-check spelling in both the graph and the asset</li>
 <li><strong>Delegate not registered</strong> — if <code>WhenMissing = Block</code> and nothing is registered, the choice locks silently. Add a <code>Debug.Log</code> inside your delegate to confirm it fires.</li>
 <li><strong>Provider not assigned</strong> — if you use Option B, make sure the asset is in <strong>DialogueManager → Condition Provider</strong> or <code>ConditionService.SetProvider</code> was called. Check <code>ConditionService.Provider</code> in code to verify.</li>
@@ -1978,7 +2090,7 @@ ConditionStore.Set(&quot;HasSword&quot;, inventory.Has(&quot;sword&quot;) ? &quo
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Threader Dialogue Kit &nbsp;·&nbsp; v1.0 (Unreleased)
+      Threader Dialogue Kit &nbsp;·&nbsp; v1.0
     </div>
   
   

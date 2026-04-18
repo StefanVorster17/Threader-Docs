@@ -16,7 +16,7 @@
         <link rel="prev" href="../events/">
       
       
-        <link rel="next" href="../ui/">
+        <link rel="next" href="../sub-graph/">
       
       
         
@@ -965,6 +965,118 @@
   
   
     <li class="md-nav__item">
+      <a href="../sub-graph/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sub-Graph
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bark/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bark System
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../line-sheet/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Line Sheet
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../templates/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Node Templates
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../ui/" class="md-nav__link">
         
   
@@ -1478,6 +1590,9 @@
 <li><strong>Calling actor's Speaker Name</strong> — used when the graph was invoked as a sub-graph; the speaker name of whoever started the top-level conversation is inherited automatically</li>
 </ol>
 <p>This means a shared graph (e.g. a generic idle sequence referenced by many NPCs) works correctly without setting any Speaker field on its nodes — each NPC supplies their own name as the final fallback.</p>
+<blockquote>
+<p><strong>Bark graphs</strong> use the same three-level chain, except the third fallback is the <strong>BarkSource Speaker Name</strong> field (not a calling actor). Set this on the <code>BarkSource</code> component to ensure shared bark graphs resolve the correct voice clips and animator actions per NPC. See <a href="../bark/">Bark System</a> for details.</p>
+</blockquote>
 <hr />
 <h2 id="tips">Tips</h2>
 <ul>
@@ -1520,7 +1635,7 @@
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Threader Dialogue Kit &nbsp;·&nbsp; v1.0 (Unreleased)
+      Threader Dialogue Kit &nbsp;·&nbsp; v1.0
     </div>
   
   

@@ -40,7 +40,6 @@ event Action<NPCLine> OnNPCLine;
 ```
 - `NPCLine.SpeakerName` — resolved speaker name (graph default applied when the node's Speaker field is blank)
 - `NPCLine.Text` — fully resolved text (variable tokens already substituted)
-- `NPCLine.Clip` — optional `AudioClip`. May be null.
 
 ```csharp
 // Every node event fired from any NPC node (local + global).
@@ -82,6 +81,12 @@ event Action OnDialogueEnd;
 event Action OnDialogueStartedEvent;
 ```
 
+```csharp
+// A bark line has become active (fired instead of OnNPCLine for bark graphs).
+event Action<NPCLine> OnBark;
+```
+Wire this to a world-space speech bubble, HUD ticker, or any component that should display ambient NPC lines. Bark output never reaches `OnNPCLine` or the main dialogue panel.
+
 ### Properties
 
 | Property | Type | Description |
@@ -90,6 +95,7 @@ event Action OnDialogueStartedEvent;
 | `CurrentActor` | `IDialogueActor` | The actor currently running dialogue. `null` between conversations. |
 | `IsDialogueActive` | `bool` | `true` while dialogue is running (blockables are blocked) |
 | `CanCancel` | `bool` | `true` while dialogue is active **and** the current node does not have **Prevent Dialogue Exit** enabled |
+| `ActiveLanguage` | `string` | The currently active language for line sheet resolution. Set via `SetActiveLanguage()`. |
 | `ConditionProvider` | `ConditionProvider` | The provider assigned in the Inspector (read-only) |
 | `VariablesList` | `IReadOnlyList<DialogueVariables>` | All assigned variable assets |
 | `SpeakerRosters` | `IReadOnlyList<SpeakerRoster>` | All assigned roster assets |
@@ -122,6 +128,17 @@ Immediately ends active dialogue — stops all coroutines and audio, then fires 
 ---
 
 ```csharp
+void PlayBark(DialogueGraph graph, Transform actorTransform = null, string speakerName = null)
+```
+Runs a bark graph on a second non-blocking runner. The main conversation runner is completely unaffected — barks never block the player or fire `OnDialogueStarted`. Each line fires `OnBark` instead of `OnNPCLine`.
+
+- `graph` — must have `IsBark` set to `true`; passing a normal dialogue graph logs a warning
+- `actorTransform` — optional; used for 3D audio positioning. May be `null` for 2D audio.
+- `speakerName` — optional; the third-level fallback in the bark speaker resolution chain (node speaker → graph default → this name). `BarkSource` passes its **Speaker Name** field automatically. Use this when calling `PlayBark()` from code to ensure correct line sheet lookup.
+
+---
+
+```csharp
 void RegisterBlockable(IDialogue blockable)
 void UnregisterBlockable(IDialogue blockable)
 ```
@@ -148,11 +165,24 @@ Manually block or unblock all registered blockables. Call if you need to freeze 
 
 ---
 
+```csharp
+void SetActiveLanguage(string language)
+```
+Sets the active language for line sheet resolution. When a language is set, `DialogueManager` calls `graph.GetSheet(activeLanguage)` to retrieve the language-specific sheet for each graph. The sheet's `PreviewText` fields provide localised NPC line text, and the sheet's audio clips provide language-specific VO.
+
+Call once from your language/settings menu — the setting persists for the lifetime of the `DialogueManager` instance.
+
+```csharp
+DialogueManager.Instance.SetActiveLanguage("French");
+```
+
+---
+
 ### Audio behaviour
 
-- When a line has an `AudioClip` and the speaker's `Transform` is in the registry, the clip plays from a hidden spatial `AudioSource` repositioned to the speaker's world position (`spatialBlend = 1`, `rolloffMode = Linear`).
-- If no speaker transform is known, the clip plays from the 2D `audioSource` component.
-- The runner waits for the clip to finish (`WaitWhile(() => audioSource.isPlaying && !DialogueUI.SkipLineRequested)`) before advancing. If a skip is requested mid-clip, the source is stopped immediately. `linePause` is applied **after** the clip ends (also skippable).
+- When a line has an `AudioClip` and the speaker's `Transform` is in the registry, the clip plays from a hidden spatial `AudioSource` repositioned to the speaker's world position (`spatialBlend = 1`, `rolloffMode = Linear`). The runner waits with `WaitWhile(() => _spatialSource.isPlaying && !DialogueUI.SkipLineRequested)`.
+- If no speaker transform is known, the clip plays from the 2D `audioSource` component. The runner waits with `WaitWhile(() => audioSource.isPlaying && !DialogueUI.SkipLineRequested)`.
+- In both cases, if a skip is requested mid-clip, the source is stopped immediately. `linePause` is applied **after** the clip ends (also skippable).
 - When no clip exists, the runner waits for `DialogueUI.IsTyping` to become false, then waits `linePause` seconds before advancing.
 
 ---
@@ -164,6 +194,7 @@ public interface IDialogueActor
 {
     DialogueGraph Graph               { get; }
     string        ActiveEntryPointKey { get; }
+    string        SpeakerName         { get; }
 
     void SetEntryPoint(string key);
     void ResetEntryPoint();
@@ -177,6 +208,7 @@ Implemented by `NPCDialogue` and `DialogueTrigger`. Implement on your own compon
 |---|---|
 | `Graph` | The `DialogueGraph` this actor runs. |
 | `ActiveEntryPointKey` | Current entry point override. Null/empty = start node. |
+| `SpeakerName` | The speaker name for this actor. Used as the third-level fallback in sub-graph speaker resolution. |
 | `SetEntryPoint(key)` | Switches the active branch for the next `StartDialogue` call. |
 | `ResetEntryPoint()` | Clears the override (sets to null). |
 | `StartDialogue()` | Starts dialogue from `ActiveEntryPointKey`. |
@@ -299,10 +331,12 @@ Create via **Assets → Create → Threader → Dialogue Graph**.
 | `Nodes` | `List<DialogueNode>` | All nodes in the graph (SerializeReference) |
 | `StartNodeGuid` | `string` | GUID of the default start node |
 | `DefaultSpeakerName` | `string` | Fallback speaker name for NPC nodes with no speaker override |
-| `LookAtSpeaker` | `bool` | When true, calls `IDialogueFocus.FocusOn` on the speaking NPC's transform. Set via the **Look At Speaker** toggle in the Graph Editor sidebar. |
+| `LookAtSpeaker` | `bool` | When true, calls `IDialogueFocus.FocusOn` on the speaking NPC's transform. Set via the **Look At Speaker** toggle in the Graph Editor sidebar. Hidden in the editor when `IsBark` is true. |
+| `IsBark` | `bool` | When true, this graph is treated as a bark graph. Set via the **Graph Type** dropdown in the GRAPH sidebar. `PlayBark()` requires this to be true. |
 | `EntryPoints` | `List<DialogueEntryPoint>` | Named entry points. Set via right-click in the editor. |
 | `Groups` | `List<DialogueGroupData>` | Comment boxes (editor-only) |
 | `StickyNotes` | `List<StickyNoteData>` | Sticky notes (editor-only) |
+| `LineSheets` | `List<NamedLineSheet>` | Per-language line sheet assignments. Each entry pairs a language string with a `DialogueLineSheet` asset. See [Line Sheet — Multi-language support](line-sheet.md#multi-language-support). |
 
 ### Methods
 
@@ -310,6 +344,54 @@ Create via **Assets → Create → Threader → Dialogue Graph**.
 string ResolveEntryPointGuid(string key)
 ```
 Returns the node GUID for `key`. Falls back to `StartNodeGuid` if `key` is null, empty, or not found. Logs a warning (not an error) on fallback when a non-empty key was supplied. Called by `DialogueManager.StartDialogue`.
+
+---
+
+```csharp
+DialogueLineSheet GetSheet(string language)
+```
+Searches the `LineSheets` list for an entry whose `Language` matches `language` (case-sensitive). Returns the corresponding `DialogueLineSheet`, or `null` if no match is found. Called internally by `DialogueManager` when resolving audio clips and localized text for each NPC line.
+
+---
+
+## NamedLineSheet
+
+```csharp
+[Serializable]
+public class NamedLineSheet
+{
+    public string Language;
+    public DialogueLineSheet Sheet;
+}
+```
+
+Pairs a language identifier with a `DialogueLineSheet` asset. Stored in `DialogueGraph.LineSheets`. The `Language` string is matched against `DialogueManager.ActiveLanguage` at runtime.
+
+---
+
+## BarkSource
+
+`BarkSource : MonoBehaviour`
+
+Add to any NPC GameObject (alongside `NPCDialogue`) to automate bark playback without any C#. Calls `DialogueManager.PlayBark()` based on the configured trigger mode.
+
+### Inspector fields
+
+| Field | Type | Description |
+|---|---|---|
+| `barkGraph` | `DialogueGraph` | The bark graph to play. Must have `IsBark = true`. |
+| `triggerMode` | `TriggerMode` | `OnEnter` — fires when the player enters the trigger collider. `OnTimer` — fires on an interval. `Manual` — call `Bark()` from script. |
+| `playerTag` | `string` | Tag used to identify the player for `OnEnter` trigger mode. Default: `"Player"`. |
+| `cooldown` | `float` | Minimum seconds between barks. Prevents rapid repeat firing regardless of trigger mode. |
+| `speakerName` | `string` | The speaker name this NPC is registered under. Must match their `NPCDialogue` Speaker Name. Used for line sheet audio clip and animator action lookup. |
+| `suppressDuringDialogue` | `bool` | When true (default), barks are silently skipped while a full conversation is active. |
+
+### Methods
+
+```csharp
+void Bark()
+```
+Manually triggers the bark. Safe to call from a `UnityEvent`, animation event, or external script. Respects cooldown and the `suppressDuringDialogue` setting.
 
 ---
 
@@ -437,10 +519,12 @@ Register/unregister inline delegates by key. The delegate receives the parameter
 static bool Evaluate(ConditionDefinition definition, string parameter)
 ```
 Resolution order:
-1. `VariableConditionDefinition` — self-evaluates against `DialogueManager.VariablesList` (no delegate or provider needed)
+1. `VariableConditionDefinition` — self-evaluates against the `Variables` asset assigned directly on the definition asset (no delegate or provider needed)
 2. Registered delegate for `definition.GetKey()` — if found, the delegate is invoked with `parameter` and its result returned
-3. Active `ConditionProvider` asset — `provider.Evaluate(definition.GetKey(), parameter)` is called if no delegate is registered
-4. If none of the above match, returns `true` (condition passes) and logs a warning
+3. Active `ConditionProvider` asset — `provider.Evaluate(definition, parameter)` is called if no delegate is registered
+4. `WhenMissing` fallback — `Allow` returns `true` silently; `Block` returns `false` and logs a warning
+
+Returns `true` if `definition` is `null`.
 
 ---
 
@@ -452,7 +536,6 @@ Data struct passed to `OnNPCLine` each time a dialogue line becomes active.
 |---|---|---|
 | `SpeakerName` | `string` | Resolved speaker name. Graph `DefaultSpeakerName` is applied when the node's own Speaker field is blank. |
 | `Text` | `string` | Fully resolved line text. Variable tokens (`{varName}`, `{varName:name}`) are already substituted. |
-| `Clip` | `AudioClip` | Optional voice clip assigned on the NPC node line. `null` when no clip is set. |
 
 ---
 
@@ -466,10 +549,6 @@ Data object passed per-item in the `List<ChoiceData>` delivered to `OnChoiceNode
 | `IsLocked` | `bool` | `true` when a non-hiding condition failed. The choice is shown but should be rendered as unavailable (greyed out). |
 | `IsHidden` | `bool` | `true` when a hiding condition failed. The choice should not be rendered at all. Filter these before creating buttons. |
 | `ChoiceKey` | `string` | Stable identifier in the format `"{nodeGuid}:{index}"`. Used as the key for choice history tracking. |
-3. Active `Provider.Evaluate(definition, parameter)`
-4. `definition.WhenMissing` fallback (`Allow` → true, `Block` → false + warning)
-
-Returns `true` if `definition` is `null`.
 
 ---
 
@@ -549,9 +628,8 @@ Key format: `"{choiceNodeGuid}:{choiceIndex}"`. Stable unless the node is delete
 ```csharp
 public class NPCLine
 {
-    public string    Text;        // resolved display text (tokens substituted)
-    public string    SpeakerName; // resolved speaker name (graph default applied)
-    public AudioClip Clip;        // may be null
+    public string Text;        // resolved display text (tokens substituted)
+    public string SpeakerName; // resolved speaker name (graph default applied)
 }
 ```
 
@@ -576,7 +654,7 @@ public class ChoiceData
 }
 ```
 
-The list passed to `OnChoiceNode` contains display copies — never the originals from the graph asset. Modifying these copies is safe and has no effect on the graph.
+When variable substitution is needed (`DialogueManager.VariablesList` is non-empty), a fresh list of display copies is created and passed to `OnChoiceNode` so the originals on the graph asset are never mutated. If no variables are assigned, the original list is passed directly — `IsLocked`, `IsHidden`, and `ChoiceKey` are `[NonSerialized]` runtime-only fields so they are never written back to disk regardless.
 
 ---
 
@@ -611,6 +689,68 @@ Stored on `DialogueGraph.EntryPoints`. Set via right-click → **Set as Entry Po
 
 ---
 
+## SwitchNode (data classes)
+
+```csharp
+public class SwitchNode : DialogueNode
+{
+    public List<SwitchCase> Cases;
+    public string DefaultNodeGuid;
+}
+```
+
+```csharp
+[Serializable]
+public class SwitchCase
+{
+    public string Label;
+    public List<VariableCondition> Conditions;
+    public string NextNodeGuid;
+}
+```
+
+Each `SwitchCase` holds a label, a list of variable conditions (AND logic), and an output GUID. Cases are evaluated top-to-bottom; the first match wins. `DefaultNodeGuid` is followed when no case matches.
+
+---
+
+## WeightedRandomNode (data classes)
+
+```csharp
+public class WeightedRandomNode : DialogueNode
+{
+    public List<WeightedOutput> Outputs;
+}
+```
+
+```csharp
+[Serializable]
+public class WeightedOutput
+{
+    public float Weight;
+    public string NextNodeGuid;
+}
+```
+
+Each output has a `Weight` (float). At runtime, one output is selected randomly with probability proportional to its weight relative to the total.
+
+---
+
+## ChoiceSheetRow
+
+```csharp
+[Serializable]
+public class ChoiceSheetRow
+{
+    public string NodeGuid;
+    public int    ChoiceIndex;
+    public string PreviewText;
+}
+```
+
+Stored in `DialogueLineSheet.ChoiceRows`. Holds localized choice text for a specific choice on a Player Choice node. Looked up via `sheet.LookupChoiceRow(nodeGuid, choiceIndex)`.
+
+---
+
 ## Enums
 
 ```csharp
@@ -630,6 +770,7 @@ public enum NodeType
 {
     NPC, PlayerChoice, End,
     Branch, SetVariable, Random, Jump,
-    Debug, Wait, FireEvent, PlayAudio, AnimatorTrigger
+    Debug, Wait, FireEvent, PlayAudio, AnimatorTrigger,
+    SubGraph, Switch, WeightedRandom
 }
 ```

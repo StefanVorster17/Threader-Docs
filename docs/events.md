@@ -57,7 +57,7 @@ When the dialogue system fires an event whose key matches an entry in this list,
 
 You can add as many rows as you need — one per key.
 
-> **This only works for Local events** routed through `OnNodeEvent`. The `NPCDialogue` component subscribes to `OnNodeEvent` and checks whether `CurrentActor` is itself, so the response only fires when *this* NPC is the one speaking.
+> **This only works for Local events** routed through `OnNodeEvent`. The `NPCDialogue` component subscribes to `OnNodeEvent` and checks whether the currently running graph matches this NPC's assigned graph, so the response only fires during this NPC's own conversation.
 
 ---
 

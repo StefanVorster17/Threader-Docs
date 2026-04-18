@@ -1,4 +1,4 @@
-# Roadmap
+﻿# Roadmap
 
 This page tracks what's coming to Threader, what's being considered, and what's intentionally out of scope. It's updated as plans change.
 
@@ -6,94 +6,11 @@ If you have a feature request, raise it on the [GitHub repository](https://githu
 
 ---
 
-## Upcoming
+## Released
 
-### v1.1
+### v1.0 — April 16, 2026
 
-Sub-graph support, bark system, node templates, bookmarks, export script, and editor quality-of-life. See the [Changelog](changelog.md) for the full list on release.
-
-#### Sub-Graph support
-
-Call any `DialogueGraph` asset from within a running dialogue graph, then return to the calling graph when it ends.
-
-**What ships:**
-
-- **Sub Graph Node** — a new node type that delegates execution to another graph asset. Wire it like any other node; assign a target graph and an optional entry point key. The conversation resumes on the connected output when the sub-graph reaches its End node.
-
-- **End Node sub-graph slot** — an optional graph reference on the End node. When set, that graph runs as a sub-routine before the conversation truly closes — useful for routing an NPC back to generic idle lines after a quest-specific conversation.
-
-- **Caller speaker fallback** — NPC nodes in shared graphs resolve speaker name through a three-level chain: node → graph default → calling actor. Shared graphs with blank speaker fields automatically display and look at whoever triggered the dialogue.
-
-- **Graph call stack with depth guard** — the runtime tracks nested sub-graph calls up to 16 levels deep and ends dialogue cleanly if the limit is exceeded.
-
-- Existing graphs are completely unaffected — this is additive, nothing breaks.
-
-**Use cases this enables:**
-- Shared "rumour" or "ambient" dialogue that any NPC can invoke mid-conversation
-- Reusable shop, trade, or minigame dialogue sequences called from multiple graphs
-- Breaking very large story graphs into smaller chapter graphs that chain together
-- Quest NPCs that fall back to generic idle lines automatically when the quest conversation ends
-
-#### Bark system
-
-Fire-and-forget ambient lines that play without entering a full conversation — an NPC mutters as you walk past, a guard reacts to a sound, a merchant calls out. Barks run in parallel to the world; they never block the player or trigger `OnDialogueStarted`.
-
-**What ships:**
-
-- **`IsBark` flag on `DialogueGraph`** — mark any graph as a bark graph. The validator enforces that bark graphs contain no Player Choice nodes (which would be unreachable in a non-blocking flow).
-
-- **`BarkSource` component** — attach to any NPC alongside `NPCDialogue`. Holds a bark graph reference, a cooldown timer, and a trigger mode (`OnEnter`, `OnTimer`, `Manual`). Calls `DialogueManager.PlayBark()` automatically or on demand.
-
-- **Non-blocking bark runner** — a second lightweight runner path in `DialogueManager` that traverses NPC, Random, Branch, Set Variable, and End nodes from a bark graph and fires `OnBark` instead of `OnNPCLine`. The main conversation runner is completely unaffected.
-
-- **`OnBark` event** — a separate `Action<NPCLine>` event so bark output is handled independently of the main dialogue panel. Wire it to a floating world-space speech bubble, a HUD ticker, or nothing at all.
-
-- Barks are suppressed automatically while a full conversation is active (configurable).
-
-**Use cases this enables:**
-- Ambient NPC chatter as the player moves through the world
-- Guard alert or suspicion reactions without interrupting gameplay
-- Merchant and shopkeeper callouts
-- Randomised flavour lines driven by game state via Branch and condition nodes
-
-**NPC-to-NPC / overheard dialogue** — because the bark runner waits for each audio clip to finish before the next line plays, a bark graph can script a full back-and-forth exchange between two NPCs (e.g. two guards talking as the player walks past). Wire `OnBark` to read the `SpeakerName` field and route each line to the right overhead bubble. No extra code or special mode needed.
-
-#### Node Template System
-
-Save any selection of nodes as a reusable template asset, then drag it back onto any graph to stamp out a fresh copy — wired internally, new GUIDs, ready to use.
-
-**What ships:**
-
-- **`DialogueNodeTemplate` ScriptableObject** — stores a deep-copy snapshot of one or more nodes and their internal connections. Created automatically when you save a selection, or manually via `Assets > Create > Threader > Dialogue Node Template`.
-- **Save Selection as Template** — select nodes in the graph and click "Save Selection" in the NODE TEMPLATES sidebar panel. Internal connections (edges within the selection) are preserved; external connections are dropped.
-- **Drag-to-stamp** — drag a template pill from the NODE TEMPLATES sidebar onto the canvas to instantiate it at the drop position. All nodes get fresh GUIDs; internal wiring is re-connected automatically.
-- **Project window drag** — dragging a `.asset` directly from Unity's Project window onto the canvas also works.
-- **Rename and Delete** — right-click any template pill to rename it (updates both the display name and the `.asset` filename) or delete it with a confirmation dialog.
-
-Templates are *stamp-and-detach* — once placed, the copy is completely independent of the original. For *live-linked* reuse (one graph called from many places), use the Sub Graph Node instead.
-
-#### Bookmark System
-
-Quickly navigate large graphs by bookmarking nodes and jumping back to them from the sidebar.
-
-**What ships:**
-
-- Right-click any node → **Bookmark this Node** — adds it to the BOOKMARKS sidebar panel.
-- Click a bookmark row to select and frame that node in the canvas.
-- **Custom bookmark names** — click the ✎ button on a row to rename it inline. Empty name reverts to the auto-generated label.
-- Bookmarks are removed automatically when the bookmarked node is deleted.
-- Persisted per-graph in EditorPrefs; survive editor restarts.
-
-#### Export Script
-
-Export a graph's dialogue content as a human-readable plain-text screenplay — useful for VO sessions, narrative review, and writer feedback.
-
-**What ships:**
-
-- **Export Script** button in the PROJECT sidebar — walks the graph from the start node in execution order and writes a `.txt` file.
-- Output format: `[Speaker Name]` on one line, dialogue text on the next, blank line between entries. Player choices are listed with numbers; each branch is indented below its option. Silent nodes (SetVariable, FireEvent, Wait, etc.) are invisible in the output.
-- Any nodes unreachable from the start node are appended at the bottom with a separator.
-- File opens in Explorer/Finder after export and can be uploaded to Google Drive and opened in Google Docs.
+Initial release. Full feature set including the visual graph editor, 15 node types, variable system, conditions, entry points, bark system, sub-graph system, line sheet system with multi-language support, node templates, bookmarks, export script, type-aware variable inspector, custom right-click context menu, and all associated components and APIs. See the [Changelog](changelog.md) for the complete list.
 
 ---
 
@@ -101,21 +18,13 @@ Export a graph's dialogue content as a human-readable plain-text screenplay — 
 
 Features on the radar but not yet committed to a version. These may or may not ship depending on scope, community interest, and architectural fit.
 
-### Localization support
+### Unity Localization package integration
 
-Allow all dialogue text to be translated and swapped at runtime by language.
+Threader ships built-in multi-language support via the `LineSheets` list and `SetActiveLanguage()`. This covers text, audio, and animator actions per language with no external dependencies.
 
-**Two approaches are being considered:**
+An optional bridge assembly that reads from `LocalizedString` fields via Unity's official Localization package is being considered for projects that already use it. This would be compiled only when the Unity Localization package is detected (`#if` conditional), so existing buyers are never affected and no unwanted dependencies are introduced.
 
-**Option A — Built-in (no dependency)**
-Threader ships its own `LocalizationTable` ScriptableObject: a simple line ID → translated string mapping. Swap the active table at runtime and all dialogue text updates automatically. No external packages required — works for everyone out of the box.
-
-**Option B — Unity Localization package integration**
-Threader reads from `LocalizedString` fields via Unity's official Localization package. Buyers who already use it get seamless integration with their existing workflow.
-
-The most likely approach is to ship both: Option A as the default with zero setup friction, and Option B as an optional bridge assembly compiled only when the Unity Localization package is detected (`#if` conditional). This way existing buyers are never affected and no unwanted dependencies are introduced.
-
-**Status:** Under consideration. Dependency strategy needs to be resolved before implementation begins.
+**Status:** Under consideration. The built-in system covers most use cases; the bridge would be a convenience integration for teams already invested in Unity Localization.
 
 ---
 

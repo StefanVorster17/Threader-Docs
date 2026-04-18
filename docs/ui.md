@@ -169,7 +169,6 @@ public class MyDialogueUI : MonoBehaviour
     {
         // line.SpeakerName — resolved speaker name (graph default applied when node Speaker is blank)
         // line.Text — fully resolved string (variable tokens already substituted)
-        // line.Clip — AudioClip, may be null
         _panel.style.display  = DisplayStyle.Flex;
         _speakerLabel.text    = line.SpeakerName;
         _textLabel.text       = line.Text;
@@ -204,7 +203,7 @@ public class MyDialogueUI : MonoBehaviour
 
 The runner handles line timing internally — **you do not call `Continue()`**. After `OnNPCLine` fires the runner:
 
-1. If the line has an `AudioClip`, waits for the clip to finish playing.
+1. If the line has an `AudioClip` (resolved from the graph's [Line Sheet](line-sheet.md)), waits for the clip to finish playing.
 2. Otherwise, waits until `DialogueUI.IsTyping` is `false`.
 3. Waits `linePause` seconds (set on the `DialogueManager` Inspector).
 4. Checks `DialogueUI.SkipLineRequested` (set by Space key in the built-in UI).
@@ -217,7 +216,7 @@ The runner handles line timing internally — **you do not call `Continue()`**. 
 
 ### Speaker name
 
-`OnNPCLine` carries the speaker name in `line.SpeakerName` alongside `line.Text` and `line.Clip`. Use it directly in your `HandleLine` handler:
+`OnNPCLine` carries the speaker name in `line.SpeakerName` alongside `line.Text`. Audio clips are resolved separately by the `DialogueManager` via the graph's [Line Sheet](line-sheet.md) — the `NPCLine` struct itself contains only `Text` and `SpeakerName`. Use them directly in your `HandleLine` handler:
 
 ```csharp
 void HandleLine(NPCLine line)

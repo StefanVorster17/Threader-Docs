@@ -53,8 +53,12 @@ Both panels remember their sizes between sessions via EditorPrefs.
 | **New** | Prompts for a name and creates a new `DialogueGraph` asset in the currently selected folder |
 | **Load** | Opens an object picker to load an existing graph |
 | **Save** | Writes all unsaved changes to the asset on disk (`Ctrl+S` also works) |
-| **Validate** | Runs the graph validator and shows a list of warnings/errors inline |
+| **Validate** | Runs the graph validator and shows a list of warnings/errors inline. The validator re-runs automatically whenever nodes or edges change while the panel is open. |
 | **Find & Replace** | Opens the find/replace panel (see below) |
+| **Line Sheet Editor** | Opens the Line Sheet Editor window for the currently loaded graph. See [Line Sheet](line-sheet.md) for details. |
+| **Export Script** | Walks the graph from the start node and writes a plain-text `.txt` screenplay file. Output includes `[Speaker Name]` headers, dialogue text, numbered player choices, and branch labels. Silent nodes are invisible. Unreachable nodes are appended at the bottom. The file opens in Explorer/Finder immediately after export. |
+
+**Referenced by** is a collapsible sub-section inside PROJECT that lists every other graph in the project that references the currently loaded graph as a sub-graph. This is scanned automatically when a graph is loaded. If no graph references it the panel shows "Not referenced by any graph."
 
 An orange **● Unsaved** indicator appears in the toolbar whenever the graph has changes not yet written to disk. Closing the window or switching graphs while unsaved changes are present will prompt you to save.
 
@@ -63,7 +67,8 @@ An orange **● Unsaved** indicator appears in the toolbar whenever the graph ha
 | Field | Description |
 |---|---|
 | **Default Speaker** | Fallback speaker name for any NPC node whose own Speaker field is blank. Populated from your SpeakerRoster assets. Nodes with no override show `(Graph Default: X)` in their dropdown, updating live as you change this value. |
-| **Look At Speaker** | When ticked, any scene object that implements `IDialogueFocus` (e.g. a first-person camera controller) will automatically rotate to face the current speaker's transform each time an NPC node fires. Toggle this per-graph. |
+| **Graph Type** | Dropdown — `Dialogue` or `Bark`. Bark graphs run on a non-blocking runner via `PlayBark()` and support NPC, Random, Branch, Set Variable, and End nodes only. Setting this to **Bark** hides the **Look At Speaker** row and removes Player Choice Node, Wait Node, and Sub Graph Node from the sidebar and context menu. |
+| **Look At Speaker** | *(Dialogue graphs only.)* When ticked, any scene object that implements `IDialogueFocus` (e.g. a first-person camera controller) will automatically rotate to face the current speaker's transform each time an NPC node fires. Toggle this per-graph. |
 
 ### NAVIGATE
 
@@ -72,21 +77,41 @@ An orange **● Unsaved** indicator appears in the toolbar whenever the graph ha
 | **Go to Start** | Pans and zooms the canvas to frame the start node |
 | **Entry Points** | Lists all named entry points defined in the graph; click any to jump there |
 | **Minimap** | Toggles the floating minimap overlay (preference saved per session) |
-| **Snap to Grid** | Snaps all node movement to a 20 px grid (preference saved per session) |
-| **Show GUIDs** | Displays each node's full GUID as small text at the bottom of the node header. Useful when cross-referencing GUIDs from error messages. Preference is saved via EditorPrefs and restored across sessions. |
+| **Snap to Grid** | Snaps all node movement to a 20 px grid (preference saved per session). Takes effect immediately on drag-end. |
+| **Show GUIDs** | Displays each node's full GUID above the Tag field. Useful when cross-referencing GUIDs from error messages. Preference is saved via EditorPrefs and restored across sessions. |
 | **Search GUID** | Text field + **Go** button. Paste a full GUID or the 8-character prefix shown in error messages, then press Go or Enter to pan and select the matching node. |
+
+### BOOKMARKS
+
+Lists all bookmarked nodes in the current graph. Click any row to select and frame that node on the canvas.
+
+- **Bookmark a node** — right-click any node → **Bookmark this Node**
+- **Rename** — click the ✎ pencil button on a row to edit the name inline. Press Enter or click away to confirm; Escape to cancel. Empty names revert to the auto-generated node label.
+- Bookmarks are removed automatically when the bookmarked node is deleted.
+- Persisted per-graph in `EditorPrefs` (keyed by graph GUID); survive editor restarts.
 
 ### CREATE
 
 A set of colour-coded pills for every node type, grouped into categories:
 
 - **Dialogue** — NPC Node, Player Choice Node, End Node
-- **Logic** — Branch Node, Jump Node, Random Node
+- **Logic** — Branch Node, Jump Node, Random Node, Weighted Random Node, Switch Node, Sub Graph Node
 - **Data / Events** — Set Variable Node, Fire Event Node, Play Audio Node, Animator Trigger Node
 - **Utility** — Debug Node, Wait Node, Group, Sticky Note
 
-**Click** a pill to create the node at the canvas centre.  
-**Drag** a pill directly onto the canvas to place it at the drop position.
+**Drag** a pill onto the canvas to place the node at the drop position.
+
+> Player Choice Node, Wait Node, and Sub Graph Node are hidden automatically when **Graph Type** is set to **Bark**.
+
+### NODE TEMPLATES
+
+Lists all `DialogueNodeTemplate` assets found in the project. Each pill shows the template name and node count `[N]`.
+
+- **Save a template** — select nodes in the graph, then click **Save Selection**. Internal connections are preserved; external connections are dropped.
+- **Stamp a template** — drag a template pill from the sidebar onto the canvas. All nodes receive fresh GUIDs; internal wiring is re-connected automatically.
+- **Project window drag** — dragging a `.asset` from Unity's Project window onto the canvas also works.
+- **Refresh** — re-scans the project for template assets.
+- **Right-click a pill** — **Rename…** (updates display name and `.asset` filename via a modal window) or **Delete** (confirmation dialog).
 
 ---
 
@@ -106,6 +131,9 @@ A set of colour-coded pills for every node type, grouped into categories:
 | `F3` | Create Play Audio Node |
 | `F4` | Create Animator Trigger Node |
 | `F5` | Create Wait Node |
+| `F6` | Create Sub Graph Node |
+| `W` | Create Weighted Random Node |
+| `S` | Create Switch Node |
 | `G` | Group selected nodes into a comment box |
 | `Z` | Add a sticky note at the cursor position |
 | `F` | Frame / zoom to selected nodes |
@@ -123,14 +151,19 @@ A set of colour-coded pills for every node type, grouped into categories:
 
 ## Node context menu
 
-Right-click any node to open its context menu:
+Right-click any node to open its context menu. The menu is a styled dark panel grouped by category (Dialogue / Logic / Data & Events / Utility / Selection) and filters out bark-incompatible nodes automatically when **Graph Type** is set to **Bark**.
 
 | Option | Effect |
 |---|---|
 | **Set as Start Node** | Makes this node the graph's entry point (green ▶ START badge) |
 | **Set as Entry Point…** | Opens a dialog to assign a named entry-point key to this node (yellow ⚑ badge appears) |
 | **Remove Entry Point** | Clears the entry point key from this node |
-| **Set Colour** | Opens the colour picker (None / Red / Orange / Yellow / Green / Blue / Purple) |
+| **Set Colour / Tag** | Opens the colour picker (None / Red / Orange / Yellow / Green / Blue / Purple) |
+| **Clear Colour / Tag** | *(Only shown when a colour is already set.)* Resets the node colour to None |
+| **Bookmark this Node** | Adds this node to the BOOKMARKS sidebar panel. When the node is already bookmarked this entry changes to **Remove Bookmark** |
+| **Go to Target (tagname)** | *(Jump nodes only)* Selects and frames the node that owns the jump's target tag. Greyed out if the tag is unset or not found. |
+| **Go to Entry Point (keyname)** | *(End nodes only)* Selects and frames the node that owns the entry point key. Greyed out if the key is unset or not found. |
+| **Remove from Group** | *(Nodes inside a group only)* Removes the node from its containing group box. |
 | **Duplicate** | Creates a copy of the node with a new GUID, positioned slightly offset |
 | **Copy GUID** | Copies the node's full GUID to the clipboard. Useful for pasting into the **Search GUID** field or external tools. |
 | **Delete** | Removes the node and all edges connected to it |
@@ -170,7 +203,11 @@ Select one or more nodes and press **G** (or drag the **Group** pill from the si
 
 - **Double-click** the title to rename it
 - Click the **Notes** text area below the title to type multi-line annotations (saved with the graph)
-- **Right-click** the group to change its colour (Default / Red / Orange / Yellow / Green / Blue / Purple) or delete it
+- **Right-click** the group to open its context menu:
+  - **Rename** — edits the group title inline
+  - **Colour** submenu — set colour (None / Red / Orange / Yellow / Green / Blue / Purple)
+  - **Delete Group (keep nodes)** — removes the group box but leaves all nodes in place
+  - **Delete Group and Nodes** — removes the group box and deletes every node inside it
 - **Drag nodes** in and out of a group to include or exclude them
 - **Sticky notes** can also be dragged into a group; they snap in and are saved as part of that group
 
@@ -238,6 +275,9 @@ The validator checks for:
 - Set Variable node has no actions
 - Set Variable node output is not connected
 - Random node has no outputs, or all outputs are unconnected
+- Weighted Random node has no outputs, all outputs are unconnected, or all weights are zero
+- Switch node has no cases (always routes to Default), a case output is not connected, or the Default output is not connected
+- A Bark graph contains a Player Choice node (choices are not supported in bark graphs and will never be reached)
 - End node **Next entry** key references an entry point not defined in this graph
 - Named entry point references a node that no longer exists
 - A node with **Prevent Dialogue Exit** enabled has no reachable End node (would leave the player permanently stuck)

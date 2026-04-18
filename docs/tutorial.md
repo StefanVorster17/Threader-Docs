@@ -140,7 +140,7 @@ Press **E** for an End node. Connect the NPC node to it. Leave **Next entry** as
 
 ## 7. Add a fire-event node for the quest reward
 
-Between the "cat returned" choice and End A, insert a **Fire Event** node (press **V**).
+Between the \"cat returned\" choice and End A, insert a **Fire Event** node (press **F2**).
 
 - **Event Key:** `QuestReward`
 - **Global:** ✓ (so any listener in the scene can pick it up)

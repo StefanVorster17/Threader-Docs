@@ -245,7 +245,7 @@ This means inline conditions act as a **fast-path guard** — expensive C# looku
 
 If a condition isn't behaving as expected:
 
-1. **Open the Dialogue Preview Window** (`Shift+Alt+P`) — enable **Show hidden** to see choices that are being hidden, and check which conditions are evaluated against your seeded variable values
+1. **Open the Dialogue Preview Window** (`Ctrl+Shift+P`) — enable **Show hidden** to see choices that are being hidden, and check which conditions are evaluated against your seeded variable values
 2. **Variable names are case-sensitive** — double-check spelling in both the graph and the asset
 3. **Delegate not registered** — if `WhenMissing = Block` and nothing is registered, the choice locks silently. Add a `Debug.Log` inside your delegate to confirm it fires.
 4. **Provider not assigned** — if you use Option B, make sure the asset is in **DialogueManager → Condition Provider** or `ConditionService.SetProvider` was called. Check `ConditionService.Provider` in code to verify.

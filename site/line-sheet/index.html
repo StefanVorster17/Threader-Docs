@@ -10,13 +10,13 @@
       
       
       
-        <link rel="canonical" href="https://stefanvorster17.github.io/Threader-Docs/variables/">
+        <link rel="canonical" href="https://stefanvorster17.github.io/Threader-Docs/line-sheet/">
       
       
-        <link rel="prev" href="../nodes/">
+        <link rel="prev" href="../bark/">
       
       
-        <link rel="next" href="../conditions/">
+        <link rel="next" href="../templates/">
       
       
         
@@ -27,7 +27,7 @@
     
     
       
-        <title>Variables - Threader - Dialogue Kit</title>
+        <title>Line Sheet - Threader - Dialogue Kit</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#variables" class="md-skip">
+        <a href="#line-sheet" class="md-skip">
           Skip to content
         </a>
       
@@ -117,7 +117,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Variables
+              Line Sheet
             
           </span>
         </div>
@@ -698,37 +698,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Variables
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../variables/" class="md-nav__link">
         
   
   
@@ -744,214 +717,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#the-dialoguevariables-asset" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        The DialogueVariables asset
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#runtime-behaviour" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Runtime behaviour
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#assigning-to-dialoguemanager" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Assigning to DialogueManager
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#reading-and-writing-variables-from-the-graph" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Reading and writing variables from the graph
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Reading and writing variables from the graph">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#inline-conditions-on-player-choice-nodes" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Inline conditions on Player Choice nodes
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#set-actions-on-npc-nodes" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Set actions on NPC nodes
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#set-variable-node" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Set Variable Node
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#variable-substitution-in-text" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Variable substitution in text
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Variable substitution in text">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#syntax" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Syntax
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#examples" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Examples
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#how-it-works" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        How it works
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#original-data-is-never-mutated" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Original data is never mutated
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#reading-and-writing-from-c-code" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Reading and writing from C# code
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#naming-conventions" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Naming conventions
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#full-walkthrough-example" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Full walkthrough example
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#multiple-variable-assets-search-order" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Multiple variable assets — search order
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1101,10 +866,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../line-sheet/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Line Sheet
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1120,6 +912,142 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Setup
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-open-a-graph-in-the-graph-editor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Open a graph in the graph editor
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-open-the-line-sheet-editor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Open the Line Sheet Editor
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-add-speaker-entries" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Add speaker entries
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#batch-creation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Batch creation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#runtime-resolution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Runtime resolution
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#speaker-name-fallback" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Speaker name fallback
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inspector" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Inspector
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Checklist
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1496,10 +1424,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#the-dialoguevariables-asset" class="md-nav__link">
+  <a href="#overview" class="md-nav__link">
     <span class="md-ellipsis">
       
-        The DialogueVariables asset
+        Overview
       
     </span>
   </a>
@@ -1507,44 +1435,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#runtime-behaviour" class="md-nav__link">
+  <a href="#setup" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Runtime behaviour
+        Setup
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#assigning-to-dialoguemanager" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Assigning to DialogueManager
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#reading-and-writing-variables-from-the-graph" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Reading and writing variables from the graph
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Reading and writing variables from the graph">
+    <nav class="md-nav" aria-label="Setup">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#inline-conditions-on-player-choice-nodes" class="md-nav__link">
+  <a href="#1-open-a-graph-in-the-graph-editor" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Inline conditions on Player Choice nodes
+        1. Open a graph in the graph editor
       
     </span>
   </a>
@@ -1552,10 +1458,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#set-actions-on-npc-nodes" class="md-nav__link">
+  <a href="#2-open-the-line-sheet-editor" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Set actions on NPC nodes
+        2. Open the Line Sheet Editor
       
     </span>
   </a>
@@ -1563,10 +1469,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#set-variable-node" class="md-nav__link">
+  <a href="#3-add-speaker-entries" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Set Variable Node
+        3. Add speaker entries
       
     </span>
   </a>
@@ -1579,71 +1485,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#variable-substitution-in-text" class="md-nav__link">
+  <a href="#batch-creation" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Variable substitution in text
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Variable substitution in text">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#syntax" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Syntax
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#examples" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Examples
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#how-it-works" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        How it works
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#original-data-is-never-mutated" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Original data is never mutated
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#reading-and-writing-from-c-code" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Reading and writing from C# code
+        Batch creation
       
     </span>
   </a>
@@ -1651,10 +1496,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#naming-conventions" class="md-nav__link">
+  <a href="#runtime-resolution" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Naming conventions
+        Runtime resolution
       
     </span>
   </a>
@@ -1662,10 +1507,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#full-walkthrough-example" class="md-nav__link">
+  <a href="#speaker-name-fallback" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Full walkthrough example
+        Speaker name fallback
       
     </span>
   </a>
@@ -1673,10 +1518,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#multiple-variable-assets-search-order" class="md-nav__link">
+  <a href="#inspector" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Multiple variable assets — search order
+        Inspector
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Checklist
       
     </span>
   </a>
@@ -1700,13 +1556,25 @@
 
 
 
-<h1 id="variables">Variables</h1>
-<p>The built-in variable store lets designers read and write game state directly from the graph — <strong>no C# required</strong>. Variables live in a <code>DialogueVariables</code> ScriptableObject asset. Choice conditions check them, NPC nodes and Set Variable nodes mutate them, and text tokens embed their values into dialogue lines.</p>
+<h1 id="line-sheet">Line Sheet</h1>
+<p>A <strong>Dialogue Line Sheet</strong> is a companion asset for a <code>DialogueGraph</code> that stores per-speaker audio clips and animator actions for every NPC line in that graph. Multiple speakers can share the same graph — each has their own clip and animations per line, looked up at runtime by speaker name.</p>
 <hr />
-<h2 id="the-dialoguevariables-asset">The DialogueVariables asset</h2>
-<p>A <code>DialogueVariables</code> asset is a ScriptableObject that holds a named list of typed variables. Create one per logical domain (quests, economy, flags, etc.) or one for the whole project — your choice.</p>
-<p><strong>Create one:</strong> right-click in the Project window → <strong>Create → Threader → Variables Store</strong>.</p>
-<p>Each variable in the list has:</p>
+<h2 id="overview">Overview</h2>
+<p>Line sheets separate audio and animation data from the dialogue graph itself. This means:</p>
+<ul>
+<li>Writers and voice directors can work in the same graph without touching audio assets</li>
+<li>Multiple NPCs (e.g. a merchant in two different towns) can reuse the same graph but play different voice lines</li>
+<li>Swapping VO or adding a new language doesn't require editing the graph</li>
+</ul>
+<hr />
+<h2 id="setup">Setup</h2>
+<h3 id="1-open-a-graph-in-the-graph-editor">1. Open a graph in the graph editor</h3>
+<p>Line sheets are always created relative to a graph and are never created manually. There is no <strong>Create → Threader → Dialogue Line Sheet</strong> entry in the Project window — use the graph editor instead.</p>
+<h3 id="2-open-the-line-sheet-editor">2. Open the Line Sheet Editor</h3>
+<p>From the sidebar <strong>PROJECT</strong> section, click <strong>Line Sheet Editor</strong>. This opens an overview of every NPC node in the graph, with its lines and speaker entries.</p>
+<p>Alternatively, click <strong>Line Data</strong> on any individual NPC node in the graph canvas to open a focused editor for just that node.</p>
+<h3 id="3-add-speaker-entries">3. Add speaker entries</h3>
+<p>For each line, add one entry per speaker who delivers that line. Set:</p>
 <table>
 <thead>
 <tr>
@@ -1716,236 +1584,75 @@
 </thead>
 <tbody>
 <tr>
-<td><strong>Name</strong></td>
-<td>The key used everywhere — in the graph dropdown, in <code>{token}</code> substitution, and in code. Case-sensitive.</td>
+<td><strong>Speaker</strong></td>
+<td>Name from your <code>SpeakerRoster</code>. Must match the speaker registered with <code>DialogueManager</code>.</td>
 </tr>
 <tr>
-<td><strong>Display Name</strong></td>
-<td>Optional human-readable label used by <code>{varName:name}</code> token substitution. If blank, falls back to Name.</td>
+<td><strong>Clip</strong></td>
+<td>The <code>AudioClip</code> played when this speaker delivers this line.</td>
 </tr>
 <tr>
-<td><strong>Type</strong></td>
-<td>Bool / Int / String</td>
-</tr>
-<tr>
-<td><strong>Bool Value</strong></td>
-<td>Default value when Type = Bool</td>
-</tr>
-<tr>
-<td><strong>Int Value</strong></td>
-<td>Default value when Type = Int</td>
-</tr>
-<tr>
-<td><strong>String Value</strong></td>
-<td>Default value when Type = String</td>
+<td><strong>Animator Actions</strong></td>
+<td>Optional list of animator parameters to fire when the line starts (parameter name, type, and value).</td>
 </tr>
 </tbody>
 </table>
-<blockquote>
-<p>The inspector is <strong>type-aware</strong> — it shows only the relevant value field for each variable: a checkbox for Bool, an integer field for Int, and a text field for String. Clean collapsible rows with a remove button and a <code>+ Add Variable</code> button at the bottom.</p>
-</blockquote>
-<p><img alt="DialogueVariables asset in the Inspector" src="../assets/images/variables-panel.png" width="480" /></p>
 <hr />
-<h2 id="runtime-behaviour">Runtime behaviour</h2>
-<p>The asset stores <strong>design-time defaults</strong> in its serialized fields. At runtime, <code>InitRuntime()</code> copies those defaults into in-memory dictionaries (<code>Dictionary&lt;string, bool&gt;</code>, <code>Dictionary&lt;string, int&gt;</code>, <code>Dictionary&lt;string, string&gt;</code>). All reads and writes during a play session hit those dictionaries — <strong>the asset on disk is never modified at runtime</strong>.</p>
-<p><code>InitRuntime()</code> is called automatically on first access (<code>EnsureInit()</code>). In Play mode, <code>OnDisable()</code> on the ScriptableObject clears the runtime state so that stopping Play mode always resets variables back to design-time defaults.</p>
-<p>This means:
-- Variables start fresh every Play session (from the Inspector defaults)
-- If you need to persist variables across sessions, save them yourself — see <a href="../saving/">Saving</a>
-- If you need to reset variables mid-session (e.g. starting a new game), call <code>vars.InitRuntime()</code></p>
+<h2 id="batch-creation">Batch creation</h2>
+<p>To create and sync sheets for every graph in the project at once, use:</p>
+<p><strong>Threader → Create &amp; Sync All Line Sheets</strong></p>
+<p>This scans all <code>DialogueGraph</code> assets, creates a sheet next to any graph that doesn't have one, and syncs all NPC node rows. Safe to re-run — existing data is never overwritten.</p>
 <hr />
-<h2 id="assigning-to-dialoguemanager">Assigning to DialogueManager</h2>
-<p>Select your <strong>DialogueManager</strong> GameObject in the scene and drag your <code>DialogueVariables</code> asset(s) into the <strong>Variables List</strong> slot.</p>
-<p>You can assign <strong>multiple assets</strong> — the runner searches all of them in order when resolving a variable name. This lets you split variables logically:</p>
-<pre><code>GameVariables.asset   — foundCat, questState, playerName
-EconomyVariables.asset — gold, price, credits
+<h2 id="runtime-resolution">Runtime resolution</h2>
+<p>At runtime, <code>DialogueManager</code> resolves the clip and animator actions for each line via:</p>
+<pre><code class="language-csharp">sheet.Lookup(nodeGuid, lineIndex, speakerName)
 </code></pre>
-<p>When the runner looks up <code>gold</code>, it checks <code>GameVariables</code> first, then <code>EconomyVariables</code>. The first asset that contains <code>gold</code> wins.</p>
+<p>The lookup returns a <code>LineSheetSpeakerEntry</code> containing the <code>Clip</code> and <code>AnimatorActions</code> for that exact node / line / speaker combination. If the graph has no sheet, or the sheet has no matching entry, the line plays silently — no crash.</p>
+<p>The <code>LineSheet</code> field on <code>DialogueGraph</code> is assignable in the Inspector. Sheets are created automatically next to their graph with the name <code>{graphName}_Sheet.asset</code>.</p>
 <hr />
-<h2 id="reading-and-writing-variables-from-the-graph">Reading and writing variables from the graph</h2>
-<h3 id="inline-conditions-on-player-choice-nodes">Inline conditions on Player Choice nodes</h3>
-<p>Open a <strong>Player Choice</strong> node. Inside each choice card is a <strong>Conditions</strong> box with a <strong>+ Add</strong> button. Each row compares one variable against a value:</p>
+<h2 id="speaker-name-fallback">Speaker name fallback</h2>
+<p>The speaker name used for line sheet lookup follows the same resolution chain as speaker registration:</p>
 <table>
 <thead>
 <tr>
-<th>Field</th>
-<th>Description</th>
+<th>Priority</th>
+<th>Source</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Variable</td>
-<td>Dropdown populated from all assigned <code>DialogueVariables</code> assets</td>
+<td>1</td>
+<td>NPC node's own <strong>Speaker Name</strong> field</td>
 </tr>
 <tr>
-<td>Operator</td>
-<td>Equal / NotEqual / GreaterThan / GreaterOrEqual / LessThan / LessOrEqual. Numeric operators (<code>GreaterThan</code>, <code>GreaterOrEqual</code>, etc.) are hidden automatically for Bool and String variables.</td>
+<td>2</td>
+<td>Graph's <strong>Default Speaker</strong></td>
 </tr>
 <tr>
-<td>Value</td>
-<td><strong>Type-aware field</strong> — checkbox for Bool, integer field for Int, text field for String. Updates automatically when you change the variable.</td>
-</tr>
-<tr>
-<td>Hide</td>
-<td>Checked = hide this choice entirely when the condition fails. Unchecked = show greyed-out.</td>
-</tr>
-<tr>
-<td>NOT</td>
-<td>Inverts this row's result</td>
+<td>3</td>
+<td><code>BarkSource.speakerName</code> <em>(bark graphs only)</em></td>
 </tr>
 </tbody>
 </table>
-<p>All rows must pass (AND logic). There is no built-in OR — split into separate choice cards instead.</p>
-<h3 id="set-actions-on-npc-nodes">Set actions on NPC nodes</h3>
-<p>Open any <strong>NPC node</strong> → <strong>Set Vars</strong> section → <strong>+ Add</strong>:</p>
-<table>
-<thead>
-<tr>
-<th>Operator</th>
-<th>Bool</th>
-<th>Int</th>
-<th>String</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Set</td>
-<td><code>var = value</code></td>
-<td><code>var = value</code></td>
-<td><code>var = value</code></td>
-</tr>
-<tr>
-<td>Add</td>
-<td><em>(n/a)</em></td>
-<td><code>var += value</code></td>
-<td><em>(n/a)</em></td>
-</tr>
-<tr>
-<td>Subtract</td>
-<td><em>(n/a)</em></td>
-<td><code>var -= value</code></td>
-<td><em>(n/a)</em></td>
-</tr>
-<tr>
-<td>Toggle</td>
-<td><code>var = !var</code></td>
-<td><em>(n/a)</em></td>
-<td><em>(n/a)</em></td>
-</tr>
-</tbody>
-</table>
-<p>Set actions fire <strong>before</strong> events do, so the next Player Choice node in the same conversation already sees the updated value.</p>
-<h3 id="set-variable-node">Set Variable Node</h3>
-<p>Use a <strong>Set Variable Node <code>[V]</code></strong> when you need to write variables <strong>without showing any NPC dialogue</strong>. It applies all its actions silently and advances to the next connected node. Useful for:</p>
+<p>This means a shared bark graph with no speaker set on nodes will automatically pick the correct speaker's clips based on which <code>BarkSource</code> triggered it.</p>
+<hr />
+<h2 id="inspector">Inspector</h2>
+<p>Selecting a <code>DialogueLineSheet</code> asset shows:</p>
 <ul>
-<li>Setting a flag at the start of a branch before any lines play</li>
-<li>Resetting a counter in a loop</li>
-<li>Marking story progress at a dead-end branch with no reply text needed</li>
+<li><strong>Stats</strong> — number of lines, speakers, assigned clips, and any orphaned rows</li>
+<li><strong>Source Graph</strong> — the graph this sheet belongs to</li>
+<li><strong>Open Line Sheet Editor</strong> button — opens the full overview window</li>
+<li>A help note directing you to the graph editor</li>
 </ul>
+<p>Orphaned rows appear when a node or line has been deleted from the graph but the sheet row was not cleaned up. Re-running <strong>Create &amp; Sync All Line Sheets</strong> removes orphans.</p>
 <hr />
-<h2 id="variable-substitution-in-text">Variable substitution in text</h2>
-<p>You can embed variable values directly in any NPC line or Player Choice text using curly-brace tokens. The runner resolves them at <strong>display time</strong>, so a variable changed by an NPC node's Set action earlier in the same conversation is already reflected.</p>
-<h3 id="syntax">Syntax</h3>
-<table>
-<thead>
-<tr>
-<th>Token</th>
-<th>What it produces</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>{varName}</code></td>
-<td>The current value — the number, <code>true</code>/<code>false</code>, or string</td>
-</tr>
-<tr>
-<td><code>{varName:name}</code></td>
-<td>The variable's <strong>Display Name</strong> (falls back to <code>Name</code> if Display Name is blank)</td>
-</tr>
-</tbody>
-</table>
-<h3 id="examples">Examples</h3>
-<pre><code>&quot;You found {catCount} cats!&quot;
-→  &quot;You found 3 cats!&quot;
-
-&quot;You have {E_Credits} {E_Credits:name}.&quot;
-→  &quot;You have 42 Credits.&quot;
-
-&quot;Nice to meet you, {playerName}!&quot;
-→  &quot;Nice to meet you, Alex!&quot;
-
-&quot;Pay {price} {price:name}?&quot;   ← in a choice button
-→  &quot;Pay 50 Gold?&quot;
-</code></pre>
-<h3 id="how-it-works">How it works</h3>
-<p>The resolver scans each variable asset in the <code>VariablesList</code> order, finds the first asset that contains <code>varName</code>, then returns:</p>
+<h2 id="checklist">Checklist</h2>
 <ul>
-<li><strong>Bool</strong>: <code>"true"</code> or <code>"false"</code> (lowercase)</li>
-<li><strong>Int</strong>: the integer as a string</li>
-<li><strong>String</strong>: the string value directly</li>
+<li>Each graph that needs audio has a <code>_Sheet.asset</code> next to it (created automatically on first open or via batch sync)</li>
+<li>Speaker names in the sheet match the <strong>Speaker Name</strong> fields in your <code>SpeakerRoster</code></li>
+<li>The <code>LineSheet</code> field on the <code>DialogueGraph</code> asset points to the correct sheet (set automatically on creation)</li>
+<li><code>BarkSource</code> components have their <strong>Speaker Name</strong> field set when using shared bark graphs</li>
 </ul>
-<p>If no variable with that name is found, the token is left as-is (e.g. <code>{typo}</code>) — this acts as an authoring hint so you can spot mistyped names immediately.</p>
-<p>Tokens are <strong>case-sensitive</strong> and must exactly match the variable's <code>Name</code> field.</p>
-<h3 id="original-data-is-never-mutated">Original data is never mutated</h3>
-<p>The resolver creates a new display copy of each <code>NPCLine</code> and <code>ChoiceData</code> before firing <code>OnNPCLine</code> and <code>OnChoiceNode</code>. The source objects on the ScriptableObject asset are never touched, so your token text remains intact in the graph editor after a play session.</p>
-<hr />
-<h2 id="reading-and-writing-from-c-code">Reading and writing from C# code</h2>
-<pre><code class="language-csharp">// Get the Variables asset(s) from the manager
-var vars = DialogueManager.Instance.VariablesList[0];
-
-// Read
-bool   found = vars.GetBool(&quot;foundCat&quot;);
-int    gold  = vars.GetInt(&quot;gold&quot;);
-string name  = vars.GetString(&quot;playerName&quot;);
-
-// Write
-vars.SetBool(&quot;foundCat&quot;,   true);
-vars.SetInt(&quot;gold&quot;,        gold - 50);
-vars.SetString(&quot;playerName&quot;, &quot;Alex&quot;);
-
-// Read with display name
-string displayName = vars.GetDisplayName(&quot;E_Credits&quot;); // &quot;Credits&quot; or &quot;E_Credits&quot; if blank
-
-// Reset all variables to design-time defaults
-vars.InitRuntime();
-
-// Reset every assigned Variables asset
-foreach (var v in DialogueManager.Instance.VariablesList)
-    v.InitRuntime();
-</code></pre>
-<p>You can call these at any time — before starting dialogue, mid-session from a game system, or during loading.</p>
-<hr />
-<h2 id="naming-conventions">Naming conventions</h2>
-<p>Variable names are free-form strings but some conventions prevent common bugs:</p>
-<ul>
-<li><strong>camelCase</strong> works well: <code>foundCat</code>, <code>playerGold</code>, <code>questPhase</code></li>
-<li><strong>Prefix by system</strong> if you have many: <code>E_Credits</code>, <code>Q_VillagerQuest</code>, <code>F_FirstMeeting</code></li>
-<li><strong>Avoid spaces</strong> — they work but make <code>{token}</code> substitution harder to read</li>
-<li><strong>Never rename a variable</strong> after you've referenced it in the graph — the graph stores the name as a string; renaming breaks all references silently</li>
-</ul>
-<hr />
-<h2 id="full-walkthrough-example">Full walkthrough example</h2>
-<blockquote>
-<p>"The player should only see 'Take the cat' after they've visited the cat's location."</p>
-</blockquote>
-<p><strong>Step 1 — Variables asset:</strong></p>
-<pre><code>foundCat    Bool    false
-</code></pre>
-<p><strong>Step 2 — NPC node "The cat is over there!":</strong></p>
-<pre><code>Set Vars:  foundCat | Set | true
-</code></pre>
-<p><strong>Step 3 — Player Choice node, choice "Take the cat":</strong></p>
-<pre><code>Conditions:  + Add
-  Variable = foundCat
-  Operator = Equal
-  Value    = true
-  Hide     = ✓  ← hide entirely until the condition is met
-</code></pre>
-<p><strong>Result:</strong> "Take the cat" is invisible on first visit. After the player reaches the NPC node that sets <code>foundCat = true</code>, the choice appears automatically on the next visit.</p>
-<hr />
-<h2 id="multiple-variable-assets-search-order">Multiple variable assets — search order</h2>
-<p>When you assign multiple assets to <code>DialogueManager → Variables List</code>, lookups search each asset in the order they appear in the list. The first asset containing the variable name is used.</p>
-<p>This means you can have the same variable name in two assets — only the one that appears <strong>first</strong> in the list will ever be found. Use distinct names across assets to avoid confusion.</p>
 
 
 

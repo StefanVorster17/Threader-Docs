@@ -10,13 +10,13 @@
       
       
       
-        <link rel="canonical" href="https://stefanvorster17.github.io/Threader-Docs/variables/">
+        <link rel="canonical" href="https://stefanvorster17.github.io/Threader-Docs/templates/">
       
       
-        <link rel="prev" href="../nodes/">
+        <link rel="prev" href="../line-sheet/">
       
       
-        <link rel="next" href="../conditions/">
+        <link rel="next" href="../ui/">
       
       
         
@@ -27,7 +27,7 @@
     
     
       
-        <title>Variables - Threader - Dialogue Kit</title>
+        <title>Node Templates - Threader - Dialogue Kit</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#variables" class="md-skip">
+        <a href="#node-templates" class="md-skip">
           Skip to content
         </a>
       
@@ -117,7 +117,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Variables
+              Node Templates
             
           </span>
         </div>
@@ -698,37 +698,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Variables
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../variables/" class="md-nav__link">
         
   
   
@@ -744,214 +717,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#the-dialoguevariables-asset" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        The DialogueVariables asset
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#runtime-behaviour" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Runtime behaviour
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#assigning-to-dialoguemanager" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Assigning to DialogueManager
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#reading-and-writing-variables-from-the-graph" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Reading and writing variables from the graph
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Reading and writing variables from the graph">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#inline-conditions-on-player-choice-nodes" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Inline conditions on Player Choice nodes
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#set-actions-on-npc-nodes" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Set actions on NPC nodes
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#set-variable-node" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Set Variable Node
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#variable-substitution-in-text" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Variable substitution in text
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Variable substitution in text">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#syntax" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Syntax
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#examples" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Examples
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#how-it-works" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        How it works
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#original-data-is-never-mutated" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Original data is never mutated
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#reading-and-writing-from-c-code" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Reading and writing from C# code
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#naming-conventions" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Naming conventions
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#full-walkthrough-example" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Full walkthrough example
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#multiple-variable-assets-search-order" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Multiple variable assets — search order
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1129,10 +894,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../templates/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Node Templates
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1148,6 +940,120 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#saving-a-template" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Saving a template
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-a-template" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Using a template
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#managing-templates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Managing templates
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Managing templates">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rename" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rename
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Delete
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#refresh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Refresh
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dialoguenodetemplate-asset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DialogueNodeTemplate asset
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contrast-with-sub-graph-node" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Contrast with Sub-Graph Node
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1496,10 +1402,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#the-dialoguevariables-asset" class="md-nav__link">
+  <a href="#saving-a-template" class="md-nav__link">
     <span class="md-ellipsis">
       
-        The DialogueVariables asset
+        Saving a template
       
     </span>
   </a>
@@ -1507,10 +1413,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#runtime-behaviour" class="md-nav__link">
+  <a href="#using-a-template" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Runtime behaviour
+        Using a template
       
     </span>
   </a>
@@ -1518,33 +1424,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#assigning-to-dialoguemanager" class="md-nav__link">
+  <a href="#managing-templates" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Assigning to DialogueManager
+        Managing templates
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#reading-and-writing-variables-from-the-graph" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Reading and writing variables from the graph
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Reading and writing variables from the graph">
+    <nav class="md-nav" aria-label="Managing templates">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#inline-conditions-on-player-choice-nodes" class="md-nav__link">
+  <a href="#rename" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Inline conditions on Player Choice nodes
+        Rename
       
     </span>
   </a>
@@ -1552,10 +1447,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#set-actions-on-npc-nodes" class="md-nav__link">
+  <a href="#delete" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Set actions on NPC nodes
+        Delete
       
     </span>
   </a>
@@ -1563,10 +1458,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#set-variable-node" class="md-nav__link">
+  <a href="#refresh" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Set Variable Node
+        Refresh
       
     </span>
   </a>
@@ -1579,71 +1474,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#variable-substitution-in-text" class="md-nav__link">
+  <a href="#dialoguenodetemplate-asset" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Variable substitution in text
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Variable substitution in text">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#syntax" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Syntax
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#examples" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Examples
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#how-it-works" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        How it works
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#original-data-is-never-mutated" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Original data is never mutated
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#reading-and-writing-from-c-code" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Reading and writing from C# code
+        DialogueNodeTemplate asset
       
     </span>
   </a>
@@ -1651,32 +1485,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#naming-conventions" class="md-nav__link">
+  <a href="#contrast-with-sub-graph-node" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Naming conventions
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#full-walkthrough-example" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Full walkthrough example
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#multiple-variable-assets-search-order" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Multiple variable assets — search order
+        Contrast with Sub-Graph Node
       
     </span>
   </a>
@@ -1700,252 +1512,79 @@
 
 
 
-<h1 id="variables">Variables</h1>
-<p>The built-in variable store lets designers read and write game state directly from the graph — <strong>no C# required</strong>. Variables live in a <code>DialogueVariables</code> ScriptableObject asset. Choice conditions check them, NPC nodes and Set Variable nodes mutate them, and text tokens embed their values into dialogue lines.</p>
+<h1 id="node-templates">Node Templates</h1>
+<p>Node templates let you save any selection of nodes as a reusable stamp. Drag a template pill onto any graph to instantiate a fresh copy — all nodes get new GUIDs, internal connections are re-wired, and you can immediately edit the stamp without affecting the original.</p>
+<p>Templates are <strong>stamp-and-detach</strong>: once placed, the copy is completely independent of the template asset. For <em>live-linked</em> reuse (one graph called from many places without duplication), use the <a href="../sub-graph/">Sub Graph Node</a> instead.</p>
 <hr />
-<h2 id="the-dialoguevariables-asset">The DialogueVariables asset</h2>
-<p>A <code>DialogueVariables</code> asset is a ScriptableObject that holds a named list of typed variables. Create one per logical domain (quests, economy, flags, etc.) or one for the whole project — your choice.</p>
-<p><strong>Create one:</strong> right-click in the Project window → <strong>Create → Threader → Variables Store</strong>.</p>
-<p>Each variable in the list has:</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Name</strong></td>
-<td>The key used everywhere — in the graph dropdown, in <code>{token}</code> substitution, and in code. Case-sensitive.</td>
-</tr>
-<tr>
-<td><strong>Display Name</strong></td>
-<td>Optional human-readable label used by <code>{varName:name}</code> token substitution. If blank, falls back to Name.</td>
-</tr>
-<tr>
-<td><strong>Type</strong></td>
-<td>Bool / Int / String</td>
-</tr>
-<tr>
-<td><strong>Bool Value</strong></td>
-<td>Default value when Type = Bool</td>
-</tr>
-<tr>
-<td><strong>Int Value</strong></td>
-<td>Default value when Type = Int</td>
-</tr>
-<tr>
-<td><strong>String Value</strong></td>
-<td>Default value when Type = String</td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<p>The inspector is <strong>type-aware</strong> — it shows only the relevant value field for each variable: a checkbox for Bool, an integer field for Int, and a text field for String. Clean collapsible rows with a remove button and a <code>+ Add Variable</code> button at the bottom.</p>
-</blockquote>
-<p><img alt="DialogueVariables asset in the Inspector" src="../assets/images/variables-panel.png" width="480" /></p>
+<h2 id="saving-a-template">Saving a template</h2>
+<ol>
+<li>Select the nodes you want to capture in the graph editor</li>
+<li>In the <strong>NODE TEMPLATES</strong> sidebar section, click <strong>Save Selection</strong></li>
+<li>A save-file dialog appears — choose a folder and name for the <code>.asset</code></li>
+<li>The template is created and immediately appears in the sidebar panel</li>
+</ol>
+<p>Internal connections (edges between selected nodes) are preserved. External connections (edges to nodes outside the selection) are dropped.</p>
 <hr />
-<h2 id="runtime-behaviour">Runtime behaviour</h2>
-<p>The asset stores <strong>design-time defaults</strong> in its serialized fields. At runtime, <code>InitRuntime()</code> copies those defaults into in-memory dictionaries (<code>Dictionary&lt;string, bool&gt;</code>, <code>Dictionary&lt;string, int&gt;</code>, <code>Dictionary&lt;string, string&gt;</code>). All reads and writes during a play session hit those dictionaries — <strong>the asset on disk is never modified at runtime</strong>.</p>
-<p><code>InitRuntime()</code> is called automatically on first access (<code>EnsureInit()</code>). In Play mode, <code>OnDisable()</code> on the ScriptableObject clears the runtime state so that stopping Play mode always resets variables back to design-time defaults.</p>
-<p>This means:
-- Variables start fresh every Play session (from the Inspector defaults)
-- If you need to persist variables across sessions, save them yourself — see <a href="../saving/">Saving</a>
-- If you need to reset variables mid-session (e.g. starting a new game), call <code>vars.InitRuntime()</code></p>
+<h2 id="using-a-template">Using a template</h2>
+<p><strong>From the NODE TEMPLATES sidebar:</strong></p>
+<p>Drag a template pill from the sidebar directly onto the graph canvas. The nodes are stamped at the drop position, preserving their relative layout. All nodes receive fresh GUIDs; internal wiring is re-connected automatically. The pasted nodes are selected immediately so you can move them as a group.</p>
+<p><strong>From the Project window:</strong></p>
+<p>Dragging a <code>DialogueNodeTemplate</code> <code>.asset</code> directly from Unity's Project window onto the graph canvas also works — same result as dragging from the sidebar.</p>
 <hr />
-<h2 id="assigning-to-dialoguemanager">Assigning to DialogueManager</h2>
-<p>Select your <strong>DialogueManager</strong> GameObject in the scene and drag your <code>DialogueVariables</code> asset(s) into the <strong>Variables List</strong> slot.</p>
-<p>You can assign <strong>multiple assets</strong> — the runner searches all of them in order when resolving a variable name. This lets you split variables logically:</p>
-<pre><code>GameVariables.asset   — foundCat, questState, playerName
-EconomyVariables.asset — gold, price, credits
-</code></pre>
-<p>When the runner looks up <code>gold</code>, it checks <code>GameVariables</code> first, then <code>EconomyVariables</code>. The first asset that contains <code>gold</code> wins.</p>
+<h2 id="managing-templates">Managing templates</h2>
+<h3 id="rename">Rename</h3>
+<p>Right-click any template pill → <strong>Rename…</strong></p>
+<p>A small modal window opens with a text field. Edit the name and click <strong>Rename</strong> (or press Enter) to confirm. This updates both the display name stored in the asset and the <code>.asset</code> filename on disk.</p>
+<h3 id="delete">Delete</h3>
+<p>Right-click any template pill → <strong>Delete</strong></p>
+<p>A confirmation dialog appears before the asset is removed from disk.</p>
+<h3 id="refresh">Refresh</h3>
+<p>Click the <strong>Refresh</strong> button in the NODE TEMPLATES section to re-scan the project for template assets. The list updates automatically when you save or rename a template, but use Refresh if you move or add assets manually.</p>
 <hr />
-<h2 id="reading-and-writing-variables-from-the-graph">Reading and writing variables from the graph</h2>
-<h3 id="inline-conditions-on-player-choice-nodes">Inline conditions on Player Choice nodes</h3>
-<p>Open a <strong>Player Choice</strong> node. Inside each choice card is a <strong>Conditions</strong> box with a <strong>+ Add</strong> button. Each row compares one variable against a value:</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Variable</td>
-<td>Dropdown populated from all assigned <code>DialogueVariables</code> assets</td>
-</tr>
-<tr>
-<td>Operator</td>
-<td>Equal / NotEqual / GreaterThan / GreaterOrEqual / LessThan / LessOrEqual. Numeric operators (<code>GreaterThan</code>, <code>GreaterOrEqual</code>, etc.) are hidden automatically for Bool and String variables.</td>
-</tr>
-<tr>
-<td>Value</td>
-<td><strong>Type-aware field</strong> — checkbox for Bool, integer field for Int, text field for String. Updates automatically when you change the variable.</td>
-</tr>
-<tr>
-<td>Hide</td>
-<td>Checked = hide this choice entirely when the condition fails. Unchecked = show greyed-out.</td>
-</tr>
-<tr>
-<td>NOT</td>
-<td>Inverts this row's result</td>
-</tr>
-</tbody>
-</table>
-<p>All rows must pass (AND logic). There is no built-in OR — split into separate choice cards instead.</p>
-<h3 id="set-actions-on-npc-nodes">Set actions on NPC nodes</h3>
-<p>Open any <strong>NPC node</strong> → <strong>Set Vars</strong> section → <strong>+ Add</strong>:</p>
-<table>
-<thead>
-<tr>
-<th>Operator</th>
-<th>Bool</th>
-<th>Int</th>
-<th>String</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Set</td>
-<td><code>var = value</code></td>
-<td><code>var = value</code></td>
-<td><code>var = value</code></td>
-</tr>
-<tr>
-<td>Add</td>
-<td><em>(n/a)</em></td>
-<td><code>var += value</code></td>
-<td><em>(n/a)</em></td>
-</tr>
-<tr>
-<td>Subtract</td>
-<td><em>(n/a)</em></td>
-<td><code>var -= value</code></td>
-<td><em>(n/a)</em></td>
-</tr>
-<tr>
-<td>Toggle</td>
-<td><code>var = !var</code></td>
-<td><em>(n/a)</em></td>
-<td><em>(n/a)</em></td>
-</tr>
-</tbody>
-</table>
-<p>Set actions fire <strong>before</strong> events do, so the next Player Choice node in the same conversation already sees the updated value.</p>
-<h3 id="set-variable-node">Set Variable Node</h3>
-<p>Use a <strong>Set Variable Node <code>[V]</code></strong> when you need to write variables <strong>without showing any NPC dialogue</strong>. It applies all its actions silently and advances to the next connected node. Useful for:</p>
+<h2 id="dialoguenodetemplate-asset">DialogueNodeTemplate asset</h2>
+<p><code>DialogueNodeTemplate : ScriptableObject</code></p>
+<p>Create manually via <strong>Assets → Create → Threader → Dialogue Node Template</strong>, or automatically via <strong>Save Selection</strong>.</p>
+<p>The asset stores:</p>
 <ul>
-<li>Setting a flag at the start of a branch before any lines play</li>
-<li>Resetting a counter in a loop</li>
-<li>Marking story progress at a dead-end branch with no reply text needed</li>
+<li>A deep-copy snapshot of each node in the selection</li>
+<li>A <code>TemplateEdge</code> list of internal connections</li>
+<li>A <code>BoundsMin</code> value for positioning nodes relative to the drop point</li>
+<li>A <code>TemplateName</code> string (also reflected in the <code>.asset</code> filename)</li>
 </ul>
+<p>The asset is plain JSON under the hood and safe to version-control. Moving it between projects works as long as all node types referenced in the template are available.</p>
 <hr />
-<h2 id="variable-substitution-in-text">Variable substitution in text</h2>
-<p>You can embed variable values directly in any NPC line or Player Choice text using curly-brace tokens. The runner resolves them at <strong>display time</strong>, so a variable changed by an NPC node's Set action earlier in the same conversation is already reflected.</p>
-<h3 id="syntax">Syntax</h3>
+<h2 id="contrast-with-sub-graph-node">Contrast with Sub-Graph Node</h2>
 <table>
 <thead>
 <tr>
-<th>Token</th>
-<th>What it produces</th>
+<th></th>
+<th>Templates</th>
+<th>Sub-Graph Node</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>{varName}</code></td>
-<td>The current value — the number, <code>true</code>/<code>false</code>, or string</td>
+<td>How it works</td>
+<td>Stamps a copy; nodes are independent</td>
+<td>Live-links to another graph at runtime</td>
 </tr>
 <tr>
-<td><code>{varName:name}</code></td>
-<td>The variable's <strong>Display Name</strong> (falls back to <code>Name</code> if Display Name is blank)</td>
+<td>Edit after placing</td>
+<td>Yes — each stamp is its own copy</td>
+<td>Edits to the sub-graph affect all callers</td>
+</tr>
+<tr>
+<td>Speaker fallback</td>
+<td>Each copy has its own speaker fields</td>
+<td>Inherits caller speaker chain</td>
+</tr>
+<tr>
+<td>Best for</td>
+<td>Boilerplate patterns you customise per NPC</td>
+<td>Shared content reused verbatim</td>
 </tr>
 </tbody>
 </table>
-<h3 id="examples">Examples</h3>
-<pre><code>&quot;You found {catCount} cats!&quot;
-→  &quot;You found 3 cats!&quot;
-
-&quot;You have {E_Credits} {E_Credits:name}.&quot;
-→  &quot;You have 42 Credits.&quot;
-
-&quot;Nice to meet you, {playerName}!&quot;
-→  &quot;Nice to meet you, Alex!&quot;
-
-&quot;Pay {price} {price:name}?&quot;   ← in a choice button
-→  &quot;Pay 50 Gold?&quot;
-</code></pre>
-<h3 id="how-it-works">How it works</h3>
-<p>The resolver scans each variable asset in the <code>VariablesList</code> order, finds the first asset that contains <code>varName</code>, then returns:</p>
-<ul>
-<li><strong>Bool</strong>: <code>"true"</code> or <code>"false"</code> (lowercase)</li>
-<li><strong>Int</strong>: the integer as a string</li>
-<li><strong>String</strong>: the string value directly</li>
-</ul>
-<p>If no variable with that name is found, the token is left as-is (e.g. <code>{typo}</code>) — this acts as an authoring hint so you can spot mistyped names immediately.</p>
-<p>Tokens are <strong>case-sensitive</strong> and must exactly match the variable's <code>Name</code> field.</p>
-<h3 id="original-data-is-never-mutated">Original data is never mutated</h3>
-<p>The resolver creates a new display copy of each <code>NPCLine</code> and <code>ChoiceData</code> before firing <code>OnNPCLine</code> and <code>OnChoiceNode</code>. The source objects on the ScriptableObject asset are never touched, so your token text remains intact in the graph editor after a play session.</p>
-<hr />
-<h2 id="reading-and-writing-from-c-code">Reading and writing from C# code</h2>
-<pre><code class="language-csharp">// Get the Variables asset(s) from the manager
-var vars = DialogueManager.Instance.VariablesList[0];
-
-// Read
-bool   found = vars.GetBool(&quot;foundCat&quot;);
-int    gold  = vars.GetInt(&quot;gold&quot;);
-string name  = vars.GetString(&quot;playerName&quot;);
-
-// Write
-vars.SetBool(&quot;foundCat&quot;,   true);
-vars.SetInt(&quot;gold&quot;,        gold - 50);
-vars.SetString(&quot;playerName&quot;, &quot;Alex&quot;);
-
-// Read with display name
-string displayName = vars.GetDisplayName(&quot;E_Credits&quot;); // &quot;Credits&quot; or &quot;E_Credits&quot; if blank
-
-// Reset all variables to design-time defaults
-vars.InitRuntime();
-
-// Reset every assigned Variables asset
-foreach (var v in DialogueManager.Instance.VariablesList)
-    v.InitRuntime();
-</code></pre>
-<p>You can call these at any time — before starting dialogue, mid-session from a game system, or during loading.</p>
-<hr />
-<h2 id="naming-conventions">Naming conventions</h2>
-<p>Variable names are free-form strings but some conventions prevent common bugs:</p>
-<ul>
-<li><strong>camelCase</strong> works well: <code>foundCat</code>, <code>playerGold</code>, <code>questPhase</code></li>
-<li><strong>Prefix by system</strong> if you have many: <code>E_Credits</code>, <code>Q_VillagerQuest</code>, <code>F_FirstMeeting</code></li>
-<li><strong>Avoid spaces</strong> — they work but make <code>{token}</code> substitution harder to read</li>
-<li><strong>Never rename a variable</strong> after you've referenced it in the graph — the graph stores the name as a string; renaming breaks all references silently</li>
-</ul>
-<hr />
-<h2 id="full-walkthrough-example">Full walkthrough example</h2>
-<blockquote>
-<p>"The player should only see 'Take the cat' after they've visited the cat's location."</p>
-</blockquote>
-<p><strong>Step 1 — Variables asset:</strong></p>
-<pre><code>foundCat    Bool    false
-</code></pre>
-<p><strong>Step 2 — NPC node "The cat is over there!":</strong></p>
-<pre><code>Set Vars:  foundCat | Set | true
-</code></pre>
-<p><strong>Step 3 — Player Choice node, choice "Take the cat":</strong></p>
-<pre><code>Conditions:  + Add
-  Variable = foundCat
-  Operator = Equal
-  Value    = true
-  Hide     = ✓  ← hide entirely until the condition is met
-</code></pre>
-<p><strong>Result:</strong> "Take the cat" is invisible on first visit. After the player reaches the NPC node that sets <code>foundCat = true</code>, the choice appears automatically on the next visit.</p>
-<hr />
-<h2 id="multiple-variable-assets-search-order">Multiple variable assets — search order</h2>
-<p>When you assign multiple assets to <code>DialogueManager → Variables List</code>, lookups search each asset in the order they appear in the list. The first asset containing the variable name is used.</p>
-<p>This means you can have the same variable name in two assets — only the one that appears <strong>first</strong> in the list will ever be found. Use distinct names across assets to avoid confusion.</p>
 
 
 

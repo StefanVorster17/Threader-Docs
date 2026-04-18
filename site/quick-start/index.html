@@ -540,13 +540,41 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-4-start-dialogue-from-your-own-code" class="md-nav__link">
+  <a href="#step-4-start-dialogue-from-your-npc" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 4 — Start dialogue from your own code
+        Step 4 — Start dialogue from your NPC
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Step 4 — Start dialogue from your NPC">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#option-a-npcdialogue-component-recommended" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Option A — NPCDialogue component (recommended)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#option-b-dialoguetrigger-component-no-code-required" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Option B — DialogueTrigger component (no code required)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -906,6 +934,118 @@
     
   
     Speaker Roster
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sub-graph/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sub-Graph
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bark/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bark System
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../line-sheet/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Line Sheet
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../templates/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Node Templates
   
 
     
@@ -1295,13 +1435,41 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-4-start-dialogue-from-your-own-code" class="md-nav__link">
+  <a href="#step-4-start-dialogue-from-your-npc" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 4 — Start dialogue from your own code
+        Step 4 — Start dialogue from your NPC
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Step 4 — Start dialogue from your NPC">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#option-a-npcdialogue-component-recommended" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Option A — NPCDialogue component (recommended)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#option-b-dialoguetrigger-component-no-code-required" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Option B — DialogueTrigger component (no code required)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1411,6 +1579,10 @@ This asset stores all nodes and connections for one NPC conversation.</p>
 <td><code>F5</code></td>
 <td>Wait Node — pause for N seconds</td>
 </tr>
+<tr>
+<td><code>F6</code></td>
+<td>Sub Graph Node — call another Dialogue Graph</td>
+</tr>
 </tbody>
 </table>
 <p>Drag from the <strong>output port</strong> of one node to the <strong>input port</strong> of the next to connect them.<br />
@@ -1423,31 +1595,123 @@ Press <strong>Ctrl+S</strong> to save.</p>
 <h2 id="step-3-add-a-dialoguemanager-to-the-scene">Step 3 — Add a DialogueManager to the scene</h2>
 <p>Create an empty GameObject in the scene and add the <strong>DialogueManager</strong> component.<br />
 This is a singleton — <strong>one per scene is enough</strong>. It drives conversations and fires events that your UI listens to.</p>
-<p>Optionally assign a <strong>Speaker Roster</strong> asset to the <strong>Speaker Rosters</strong> slot — this populates all speaker dropdowns in the graph editor. See <a href="../speaker-roster/">Speaker Roster</a> for details.</p>
+<p>The following Inspector fields are optional but commonly used:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>What to assign</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Speaker Rosters</strong></td>
+<td>One or more <code>SpeakerRoster</code> assets. Populates speaker name dropdowns in the graph editor and enables camera look-at. See <a href="../speaker-roster/">Speaker Roster</a>.</td>
+</tr>
+<tr>
+<td><strong>Variables List</strong></td>
+<td>One or more <code>DialogueVariables</code> assets. Required to use the variable system in your graph. See <a href="../variables/">Variables</a>.</td>
+</tr>
+<tr>
+<td><strong>Condition Provider</strong></td>
+<td>A <code>ConditionDefinition</code> asset. Required for C# custom conditions. See <a href="../conditions/">Conditions</a>.</td>
+</tr>
+<tr>
+<td><strong>Audio Source</strong></td>
+<td>An <code>AudioSource</code> for 2D (non-spatial) voice lines. Added automatically if left empty — no action needed.</td>
+</tr>
+</tbody>
+</table>
 <hr />
-<h2 id="step-4-start-dialogue-from-your-own-code">Step 4 — Start dialogue from your own code</h2>
-<p>Call <code>StartDialogue</code> from wherever your game detects an interaction — trigger zone, button press, proximity check, etc.:</p>
-<pre><code class="language-csharp">public DialogueGraph graph; // drag your graph asset here in the Inspector
-
-void OnInteract()
-{
-    DialogueManager.Instance.StartDialogue(graph);
-}
+<h2 id="step-4-start-dialogue-from-your-npc">Step 4 — Start dialogue from your NPC</h2>
+<p>Choose the approach that fits your project:</p>
+<h3 id="option-a-npcdialogue-component-recommended">Option A — NPCDialogue component (recommended)</h3>
+<p>Add the <strong>NPCDialogue</strong> component to your NPC GameObject and fill in its fields:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>What to set</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Graph</strong></td>
+<td>Your Dialogue Graph asset</td>
+</tr>
+<tr>
+<td><strong>Speaker Name</strong></td>
+<td>Must match the speaker name used on NPC nodes in the graph. Registers this NPC's transform for camera look-at and spatial audio.</td>
+</tr>
+<tr>
+<td><strong>Is Interactable</strong></td>
+<td>Leave ticked. Uncheck only for secondary speakers who never initiate dialogue themselves.</td>
+</tr>
+</tbody>
+</table>
+<p>Then call <code>StartDialogue()</code> from wherever your game handles player input (raycast hit, button press, animation event, etc.):</p>
+<pre><code class="language-csharp">GetComponent&lt;NPCDialogue&gt;().StartDialogue();
 </code></pre>
+<h3 id="option-b-dialoguetrigger-component-no-code-required">Option B — DialogueTrigger component (no code required)</h3>
+<p>Add the <strong>DialogueTrigger</strong> component to the NPC GameObject and fill in its fields:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>What to set</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Graph</strong></td>
+<td>Your Dialogue Graph asset</td>
+</tr>
+<tr>
+<td><strong>Player Tag</strong></td>
+<td>Must match your Player GameObject's tag (default: <code>"Player"</code>)</td>
+</tr>
+<tr>
+<td><strong>Interact Key</strong></td>
+<td>Key the player presses to start dialogue when in range (default: <code>E</code>). Ignored if <strong>Start On Enter</strong> is ticked.</td>
+</tr>
+<tr>
+<td><strong>Start On Enter</strong></td>
+<td>Tick to start dialogue automatically as soon as the player enters the zone, with no key press.</td>
+</tr>
+<tr>
+<td><strong>Interact Prompt</strong></td>
+<td>Optional GameObject shown while the player is in range (e.g. a "Press E to talk" label).</td>
+</tr>
+</tbody>
+</table>
+<p>Also:</p>
+<ul>
+<li>Add a <strong>Collider</strong> (3D: <code>BoxCollider</code> / 2D: <code>BoxCollider2D</code>, etc.) to the same GameObject and enable <strong>Is Trigger</strong>.</li>
+<li>A <code>Rigidbody</code> (or <code>Rigidbody2D</code>) must be present on <strong>either</strong> the player or the trigger object for <code>OnTriggerEnter</code> to fire. The player typically already has one.</li>
+</ul>
+<blockquote>
+<p><code>DialogueTrigger</code> does not register a speaker name, so camera look-at is not available when using this component. Use <code>NPCDialogue</code> if you need the camera to face the speaker during dialogue.</p>
+</blockquote>
 <hr />
 <h2 id="step-5-set-up-the-ui">Step 5 — Set up the UI</h2>
-<p>Add the built-in <strong>DialogueUI</strong> component to a GameObject that also has a <code>UIDocument</code> component. Assign the <code>UI_Dialogue.uxml</code> asset to the <code>UIDocument</code> — no additional field references are needed. <code>DialogueUI</code> queries all named elements from the UXML automatically at startup.</p>
+<ol>
+<li>Create (or select) a GameObject in the scene.</li>
+<li>Add the <strong>DialogueUI</strong> component. Unity automatically adds a <code>UIDocument</code> component because <code>DialogueUI</code> requires it.</li>
+<li>On the <strong>UIDocument</strong> component, assign <code>UI_Dialogue.uxml</code> to the <strong>Source Asset</strong> field.</li>
+<li>On the <strong>DialogueUI</strong> component, assign <code>UI_ChoiceButton.uxml</code> to the <strong>Choice Button Template</strong> field. Without this, choice buttons are created as plain unstyled buttons.</li>
+</ol>
+<p><code>DialogueUI</code> subscribes automatically to <code>OnNPCLine</code>, <code>OnChoiceNode</code>, and <code>OnDialogueEnd</code> on the <code>DialogueManager</code> at startup — no additional event wiring is required.</p>
 <blockquote>
-<p>Want a fully custom UI? The <a href="../ui/">UI</a> page walks through a minimum implementation, and the <a href="../api-reference/">API Reference</a> lists all events (<code>OnNPCLine</code>, <code>OnChoiceNode</code>, <code>OnDialogueEnd</code>) you can subscribe to.</p>
+<p>Want a fully custom UI instead? The <a href="../ui/">UI</a> page walks through a minimum implementation from scratch using those same events.</p>
 </blockquote>
 <hr />
 <h2 id="done">Done!</h2>
 <p>What you just built:</p>
 <ul>
-<li>A graph asset with nodes and branching</li>
-<li>A <strong>DialogueManager</strong> singleton in the scene</li>
-<li>An <strong>NPCDialogue</strong> component on the NPC (call <code>StartDialogue()</code> from your interactor), or a <strong>DialogueTrigger</strong> component for automatic trigger-zone interaction</li>
-<li>UI events wired to display lines and choices</li>
+<li>A <strong>Dialogue Graph</strong> asset with nodes, connections, and an assigned Start node</li>
+<li>A <strong>DialogueManager</strong> singleton in the scene driving conversations and firing events</li>
+<li>An <strong>NPCDialogue</strong> or <strong>DialogueTrigger</strong> component on your NPC that starts the conversation</li>
+<li>A <strong>DialogueUI</strong> component wired to the built-in UI Toolkit display</li>
 </ul>
 <p>Ready to go further?</p>
 <ul>
@@ -1492,7 +1756,7 @@ void OnInteract()
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Threader Dialogue Kit &nbsp;·&nbsp; v1.0 (Unreleased)
+      Threader Dialogue Kit &nbsp;·&nbsp; v1.0
     </div>
   
   

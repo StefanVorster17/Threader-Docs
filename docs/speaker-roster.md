@@ -78,6 +78,8 @@ When an NPC node fires, the runtime resolves the speaker through this chain:
 
 This means a shared graph (e.g. a generic idle sequence referenced by many NPCs) works correctly without setting any Speaker field on its nodes — each NPC supplies their own name as the final fallback.
 
+> **Bark graphs** use the same three-level chain, except the third fallback is the **BarkSource Speaker Name** field (not a calling actor). Set this on the `BarkSource` component to ensure shared bark graphs resolve the correct voice clips and animator actions per NPC. See [Bark System](bark.md) for details.
+
 ---
 
 ## Tips

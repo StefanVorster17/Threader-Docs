@@ -886,6 +886,118 @@
   
   
     <li class="md-nav__item">
+      <a href="sub-graph/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sub-Graph
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="bark/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bark System
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="line-sheet/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Line Sheet
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="templates/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Node Templates
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="ui/" class="md-nav__link">
         
   
@@ -1273,20 +1385,26 @@
 
 <h1 id="threader-dialogue-kit">Threader - Dialogue Kit</h1>
 <p><strong>Visual Dialogue System for Unity</strong> — build branching conversations with a node-based graph editor, no boilerplate required.</p>
-<p><span style="background:#2d6a9f;color:#fff;padding:3px 10px;border-radius:4px;font-size:0.85em;font-weight:bold;">v1.0 (Unreleased)</span></p>
+<p><span style="background:#2d6a9f;color:#fff;padding:3px 10px;border-radius:4px;font-size:0.85em;font-weight:bold;">v1.0</span></p>
 <p><img alt="Threader graph editor" src="assets/images/hero-graph.png" width="720" /></p>
 <hr />
 <h2 id="features">Features</h2>
 <ul>
 <li><strong>Visual graph editor</strong> — drag, connect, and organise nodes on an infinite canvas</li>
-<li><strong>12 node types</strong> — NPC lines, player choices, branching, variables, audio, animator triggers, events, waits, and more</li>
-<li><strong>Built-in variable store</strong> — Bool / Int / String variables with inline conditions on choices — no C# needed</li>
+<li><strong>13 node types</strong> — NPC lines, player choices, branching, sub-graphs, variables, audio, animator triggers, events, waits, and more</li>
+<li><strong>Sub-graph system</strong> — call any dialogue graph from within another and return — exactly like a function call</li>
+<li><strong>Bark system</strong> — fire-and-forget ambient lines that run in parallel without blocking the player</li>
+<li><strong>Line Sheet system</strong> — per-graph companion assets that store per-speaker audio clips and animator actions for every NPC line; supports multiple speakers sharing the same graph</li>
+<li><strong>Node templates</strong> — save any selection of nodes as a reusable drag-to-stamp template</li>
+<li><strong>Built-in variable store</strong> — Bool / Int / String variables with inline type-aware conditions on choices — no C# needed</li>
 <li><strong>Text token substitution</strong> — embed variable values directly in dialogue: <code>You have {gold} {gold:name}</code></li>
 <li><strong>Entry points</strong> — jump into any branch of a graph based on story state</li>
 <li><strong>Spatial audio</strong> — per-speaker 3D audio source positioning</li>
 <li><strong>Animator integration</strong> — set parameters on any registered speaker's Animator</li>
 <li><strong>Custom conditions</strong> — register C# delegates or a <code>ConditionProvider</code> asset for complex game state</li>
 <li><strong>Edit-mode preview window</strong> — step through any graph without entering Play mode</li>
+<li><strong>Bookmarks</strong> — pin any node to the sidebar for one-click navigation in large graphs</li>
+<li><strong>Export script</strong> — export any graph as a plain-text screenplay for VO sessions or writer review</li>
 <li><strong>Choice history</strong> — track visited choices with save/load serialization</li>
 <li><strong>Singleton <code>DialogueManager</code></strong> — one component drives everything; subscribe to events from any script</li>
 </ul>
@@ -1329,7 +1447,7 @@
 </tr>
 <tr>
 <td><a href="nodes/">Node Reference</a></td>
-<td>All 12 node types with field descriptions</td>
+<td>All 13 node types with field descriptions</td>
 </tr>
 <tr>
 <td><a href="variables/">Variables</a></td>
@@ -1346,6 +1464,22 @@
 <tr>
 <td><a href="speaker-roster/">Speaker Roster</a></td>
 <td>Speaker name assets, NPCDialogue setup, and name resolution</td>
+</tr>
+<tr>
+<td><a href="sub-graph/">Sub-Graph</a></td>
+<td>Call any graph from within another and return</td>
+</tr>
+<tr>
+<td><a href="bark/">Bark System</a></td>
+<td>Ambient fire-and-forget lines that don't block the player</td>
+</tr>
+<tr>
+<td><a href="line-sheet/">Line Sheet</a></td>
+<td>Per-speaker audio clips and animator actions for NPC lines</td>
+</tr>
+<tr>
+<td><a href="templates/">Node Templates</a></td>
+<td>Save and stamp node selections as reusable templates</td>
 </tr>
 <tr>
 <td><a href="ui/">UI</a></td>
@@ -1412,7 +1546,7 @@
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Threader Dialogue Kit &nbsp;·&nbsp; v1.0 (Unreleased)
+      Threader Dialogue Kit &nbsp;·&nbsp; v1.0
     </div>
   
   

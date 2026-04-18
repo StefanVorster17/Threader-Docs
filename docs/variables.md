@@ -21,7 +21,7 @@ Each variable in the list has:
 | **Int Value** | Default value when Type = Int |
 | **String Value** | Default value when Type = String |
 
-> All three value fields (Bool, Int, String) are always visible. Only the field matching the selected Type is used at runtime — the others are ignored.
+> The inspector is **type-aware** — it shows only the relevant value field for each variable: a checkbox for Bool, an integer field for Int, and a text field for String. Clean collapsible rows with a remove button and a `+ Add Variable` button at the bottom.
 
 ![DialogueVariables asset in the Inspector](assets/images/variables-panel.png){ width="480" }
 
@@ -64,8 +64,8 @@ Open a **Player Choice** node. Inside each choice card is a **Conditions** box w
 | Field | Description |
 |---|---|
 | Variable | Dropdown populated from all assigned `DialogueVariables` assets |
-| Operator | Equal / NotEqual / GreaterThan / GreaterOrEqual / LessThan / LessOrEqual |
-| Value | `true`/`false` for Bool; a number for Int; any string for String |
+| Operator | Equal / NotEqual / GreaterThan / GreaterOrEqual / LessThan / LessOrEqual. Numeric operators (`GreaterThan`, `GreaterOrEqual`, etc.) are hidden automatically for Bool and String variables. |
+| Value | **Type-aware field** — checkbox for Bool, integer field for Int, text field for String. Updates automatically when you change the variable. |
 | Hide | Checked = hide this choice entirely when the condition fails. Unchecked = show greyed-out. |
 | NOT | Inverts this row's result |
 
