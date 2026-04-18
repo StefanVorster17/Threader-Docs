@@ -1,0 +1,65 @@
+name: Feature Request
+description: Suggest a new feature or improvement for Threader
+title: "[Feature] "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to suggest this. Community requests that get traction move up into planned releases.
+        Check the [Roadmap](https://stefanvorster17.github.io/Threader-Docs/roadmap/) first — it may already be planned or considered.
+
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: A short, clear description of what you're requesting.
+      placeholder: e.g. "A way to preview barks in edit mode without entering Play mode"
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem does this solve?
+      description: Describe the workflow issue or limitation you're running into. The more context the better.
+      placeholder: e.g. "Currently I have to enter Play mode every time I want to hear how a bark sounds, which slows down iteration significantly."
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposed-solution
+    attributes:
+      label: Proposed solution
+      description: How do you imagine this working? Don't worry if it's rough — any detail helps.
+      placeholder: e.g. "A Play button in the Bark node inspector that fires the clip in edit mode via EditorApplication.update"
+    validations:
+      required: false
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives you've considered
+      description: Any workarounds you're currently using, or other approaches that could solve the problem.
+    validations:
+      required: false
+
+  - type: dropdown
+    id: impact
+    attributes:
+      label: How much does this affect your workflow?
+      options:
+        - Minor — nice to have
+        - Moderate — I work around it regularly
+        - Major — it significantly slows me down
+        - Blocking — I cannot complete my project without it
+    validations:
+      required: true
+
+  - type: textarea
+    id: extra
+    attributes:
+      label: Additional context
+      description: Screenshots, mockups, references to how other tools handle this, or anything else relevant.
+    validations:
+      required: false
