@@ -8,6 +8,23 @@ You can also join the [Threader Discord](https://discord.gg/nb8HCuX2h5) for comm
 
 ---
 
+**Jump to section:**
+
+- [Dialogue won't start](#dialogue-wont-start)
+- [Speaker issues](#speaker-issues)
+- [UI and display](#ui-and-display)
+- [Variables](#variables)
+- [Conditions](#conditions)
+- [Bark system](#bark-system)
+- [Sub-graphs](#sub-graphs)
+- [Line sheet and audio](#line-sheet-and-audio)
+- [Saving and persistence](#saving-and-persistence)
+- [Entry points](#entry-points)
+- [Graph editor](#graph-editor)
+- [General](#general)
+
+---
+
 ## Dialogue won't start
 
 ### "No DialogueManager found in the scene"
@@ -79,6 +96,53 @@ The clip plays in 2D (centred) instead of from the speaker's world position.
 
 ---
 
+## UI and display
+
+### The dialogue box never appears
+
+- Confirm `DialogueUI` (or your custom UI component) exists in the scene and is active.
+- If using the built-in `DialogueUI`, confirm the `UIDocument` component on the same GameObject has a **Panel Settings** asset assigned and a source UXML asset (`UI_Dialogue.uxml`) set.
+- Confirm `DialogueManager` has started — subscribe to `OnDialogueStarted` temporarily to verify the event fires.
+
+See [UI](ui.md) for setup details.
+
+---
+
+### Speaker name is blank in the UI
+
+- The NPC node's **Speaker** dropdown is set to a name not present in any assigned **Speaker Roster**. See [Speaker Roster](speaker-roster.md).
+- If using the built-in `DialogueUI`, confirm it is reading from `OnNPCLine` and passing `line.SpeakerName` to your speaker name label.
+
+---
+
+### Choices are not appearing
+
+- Confirm the `PlayerChoiceNode` has at least one output choice connected to a downstream node. Unconnected choices are filtered out at runtime.
+- If using a custom UI, confirm you are subscribing to `OnChoiceNode` and calling `DisplayChoices(choiceNode.Choices)`.
+- Locked choices (condition fails + **Behaviour** set to **Hide**) are removed from the list before `OnChoiceNode` fires — they will not appear even if you expect them.
+
+---
+
+### Choices appear but clicking does nothing
+
+- Confirm you are calling `DialogueManager.Instance.SelectChoice(index)` with the correct index from the displayed list — not the original list index if hidden choices were removed.
+- If using the built-in `DialogueUI`, confirm the choice button template UXML contains a `Button` element with the name `choice-button`.
+
+---
+
+### Typewriter effect shows all text at once
+
+The **Chars Per Second** field on `DialogueUI` may be set to `0` or a very high value. Set it to something like `40`–`60` for a natural speed. See [UI](ui.md).
+
+---
+
+### Dialogue box stays visible after dialogue ends
+
+- Confirm you are hiding the UI in response to the `OnDialogueEnded` event.
+- If using the built-in `DialogueUI`, confirm the `UIDocument` root element visibility is being toggled correctly and that `OnDialogueEnded` is being received.
+
+---
+
 ## Variables
 
 ### A condition has no effect — the choice always appears
@@ -129,6 +193,115 @@ You registered a delegate in `Awake` but forgot to unregister it in `OnDestroy`.
 void Awake()   => ConditionService.Register("MyKey", param => Check(param));
 void OnDestroy() => ConditionService.Unregister("MyKey");
 ```
+
+---
+
+## Bark system
+
+### Bark fires but nothing plays in the UI
+
+Barks are fire-and-forget — they fire `OnBark`, not `OnNPCLine`. The built-in `DialogueUI` does not display barks by default. Subscribe to `OnBark` separately and display the line however your project requires (world-space text, subtitle, etc.). See [Bark System](bark.md).
+
+---
+
+### Bark graph runs a full conversation instead
+
+The `DialogueGraph` asset's **Graph Type** is still set to **Dialogue** instead of **Bark**. Open the graph in the Graph Editor, expand the **GRAPH** sidebar panel, and change **Graph Type** to **Bark**.
+
+---
+
+### `TriggerBark` does nothing
+
+- Confirm the `BarkTrigger` component has a **Bark Graph** assigned.
+- Confirm the speaker name on the `BarkTrigger` matches a registered speaker (or that `RegisterSpeaker` has been called for that speaker).
+- Bark graphs will not run if a full blocking dialogue is already active on the same speaker. Use a different speaker slot or wait for dialogue to end.
+
+---
+
+### Bark plays Choice Node / Wait Node unexpectedly
+
+Bark graphs do not support `PlayerChoiceNode` or `WaitNode`. If either is present in the graph, remove them and reconnect the path. The runner will skip Wait nodes encountered in a bark graph, but a `PlayerChoiceNode` will stall execution.
+
+---
+
+## Sub-graphs
+
+### Sub-graph runs but speaker name is wrong
+
+Speaker resolution in sub-graphs follows a three-step chain: node speaker → graph default speaker → calling actor's speaker name. If the NPC nodes inside the sub-graph have blank speaker fields and the sub-graph's **Default Speaker** is also blank, the speaker resolves to whoever triggered the top-level conversation. Set the correct speaker explicitly on each NPC node, or set a **Graph Default Speaker** on the sub-graph asset. See [Sub-Graph](sub-graph.md).
+
+---
+
+### Sub-graph ends and dialogue stops instead of returning
+
+The **Sub Graph Node** output port must be connected to the next node in the calling graph. If the output has no connection, the runner treats the sub-graph return as an End node and closes dialogue normally.
+
+---
+
+### Recursive sub-graph causes the game to freeze
+
+Threader does not guard against cycles in the sub-graph call stack. If Graph A calls Graph B and Graph B calls Graph A, the runner will recurse indefinitely. Ensure your sub-graph references form a directed acyclic graph — no graph should call itself or any of its ancestors.
+
+---
+
+### Sub-graph audio / Line Sheet not found
+
+Each sub-graph resolves audio clips and animator actions from its own **Line Sheet** list, not the calling graph's. If a sub-graph's NPC nodes produce no audio, confirm a Line Sheet is attached to the sub-graph asset with entries for the relevant speaker. See [Line Sheet](line-sheet.md).
+
+---
+
+## Line sheet and audio
+
+### No audio plays during dialogue
+
+1. Confirm a **Line Sheet** is assigned to the graph — in the Graph Editor GRAPH sidebar, the **Line Sheets** list should contain at least one entry.
+2. Confirm the Line Sheet has an entry for the correct speaker name (case-sensitive).
+3. Confirm the entry has an audio clip assigned for that NPC node's line index.
+4. Confirm the speaker's `Transform` is registered so `DialogueManager` knows which `AudioSource` to use. See [Speaker Roster](speaker-roster.md).
+
+---
+
+### Line Sheet audio plays for one language but not another
+
+Each language requires its own Line Sheet assigned in the graph's **Line Sheets** list. If a language slot exists but the Line Sheet for it has no clips, silence is the expected result. Confirm clips are assigned in the correct language's Line Sheet and that `SetActiveLanguage()` was called before dialogue starts. See [Translation](translation.md).
+
+---
+
+### Animator action doesn't fire
+
+- The **Animator Parameter** name in the Line Sheet entry must exactly match the parameter name in the Animator Controller (case-sensitive).
+- The speaker must be registered with `RegisterSpeaker` before the node plays, so `DialogueManager` knows which Animator component to target.
+- Confirm the Animator Controller on the speaker's GameObject contains the parameter.
+
+---
+
+### Wrong audio clip plays for a line
+
+Line Sheet entries are matched by line index — the order of NPC nodes in the graph matters. If you reorder or insert nodes, the indices shift and clips may misalign. Use the **Line Sheet Editor** (Graph Editor toolbar → **Line Sheet Editor**) to review and reassign clips after structural changes to the graph.
+
+---
+
+## Saving and persistence
+
+### Variables reset every time the game starts
+
+This is correct behaviour. `DialogueVariables` stores design-time defaults in the asset. At runtime, those defaults are copied into in-memory dictionaries. When Play mode ends (or the game exits), those dictionaries are discarded and the asset is untouched.
+
+**Fix:** Save and restore variable values via your own persistence system. Read values with `GetBool`/`GetInt`/`GetString` and restore them with `SetBool`/`SetInt`/`SetString` before any dialogue runs. See [Saving](saving.md).
+
+---
+
+### Entry point key is not persisting between sessions
+
+`IDialogueActor.ActiveEntryPointKey` is an in-memory string on the component. When the scene reloads, it resets to whatever the Inspector default is.
+
+**Fix:** Save the key string as part of your save data and call `SetEntryPoint(key)` on the actor after loading. See [Saving](saving.md) and [Entry Points](entry-points.md).
+
+---
+
+### Choice history is gone after reloading the game
+
+`DialogueChoiceHistory` is static and in-memory only. Call `DialogueChoiceHistory.GetSaveData()` when saving and `DialogueChoiceHistory.LoadSaveData(data)` on load before any dialogue runs. See [Saving](saving.md).
 
 ---
 
