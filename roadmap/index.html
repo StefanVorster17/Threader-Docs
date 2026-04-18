@@ -1327,6 +1327,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#drag-to-create-node-spawner" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Drag-to-create node spawner
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1503,6 +1514,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#drag-to-create-node-spawner" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Drag-to-create node spawner
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1587,6 +1609,17 @@
 </ul>
 <p>This follows the same pattern as <code>ConditionProvider</code> for custom conditions, and could extend to other "bring your own system" integration points (TTS, lip sync, etc.) in the future.</p>
 <p><strong>Status:</strong> Under consideration. Depends on community demand for middleware audio support.</p>
+<h3 id="drag-to-create-node-spawner">Drag-to-create node spawner</h3>
+<p>Currently, adding a connected node requires two separate steps: drag a new node from the CREATE panel onto the canvas, then manually wire it to an existing port.</p>
+<p>The plan is to make this a single gesture — drag from any output port, release on empty canvas space, and a context-sensitive searchable popup appears at the drop point listing only the node types valid for that connection. Selecting one creates the node already wired up.</p>
+<ul>
+<li>The popup filters by port type so the list is always relevant, never overwhelming</li>
+<li>A search field is auto-focused — type to filter, press Enter to create</li>
+<li>Works in reverse: drag from an input port to spawn and connect a node behind it</li>
+<li>Escape or click-away dismisses cleanly with no orphan wire left</li>
+</ul>
+<p>This collapses three steps (open CREATE panel → drag node → connect wire) into one gesture and matches how authors naturally think: "what happens after this line?"</p>
+<p><strong>Status:</strong> Under consideration. High usability impact, particularly for writers and designers less familiar with node graph editors.</p>
 <hr />
 <h2 id="out-of-scope">Out of scope</h2>
 <p>These are features that have been considered and deliberately won't be added to Threader core. If you need them, alternatives are noted.</p>
