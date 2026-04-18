@@ -1,0 +1,81 @@
+name: Bug Report
+description: Report a bug or unexpected behaviour in Threader
+title: "[Bug] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report this. Please fill out as much as you can — it helps a lot.
+        Before submitting, check the [Troubleshooting page](https://stefanvorster17.github.io/Threader-Docs/troubleshooting/) in case it's already covered.
+
+  - type: input
+    id: unity-version
+    attributes:
+      label: Unity Version
+      placeholder: e.g. 2022.3.12f1
+    validations:
+      required: true
+
+  - type: input
+    id: threader-version
+    attributes:
+      label: Threader Version
+      placeholder: e.g. v1.0
+    validations:
+      required: true
+
+  - type: input
+    id: os
+    attributes:
+      label: Operating System
+      placeholder: e.g. Windows 11, macOS 14
+    validations:
+      required: false
+
+  - type: textarea
+    id: description
+    attributes:
+      label: What happened?
+      description: A clear description of the bug.
+      placeholder: Describe what went wrong.
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect to happen?
+      placeholder: Describe the expected behaviour.
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: Step-by-step instructions to reliably trigger the bug.
+      placeholder: |
+        1. Create a dialogue graph with...
+        2. Add a...
+        3. Press Play and...
+        4. See error
+    validations:
+      required: true
+
+  - type: textarea
+    id: console
+    attributes:
+      label: Console output / errors
+      description: Paste any relevant Unity Console errors or warnings here.
+      render: text
+    validations:
+      required: false
+
+  - type: textarea
+    id: extra
+    attributes:
+      label: Additional context
+      description: Screenshots, videos, or anything else that might help.
+    validations:
+      required: false
