@@ -1895,7 +1895,7 @@
 <hr />
 <h2 id="creating-an-entry-point">Creating an entry point</h2>
 <h3 id="step-1-mark-a-node">Step 1 — Mark a node</h3>
-<p>Right-click any node in the graph editor canvas → <strong>Set as Entry Point</strong>.</p>
+<p>Right-click any node in the <a href="../graph-editor/">graph editor</a> canvas → <strong>Set as Entry Point</strong>.</p>
 <p>A text field appears in the popup. Type a short, descriptive key — e.g. <code>QuestDone</code>, <code>Repeat</code>, <code>PostBattle</code>. The key is case-sensitive everywhere.</p>
 <p>The node gets a <strong>yellow ⚑ badge</strong> in the top-right corner. The key label is also displayed on the badge so you can see at a glance which entry points exist in the graph.</p>
 <h3 id="step-2-verify-in-the-graph-editor">Step 2 — Verify in the graph editor</h3>
@@ -1964,7 +1964,7 @@ actor.SetEntryPoint(&quot;RepeatBranch&quot;);
 <p>This does not update the actor's <code>ActiveEntryPointKey</code> — it just runs from that key for this one call. If you want the key to persist for next time, call <code>actor.SetEntryPoint("QuestDone")</code> first.</p>
 <hr />
 <h2 id="auto-switching-with-end-nodes">Auto-switching with End nodes</h2>
-<p>Every <strong>End Node</strong> has a <strong>Next entry</strong> dropdown. When dialogue reaches this end node, the runner automatically calls <code>actor.SetEntryPoint(key)</code> with the selected key.</p>
+<p>Every <strong><a href="../nodes/#end-node-e">End Node</a></strong> has a <strong>Next entry</strong> dropdown. When dialogue reaches this end node, the runner automatically calls <code>actor.SetEntryPoint(key)</code> with the selected key.</p>
 <p><img alt="End node with Next entry dropdown" src="../assets/images/entry-point-end-node.png" width="320" /></p>
 <pre><code class="language-csharp">// DialogueRunner.cs (simplified)
 if (!string.IsNullOrEmpty(endNode.SetEntryPointOnComplete))

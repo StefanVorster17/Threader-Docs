@@ -2723,7 +2723,7 @@
 <li><strong>Right-click context menu</strong> — Set as Start Node, Set as Entry Point, Remove Entry Point, Set Colour, Bookmark this Node, Duplicate, Delete, Copy GUID.</li>
 </ul>
 <blockquote>
-<p><strong>Bark graphs</strong> (graphs with <strong>Graph Type</strong> set to <strong>Bark</strong> in the GRAPH sidebar) do not support Player Choice Node, Wait Node, or Sub Graph Node. These node types are hidden from the sidebar and right-click context menu when a bark graph is open.</p>
+<p><strong><a href="../bark/">Bark graphs</a></strong> (graphs with <strong>Graph Type</strong> set to <strong>Bark</strong> in the GRAPH sidebar) do not support Player Choice Node, Wait Node, or Sub Graph Node. These node types are hidden from the sidebar and right-click context menu when a bark graph is open.</p>
 </blockquote>
 <hr />
 <h2 id="npc-node-n">NPC Node <code>[N]</code></h2>
@@ -2758,11 +2758,11 @@
 <tbody>
 <tr>
 <td>Key</td>
-<td>The event string. Received by <code>OnNodeEvent</code> subscribers and <code>NPCDialogue.NodeEvents</code> response list</td>
+<td>The event string. Received by <code>OnNodeEvent</code> subscribers and <code>NPCDialogue.NodeEvents</code> response list. See <a href="../events/">Events</a>.</td>
 </tr>
 <tr>
-<td>Global</td>
-<td>Off = Local: only fires <code>OnNodeEvent</code>. Guard your handler with <code>CurrentActor</code> to scope it to this NPC. On = Global: also fires <code>OnGlobalNodeEvent</code>. No guard needed — intentionally broadcast to all listeners.</td>
+<td>Scope (dropdown)</td>
+<td><strong>Local</strong> — fires <code>OnNodeEvent</code> only. Guard your handler with <code>CurrentActor</code> to scope it to this NPC. <strong>Global</strong> — fires both <code>OnNodeEvent</code> and <code>OnGlobalNodeEvent</code>. No guard needed — intentionally broadcast to all listeners. See <a href="../events/#local-vs-global">Events — Local vs Global</a>.</td>
 </tr>
 </tbody>
 </table>
@@ -3249,11 +3249,11 @@
 <tbody>
 <tr>
 <td><strong>Key</strong></td>
-<td>The event string. Received by <code>OnNodeEvent</code> subscribers.</td>
+<td>The event string. Received by <code>OnNodeEvent</code> subscribers. See <a href="../events/">Events</a>.</td>
 </tr>
 <tr>
-<td><strong>Global</strong></td>
-<td>Off = Local (fires <code>OnNodeEvent</code> only). On = Global (fires both <code>OnNodeEvent</code> and <code>OnGlobalNodeEvent</code>).</td>
+<td><strong>Scope</strong> (dropdown)</td>
+<td><strong>Local</strong> — fires <code>OnNodeEvent</code> only. <strong>Global</strong> — fires both <code>OnNodeEvent</code> and <code>OnGlobalNodeEvent</code>. See <a href="../events/#local-vs-global">Events — Local vs Global</a>.</td>
 </tr>
 <tr>
 <td><strong>✕</strong></td>

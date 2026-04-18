@@ -676,6 +676,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#language" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LANGUAGE
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#graph" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1613,6 +1624,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#language" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LANGUAGE
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#graph" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1905,6 +1927,23 @@
 </table>
 <p><strong>Referenced by</strong> is a collapsible sub-section inside PROJECT that lists every other graph in the project that references the currently loaded graph as a sub-graph. This is scanned automatically when a graph is loaded. If no graph references it the panel shows "Not referenced by any graph."</p>
 <p>An orange <strong>● Unsaved</strong> indicator appears in the toolbar whenever the graph has changes not yet written to disk. Closing the window or switching graphs while unsaved changes are present will prompt you to save.</p>
+<h3 id="language">LANGUAGE</h3>
+<p>Controls which language is previewed on node text in the editor canvas. See <a href="../translation/">Translation &amp; Localization</a> for the full translation workflow.</p>
+<table>
+<thead>
+<tr>
+<th>Control</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Preview</strong> (dropdown)</td>
+<td>Lists every language defined in the graph's <code>LineSheets</code> list. Selecting a language shows the corresponding <code>PreviewText</code> values from that language's sheet on all NPC and choice nodes in the canvas. Set to <code>(none)</code> to show the original node text.</td>
+</tr>
+</tbody>
+</table>
+<p>The preview language does not affect runtime behaviour — it is a visual aid for checking translations in the editor.</p>
 <h3 id="graph">GRAPH</h3>
 <table>
 <thead>
@@ -1916,15 +1955,15 @@
 <tbody>
 <tr>
 <td><strong>Default Speaker</strong></td>
-<td>Fallback speaker name for any NPC node whose own Speaker field is blank. Populated from your SpeakerRoster assets. Nodes with no override show <code>(Graph Default: X)</code> in their dropdown, updating live as you change this value.</td>
+<td>Fallback speaker name for any NPC node whose own Speaker field is blank. Populated from your <a href="../speaker-roster/">SpeakerRoster</a> assets. Nodes with no override show <code>(Graph Default: X)</code> in their dropdown, updating live as you change this value.</td>
 </tr>
 <tr>
 <td><strong>Graph Type</strong></td>
-<td>Dropdown — <code>Dialogue</code> or <code>Bark</code>. Bark graphs run on a non-blocking runner via <code>PlayBark()</code> and support NPC, Random, Branch, Set Variable, and End nodes only. Setting this to <strong>Bark</strong> hides the <strong>Look At Speaker</strong> row and removes Player Choice Node, Wait Node, and Sub Graph Node from the sidebar and context menu.</td>
+<td>Dropdown — <code>Dialogue</code> or <code>Bark</code>. Bark graphs run on a non-blocking runner via <code>PlayBark()</code> and do not support Player Choice Node, Wait Node, or Sub Graph Node. Setting this to <strong>Bark</strong> hides the <strong>Look At Speaker</strong> row and removes those three node types from the sidebar and context menu. See <a href="../bark/">Bark System</a> for the full list of supported nodes and setup details.</td>
 </tr>
 <tr>
 <td><strong>Look At Speaker</strong></td>
-<td><em>(Dialogue graphs only.)</em> When ticked, any scene object that implements <code>IDialogueFocus</code> (e.g. a first-person camera controller) will automatically rotate to face the current speaker's transform each time an NPC node fires. Toggle this per-graph.</td>
+<td><em>(Dialogue graphs only.)</em> When ticked, any scene object that implements <code>IDialogueFocus</code> (e.g. a first-person camera controller) will automatically rotate to face the current speaker's transform each time an NPC node fires. Toggle this per-graph. See <a href="../ui/#camera-look-at-during-dialogue">UI — Camera look-at</a>.</td>
 </tr>
 </tbody>
 </table>
@@ -1943,7 +1982,7 @@
 </tr>
 <tr>
 <td><strong>Entry Points</strong></td>
-<td>Lists all named entry points defined in the graph; click any to jump there</td>
+<td>Lists all named <a href="../entry-points/">entry points</a> defined in the graph; click any to jump there</td>
 </tr>
 <tr>
 <td><strong>Minimap</strong></td>
@@ -1972,7 +2011,7 @@
 <li>Persisted per-graph in <code>EditorPrefs</code> (keyed by graph GUID); survive editor restarts.</li>
 </ul>
 <h3 id="create">CREATE</h3>
-<p>A set of colour-coded pills for every node type, grouped into categories:</p>
+<p>A set of colour-coded pills for every <a href="../nodes/">node type</a>, grouped into categories:</p>
 <ul>
 <li><strong>Dialogue</strong> — NPC Node, Player Choice Node, End Node</li>
 <li><strong>Logic</strong> — Branch Node, Jump Node, Random Node, Weighted Random Node, Switch Node, Sub Graph Node</li>
@@ -1984,7 +2023,7 @@
 <p>Player Choice Node, Wait Node, and Sub Graph Node are hidden automatically when <strong>Graph Type</strong> is set to <strong>Bark</strong>.</p>
 </blockquote>
 <h3 id="node-templates">NODE TEMPLATES</h3>
-<p>Lists all <code>DialogueNodeTemplate</code> assets found in the project. Each pill shows the template name and node count <code>[N]</code>.</p>
+<p>Lists all <a href="../templates/"><code>DialogueNodeTemplate</code></a> assets found in the project. Each pill shows the template name and node count <code>[N]</code>.</p>
 <ul>
 <li><strong>Save a template</strong> — select nodes in the graph, then click <strong>Save Selection</strong>. Internal connections are preserved; external connections are dropped.</li>
 <li><strong>Stamp a template</strong> — drag a template pill from the sidebar onto the canvas. All nodes receive fresh GUIDs; internal wiring is re-connected automatically.</li>
@@ -2124,7 +2163,7 @@
 </tr>
 <tr>
 <td><strong>Set as Entry Point…</strong></td>
-<td>Opens a dialog to assign a named entry-point key to this node (yellow ⚑ badge appears)</td>
+<td>Opens a dialog to assign a named <a href="../entry-points/">entry-point</a> key to this node (yellow ⚑ badge appears)</td>
 </tr>
 <tr>
 <td><strong>Remove Entry Point</strong></td>

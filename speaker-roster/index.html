@@ -1563,7 +1563,7 @@
 
 
 <h1 id="speaker-roster">Speaker Roster</h1>
-<p>A <strong>Speaker Roster</strong> is a ScriptableObject asset that declares the valid speaker names in your project. It populates the Speaker dropdowns in graph nodes and on <code>NPCDialogue</code> components, so you select a name rather than type one.</p>
+<p>A <strong>Speaker Roster</strong> is a ScriptableObject asset that declares the valid speaker names in your project. It populates the Speaker dropdowns in <a href="../graph-editor/">graph editor</a> nodes and on <code>NPCDialogue</code> components, so you select a name rather than type one.</p>
 <hr />
 <h2 id="why-it-exists">Why it exists</h2>
 <p>Every NPC node and player choice node references a speaker by name — a plain string like <code>"Villager"</code> or <code>"BlacksmithMira"</code>. At runtime, <code>DialogueManager</code> uses that string to find the matching <code>NPCDialogue</code> component in the scene, which provides the transform for camera look-at, spatial audio source, and Animator targeting.</p>
@@ -1615,7 +1615,7 @@
 <ol>
 <li><strong>Node Speaker field</strong> — the name set directly on that node</li>
 <li><strong>Graph Default Speaker</strong> — the fallback name set at the top of the GRAPH sidebar in the editor; used when the node's own Speaker field is blank</li>
-<li><strong>Calling actor's Speaker Name</strong> — used when the graph was invoked as a sub-graph; the speaker name of whoever started the top-level conversation is inherited automatically</li>
+<li><strong>Calling actor's Speaker Name</strong> — used when the graph was invoked as a <a href="../sub-graph/">sub-graph</a>; the speaker name of whoever started the top-level conversation is inherited automatically</li>
 </ol>
 <p>This means a shared graph (e.g. a generic idle sequence referenced by many NPCs) works correctly without setting any Speaker field on its nodes — each NPC supplies their own name as the final fallback.</p>
 <blockquote>
@@ -1625,7 +1625,7 @@
 <h2 id="tips">Tips</h2>
 <ul>
 <li>Keep one roster per scene or chapter rather than one giant roster for the whole project — dropdowns stay short and relevant, and it's obvious when a speaker is missing.</li>
-<li>Use the <strong>Validate</strong> button in the graph editor's PROJECT sidebar to catch ⚠ mismatches across all nodes in the current graph before release.</li>
+<li>Use the <strong>Validate</strong> button in the <a href="../graph-editor/">graph editor's</a> PROJECT sidebar to catch ⚠ mismatches across all nodes in the current graph before release.</li>
 <li>Speaker Name matching is case-sensitive. If look-at or Animator actions are silently not firing, a name mismatch is the first thing to check.</li>
 </ul>
 

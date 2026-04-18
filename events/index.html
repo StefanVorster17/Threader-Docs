@@ -1735,7 +1735,7 @@
 <hr />
 <h2 id="two-ways-to-fire-an-event">Two ways to fire an event</h2>
 <h3 id="from-an-npc-node">From an NPC Node</h3>
-<p>Every NPC node has an <strong>Events</strong> section (click <strong>+ Add</strong> to add a row). These events fire when the node is reached, <strong>before</strong> any lines are displayed.</p>
+<p>Every <a href="../nodes/#npc-node-n">NPC node</a> has an <strong>Events</strong> section (click <strong>+ Add</strong> to add a row). These events fire when the node is reached, <strong>before</strong> any lines are displayed.</p>
 <table>
 <thead>
 <tr>
@@ -1749,8 +1749,8 @@
 <td>The event string your listeners will receive.</td>
 </tr>
 <tr>
-<td><strong>Global</strong></td>
-<td>See <a href="#local-vs-global">Local vs Global</a> below.</td>
+<td><strong>Scope</strong> (dropdown)</td>
+<td>Select <strong>Local</strong> or <strong>Global</strong>. See <a href="#local-vs-global">Local vs Global</a> below.</td>
 </tr>
 <tr>
 <td><strong>✕</strong></td>
@@ -1770,7 +1770,7 @@
 </blockquote>
 <hr />
 <h2 id="local-vs-global">Local vs Global</h2>
-<p>Both authoring sources have a <strong>Global</strong> toggle on each event row.</p>
+<p>Both authoring sources have a <strong>Scope</strong> dropdown on each event row with two options: <strong>Local</strong> and <strong>Global</strong>.</p>
 <table>
 <thead>
 <tr>
@@ -1781,12 +1781,12 @@
 </thead>
 <tbody>
 <tr>
-<td><strong>Local</strong> (off)</td>
+<td><strong>Local</strong></td>
 <td><code>DialogueManager.OnNodeEvent</code> only</td>
 <td>The event is specific to this NPC — guard your handler with <code>CurrentActor</code></td>
 </tr>
 <tr>
-<td><strong>Global</strong> (on)</td>
+<td><strong>Global</strong></td>
 <td><code>DialogueManager.OnNodeEvent</code> <strong>and</strong> <code>DialogueManager.OnGlobalNodeEvent</code></td>
 <td>The event needs to be received by any listener in the scene, regardless of which NPC is speaking</td>
 </tr>

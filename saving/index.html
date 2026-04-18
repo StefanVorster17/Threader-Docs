@@ -1710,12 +1710,12 @@
 <tbody>
 <tr>
 <td>Variable values</td>
-<td><code>DialogueVariables</code> assets</td>
+<td><a href="../variables/"><code>DialogueVariables</code></a> assets</td>
 <td>Read with <code>GetBool</code>/<code>GetInt</code>/<code>GetString</code>, write back with <code>SetBool</code>/<code>SetInt</code>/<code>SetString</code></td>
 </tr>
 <tr>
 <td>NPC entry points</td>
-<td><code>IDialogueActor.ActiveEntryPointKey</code> per actor</td>
+<td><a href="../entry-points/"><code>IDialogueActor.ActiveEntryPointKey</code></a> per actor</td>
 <td>Copy the string; restore with <code>SetEntryPoint</code></td>
 </tr>
 <tr>
@@ -1727,7 +1727,7 @@
 </table>
 <hr />
 <h2 id="1-saving-variable-values">1. Saving variable values</h2>
-<p><code>DialogueVariables</code> is a <code>ScriptableObject</code>. Its runtime dictionaries are in-memory only and reset whenever the asset is unloaded or the game exits. After loading a save, repopulate the dictionaries before any dialogue starts.</p>
+<p><code>DialogueVariables</code> is a <code>ScriptableObject</code>. Its runtime dictionaries are in-memory only and reset whenever the asset is unloaded or the game exits. After loading a save, repopulate the dictionaries before any dialogue starts. See <a href="../variables/">Variables</a> for how to define and use variables in graphs.</p>
 <pre><code class="language-csharp">// ─── Saving ──────────────────────────────────────────────────────────────
 DialogueVariables vars = dialogueManager.VariablesList[0]; // or find by name
 
@@ -1797,7 +1797,7 @@ vars.SetString(&quot;playerName&quot;,   PlayerPrefs.GetString(&quot;playerName&
 </blockquote>
 <hr />
 <h2 id="2-saving-entry-points">2. Saving entry points</h2>
-<p>Each <code>IDialogueActor</code> (a <code>DialogueTrigger</code> or <code>NPCDialogue</code> in your scene) stores a single string — <code>ActiveEntryPointKey</code>. Empty or null means "use the graph's start node."</p>
+<p>Each <code>IDialogueActor</code> (a <code>DialogueTrigger</code> or <code>NPCDialogue</code> in your scene) stores a single string — <code>ActiveEntryPointKey</code>. Empty or null means "use the graph's start node." See <a href="../entry-points/">Entry Points</a> for how entry points work.</p>
 <pre><code class="language-csharp">// ─── Saving ──────────────────────────────────────────────────────────────
 var actor = npcGameObject.GetComponent&lt;IDialogueActor&gt;();
 string key = actor.ActiveEntryPointKey; // may be null or &quot;&quot;

@@ -1588,10 +1588,10 @@
 <p>The Sub Graph Node lets one <code>DialogueGraph</code> call another as a sub-routine, then return and continue — exactly like a function call in code. Use it to share common dialogue sequences (generic greetings, shop flows, idle lines) across many different NPC graphs without duplicating content.</p>
 <hr />
 <h2 id="how-it-works">How it works</h2>
-<p>Place a <strong>Sub Graph Node</strong> in your graph, assign a target <code>DialogueGraph</code> asset, and wire it like any other node. When the runner reaches the Sub Graph Node:</p>
+<p>Place a <strong><a href="../nodes/#sub-graph-node-f6">Sub Graph Node</a></strong> in your graph, assign a target <code>DialogueGraph</code> asset, and wire it like any other node. When the runner reaches the Sub Graph Node:</p>
 <ol>
 <li>The current graph is pushed onto the call stack</li>
-<li>The target graph starts at its default start node (or at a named entry point if one is set)</li>
+<li>The target graph starts at its default start node (or at a named <a href="../entry-points/">entry point</a> if one is set)</li>
 <li>When the target graph's End node is reached, the call stack pops back to the calling graph</li>
 <li>Execution resumes on the output connected to the Sub Graph Node</li>
 </ol>
@@ -1621,10 +1621,10 @@
 </tr>
 </tbody>
 </table>
-<p>This means a shared graph with blank speaker fields automatically resolves the display name and camera look-at to whoever triggered the dialogue. For audio clips and animator actions, the same resolved speaker name is used to look them up in the sub-graph's own Line Sheet — so if you need per-speaker audio, add entries for each speaker in that Line Sheet.</p>
+<p>This means a shared graph with blank speaker fields automatically resolves the display name and camera look-at to whoever triggered the dialogue. For audio clips and animator actions, the same resolved speaker name is used to look them up in the sub-graph's own <a href="../line-sheet/">Line Sheet</a> — so if you need per-speaker audio, add entries for each speaker in that Line Sheet. See also <a href="../speaker-roster/">Speaker Roster</a>.</p>
 <hr />
 <h2 id="end-node-on-end-sub-graph-slot">End Node "On end →" sub-graph slot</h2>
-<p>The <strong>End Node</strong> has an optional <strong>On end →</strong> section with a <code>DialogueGraph</code> field and entry point key. When a graph is assigned:</p>
+<p>The <strong><a href="../nodes/#end-node-e">End Node</a></strong> has an optional <strong>On end →</strong> section with a <code>DialogueGraph</code> field and <a href="../entry-points/">entry point</a> key. When a graph is assigned:</p>
 <ol>
 <li>The <code>Next entry</code> switch fires first — the actor's entry point is updated before the sub-graph runs</li>
 <li>The sub-graph runs as a sub-routine</li>
@@ -1656,7 +1656,7 @@
 <hr />
 <h2 id="editor-notes">Editor notes</h2>
 <ul>
-<li>The Sub Graph Node is <strong>not available in bark graphs</strong>. It is hidden from the sidebar and context menu when <strong>Graph Type</strong> is set to <strong>Bark</strong>.</li>
+<li>The Sub Graph Node is <strong>not available in <a href="../bark/">bark graphs</a></strong>. It is hidden from the sidebar and context menu when <strong>Graph Type</strong> is set to <strong>Bark</strong>.</li>
 <li>The validator checks for circular sub-graph references and warns if the depth limit could be exceeded.</li>
 <li>Sub-graphs can themselves contain Sub Graph Nodes (nested calls), up to the 16-level limit.</li>
 </ul>

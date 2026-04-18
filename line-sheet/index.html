@@ -952,10 +952,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-open-a-graph-in-the-graph-editor" class="md-nav__link">
+  <a href="#1-create-a-line-sheet" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. Open a graph in the graph editor
+        1. Create a line sheet
       
     </span>
   </a>
@@ -1564,10 +1564,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-open-a-graph-in-the-graph-editor" class="md-nav__link">
+  <a href="#1-create-a-line-sheet" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. Open a graph in the graph editor
+        1. Create a line sheet
       
     </span>
   </a>
@@ -1774,8 +1774,14 @@
 </ul>
 <hr />
 <h2 id="setup">Setup</h2>
-<h3 id="1-open-a-graph-in-the-graph-editor">1. Open a graph in the graph editor</h3>
-<p>Line sheets are always created relative to a graph and are never created manually. There is no <strong>Create → Threader → Dialogue Line Sheet</strong> entry in the Project window — use the graph editor instead.</p>
+<h3 id="1-create-a-line-sheet">1. Create a line sheet</h3>
+<p>There are several ways to create a line sheet:</p>
+<ul>
+<li><strong>From the <a href="../graph-editor/">graph editor</a></strong> — open the sidebar <strong>PROJECT</strong> section and click <strong>Line Sheet Editor</strong>. If no sheet exists yet, one is created automatically next to the graph asset.</li>
+<li><strong>Batch creation</strong> — use <strong>Threader → Create &amp; Sync All Line Sheets</strong> in the Unity menu bar to create and sync sheets for every graph in the project at once.</li>
+<li><strong>Manually</strong> — right-click in the Project window → <strong>Create → Threader → Line Sheet</strong>. Then assign the graph to the sheet's <strong>Source Graph</strong> field and click <strong>Sync</strong> to populate its rows.</li>
+</ul>
+<p>Sheets created automatically are named <code>{GraphName}_Sheet.asset</code> and placed next to their graph. For <a href="../translation/">multi-language setups</a>, create one sheet per language (e.g. <code>VillagerGraph_EN.asset</code>, <code>VillagerGraph_FR.asset</code>).</p>
 <h3 id="2-open-the-line-sheet-editor">2. Open the Line Sheet Editor</h3>
 <p>From the sidebar <strong>PROJECT</strong> section, click <strong>Line Sheet Editor</strong>. This opens an overview of every NPC node in the graph, with its lines and speaker entries.</p>
 <p>Alternatively, click <strong>Line Data</strong> on any individual NPC node in the graph canvas to open a focused editor for just that node.</p>
@@ -1791,7 +1797,7 @@
 <tbody>
 <tr>
 <td><strong>Speaker</strong></td>
-<td>Name from your <code>SpeakerRoster</code>. Must match the speaker registered with <code>DialogueManager</code>.</td>
+<td>Name from your <a href="../speaker-roster/">SpeakerRoster</a>. Must match the speaker registered with <code>DialogueManager</code>.</td>
 </tr>
 <tr>
 <td><strong>Clip</strong></td>
