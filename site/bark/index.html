@@ -1566,7 +1566,7 @@
 <p>Barks are fire-and-forget ambient lines that play without entering a full conversation and without blocking the player. An NPC can mutter as the player walks past, a guard can react to a sound, or a merchant can call out — all without triggering <code>OnDialogueStarted</code> or touching the main dialogue panel.</p>
 <hr />
 <h2 id="overview">Overview</h2>
-<p>A bark graph is a normal <code>DialogueGraph</code> asset with <strong>Graph Type</strong> set to <strong>Bark</strong> in the GRAPH sidebar. The runtime runs it on a second, non-blocking runner. Each line fires <code>OnBark</code> instead of <code>OnNPCLine</code>, leaving the main dialogue system completely unaffected.</p>
+<p>A bark graph is a normal <code>DialogueGraph</code> asset with <strong>Graph Type</strong> set to <strong>Bark</strong> in the <a href="../graph-editor/">Graph Editor</a> GRAPH sidebar. The runtime runs it on a second, non-blocking runner. Each line fires <code>OnBark</code> instead of <code>OnNPCLine</code>, leaving the main dialogue system completely unaffected.</p>
 <p>Bark graphs support:</p>
 <ul>
 <li><strong>NPC Node</strong> — each line fires <code>OnBark</code></li>
@@ -1574,19 +1574,19 @@
 <li><strong>Weighted Random Node</strong> — weighted random path selection</li>
 <li><strong>Switch Node</strong> — multi-case condition routing</li>
 <li><strong>Branch Node</strong> — condition-driven bark selection</li>
-<li><strong>Set Variable Node</strong> — write variables mid-bark (e.g. mark a bark as heard)</li>
+<li><strong>Set Variable Node</strong> — write <a href="../variables/">variables</a> mid-bark (e.g. mark a bark as heard)</li>
 <li><strong>Jump Node</strong> — redirect to a tagged node</li>
-<li><strong>Fire Event Node</strong> — broadcast named events during bark playback</li>
+<li><strong>Fire Event Node</strong> — broadcast named <a href="../events/">events</a> during bark playback</li>
 <li><strong>Play Audio Node</strong> — play audio clips</li>
 <li><strong>Animator Trigger Node</strong> — set Animator parameters on registered speakers</li>
 <li><strong>Debug Node</strong> — log messages to the Console</li>
-<li><strong>End Node</strong> — terminates the bark, including the optional "On end -&gt;" sub-graph slot</li>
+<li><strong>End Node</strong> — terminates the bark, including the optional "On end -&gt;" <a href="../sub-graph/">sub-graph</a> slot</li>
 </ul>
 <p>Bark graphs do <strong>not</strong> support Player Choice Node, Wait Node, or Sub Graph Node. These are hidden from the editor automatically. Wait nodes encountered in a bark graph auto-advance immediately.</p>
 <hr />
 <h2 id="setup">Setup</h2>
 <h3 id="1-create-a-bark-graph">1. Create a bark graph</h3>
-<p>Right-click in the Project window -&gt; <strong>Create -&gt; Threader -&gt; Dialogue Graph</strong>. Open it in the graph editor. In the <strong>GRAPH</strong> sidebar section, change <strong>Graph Type</strong> to <strong>Bark</strong>.</p>
+<p>Right-click in the Project window -&gt; <strong>Create -&gt; Threader -&gt; Dialogue Graph</strong>. Open it in the <a href="../graph-editor/">graph editor</a>. In the <strong>GRAPH</strong> sidebar section, change <strong>Graph Type</strong> to <strong>Bark</strong>.</p>
 <p>Build the graph normally — NPC nodes, branches, random nodes. Leave speaker fields blank if you want caller speaker fallback (see below).</p>
 <h3 id="2-add-a-barksource">2. Add a BarkSource</h3>
 <p>Add the <code>BarkSource</code> component to the NPC's GameObject (alongside <code>NPCDialogue</code>).</p>
@@ -1616,7 +1616,7 @@
 </tr>
 <tr>
 <td><strong>Speaker Name</strong></td>
-<td>The speaker name this NPC is registered under — must match their <code>NPCDialogue</code> <strong>Speaker Name</strong>. Used to resolve audio clips and animator actions from the bark graph's Line Sheet when the NPC node and graph have no speaker set. Populated from your SpeakerRoster assets as a dropdown.</td>
+<td>The speaker name this NPC is registered under — must match their <code>NPCDialogue</code> <strong>Speaker Name</strong>. Used to resolve audio clips and animator actions from the bark graph's <a href="../line-sheet/">Line Sheet</a> when the NPC node and graph have no speaker set. Populated from your <a href="../speaker-roster/">SpeakerRoster</a> assets as a dropdown.</td>
 </tr>
 <tr>
 <td><strong>Suppress During Dialogue</strong></td>

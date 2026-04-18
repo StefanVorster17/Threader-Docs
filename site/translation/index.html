@@ -1829,7 +1829,7 @@
 
 
 <h1 id="translation-localization">Translation &amp; Localization</h1>
-<p>Threader supports multiple languages per dialogue graph through the <strong>Line Sheet</strong> system. Each language gets its own <code>DialogueLineSheet</code> asset containing translated text, language-specific audio clips, and animator actions. Switching languages at runtime is a single method call.</p>
+<p>Threader supports multiple languages per dialogue graph through the <strong><a href="../line-sheet/">Line Sheet</a></strong> system. Each language gets its own <code>DialogueLineSheet</code> asset containing translated text, language-specific audio clips, and animator actions. Switching languages at runtime is a single method call.</p>
 <hr />
 <h2 id="concepts">Concepts</h2>
 <table>
@@ -1842,7 +1842,7 @@
 <tbody>
 <tr>
 <td><strong>Line Sheet</strong></td>
-<td>A <code>DialogueLineSheet</code> ScriptableObject that stores per-speaker audio clips, animator actions, and optional translated text (<code>PreviewText</code>) for every NPC line in a graph.</td>
+<td>A <code>DialogueLineSheet</code> ScriptableObject that stores per-speaker audio clips, animator actions, and optional translated text (<code>PreviewText</code>) for every NPC line in a graph. See <a href="../line-sheet/">Line Sheet</a>.</td>
 </tr>
 <tr>
 <td><strong>Named Line Sheet</strong></td>
@@ -1868,8 +1868,9 @@ VillagerGraph_JP.asset
 </code></pre>
 <p>You can create sheets via:</p>
 <ul>
-<li><strong>From the graph editor</strong> — open the sidebar <strong>PROJECT</strong> section and click <strong>Line Sheet Editor</strong>, or click <strong>Line Data</strong> on any NPC node</li>
+<li><strong>From the <a href="../graph-editor/">graph editor</a></strong> — open the sidebar <strong>PROJECT</strong> section and click <strong>Line Sheet Editor</strong>, or click <strong>Line Data</strong> on any NPC node</li>
 <li><strong>Batch creation</strong> — <strong>Threader → Create &amp; Sync All Line Sheets</strong> scans all graphs and creates missing sheets</li>
+<li><strong>Manually</strong> — right-click in the Project window → <strong>Create → Threader → Line Sheet</strong></li>
 </ul>
 <h3 id="2-register-sheets-on-the-graph">2. Register sheets on the graph</h3>
 <p>Open the <code>DialogueGraph</code> asset in the Inspector (or use the Graph Editor sidebar). In the <strong>Line Sheets</strong> section, add one entry per language:</p>
@@ -1924,7 +1925,7 @@ VillagerGraph_JP.asset
 <li>Look up the sheet row for this node/line via <code>sheet.LookupRow(nodeGuid, lineIndex)</code></li>
 <li>If the row exists <strong>and</strong> its <code>PreviewText</code> is non-empty → use <code>PreviewText</code> as the line text</li>
 <li>Otherwise → use the original <code>NPCLine.Text</code> from the node itself</li>
-<li>Apply <code>{variable}</code> token substitution to the resolved text</li>
+<li>Apply <code>{variable}</code> token substitution to the resolved text (see <a href="../variables/#variable-substitution-in-text">Variables</a>)</li>
 <li>Fire <code>OnNPCLine</code> with the final text</li>
 </ol>
 <p>This means you can have partially translated sheets — any line without a <code>PreviewText</code> gracefully falls back to the source language text on the node.</p>
@@ -2028,11 +2029,11 @@ DialogueManager.Instance.SetActiveLanguage(&quot;&quot;);
 <p>The language string comparison is <strong>exact and case-sensitive</strong>: <code>"French"</code> ≠ <code>"french"</code>.</p>
 <hr />
 <h2 id="bark-graph-translation">Bark graph translation</h2>
-<p>Bark graphs use the same translation system. When a bark plays, <code>DialogueManager</code> calls <code>graph.GetSheet(activeLanguage)</code> on the bark graph and resolves text and audio identically to main dialogue. The <code>OnBark</code> event receives the resolved (potentially translated) text.</p>
+<p>Bark graphs use the same translation system. When a bark plays, <code>DialogueManager</code> calls <code>graph.GetSheet(activeLanguage)</code> on the bark graph and resolves text and audio identically to main dialogue. The <code>OnBark</code> event receives the resolved (potentially translated) text. See <a href="../bark/">Bark System</a> for bark setup.</p>
 <p>No additional setup is needed beyond adding language sheets to the bark graph's <code>LineSheets</code> list.</p>
 <hr />
 <h2 id="editor-preview">Editor preview</h2>
-<p>The graph editor supports a <strong>preview language</strong> dropdown. When a preview language is selected:</p>
+<p>The <a href="../graph-editor/">graph editor</a> supports a <strong>preview language</strong> dropdown in the <a href="../graph-editor/#language">LANGUAGE sidebar section</a>. When a preview language is selected:</p>
 <ul>
 <li>NPC nodes display the <code>PreviewText</code> from the matching sheet instead of the original node text</li>
 <li>Player Choice nodes display <code>ChoiceSheetRow.PreviewText</code> for each choice</li>

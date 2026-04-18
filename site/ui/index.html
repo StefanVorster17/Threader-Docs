@@ -1731,7 +1731,7 @@
 <h1 id="ui">UI</h1>
 <p>Threader ships with a built-in <code>DialogueUI</code> component that powers the demo scene. It is there to get something on screen immediately — <strong>it is not intended to be your final UI</strong>. Most projects will replace it entirely with a custom implementation to match their own visual style and UI framework.</p>
 <blockquote>
-<p><strong>UI Toolkit is not required for runtime UI.</strong> The built-in <code>DialogueUI</code> uses UI Toolkit, but <code>DialogueManager</code> is fully event-driven and has no dependency on it. You can drive a Unity Canvas (uGUI), a third-party UI framework, or any other system by subscribing to the runtime events described in <a href="#building-a-custom-ui">Building a custom UI</a>. Both approaches are shown with code examples below.</p>
+<p><strong>UI Toolkit is not required for runtime UI.</strong> The built-in <code>DialogueUI</code> uses UI Toolkit, but <a href="../api-reference/#dialoguemanager"><code>DialogueManager</code></a> is fully event-driven and has no dependency on it. You can drive a Unity Canvas (uGUI), a third-party UI framework, or any other system by subscribing to the runtime events described in <a href="#building-a-custom-ui">Building a custom UI</a>. Both approaches are shown with code examples below.</p>
 </blockquote>
 <hr />
 <h2 id="the-built-in-dialogueui">The built-in DialogueUI</h2>
@@ -1742,7 +1742,7 @@
 <li>Shows speaker name</li>
 <li>Renders player choice buttons with staggered fade-in, visited/locked states, and an animated dismiss on selection</li>
 <li>Handles <strong>Space</strong> to skip the current typewriter animation or advance the line</li>
-<li>Handles <strong>Escape</strong> to call <code>DialogueManager.CancelDialogue()</code> (respects per-node <strong>Prevent Dialogue Exit</strong>)</li>
+<li>Handles <strong>Escape</strong> to call <code>DialogueManager.CancelDialogue()</code> (respects per-node <strong><a href="../nodes/">Prevent Dialogue Exit</a></strong>)</li>
 <li>Manages optional <strong>Skip</strong> and <strong>Exit</strong> HUD elements automatically (shown/hidden as dialogue state changes)</li>
 </ul>
 <h3 id="inspector-fields">Inspector fields</h3>

@@ -33,15 +33,17 @@
 
 ## Minimum setup
 
-Five steps to a working dialogue:
+Seven steps to a working dialogue:
 
-1. **Create** a `Dialogue Graph` asset — right-click in the Project window → **Create → Threader → Dialogue Graph**
-2. **Build** the conversation — double-click the asset to open the graph editor
-3. **Add** a `DialogueManager` component to an empty GameObject in the scene
-4. **Call** `DialogueManager.Instance.StartDialogue(graph)` from your interaction code
-5. **Wire** the UI — add `DialogueUI` to a GameObject, or subscribe to `OnNPCLine` / `OnChoiceNode` for a fully custom UI
+1. **Create** a [Speaker Roster](speaker-roster.md) — right-click in the Project window → **Create → Threader → Speaker Roster**, then add your speaker names
+2. **Create** a [Variables Store](variables.md) *(optional)* — **Create → Threader → Variables Store**, then add any variables your dialogue needs
+3. **Create** a [Dialogue Graph](graph-editor.md) — **Create → Threader → Dialogue Graph**, then double-click it to open the graph editor and build your conversation
+4. **Add** a `DialogueManager` component to an empty GameObject in the scene — assign your Speaker Roster and Variables Store
+5. **Add** an `NPCDialogue` or `DialogueTrigger` component to your NPC — assign the graph and speaker name
+6. **Wire** the UI — add `DialogueUI` to a GameObject (with `UI_Dialogue.uxml`), or subscribe to `OnNPCLine` / `OnChoiceNode` for a fully custom UI
+7. **Play** and interact with the NPC to start the conversation
 
-→ See [Quick Start](quick-start.md) for the full walkthrough.
+→ See [Quick Start](quick-start.md) for the full step-by-step walkthrough with detailed explanations.
 
 ---
 

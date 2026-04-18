@@ -1,6 +1,6 @@
 # Dialogue Preview Window
 
-Open via **Threader → Dialogue Preview** (or `Shift+Alt+P`).
+Open via **Threader → Dialogue Preview** (or `Ctrl+Shift+P`).
 
 Runs a complete dialogue playthrough entirely inside the Editor — no Play mode required. Uses the same `DialogueRunner` as production, so the behaviour is identical to runtime.
 

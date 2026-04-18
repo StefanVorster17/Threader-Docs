@@ -1836,7 +1836,7 @@ Add variables in the Inspector. See <a href="../variables/">Variables</a> for fu
 <p><strong>Step 2 — Assign the asset to DialogueManager:</strong></p>
 <p>Drag the asset into <strong>DialogueManager → Variables List</strong>.</p>
 <p><strong>Step 3 — Add conditions in the graph:</strong></p>
-<p>Open a Player Choice node. Inside each choice card, click <strong>+ Add</strong> in the Conditions box.</p>
+<p>Open a <a href="../nodes/#player-choice-node-c">Player Choice node</a>. Inside each choice card, click <strong>+ Add</strong> in the Conditions box.</p>
 <table>
 <thead>
 <tr>
@@ -1984,7 +1984,7 @@ public class GameConditionProvider : ConditionProvider
 </table>
 <h3 id="step-3-link-the-asset-to-a-choice">Step 3 — Link the asset to a choice</h3>
 <ol>
-<li>Open the graph in the <strong>Graph Editor</strong></li>
+<li>Open the graph in the <strong><a href="../graph-editor/">Graph Editor</a></strong></li>
 <li>Click the Player Choice node to select it</li>
 <li>Inside the choice card, expand the <strong>Condition Definition [Custom]</strong> foldout</li>
 <li>Click the object picker (⊙) on the right of the asset slot and select your <code>ConditionDefinition</code> asset</li>
@@ -2030,7 +2030,7 @@ ConditionStore.Set(&quot;HasSword&quot;, inventory.Has(&quot;sword&quot;) ? &quo
 </tr>
 </tbody>
 </table>
-<p><code>ConditionStore</code> is in-memory only — it resets when you start Play mode. After loading a save, repopulate it before starting any dialogue.</p>
+<p><code>ConditionStore</code> is in-memory only — it resets when you start Play mode. After loading a save, repopulate it before starting any dialogue. See <a href="../saving/">Saving</a> for save/load patterns.</p>
 <hr />
 <h2 id="variableconditiondefinition-no-code-asset-condition">VariableConditionDefinition (no-code asset condition)</h2>
 <p>If you want a reusable condition asset that checks a <code>DialogueVariables</code> store without any C# handler, create a <code>VariableConditionDefinition</code>:</p>

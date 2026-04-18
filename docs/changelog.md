@@ -17,7 +17,7 @@
 - Sticky notes in five colour themes and three sizes (editor-only)
 - Speaker Roster assets — speaker fields become type-safe dropdowns
 - Per-graph default speaker name and Look At Speaker toggle
-- Dialogue Preview Window (`Shift+Alt+P`) — step through any graph in the editor without entering Play mode, seed variable values, see condition evaluation live
+- Dialogue Preview Window (`Ctrl+Shift+P`) — step through any graph in the editor without entering Play mode, seed variable values, see condition evaluation live
 
 **Node Types**
 - **Start Node** — default entry point of every graph

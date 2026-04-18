@@ -1729,7 +1729,7 @@
 
 
 <h1 id="variables">Variables</h1>
-<p>The built-in variable store lets designers read and write game state directly from the graph — <strong>no C# required</strong>. Variables live in a <code>DialogueVariables</code> ScriptableObject asset. Choice conditions check them, NPC nodes and Set Variable nodes mutate them, and text tokens embed their values into dialogue lines.</p>
+<p>The built-in variable store lets designers read and write game state directly from the graph — <strong>no C# required</strong>. Variables live in a <code>DialogueVariables</code> ScriptableObject asset. <a href="../conditions/">Choice conditions</a> check them, <a href="../nodes/#npc-node-n">NPC nodes</a> and <a href="../nodes/#set-variable-node-v">Set Variable nodes</a> mutate them, and text tokens embed their values into dialogue lines.</p>
 <hr />
 <h2 id="the-dialoguevariables-asset">The DialogueVariables asset</h2>
 <p>A <code>DialogueVariables</code> asset is a ScriptableObject that holds a named list of typed variables. Create one per logical domain (quests, economy, flags, etc.) or one for the whole project — your choice.</p>
@@ -1792,7 +1792,7 @@ EconomyVariables.asset — gold, price, credits
 <hr />
 <h2 id="reading-and-writing-variables-from-the-graph">Reading and writing variables from the graph</h2>
 <h3 id="inline-conditions-on-player-choice-nodes">Inline conditions on Player Choice nodes</h3>
-<p>Open a <strong>Player Choice</strong> node. Inside each choice card is a <strong>Conditions</strong> box with a <strong>+ Add</strong> button. Each row compares one variable against a value:</p>
+<p>Open a <strong><a href="../nodes/#player-choice-node-c">Player Choice</a></strong> node. Inside each choice card is a <strong>Conditions</strong> box with a <strong>+ Add</strong> button. Each row compares one variable against a value:</p>
 <table>
 <thead>
 <tr>
@@ -1825,7 +1825,7 @@ EconomyVariables.asset — gold, price, credits
 </table>
 <p>All rows must pass (AND logic). There is no built-in OR — split into separate choice cards instead.</p>
 <h3 id="set-actions-on-npc-nodes">Set actions on NPC nodes</h3>
-<p>Open any <strong>NPC node</strong> → <strong>Set Vars</strong> section → <strong>+ Add</strong>:</p>
+<p>Open any <strong><a href="../nodes/#npc-node-n">NPC node</a></strong> → <strong>Set Vars</strong> section → <strong>+ Add</strong>:</p>
 <table>
 <thead>
 <tr>
@@ -1864,7 +1864,7 @@ EconomyVariables.asset — gold, price, credits
 </table>
 <p>Set actions fire <strong>before</strong> events do, so the next Player Choice node in the same conversation already sees the updated value.</p>
 <h3 id="set-variable-node">Set Variable Node</h3>
-<p>Use a <strong>Set Variable Node <code>[V]</code></strong> when you need to write variables <strong>without showing any NPC dialogue</strong>. It applies all its actions silently and advances to the next connected node. Useful for:</p>
+<p>Use a <strong><a href="../nodes/#set-variable-node-v">Set Variable Node <code>[V]</code></a></strong> when you need to write variables <strong>without showing any NPC dialogue</strong>. It applies all its actions silently and advances to the next connected node. Useful for:</p>
 <ul>
 <li>Setting a flag at the start of a branch before any lines play</li>
 <li>Resetting a counter in a loop</li>

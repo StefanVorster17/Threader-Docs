@@ -2966,7 +2966,7 @@ void UnregisterSpeaker(string name)
 <hr />
 <pre><code class="language-csharp">DialogueLineSheet GetSheet(string language)
 </code></pre>
-<p>Searches the <code>LineSheets</code> list for an entry whose <code>Language</code> matches <code>language</code> (case-sensitive). Returns the corresponding <code>DialogueLineSheet</code>, or <code>null</code> if no match is found. Called internally by <code>DialogueManager</code> when resolving audio clips and localized text for each NPC line.</p>
+<p>Resolves the line sheet for the given language. If <code>LineSheets</code> is empty, falls back to the legacy single <code>LineSheet</code> field. If <code>language</code> is non-empty and a matching entry exists, returns that sheet. If no match is found or <code>language</code> is null/empty, returns the <strong>first sheet</strong> in the list (the default language). Returns <code>null</code> only when no sheets are configured at all. Called internally by <code>DialogueManager</code> when resolving audio clips and localized text for each NPC line. See <a href="../translation/#getsheet-fallback-chain">Translation — GetSheet fallback chain</a>.</p>
 <hr />
 <h2 id="namedlinesheet">NamedLineSheet</h2>
 <pre><code class="language-csharp">[Serializable]
@@ -3009,7 +3009,7 @@ public class NamedLineSheet
 <tr>
 <td><code>cooldown</code></td>
 <td><code>float</code></td>
-<td>Minimum seconds between barks. Prevents rapid repeat firing regardless of trigger mode.</td>
+<td>Minimum seconds between barks. Default: <code>8</code>. Prevents rapid repeat firing regardless of trigger mode.</td>
 </tr>
 <tr>
 <td><code>speakerName</code></td>
