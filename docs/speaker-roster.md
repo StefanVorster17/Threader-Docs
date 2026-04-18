@@ -1,6 +1,6 @@
 # Speaker Roster
 
-A **Speaker Roster** is a ScriptableObject asset that declares the valid speaker names in your project. It populates the Speaker dropdowns in graph nodes and on `NPCDialogue` components, so you select a name rather than type one.
+A **Speaker Roster** is a ScriptableObject asset that declares the valid speaker names in your project. It populates the Speaker dropdowns in [graph editor](graph-editor.md) nodes and on `NPCDialogue` components, so you select a name rather than type one.
 
 ---
 
@@ -74,7 +74,7 @@ When an NPC node fires, the runtime resolves the speaker through this chain:
 
 1. **Node Speaker field** — the name set directly on that node
 2. **Graph Default Speaker** — the fallback name set at the top of the GRAPH sidebar in the editor; used when the node's own Speaker field is blank
-3. **Calling actor's Speaker Name** — used when the graph was invoked as a sub-graph; the speaker name of whoever started the top-level conversation is inherited automatically
+3. **Calling actor's Speaker Name** — used when the graph was invoked as a [sub-graph](sub-graph.md); the speaker name of whoever started the top-level conversation is inherited automatically
 
 This means a shared graph (e.g. a generic idle sequence referenced by many NPCs) works correctly without setting any Speaker field on its nodes — each NPC supplies their own name as the final fallback.
 
@@ -85,5 +85,5 @@ This means a shared graph (e.g. a generic idle sequence referenced by many NPCs)
 ## Tips
 
 - Keep one roster per scene or chapter rather than one giant roster for the whole project — dropdowns stay short and relevant, and it's obvious when a speaker is missing.
-- Use the **Validate** button in the graph editor's PROJECT sidebar to catch ⚠ mismatches across all nodes in the current graph before release.
+- Use the **Validate** button in the [graph editor's](graph-editor.md) PROJECT sidebar to catch ⚠ mismatches across all nodes in the current graph before release.
 - Speaker Name matching is case-sensitive. If look-at or Animator actions are silently not firing, a name mismatch is the first thing to check.

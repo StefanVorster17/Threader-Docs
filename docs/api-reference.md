@@ -350,7 +350,7 @@ Returns the node GUID for `key`. Falls back to `StartNodeGuid` if `key` is null,
 ```csharp
 DialogueLineSheet GetSheet(string language)
 ```
-Searches the `LineSheets` list for an entry whose `Language` matches `language` (case-sensitive). Returns the corresponding `DialogueLineSheet`, or `null` if no match is found. Called internally by `DialogueManager` when resolving audio clips and localized text for each NPC line.
+Resolves the line sheet for the given language. If `LineSheets` is empty, falls back to the legacy single `LineSheet` field. If `language` is non-empty and a matching entry exists, returns that sheet. If no match is found or `language` is null/empty, returns the **first sheet** in the list (the default language). Returns `null` only when no sheets are configured at all. Called internally by `DialogueManager` when resolving audio clips and localized text for each NPC line. See [Translation — GetSheet fallback chain](translation.md#getsheet-fallback-chain).
 
 ---
 
@@ -382,7 +382,7 @@ Add to any NPC GameObject (alongside `NPCDialogue`) to automate bark playback wi
 | `barkGraph` | `DialogueGraph` | The bark graph to play. Must have `IsBark = true`. |
 | `triggerMode` | `TriggerMode` | `OnEnter` — fires when the player enters the trigger collider. `OnTimer` — fires on an interval. `Manual` — call `Bark()` from script. |
 | `playerTag` | `string` | Tag used to identify the player for `OnEnter` trigger mode. Default: `"Player"`. |
-| `cooldown` | `float` | Minimum seconds between barks. Prevents rapid repeat firing regardless of trigger mode. |
+| `cooldown` | `float` | Minimum seconds between barks. Default: `8`. Prevents rapid repeat firing regardless of trigger mode. |
 | `speakerName` | `string` | The speaker name this NPC is registered under. Must match their `NPCDialogue` Speaker Name. Used for line sheet audio clip and animator action lookup. |
 | `suppressDuringDialogue` | `bool` | When true (default), barks are silently skipped while a full conversation is active. |
 

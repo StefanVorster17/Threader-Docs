@@ -40,7 +40,7 @@ Drag the asset into **DialogueManager → Variables List**.
 
 **Step 3 — Add conditions in the graph:**
 
-Open a Player Choice node. Inside each choice card, click **+ Add** in the Conditions box.
+Open a [Player Choice node](nodes.md#player-choice-node-c). Inside each choice card, click **+ Add** in the Conditions box.
 
 | Field | Description |
 |---|---|
@@ -171,7 +171,7 @@ Right-click in the Project window → **Create → Threader → Condition (Custo
 
 ### Step 3 — Link the asset to a choice
 
-1. Open the graph in the **Graph Editor**
+1. Open the graph in the **[Graph Editor](graph-editor.md)**
 2. Click the Player Choice node to select it
 3. Inside the choice card, expand the **Condition Definition [Custom]** foldout
 4. Click the object picker (⊙) on the right of the asset slot and select your `ConditionDefinition` asset
@@ -205,7 +205,7 @@ In the graph, set the **ConditionDefinition** key to the same string you used in
 | `"Excalibur"` | Stored value equals the string exactly (case-insensitive) |
 | `">= 50"` | Numeric comparison — also supports `>`, `<=`, `<`, `==`, `!=` |
 
-`ConditionStore` is in-memory only — it resets when you start Play mode. After loading a save, repopulate it before starting any dialogue.
+`ConditionStore` is in-memory only — it resets when you start Play mode. After loading a save, repopulate it before starting any dialogue. See [Saving](saving.md) for save/load patterns.
 
 ---
 

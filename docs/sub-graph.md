@@ -6,10 +6,10 @@ The Sub Graph Node lets one `DialogueGraph` call another as a sub-routine, then 
 
 ## How it works
 
-Place a **Sub Graph Node** in your graph, assign a target `DialogueGraph` asset, and wire it like any other node. When the runner reaches the Sub Graph Node:
+Place a **[Sub Graph Node](nodes.md#sub-graph-node-f6)** in your graph, assign a target `DialogueGraph` asset, and wire it like any other node. When the runner reaches the Sub Graph Node:
 
 1. The current graph is pushed onto the call stack
-2. The target graph starts at its default start node (or at a named entry point if one is set)
+2. The target graph starts at its default start node (or at a named [entry point](entry-points.md) if one is set)
 3. When the target graph's End node is reached, the call stack pops back to the calling graph
 4. Execution resumes on the output connected to the Sub Graph Node
 
@@ -27,13 +27,13 @@ NPC nodes inside a sub-graph resolve their speaker name through a three-level ch
 | 2 | **Graph Default Speaker** — the `DefaultSpeakerName` on the sub-graph asset |
 | 3 | **Calling actor's speaker name** — the `SpeakerName` from the `IDialogueActor` that started the top-level conversation |
 
-This means a shared graph with blank speaker fields automatically resolves the display name and camera look-at to whoever triggered the dialogue. For audio clips and animator actions, the same resolved speaker name is used to look them up in the sub-graph's own Line Sheet — so if you need per-speaker audio, add entries for each speaker in that Line Sheet.
+This means a shared graph with blank speaker fields automatically resolves the display name and camera look-at to whoever triggered the dialogue. For audio clips and animator actions, the same resolved speaker name is used to look them up in the sub-graph's own [Line Sheet](line-sheet.md) — so if you need per-speaker audio, add entries for each speaker in that Line Sheet. See also [Speaker Roster](speaker-roster.md).
 
 ---
 
 ## End Node "On end →" sub-graph slot
 
-The **End Node** has an optional **On end →** section with a `DialogueGraph` field and entry point key. When a graph is assigned:
+The **[End Node](nodes.md#end-node-e)** has an optional **On end →** section with a `DialogueGraph` field and [entry point](entry-points.md) key. When a graph is assigned:
 
 1. The `Next entry` switch fires first — the actor's entry point is updated before the sub-graph runs
 2. The sub-graph runs as a sub-routine
@@ -84,6 +84,6 @@ Build one `ShopDialogue.graph` with all the shop interaction lines. Any merchant
 
 ## Editor notes
 
-- The Sub Graph Node is **not available in bark graphs**. It is hidden from the sidebar and context menu when **Graph Type** is set to **Bark**.
+- The Sub Graph Node is **not available in [bark graphs](bark.md)**. It is hidden from the sidebar and context menu when **Graph Type** is set to **Bark**.
 - The validator checks for circular sub-graph references and warns if the depth limit could be exceeded.
 - Sub-graphs can themselves contain Sub Graph Nodes (nested calls), up to the 16-level limit.

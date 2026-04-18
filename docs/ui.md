@@ -2,7 +2,7 @@
 
 Threader ships with a built-in `DialogueUI` component that powers the demo scene. It is there to get something on screen immediately — **it is not intended to be your final UI**. Most projects will replace it entirely with a custom implementation to match their own visual style and UI framework.
 
-> **UI Toolkit is not required for runtime UI.** The built-in `DialogueUI` uses UI Toolkit, but `DialogueManager` is fully event-driven and has no dependency on it. You can drive a Unity Canvas (uGUI), a third-party UI framework, or any other system by subscribing to the runtime events described in [Building a custom UI](#building-a-custom-ui). Both approaches are shown with code examples below.
+> **UI Toolkit is not required for runtime UI.** The built-in `DialogueUI` uses UI Toolkit, but [`DialogueManager`](api-reference.md#dialoguemanager) is fully event-driven and has no dependency on it. You can drive a Unity Canvas (uGUI), a third-party UI framework, or any other system by subscribing to the runtime events described in [Building a custom UI](#building-a-custom-ui). Both approaches are shown with code examples below.
 
 ---
 
@@ -16,7 +16,7 @@ Threader ships with a built-in `DialogueUI` component that powers the demo scene
 - Shows speaker name
 - Renders player choice buttons with staggered fade-in, visited/locked states, and an animated dismiss on selection
 - Handles **Space** to skip the current typewriter animation or advance the line
-- Handles **Escape** to call `DialogueManager.CancelDialogue()` (respects per-node **Prevent Dialogue Exit**)
+- Handles **Escape** to call `DialogueManager.CancelDialogue()` (respects per-node **[Prevent Dialogue Exit](nodes.md)**)
 - Manages optional **Skip** and **Exit** HUD elements automatically (shown/hidden as dialogue state changes)
 
 ### Inspector fields

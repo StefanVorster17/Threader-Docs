@@ -8,8 +8,8 @@ Templates are **stamp-and-detach**: once placed, the copy is completely independ
 
 ## Saving a template
 
-1. Select the nodes you want to capture in the graph editor
-2. In the **NODE TEMPLATES** sidebar section, click **Save Selection**
+1. Select the nodes you want to capture in the [graph editor](graph-editor.md)
+2. In the **[NODE TEMPLATES](graph-editor.md#node-templates)** sidebar section, click **Save Selection**
 3. A save-file dialog appears — choose a folder and name for the `.asset`
 4. The template is created and immediately appears in the sidebar panel
 

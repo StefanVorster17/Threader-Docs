@@ -6,15 +6,15 @@ There are three separate things to save when a player saves their game mid-playt
 
 | What | Where it lives | How to save/load |
 |---|---|---|
-| Variable values | `DialogueVariables` assets | Read with `GetBool`/`GetInt`/`GetString`, write back with `SetBool`/`SetInt`/`SetString` |
-| NPC entry points | `IDialogueActor.ActiveEntryPointKey` per actor | Copy the string; restore with `SetEntryPoint` |
+| Variable values | [`DialogueVariables`](variables.md) assets | Read with `GetBool`/`GetInt`/`GetString`, write back with `SetBool`/`SetInt`/`SetString` |
+| NPC entry points | [`IDialogueActor.ActiveEntryPointKey`](entry-points.md) per actor | Copy the string; restore with `SetEntryPoint` |
 | Choice history | `DialogueChoiceHistory` static class | `GetSaveData()` / `LoadSaveData()` |
 
 ---
 
 ## 1. Saving variable values
 
-`DialogueVariables` is a `ScriptableObject`. Its runtime dictionaries are in-memory only and reset whenever the asset is unloaded or the game exits. After loading a save, repopulate the dictionaries before any dialogue starts.
+`DialogueVariables` is a `ScriptableObject`. Its runtime dictionaries are in-memory only and reset whenever the asset is unloaded or the game exits. After loading a save, repopulate the dictionaries before any dialogue starts. See [Variables](variables.md) for how to define and use variables in graphs.
 
 ```csharp
 // ─── Saving ──────────────────────────────────────────────────────────────
@@ -96,7 +96,7 @@ void StartNewGame()
 
 ## 2. Saving entry points
 
-Each `IDialogueActor` (a `DialogueTrigger` or `NPCDialogue` in your scene) stores a single string — `ActiveEntryPointKey`. Empty or null means "use the graph's start node."
+Each `IDialogueActor` (a `DialogueTrigger` or `NPCDialogue` in your scene) stores a single string — `ActiveEntryPointKey`. Empty or null means "use the graph's start node." See [Entry Points](entry-points.md) for how entry points work.
 
 ```csharp
 // ─── Saving ──────────────────────────────────────────────────────────────

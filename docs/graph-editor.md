@@ -62,20 +62,30 @@ Both panels remember their sizes between sessions via EditorPrefs.
 
 An orange **● Unsaved** indicator appears in the toolbar whenever the graph has changes not yet written to disk. Closing the window or switching graphs while unsaved changes are present will prompt you to save.
 
+### LANGUAGE
+
+Controls which language is previewed on node text in the editor canvas. See [Translation & Localization](translation.md) for the full translation workflow.
+
+| Control | Description |
+|---|---|
+| **Preview** (dropdown) | Lists every language defined in the graph's `LineSheets` list. Selecting a language shows the corresponding `PreviewText` values from that language's sheet on all NPC and choice nodes in the canvas. Set to `(none)` to show the original node text. |
+
+The preview language does not affect runtime behaviour — it is a visual aid for checking translations in the editor.
+
 ### GRAPH
 
 | Field | Description |
 |---|---|
-| **Default Speaker** | Fallback speaker name for any NPC node whose own Speaker field is blank. Populated from your SpeakerRoster assets. Nodes with no override show `(Graph Default: X)` in their dropdown, updating live as you change this value. |
-| **Graph Type** | Dropdown — `Dialogue` or `Bark`. Bark graphs run on a non-blocking runner via `PlayBark()` and support NPC, Random, Branch, Set Variable, and End nodes only. Setting this to **Bark** hides the **Look At Speaker** row and removes Player Choice Node, Wait Node, and Sub Graph Node from the sidebar and context menu. |
-| **Look At Speaker** | *(Dialogue graphs only.)* When ticked, any scene object that implements `IDialogueFocus` (e.g. a first-person camera controller) will automatically rotate to face the current speaker's transform each time an NPC node fires. Toggle this per-graph. |
+| **Default Speaker** | Fallback speaker name for any NPC node whose own Speaker field is blank. Populated from your [SpeakerRoster](speaker-roster.md) assets. Nodes with no override show `(Graph Default: X)` in their dropdown, updating live as you change this value. |
+| **Graph Type** | Dropdown — `Dialogue` or `Bark`. Bark graphs run on a non-blocking runner via `PlayBark()` and do not support Player Choice Node, Wait Node, or Sub Graph Node. Setting this to **Bark** hides the **Look At Speaker** row and removes those three node types from the sidebar and context menu. See [Bark System](bark.md) for the full list of supported nodes and setup details. |
+| **Look At Speaker** | *(Dialogue graphs only.)* When ticked, any scene object that implements `IDialogueFocus` (e.g. a first-person camera controller) will automatically rotate to face the current speaker's transform each time an NPC node fires. Toggle this per-graph. See [UI — Camera look-at](ui.md#camera-look-at-during-dialogue). |
 
 ### NAVIGATE
 
 | Button / Control | What it does |
 |---|---|
 | **Go to Start** | Pans and zooms the canvas to frame the start node |
-| **Entry Points** | Lists all named entry points defined in the graph; click any to jump there |
+| **Entry Points** | Lists all named [entry points](entry-points.md) defined in the graph; click any to jump there |
 | **Minimap** | Toggles the floating minimap overlay (preference saved per session) |
 | **Snap to Grid** | Snaps all node movement to a 20 px grid (preference saved per session). Takes effect immediately on drag-end. |
 | **Show GUIDs** | Displays each node's full GUID above the Tag field. Useful when cross-referencing GUIDs from error messages. Preference is saved via EditorPrefs and restored across sessions. |
@@ -92,7 +102,7 @@ Lists all bookmarked nodes in the current graph. Click any row to select and fra
 
 ### CREATE
 
-A set of colour-coded pills for every node type, grouped into categories:
+A set of colour-coded pills for every [node type](nodes.md), grouped into categories:
 
 - **Dialogue** — NPC Node, Player Choice Node, End Node
 - **Logic** — Branch Node, Jump Node, Random Node, Weighted Random Node, Switch Node, Sub Graph Node
@@ -105,7 +115,7 @@ A set of colour-coded pills for every node type, grouped into categories:
 
 ### NODE TEMPLATES
 
-Lists all `DialogueNodeTemplate` assets found in the project. Each pill shows the template name and node count `[N]`.
+Lists all [`DialogueNodeTemplate`](templates.md) assets found in the project. Each pill shows the template name and node count `[N]`.
 
 - **Save a template** — select nodes in the graph, then click **Save Selection**. Internal connections are preserved; external connections are dropped.
 - **Stamp a template** — drag a template pill from the sidebar onto the canvas. All nodes receive fresh GUIDs; internal wiring is re-connected automatically.
@@ -156,7 +166,7 @@ Right-click any node to open its context menu. The menu is a styled dark panel g
 | Option | Effect |
 |---|---|
 | **Set as Start Node** | Makes this node the graph's entry point (green ▶ START badge) |
-| **Set as Entry Point…** | Opens a dialog to assign a named entry-point key to this node (yellow ⚑ badge appears) |
+| **Set as Entry Point…** | Opens a dialog to assign a named [entry-point](entry-points.md) key to this node (yellow ⚑ badge appears) |
 | **Remove Entry Point** | Clears the entry point key from this node |
 | **Set Colour / Tag** | Opens the colour picker (None / Red / Orange / Yellow / Green / Blue / Purple) |
 | **Clear Colour / Tag** | *(Only shown when a colour is already set.)* Resets the node colour to None |

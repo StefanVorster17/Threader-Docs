@@ -1,6 +1,6 @@
 # Translation & Localization
 
-Threader supports multiple languages per dialogue graph through the **Line Sheet** system. Each language gets its own `DialogueLineSheet` asset containing translated text, language-specific audio clips, and animator actions. Switching languages at runtime is a single method call.
+Threader supports multiple languages per dialogue graph through the **[Line Sheet](line-sheet.md)** system. Each language gets its own `DialogueLineSheet` asset containing translated text, language-specific audio clips, and animator actions. Switching languages at runtime is a single method call.
 
 ---
 
@@ -8,7 +8,7 @@ Threader supports multiple languages per dialogue graph through the **Line Sheet
 
 | Term | Meaning |
 |---|---|
-| **Line Sheet** | A `DialogueLineSheet` ScriptableObject that stores per-speaker audio clips, animator actions, and optional translated text (`PreviewText`) for every NPC line in a graph. |
+| **Line Sheet** | A `DialogueLineSheet` ScriptableObject that stores per-speaker audio clips, animator actions, and optional translated text (`PreviewText`) for every NPC line in a graph. See [Line Sheet](line-sheet.md). |
 | **Named Line Sheet** | A pairing of a language label (e.g. `"English"`, `"French"`) with a Line Sheet asset. Stored in the graph's `LineSheets` list. |
 | **Active Language** | A string held on `DialogueManager` at runtime. Determines which Named Line Sheet is selected when a graph plays. |
 | **PreviewText** | A text field on each line sheet row. When non-empty, it overrides the original NPC node text at runtime — this is the primary mechanism for translating dialogue lines. |
@@ -29,8 +29,9 @@ VillagerGraph_JP.asset
 
 You can create sheets via:
 
-- **From the graph editor** — open the sidebar **PROJECT** section and click **Line Sheet Editor**, or click **Line Data** on any NPC node
+- **From the [graph editor](graph-editor.md)** — open the sidebar **PROJECT** section and click **Line Sheet Editor**, or click **Line Data** on any NPC node
 - **Batch creation** — **Threader → Create & Sync All Line Sheets** scans all graphs and creates missing sheets
+- **Manually** — right-click in the Project window → **Create → Threader → Line Sheet**
 
 ### 2. Register sheets on the graph
 
@@ -84,7 +85,7 @@ When an NPC node plays, `DialogueManager` resolves text for each line through th
 2. Look up the sheet row for this node/line via `sheet.LookupRow(nodeGuid, lineIndex)`
 3. If the row exists **and** its `PreviewText` is non-empty → use `PreviewText` as the line text
 4. Otherwise → use the original `NPCLine.Text` from the node itself
-5. Apply `{variable}` token substitution to the resolved text
+5. Apply `{variable}` token substitution to the resolved text (see [Variables](variables.md#variable-substitution-in-text))
 6. Fire `OnNPCLine` with the final text
 
 This means you can have partially translated sheets — any line without a `PreviewText` gracefully falls back to the source language text on the node.
@@ -197,7 +198,7 @@ The language string comparison is **exact and case-sensitive**: `"French"` ≠ `
 
 ## Bark graph translation
 
-Bark graphs use the same translation system. When a bark plays, `DialogueManager` calls `graph.GetSheet(activeLanguage)` on the bark graph and resolves text and audio identically to main dialogue. The `OnBark` event receives the resolved (potentially translated) text.
+Bark graphs use the same translation system. When a bark plays, `DialogueManager` calls `graph.GetSheet(activeLanguage)` on the bark graph and resolves text and audio identically to main dialogue. The `OnBark` event receives the resolved (potentially translated) text. See [Bark System](bark.md) for bark setup.
 
 No additional setup is needed beyond adding language sheets to the bark graph's `LineSheets` list.
 
@@ -205,7 +206,7 @@ No additional setup is needed beyond adding language sheets to the bark graph's 
 
 ## Editor preview
 
-The graph editor supports a **preview language** dropdown. When a preview language is selected:
+The [graph editor](graph-editor.md) supports a **preview language** dropdown in the [LANGUAGE sidebar section](graph-editor.md#language). When a preview language is selected:
 
 - NPC nodes display the `PreviewText` from the matching sheet instead of the original node text
 - Player Choice nodes display `ChoiceSheetRow.PreviewText` for each choice

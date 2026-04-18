@@ -1,6 +1,6 @@
 # Variables
 
-The built-in variable store lets designers read and write game state directly from the graph — **no C# required**. Variables live in a `DialogueVariables` ScriptableObject asset. Choice conditions check them, NPC nodes and Set Variable nodes mutate them, and text tokens embed their values into dialogue lines.
+The built-in variable store lets designers read and write game state directly from the graph — **no C# required**. Variables live in a `DialogueVariables` ScriptableObject asset. [Choice conditions](conditions.md) check them, [NPC nodes](nodes.md#npc-node-n) and [Set Variable nodes](nodes.md#set-variable-node-v) mutate them, and text tokens embed their values into dialogue lines.
 
 ---
 
@@ -59,7 +59,7 @@ When the runner looks up `gold`, it checks `GameVariables` first, then `EconomyV
 
 ### Inline conditions on Player Choice nodes
 
-Open a **Player Choice** node. Inside each choice card is a **Conditions** box with a **+ Add** button. Each row compares one variable against a value:
+Open a **[Player Choice](nodes.md#player-choice-node-c)** node. Inside each choice card is a **Conditions** box with a **+ Add** button. Each row compares one variable against a value:
 
 | Field | Description |
 |---|---|
@@ -73,7 +73,7 @@ All rows must pass (AND logic). There is no built-in OR — split into separate 
 
 ### Set actions on NPC nodes
 
-Open any **NPC node** → **Set Vars** section → **+ Add**:
+Open any **[NPC node](nodes.md#npc-node-n)** → **Set Vars** section → **+ Add**:
 
 | Operator | Bool | Int | String |
 |---|---|---|---|
@@ -86,7 +86,7 @@ Set actions fire **before** events do, so the next Player Choice node in the sam
 
 ### Set Variable Node
 
-Use a **Set Variable Node `[V]`** when you need to write variables **without showing any NPC dialogue**. It applies all its actions silently and advances to the next connected node. Useful for:
+Use a **[Set Variable Node `[V]`](nodes.md#set-variable-node-v)** when you need to write variables **without showing any NPC dialogue**. It applies all its actions silently and advances to the next connected node. Useful for:
 
 - Setting a flag at the start of a branch before any lines play
 - Resetting a counter in a loop

@@ -8,7 +8,7 @@ All nodes share:
 - **Prevent Dialogue Exit toggle** — when enabled, `DialogueManager.CancelDialogue()` and the built-in Escape-key handler are ignored while this node is active. Use to protect nodes that write variables, grant rewards, or play mandatory cutscene lines. The validator will warn you if a locked node has no reachable End node (which would leave the player permanently stuck).
 - **Right-click context menu** — Set as Start Node, Set as Entry Point, Remove Entry Point, Set Colour, Bookmark this Node, Duplicate, Delete, Copy GUID.
 
-> **Bark graphs** (graphs with **Graph Type** set to **Bark** in the GRAPH sidebar) do not support Player Choice Node, Wait Node, or Sub Graph Node. These node types are hidden from the sidebar and right-click context menu when a bark graph is open.
+> **[Bark graphs](bark.md)** (graphs with **Graph Type** set to **Bark** in the GRAPH sidebar) do not support Player Choice Node, Wait Node, or Sub Graph Node. These node types are hidden from the sidebar and right-click context menu when a bark graph is open.
 
 ---
 
@@ -43,8 +43,8 @@ Fires named string events when this node is reached (before lines are shown).
 
 | Field | Description |
 |---|---|
-| Key | The event string. Received by `OnNodeEvent` subscribers and `NPCDialogue.NodeEvents` response list |
-| Global | Off = Local: only fires `OnNodeEvent`. Guard your handler with `CurrentActor` to scope it to this NPC. On = Global: also fires `OnGlobalNodeEvent`. No guard needed — intentionally broadcast to all listeners. |
+| Key | The event string. Received by `OnNodeEvent` subscribers and `NPCDialogue.NodeEvents` response list. See [Events](events.md). |
+| Scope (dropdown) | **Local** — fires `OnNodeEvent` only. Guard your handler with `CurrentActor` to scope it to this NPC. **Global** — fires both `OnNodeEvent` and `OnGlobalNodeEvent`. No guard needed — intentionally broadcast to all listeners. See [Events — Local vs Global](events.md#local-vs-global). |
 
 Multiple events are fired in list order. Empty keys are skipped.
 
@@ -411,8 +411,8 @@ Use this when you need to trigger a game system at a precise point in the conver
 
 | Field | Description |
 |---|---|
-| **Key** | The event string. Received by `OnNodeEvent` subscribers. |
-| **Global** | Off = Local (fires `OnNodeEvent` only). On = Global (fires both `OnNodeEvent` and `OnGlobalNodeEvent`). |
+| **Key** | The event string. Received by `OnNodeEvent` subscribers. See [Events](events.md). |
+| **Scope** (dropdown) | **Local** — fires `OnNodeEvent` only. **Global** — fires both `OnNodeEvent` and `OnGlobalNodeEvent`. See [Events — Local vs Global](events.md#local-vs-global). |
 | **✕** | Removes this event row |
 
 Multiple events are fired in list order.

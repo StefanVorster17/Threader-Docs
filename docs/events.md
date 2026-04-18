@@ -8,12 +8,12 @@ Events are named string keys fired at specific points in a conversation. They ar
 
 ### From an NPC Node
 
-Every NPC node has an **Events** section (click **+ Add** to add a row). These events fire when the node is reached, **before** any lines are displayed.
+Every [NPC node](nodes.md#npc-node-n) has an **Events** section (click **+ Add** to add a row). These events fire when the node is reached, **before** any lines are displayed.
 
 | Field | Description |
 |---|---|
 | **Key** | The event string your listeners will receive. |
-| **Global** | See [Local vs Global](#local-vs-global) below. |
+| **Scope** (dropdown) | Select **Local** or **Global**. See [Local vs Global](#local-vs-global) below. |
 | **✕** | Removes this row. |
 
 Multiple events are fired in list order. Empty keys are skipped.
@@ -32,12 +32,12 @@ This is the right choice when you need to trigger game systems **between** branc
 
 ## Local vs Global
 
-Both authoring sources have a **Global** toggle on each event row.
+Both authoring sources have a **Scope** dropdown on each event row with two options: **Local** and **Global**.
 
 | Setting | Event fires on | Use when |
 |---|---|---|
-| **Local** (off) | `DialogueManager.OnNodeEvent` only | The event is specific to this NPC — guard your handler with `CurrentActor` |
-| **Global** (on) | `DialogueManager.OnNodeEvent` **and** `DialogueManager.OnGlobalNodeEvent` | The event needs to be received by any listener in the scene, regardless of which NPC is speaking |
+| **Local** | `DialogueManager.OnNodeEvent` only | The event is specific to this NPC — guard your handler with `CurrentActor` |
+| **Global** | `DialogueManager.OnNodeEvent` **and** `DialogueManager.OnGlobalNodeEvent` | The event needs to be received by any listener in the scene, regardless of which NPC is speaking |
 
 ---
 

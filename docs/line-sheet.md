@@ -16,9 +16,15 @@ Line sheets separate audio and animation data from the dialogue graph itself. Th
 
 ## Setup
 
-### 1. Open a graph in the graph editor
+### 1. Create a line sheet
 
-Line sheets are always created relative to a graph and are never created manually. There is no **Create → Threader → Dialogue Line Sheet** entry in the Project window — use the graph editor instead.
+There are several ways to create a line sheet:
+
+- **From the [graph editor](graph-editor.md)** — open the sidebar **PROJECT** section and click **Line Sheet Editor**. If no sheet exists yet, one is created automatically next to the graph asset.
+- **Batch creation** — use **Threader → Create & Sync All Line Sheets** in the Unity menu bar to create and sync sheets for every graph in the project at once.
+- **Manually** — right-click in the Project window → **Create → Threader → Line Sheet**. Then assign the graph to the sheet's **Source Graph** field and click **Sync** to populate its rows.
+
+Sheets created automatically are named `{GraphName}_Sheet.asset` and placed next to their graph. For [multi-language setups](translation.md), create one sheet per language (e.g. `VillagerGraph_EN.asset`, `VillagerGraph_FR.asset`).
 
 ### 2. Open the Line Sheet Editor
 
@@ -32,7 +38,7 @@ For each line, add one entry per speaker who delivers that line. Set:
 
 | Field | Description |
 |---|---|
-| **Speaker** | Name from your `SpeakerRoster`. Must match the speaker registered with `DialogueManager`. |
+| **Speaker** | Name from your [SpeakerRoster](speaker-roster.md). Must match the speaker registered with `DialogueManager`. |
 | **Clip** | The `AudioClip` played when this speaker delivers this line. |
 | **Animator Actions** | Optional list of animator parameters to fire when the line starts (parameter name, type, and value). |
 

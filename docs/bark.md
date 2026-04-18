@@ -6,7 +6,7 @@ Barks are fire-and-forget ambient lines that play without entering a full conver
 
 ## Overview
 
-A bark graph is a normal `DialogueGraph` asset with **Graph Type** set to **Bark** in the GRAPH sidebar. The runtime runs it on a second, non-blocking runner. Each line fires `OnBark` instead of `OnNPCLine`, leaving the main dialogue system completely unaffected.
+A bark graph is a normal `DialogueGraph` asset with **Graph Type** set to **Bark** in the [Graph Editor](graph-editor.md) GRAPH sidebar. The runtime runs it on a second, non-blocking runner. Each line fires `OnBark` instead of `OnNPCLine`, leaving the main dialogue system completely unaffected.
 
 Bark graphs support:
 
@@ -15,13 +15,13 @@ Bark graphs support:
 - **Weighted Random Node** — weighted random path selection
 - **Switch Node** — multi-case condition routing
 - **Branch Node** — condition-driven bark selection
-- **Set Variable Node** — write variables mid-bark (e.g. mark a bark as heard)
+- **Set Variable Node** — write [variables](variables.md) mid-bark (e.g. mark a bark as heard)
 - **Jump Node** — redirect to a tagged node
-- **Fire Event Node** — broadcast named events during bark playback
+- **Fire Event Node** — broadcast named [events](events.md) during bark playback
 - **Play Audio Node** — play audio clips
 - **Animator Trigger Node** — set Animator parameters on registered speakers
 - **Debug Node** — log messages to the Console
-- **End Node** — terminates the bark, including the optional "On end ->" sub-graph slot
+- **End Node** — terminates the bark, including the optional "On end ->" [sub-graph](sub-graph.md) slot
 
 Bark graphs do **not** support Player Choice Node, Wait Node, or Sub Graph Node. These are hidden from the editor automatically. Wait nodes encountered in a bark graph auto-advance immediately.
 
@@ -31,7 +31,7 @@ Bark graphs do **not** support Player Choice Node, Wait Node, or Sub Graph Node.
 
 ### 1. Create a bark graph
 
-Right-click in the Project window -> **Create -> Threader -> Dialogue Graph**. Open it in the graph editor. In the **GRAPH** sidebar section, change **Graph Type** to **Bark**.
+Right-click in the Project window -> **Create -> Threader -> Dialogue Graph**. Open it in the [graph editor](graph-editor.md). In the **GRAPH** sidebar section, change **Graph Type** to **Bark**.
 
 Build the graph normally — NPC nodes, branches, random nodes. Leave speaker fields blank if you want caller speaker fallback (see below).
 
@@ -45,7 +45,7 @@ Add the `BarkSource` component to the NPC's GameObject (alongside `NPCDialogue`)
 | **Trigger Mode** | `OnEnter` fires when the player enters the trigger collider. `OnTimer` fires on an interval. `Manual` — call `Bark()` from script. |
 | **Player Tag** | The tag used to identify the player for `OnEnter` trigger detection. Default is `"Player"`. |
 | **Cooldown** | Minimum seconds between barks |
-| **Speaker Name** | The speaker name this NPC is registered under — must match their `NPCDialogue` **Speaker Name**. Used to resolve audio clips and animator actions from the bark graph's Line Sheet when the NPC node and graph have no speaker set. Populated from your SpeakerRoster assets as a dropdown. |
+| **Speaker Name** | The speaker name this NPC is registered under — must match their `NPCDialogue` **Speaker Name**. Used to resolve audio clips and animator actions from the bark graph's [Line Sheet](line-sheet.md) when the NPC node and graph have no speaker set. Populated from your [SpeakerRoster](speaker-roster.md) assets as a dropdown. |
 | **Suppress During Dialogue** | When true (default), silently skips the bark while a full conversation is active |
 
 ### 3. Wire the output

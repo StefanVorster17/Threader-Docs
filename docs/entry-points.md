@@ -19,7 +19,7 @@ Entry points let you jump to any node in a graph instead of always starting from
 
 ### Step 1 — Mark a node
 
-Right-click any node in the graph editor canvas → **Set as Entry Point**.
+Right-click any node in the [graph editor](graph-editor.md) canvas → **Set as Entry Point**.
 
 A text field appears in the popup. Type a short, descriptive key — e.g. `QuestDone`, `Repeat`, `PostBattle`. The key is case-sensitive everywhere.
 
@@ -123,7 +123,7 @@ This does not update the actor's `ActiveEntryPointKey` — it just runs from tha
 
 ## Auto-switching with End nodes
 
-Every **End Node** has a **Next entry** dropdown. When dialogue reaches this end node, the runner automatically calls `actor.SetEntryPoint(key)` with the selected key.
+Every **[End Node](nodes.md#end-node-e)** has a **Next entry** dropdown. When dialogue reaches this end node, the runner automatically calls `actor.SetEntryPoint(key)` with the selected key.
 
 ![End node with Next entry dropdown](assets/images/entry-point-end-node.png){ width="320" }
 
