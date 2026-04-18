@@ -4,6 +4,8 @@ Answers to the most common problems. Check the Unity **Console** window first â€
 
 If your issue isn't covered here, or you've found a bug, open an issue on the [GitHub repository](https://github.com/StefanVorster17/Threader-Docs/issues) â€” include your Unity version, a description of what you expected, and what actually happened.
 
+You can also join the [Threader Discord](https://discord.gg/nb8HCuX2h5) for community support and direct help.
+
 ---
 
 ## Dialogue won't start
