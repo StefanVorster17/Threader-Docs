@@ -16,6 +16,7 @@
 - **Bark system** — fire-and-forget ambient lines that run in parallel without blocking the player
 - **Line Sheet system** — per-graph companion assets that store per-speaker audio clips and animator actions for every NPC line; supports multiple speakers sharing the same graph
 - **Multi-language support** — assign multiple line sheets per graph (one per language) and switch at runtime with `SetActiveLanguage()`; line text and choice text are automatically resolved from the active language's sheet
+- **Language Library** — optional central asset that defines project-wide languages, auto-populating language slots on every graph for typo-free setup
 - **Node templates** — save any selection of nodes as a reusable drag-to-stamp template
 - **Built-in variable store** — Bool / Int / String variables with inline type-aware conditions on choices — no C# needed
 - **Text token substitution** — embed variable values directly in dialogue: `You have {gold} {gold:name}`
@@ -63,6 +64,7 @@ Seven steps to a working dialogue:
 | [Sub-Graph](sub-graph.md) | Call any graph from within another and return |
 | [Bark System](bark.md) | Ambient fire-and-forget lines that don't block the player |
 | [Line Sheet](line-sheet.md) | Per-speaker audio clips and animator actions for NPC lines |
+| [Translation](translation.md) | Multi-language setup, Language Library, and runtime language switching |
 | [Node Templates](templates.md) | Save and stamp node selections as reusable templates |
 | [UI](ui.md) | Built-in DialogueUI, Canvas/uGUI custom UI, and event hooks |
 | [Entry Points](entry-points.md) | Multi-branch graphs and state persistence |

@@ -2,6 +2,21 @@
 
 ---
 
+## [1.1.0] — Upcoming
+
+**Language Library**
+
+- New `LanguageLibrary` ScriptableObject — define project-wide languages in a single asset (**Create → Threader → Language Library**)
+- Assign to `DialogueManager` to auto-populate language slots on every graph Inspector (read-only labels, no free-text entry)
+- Graph Editor sidebar language dropdown populated from the library when available
+- Fully optional — projects without a library continue to use manual language entry
+
+**Bug Fixes**
+
+- Fixed `NullReferenceException` in Line Sheet popup when selecting a language with no sheet assigned (now shows a warning message instead)
+
+---
+
 ## [1.0.0] — April 16, 2026
 
 ### Core Systems

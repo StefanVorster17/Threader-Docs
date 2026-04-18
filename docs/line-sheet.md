@@ -125,6 +125,8 @@ When an NPC node plays, the manager calls `graph.GetSheet(activeLanguage)` to re
 4. Fill in each sheet with the appropriate audio clips, animator actions, and `PreviewText` translations
 5. At runtime, call `DialogueManager.Instance.SetActiveLanguage("French")` to switch languages
 
+> **Tip:** Create a [Language Library](translation.md#language-library) asset and assign it to `DialogueManager`. The library pre-fills language slots on every graph so you only need to drag in sheet assets — no manual text entry. See [Translation — Language Library](translation.md#language-library).
+
 ### Fallback behaviour
 
 `GetSheet(language)` resolves the sheet through this chain:

@@ -8,6 +8,7 @@ Threader supports multiple languages per dialogue graph through the **[Line Shee
 
 | Term | Meaning |
 |---|---|
+| **Language Library** | A `LanguageLibrary` ScriptableObject that defines all languages available in your project. Assign it to `DialogueManager` to populate language slots automatically on every graph — no manual text entry. See [Language Library](#language-library). |
 | **Line Sheet** | A `DialogueLineSheet` ScriptableObject that stores per-speaker audio clips, animator actions, and optional translated text (`PreviewText`) for every NPC line in a graph. See [Line Sheet](line-sheet.md). |
 | **Named Line Sheet** | A pairing of a language label (e.g. `"English"`, `"French"`) with a Line Sheet asset. Stored in the graph's `LineSheets` list. |
 | **Active Language** | A string held on `DialogueManager` at runtime. Determines which Named Line Sheet is selected when a graph plays. |
@@ -15,7 +16,46 @@ Threader supports multiple languages per dialogue graph through the **[Line Shee
 
 ---
 
+## Language Library
+
+A **Language Library** is a small ScriptableObject that declares which languages your project supports. When assigned to the `DialogueManager`, it replaces the manual text entry on every graph's Line Sheet list with a fixed set of language slots — one per language you defined. This prevents typos and ensures every graph uses the same language names.
+
+### Create a Language Library
+
+1. Right-click in the Project window → **Create → Threader → Language Library**.
+2. Name it (e.g. `ProjectLanguages`).
+3. In the Inspector, add your languages to the **Languages** list. The first entry is the default/primary language.
+
+Example:
+
+| Index | Language |
+|---|---|
+| 0 | `English` |
+| 1 | `French` |
+| 2 | `Japanese` |
+
+### Assign it to DialogueManager
+
+Select the `DialogueManager` in your scene and drag the Language Library asset into the **Language Library** field.
+
+Once assigned:
+
+- Every `DialogueGraph` Inspector shows one **read-only** language row per library entry. You only need to drag in the Line Sheet asset — the language name is locked.
+- The graph editor sidebar **LANGUAGE** dropdown is populated from the library.
+- Adding a new language to the library automatically adds a slot on every graph.
+- Removing a language from the library removes the slot (existing sheet references are preserved if you re-add the language later).
+
+> **Not required.** The Language Library is optional. If no library is assigned, the graph Inspector falls back to the original manual mode — free-text language fields with a **+ Add Language** button. This is fully backwards-compatible with existing projects.
+
+---
+
 ## Setup
+
+### 0. (Recommended) Create a Language Library
+
+If your project uses multiple languages, start by creating a [Language Library](#language-library) as described above. This ensures consistent language names across all graphs and saves time when setting up new graphs.
+
+If you only need a single language or prefer manual control, skip this step.
 
 ### 1. Create one Line Sheet per language
 
@@ -35,7 +75,7 @@ You can create sheets via:
 
 ### 2. Register sheets on the graph
 
-Open the `DialogueGraph` asset in the Inspector (or use the Graph Editor sidebar). In the **Line Sheets** section, add one entry per language:
+Open the `DialogueGraph` asset in the Inspector (or use the Graph Editor sidebar). In the **Line Sheets** section, assign one sheet per language:
 
 | Language | Sheet |
 |---|---|
@@ -43,7 +83,9 @@ Open the `DialogueGraph` asset in the Inspector (or use the Graph Editor sidebar
 | `French` | `VillagerGraph_FR` |
 | `Japanese` | `VillagerGraph_JP` |
 
-Click **+ Add Language** to add a new row. Each row has a text field for the language label and an object field for the sheet asset.
+**With a Language Library:** The language names are pre-filled and read-only. Just drag in each sheet asset.
+
+**Without a Language Library (manual mode):** Click **+ Add Language** to add a new row. Each row has a text field for the language label and an object field for the sheet asset.
 
 > The **first entry** in the list is the default/primary language. When no active language is set, or when the requested language is not found, this sheet is used as the fallback.
 

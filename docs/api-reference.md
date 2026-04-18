@@ -26,6 +26,7 @@ DialogueManager.Instance  // null when no manager exists in the scene
 | `conditionProvider` | `ConditionProvider` | Optional. Assigned providers are forwarded to `ConditionService.SetProvider` in `Awake`. |
 | `_variablesList` | `List<DialogueVariables>` | Assets searched in order for variable lookups. Exposed as `VariablesList`. |
 | `_speakerRosters` | `List<SpeakerRoster>` | Assets that populate speaker dropdowns in the editor. Exposed as `SpeakerRosters`. |
+| `_languageLibrary` | `LanguageLibrary` | Optional. Central language list. When assigned, graph Inspector language slots are driven by the library instead of free-text entry. Exposed as `LanguageLibrary`. |
 | `linePause` | `float` | Seconds to wait after each NPC line before advancing. Default: 1. |
 | `OnDialogueStarted` | `UnityEvent` | Inspector-wired event fired when dialogue starts. |
 | `OnDialogueEnded` | `UnityEvent` | Inspector-wired event fired when dialogue ends. |
@@ -99,6 +100,7 @@ Wire this to a world-space speech bubble, HUD ticker, or any component that shou
 | `ConditionProvider` | `ConditionProvider` | The provider assigned in the Inspector (read-only) |
 | `VariablesList` | `IReadOnlyList<DialogueVariables>` | All assigned variable assets |
 | `SpeakerRosters` | `IReadOnlyList<SpeakerRoster>` | All assigned roster assets |
+| `LanguageLibrary` | `LanguageLibrary` | The Language Library assigned in the Inspector. `null` if not set. |
 
 ### Methods
 
@@ -366,6 +368,20 @@ public class NamedLineSheet
 ```
 
 Pairs a language identifier with a `DialogueLineSheet` asset. Stored in `DialogueGraph.LineSheets`. The `Language` string is matched against `DialogueManager.ActiveLanguage` at runtime.
+
+---
+
+## LanguageLibrary
+
+`LanguageLibrary : ScriptableObject`
+
+Create via **Assets → Create → Threader → Language Library**.
+
+| Field | Type | Description |
+|---|---|---|
+| `Languages` | `List<string>` | Ordered list of language names. The first entry is the default/primary language. |
+
+Assign to `DialogueManager` to drive language slots on all graph Inspectors. When a library is present, the Graph Editor shows one read-only row per library language instead of free-text entry. See [Translation — Language Library](translation.md#language-library).
 
 ---
 
