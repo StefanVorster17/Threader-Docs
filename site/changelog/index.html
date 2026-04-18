@@ -1292,17 +1292,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#110-upcoming" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        [1.1.0] — Upcoming
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#100-april-16-2026" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1516,17 +1505,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#110-upcoming" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        [1.1.0] — Upcoming
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#100-april-16-2026" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1716,19 +1694,6 @@
 
 <h1 id="changelog">Changelog</h1>
 <hr />
-<h2 id="110-upcoming">[1.1.0] — Upcoming</h2>
-<p><strong>Language Library</strong></p>
-<ul>
-<li>New <code>LanguageLibrary</code> ScriptableObject — define project-wide languages in a single asset (<strong>Create → Threader → Language Library</strong>)</li>
-<li>Assign to <code>DialogueManager</code> to auto-populate language slots on every graph Inspector (read-only labels, no free-text entry)</li>
-<li>Graph Editor sidebar language dropdown populated from the library when available</li>
-<li>Fully optional — projects without a library continue to use manual language entry</li>
-</ul>
-<p><strong>Bug Fixes</strong></p>
-<ul>
-<li>Fixed <code>NullReferenceException</code> in Line Sheet popup when selecting a language with no sheet assigned (now shows a warning message instead)</li>
-</ul>
-<hr />
 <h2 id="100-april-16-2026">[1.0.0] — April 16, 2026</h2>
 <h3 id="core-systems">Core Systems</h3>
 <p><strong>Graph Editor</strong>
@@ -1807,6 +1772,7 @@
 <li><strong>Line Sheet Editor window</strong> — whole-graph overview of all NPC nodes and lines; accessible from the graph editor sidebar (PROJECT → Line Sheet Editor).</li>
 <li><strong>Batch sync</strong> — <code>Threader → Create &amp; Sync All Line Sheets</code> creates and syncs sheets for every graph in the project at once.</li>
 <li><strong>Multi-language support</strong> — <code>DialogueGraph</code> has a <code>LineSheets</code> list (<code>List&lt;NamedLineSheet&gt;</code>) allowing one line sheet per language. <code>DialogueManager.SetActiveLanguage(string)</code> selects the active language at runtime. The active sheet's <code>PreviewText</code> fields override NPC line text and choice text for localization. <code>DialogueManager.ActiveLanguage</code> reads the current language.</li>
+<li><strong>Language Library</strong> — optional <code>LanguageLibrary</code> ScriptableObject (<strong>Create → Threader → Language Library</strong>) defines project-wide languages in a single asset. Assign to <code>DialogueManager</code> to auto-populate language slots on every graph Inspector with read-only labels instead of free-text entry.</li>
 <li><strong>Choice text localization</strong> — <code>ChoiceSheetRow</code> class stores localized choice text per Player Choice node per language in the line sheet.</li>
 <li><strong>Redesigned <code>DialogueGraph</code> Inspector</strong> — dark header panel, stats row (nodes, NPC lines, entry points, groups), a "Used By" section showing all scene objects referencing the graph, and an editable Line Sheet field.</li>
 <li><strong>Redesigned <code>DialogueLineSheet</code> Inspector</strong> — stats row (lines, speakers, clips, orphaned rows), description, read-only source graph reference, and an <strong>Open Line Sheet Editor</strong> button.</li>
