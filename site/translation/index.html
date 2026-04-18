@@ -968,6 +968,45 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#language-library" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Language Library
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Language Library">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-a-language-library" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Create a Language Library
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assign-it-to-dialoguemanager" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Assign it to DialogueManager
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#setup" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -978,6 +1017,17 @@
   
     <nav class="md-nav" aria-label="Setup">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#0-recommended-create-a-language-library" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0. (Recommended) Create a Language Library
+      
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#1-create-one-line-sheet-per-language" class="md-nav__link">
@@ -1585,6 +1635,45 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#language-library" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Language Library
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Language Library">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-a-language-library" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Create a Language Library
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assign-it-to-dialoguemanager" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Assign it to DialogueManager
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#setup" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1595,6 +1684,17 @@
   
     <nav class="md-nav" aria-label="Setup">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#0-recommended-create-a-language-library" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0. (Recommended) Create a Language Library
+      
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#1-create-one-line-sheet-per-language" class="md-nav__link">
@@ -1841,6 +1941,10 @@
 </thead>
 <tbody>
 <tr>
+<td><strong>Language Library</strong></td>
+<td>A <code>LanguageLibrary</code> ScriptableObject that defines all languages available in your project. Assign it to <code>DialogueManager</code> to populate language slots automatically on every graph — no manual text entry. See <a href="#language-library">Language Library</a>.</td>
+</tr>
+<tr>
 <td><strong>Line Sheet</strong></td>
 <td>A <code>DialogueLineSheet</code> ScriptableObject that stores per-speaker audio clips, animator actions, and optional translated text (<code>PreviewText</code>) for every NPC line in a graph. See <a href="../line-sheet/">Line Sheet</a>.</td>
 </tr>
@@ -1859,7 +1963,54 @@
 </tbody>
 </table>
 <hr />
+<h2 id="language-library">Language Library</h2>
+<p>A <strong>Language Library</strong> is a small ScriptableObject that declares which languages your project supports. When assigned to the <code>DialogueManager</code>, it replaces the manual text entry on every graph's Line Sheet list with a fixed set of language slots — one per language you defined. This prevents typos and ensures every graph uses the same language names.</p>
+<h3 id="create-a-language-library">Create a Language Library</h3>
+<ol>
+<li>Right-click in the Project window → <strong>Create → Threader → Language Library</strong>.</li>
+<li>Name it (e.g. <code>ProjectLanguages</code>).</li>
+<li>In the Inspector, add your languages to the <strong>Languages</strong> list. The first entry is the default/primary language.</li>
+</ol>
+<p>Example:</p>
+<table>
+<thead>
+<tr>
+<th>Index</th>
+<th>Language</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td><code>English</code></td>
+</tr>
+<tr>
+<td>1</td>
+<td><code>French</code></td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>Japanese</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="assign-it-to-dialoguemanager">Assign it to DialogueManager</h3>
+<p>Select the <code>DialogueManager</code> in your scene and drag the Language Library asset into the <strong>Language Library</strong> field.</p>
+<p>Once assigned:</p>
+<ul>
+<li>Every <code>DialogueGraph</code> Inspector shows one <strong>read-only</strong> language row per library entry. You only need to drag in the Line Sheet asset — the language name is locked.</li>
+<li>The graph editor sidebar <strong>LANGUAGE</strong> dropdown is populated from the library.</li>
+<li>Adding a new language to the library automatically adds a slot on every graph.</li>
+<li>Removing a language from the library removes the slot (existing sheet references are preserved if you re-add the language later).</li>
+</ul>
+<blockquote>
+<p><strong>Not required.</strong> The Language Library is optional. If no library is assigned, the graph Inspector falls back to the original manual mode — free-text language fields with a <strong>+ Add Language</strong> button. This is fully backwards-compatible with existing projects.</p>
+</blockquote>
+<hr />
 <h2 id="setup">Setup</h2>
+<h3 id="0-recommended-create-a-language-library">0. (Recommended) Create a Language Library</h3>
+<p>If your project uses multiple languages, start by creating a <a href="#language-library">Language Library</a> as described above. This ensures consistent language names across all graphs and saves time when setting up new graphs.</p>
+<p>If you only need a single language or prefer manual control, skip this step.</p>
 <h3 id="1-create-one-line-sheet-per-language">1. Create one Line Sheet per language</h3>
 <p>For each graph that needs translation, create one <code>DialogueLineSheet</code> asset per language. The recommended naming convention is <code>{GraphName}_{LanguageCode}.asset</code>:</p>
 <pre><code>VillagerGraph_EN.asset
@@ -1873,7 +2024,7 @@ VillagerGraph_JP.asset
 <li><strong>Manually</strong> — right-click in the Project window → <strong>Create → Threader → Line Sheet</strong></li>
 </ul>
 <h3 id="2-register-sheets-on-the-graph">2. Register sheets on the graph</h3>
-<p>Open the <code>DialogueGraph</code> asset in the Inspector (or use the Graph Editor sidebar). In the <strong>Line Sheets</strong> section, add one entry per language:</p>
+<p>Open the <code>DialogueGraph</code> asset in the Inspector (or use the Graph Editor sidebar). In the <strong>Line Sheets</strong> section, assign one sheet per language:</p>
 <table>
 <thead>
 <tr>
@@ -1896,7 +2047,8 @@ VillagerGraph_JP.asset
 </tr>
 </tbody>
 </table>
-<p>Click <strong>+ Add Language</strong> to add a new row. Each row has a text field for the language label and an object field for the sheet asset.</p>
+<p><strong>With a Language Library:</strong> The language names are pre-filled and read-only. Just drag in each sheet asset.</p>
+<p><strong>Without a Language Library (manual mode):</strong> Click <strong>+ Add Language</strong> to add a new row. Each row has a text field for the language label and an object field for the sheet asset.</p>
 <blockquote>
 <p>The <strong>first entry</strong> in the list is the default/primary language. When no active language is set, or when the requested language is not found, this sheet is used as the fallback.</p>
 </blockquote>

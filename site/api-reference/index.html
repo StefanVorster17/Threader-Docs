@@ -1365,6 +1365,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#languagelibrary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LanguageLibrary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#barksource" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2173,6 +2184,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#languagelibrary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LanguageLibrary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#barksource" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2540,6 +2562,11 @@
 <td>Assets that populate speaker dropdowns in the editor. Exposed as <code>SpeakerRosters</code>.</td>
 </tr>
 <tr>
+<td><code>_languageLibrary</code></td>
+<td><code>LanguageLibrary</code></td>
+<td>Optional. Central language list. When assigned, graph Inspector language slots are driven by the library instead of free-text entry. Exposed as <code>LanguageLibrary</code>.</td>
+</tr>
+<tr>
 <td><code>linePause</code></td>
 <td><code>float</code></td>
 <td>Seconds to wait after each NPC line before advancing. Default: 1.</td>
@@ -2647,6 +2674,11 @@ event Action&lt;NPCLine&gt; OnBark;
 <td><code>SpeakerRosters</code></td>
 <td><code>IReadOnlyList&lt;SpeakerRoster&gt;</code></td>
 <td>All assigned roster assets</td>
+</tr>
+<tr>
+<td><code>LanguageLibrary</code></td>
+<td><code>LanguageLibrary</code></td>
+<td>The Language Library assigned in the Inspector. <code>null</code> if not set.</td>
 </tr>
 </tbody>
 </table>
@@ -2977,6 +3009,27 @@ public class NamedLineSheet
 }
 </code></pre>
 <p>Pairs a language identifier with a <code>DialogueLineSheet</code> asset. Stored in <code>DialogueGraph.LineSheets</code>. The <code>Language</code> string is matched against <code>DialogueManager.ActiveLanguage</code> at runtime.</p>
+<hr />
+<h2 id="languagelibrary">LanguageLibrary</h2>
+<p><code>LanguageLibrary : ScriptableObject</code></p>
+<p>Create via <strong>Assets → Create → Threader → Language Library</strong>.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Languages</code></td>
+<td><code>List&lt;string&gt;</code></td>
+<td>Ordered list of language names. The first entry is the default/primary language.</td>
+</tr>
+</tbody>
+</table>
+<p>Assign to <code>DialogueManager</code> to drive language slots on all graph Inspectors. When a library is present, the Graph Editor shows one read-only row per library language instead of free-text entry. See <a href="../translation/#language-library">Translation — Language Library</a>.</p>
 <hr />
 <h2 id="barksource">BarkSource</h2>
 <p><code>BarkSource : MonoBehaviour</code></p>

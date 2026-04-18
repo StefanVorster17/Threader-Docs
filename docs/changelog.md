@@ -2,21 +2,6 @@
 
 ---
 
-## [1.1.0] — Upcoming
-
-**Language Library**
-
-- New `LanguageLibrary` ScriptableObject — define project-wide languages in a single asset (**Create → Threader → Language Library**)
-- Assign to `DialogueManager` to auto-populate language slots on every graph Inspector (read-only labels, no free-text entry)
-- Graph Editor sidebar language dropdown populated from the library when available
-- Fully optional — projects without a library continue to use manual language entry
-
-**Bug Fixes**
-
-- Fixed `NullReferenceException` in Line Sheet popup when selecting a language with no sheet assigned (now shows a warning message instead)
-
----
-
 ## [1.0.0] — April 16, 2026
 
 ### Core Systems
@@ -106,6 +91,7 @@
 - **Line Sheet Editor window** — whole-graph overview of all NPC nodes and lines; accessible from the graph editor sidebar (PROJECT → Line Sheet Editor).
 - **Batch sync** — `Threader → Create & Sync All Line Sheets` creates and syncs sheets for every graph in the project at once.
 - **Multi-language support** — `DialogueGraph` has a `LineSheets` list (`List<NamedLineSheet>`) allowing one line sheet per language. `DialogueManager.SetActiveLanguage(string)` selects the active language at runtime. The active sheet's `PreviewText` fields override NPC line text and choice text for localization. `DialogueManager.ActiveLanguage` reads the current language.
+- **Language Library** — optional `LanguageLibrary` ScriptableObject (**Create → Threader → Language Library**) defines project-wide languages in a single asset. Assign to `DialogueManager` to auto-populate language slots on every graph Inspector with read-only labels instead of free-text entry.
 - **Choice text localization** — `ChoiceSheetRow` class stores localized choice text per Player Choice node per language in the line sheet.
 - **Redesigned `DialogueGraph` Inspector** — dark header panel, stats row (nodes, NPC lines, entry points, groups), a "Used By" section showing all scene objects referencing the graph, and an editable Line Sheet field.
 - **Redesigned `DialogueLineSheet` Inspector** — stats row (lines, speakers, clips, orphaned rows), description, read-only source graph reference, and an **Open Line Sheet Editor** button.

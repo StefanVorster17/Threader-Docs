@@ -1897,6 +1897,9 @@ string lang = DialogueManager.Instance.ActiveLanguage;
 <li>Fill in each sheet with the appropriate audio clips, animator actions, and <code>PreviewText</code> translations</li>
 <li>At runtime, call <code>DialogueManager.Instance.SetActiveLanguage("French")</code> to switch languages</li>
 </ol>
+<blockquote>
+<p><strong>Tip:</strong> Create a <a href="../translation/#language-library">Language Library</a> asset and assign it to <code>DialogueManager</code>. The library pre-fills language slots on every graph so you only need to drag in sheet assets — no manual text entry. See <a href="../translation/#language-library">Translation — Language Library</a>.</p>
+</blockquote>
 <h3 id="fallback-behaviour">Fallback behaviour</h3>
 <p><code>GetSheet(language)</code> resolves the sheet through this chain:</p>
 <ol>
