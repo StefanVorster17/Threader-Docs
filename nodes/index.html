@@ -1625,6 +1625,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../translation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Translation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../templates/" class="md-nav__link">
         
   
@@ -2704,8 +2732,9 @@
 <h3 id="execution-order">Execution order</h3>
 <ol>
 <li><strong>Set Vars</strong> actions are applied to <code>DialogueVariables</code> (in list order)</li>
-<li><strong>Events</strong> are fired — local events trigger <code>OnNodeEvent</code>; global events also trigger <code>OnGlobalNodeEvent</code></li>
-<li><code>OnNPCNode</code> fires on the <code>DialogueRunner</code>, which the <code>DialogueManager</code> catches to begin line playback</li>
+<li><code>DialogueRunner</code> fires <code>OnNPCNode</code> → <code>DialogueManager</code> receives the node</li>
+<li><strong>Events</strong> are fired inside the handler — local events trigger <code>OnNodeEvent</code>; global events also trigger <code>OnGlobalNodeEvent</code></li>
+<li>Speaker is resolved and line playback begins</li>
 <li>Each <strong>Line</strong> in the list is displayed in sequence — <code>OnNPCLine</code> fires per line, then the UI typewriter runs, then the per-line <code>linePause</code> delay, then the player advances (or space-to-skip)</li>
 <li>After the last line, <code>Continue()</code> is called and execution moves to the next connected node</li>
 </ol>
@@ -2963,6 +2992,7 @@
 <p><img alt="Branch node wired to two paths" src="../assets/images/branch-node-wired.png" width="600" /></p>
 <hr />
 <h2 id="switch-node-s">Switch Node <code>[S]</code></h2>
+<p><img alt="Switch Node" src="../assets/images/nodes/switch.png" width="260" /></p>
 <p>Silently evaluates multiple named cases in order and routes execution to the first case whose conditions all pass. If no case matches, execution follows the <strong>Default</strong> output. No dialogue is shown — execution passes through immediately.</p>
 <p>Use Switch nodes when you have more than two possible paths based on variable state — for example, routing to different dialogue branches depending on a quest phase (not started / in progress / complete / failed).</p>
 <h3 id="execution-order_3">Execution order</h3>
@@ -3006,6 +3036,7 @@
 <p>A separate output port that fires when none of the cases match. Always present — cannot be removed.</p>
 <hr />
 <h2 id="weighted-random-node-w">Weighted Random Node <code>[W]</code></h2>
+<p><img alt="Weighted Random Node" src="../assets/images/nodes/weighted-random.png" width="260" /></p>
 <p>Picks one of its output ports at random using <strong>weighted probability</strong>. Outputs with higher weights are selected more often. No dialogue is shown — execution passes through immediately.</p>
 <p>Use Weighted Random when you want some outcomes to be more likely than others — for example, a common greeting 70% of the time and a rare greeting 10% of the time.</p>
 <h3 id="fields_5">Fields</h3>
@@ -3040,6 +3071,7 @@
 </blockquote>
 <hr />
 <h2 id="sub-graph-node-f6">Sub Graph Node <code>[F6]</code></h2>
+<p><img alt="Sub Graph Node" src="../assets/images/nodes/sub-graph.png" width="260" /></p>
 <p>Delegates execution to another <code>DialogueGraph</code> asset, then returns and continues from the connected output — exactly like a function call in code. Use it to share common dialogue sequences (generic greetings, shop flows, idle lines) across many different NPC graphs without duplicating content.</p>
 <h3 id="fields_6">Fields</h3>
 <table>

@@ -897,6 +897,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../translation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Translation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../templates/" class="md-nav__link">
         
   
@@ -1886,7 +1914,7 @@
             if (ep.Key == key)
                 return ep.NodeGuid;
         }
-        Debug.LogWarning($&quot;[DialogueGraph] Entry point key '{key}' not found in '{name}'. &quot; +
+        Debug.LogWarning($&quot;[Threader] '{name}': Entry point key '{key}' not found. &quot; +
                          &quot;Falling back to start node.&quot;);
     }
     return StartNodeGuid;

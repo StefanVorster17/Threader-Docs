@@ -16,7 +16,7 @@
         <link rel="prev" href="../bark/">
       
       
-        <link rel="next" href="../templates/">
+        <link rel="next" href="../translation/">
       
       
         
@@ -1024,10 +1024,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#choice-text-localization" class="md-nav__link">
+  <a href="#choice-text-localization-editor-preview-only" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Choice text localization
+        Choice text localization (editor preview only)
       
     </span>
   </a>
@@ -1137,6 +1137,34 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../translation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Translation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -1608,10 +1636,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#choice-text-localization" class="md-nav__link">
+  <a href="#choice-text-localization-editor-preview-only" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Choice text localization
+        Choice text localization (editor preview only)
       
     </span>
   </a>
@@ -1794,7 +1822,7 @@
 <li><code>NPCLine.Text</code> on the node itself (the original/source language)</li>
 </ol>
 <p>This is the primary mechanism for localising NPC dialogue text without editing the graph.</p>
-<h3 id="choice-text-localization">Choice text localization</h3>
+<h3 id="choice-text-localization-editor-preview-only">Choice text localization (editor preview only)</h3>
 <p>Each line sheet also stores <strong>ChoiceSheetRow</strong> entries for Player Choice nodes. A <code>ChoiceSheetRow</code> has:</p>
 <table>
 <thead>
@@ -1819,6 +1847,9 @@
 </tbody>
 </table>
 <p>Choice rows are looked up via <code>sheet.LookupChoiceRow(nodeGuid, choiceIndex)</code>.</p>
+<blockquote>
+<p><strong>Important:</strong> Choice text localization via the line sheet is currently used for <strong>editor preview only</strong>. The graph editor reads <code>ChoiceSheetRow.PreviewText</code> so you can see translated choice text while authoring, but at runtime <code>DialogueManager.HandleChoices</code> takes choice text from <code>ChoiceData.Text</code> on the node (with <code>{variable}</code> token substitution). If you need localized choice text at runtime, override the text in your <code>OnChoiceNode</code> handler by looking up the active sheet yourself, or manage choice translations through your own localisation pipeline.</p>
+</blockquote>
 <hr />
 <h2 id="multi-language-support">Multi-language support</h2>
 <p>Threader supports multiple languages per graph using the <strong>LineSheets</strong> list on <code>DialogueGraph</code>. Instead of a single sheet, a graph can have one sheet per language — each sheet stores its own audio clips, animator actions, and localized text.</p>
@@ -1861,13 +1892,23 @@ string lang = DialogueManager.Instance.ActiveLanguage;
 <li>At runtime, call <code>DialogueManager.Instance.SetActiveLanguage("French")</code> to switch languages</li>
 </ol>
 <h3 id="fallback-behaviour">Fallback behaviour</h3>
+<p><code>GetSheet(language)</code> resolves the sheet through this chain:</p>
+<ol>
+<li>If the graph has <strong>no sheets at all</strong> (<code>LineSheets</code> is empty) → returns the legacy single <code>LineSheet</code> field (or <code>null</code> if that is also unset)</li>
+<li>If <code>language</code> is <strong>non-empty</strong> and a matching <code>NamedLineSheet</code> entry exists → returns that sheet</li>
+<li>If <code>language</code> is <strong>non-empty</strong> but no match is found → falls back to the <strong>first sheet</strong> in the list (the primary/default language)</li>
+<li>If <code>language</code> is <strong>null or empty</strong> → returns the <strong>first sheet</strong> in the list</li>
+</ol>
+<p>This means the first entry in the <code>LineSheets</code> list acts as the default language. A graph with at least one sheet always returns a sheet — it never returns <code>null</code> unless the first entry's Sheet field is unassigned.</p>
+<p>For individual lines and rows:</p>
 <ul>
-<li>If the active language has no matching sheet, or the sheet has no matching row, the system falls back to the original node text and plays silently (no audio)</li>
-<li>If <code>ActiveLanguage</code> is null or empty, <code>GetSheet</code> returns <code>null</code> and the original node text is used</li>
-<li>The language string comparison is exact (case-sensitive)</li>
+<li>If the resolved sheet has no matching row for a given node/line, or the row's <code>PreviewText</code> is empty, the system falls back to the original text on the NPC node</li>
+<li>If the resolved sheet has no matching <code>LineSheetSpeakerEntry</code> for the current speaker, the line plays silently (no audio clip)</li>
+<li>The language string comparison is <strong>exact</strong> (case-sensitive) — <code>"French"</code> ≠ <code>"french"</code></li>
 </ul>
 <h3 id="legacy-single-sheet-field">Legacy single-sheet field</h3>
-<p>For backwards compatibility, <code>DialogueGraph</code> retains a legacy <code>LineSheet</code> field (hidden in the Inspector). Graphs created before multi-language support will continue to work. When migrating, move the existing sheet into the <code>LineSheets</code> list with an appropriate language label.</p>
+<p>For backwards compatibility, <code>DialogueGraph</code> retains a legacy <code>LineSheet</code> field (hidden in the Inspector). Graphs created before multi-language support will continue to work — <code>GetSheet</code> falls back to the legacy field when the <code>LineSheets</code> list is empty.</p>
+<p>When you open a graph with a legacy sheet in the Inspector, a warning box with a <strong>Migrate to Multi-Language Sheets</strong> button appears. Clicking it moves the existing sheet into the <code>LineSheets</code> list as the <code>"Default"</code> language entry and clears the legacy field.</p>
 <hr />
 <h2 id="speaker-name-fallback">Speaker name fallback</h2>
 <p>The speaker name used for line sheet lookup follows the same resolution chain as speaker registration:</p>
@@ -1889,11 +1930,11 @@ string lang = DialogueManager.Instance.ActiveLanguage;
 </tr>
 <tr>
 <td>3</td>
-<td><code>BarkSource.speakerName</code> <em>(bark graphs only)</em></td>
+<td>Current actor's <strong>Speaker Name</strong> <em>(main dialogue)</em> or <code>BarkSource.speakerName</code> <em>(bark graphs)</em></td>
 </tr>
 </tbody>
 </table>
-<p>This means a shared bark graph with no speaker set on nodes will automatically pick the correct speaker's clips based on which <code>BarkSource</code> triggered it.</p>
+<p>This means a shared graph with no speaker set on nodes will automatically pick the correct speaker's clips based on which actor triggered the dialogue.</p>
 <hr />
 <h2 id="inspector">Inspector</h2>
 <p>Selecting a <code>DialogueLineSheet</code> asset shows:</p>
