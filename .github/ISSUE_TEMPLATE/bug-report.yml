@@ -72,6 +72,18 @@ body:
     validations:
       required: false
 
+  - type: dropdown
+    id: severity
+    attributes:
+      label: How severe is this bug?
+      options:
+        - Minor — cosmetic or low impact
+        - Moderate — affects workflow but has a workaround
+        - Major — no workaround, significantly impacts the project
+        - Critical — crashes Unity or causes data loss
+    validations:
+      required: true
+
   - type: textarea
     id: extra
     attributes:
