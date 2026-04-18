@@ -1326,6 +1326,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#namedlinesheet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NamedLineSheet
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#barksource" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1585,6 +1596,39 @@
     <span class="md-ellipsis">
       
         DialogueEntryPoint
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#switchnode-data-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SwitchNode (data classes)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#weightedrandomnode-data-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        WeightedRandomNode (data classes)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#choicesheetrow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ChoiceSheetRow
       
     </span>
   </a>
@@ -2090,6 +2134,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#namedlinesheet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NamedLineSheet
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#barksource" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2356,6 +2411,39 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#switchnode-data-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SwitchNode (data classes)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#weightedrandomnode-data-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        WeightedRandomNode (data classes)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#choicesheetrow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ChoiceSheetRow
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#enums" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2513,6 +2601,11 @@ event Action&lt;NPCLine&gt; OnBark;
 <td><code>true</code> while dialogue is active <strong>and</strong> the current node does not have <strong>Prevent Dialogue Exit</strong> enabled</td>
 </tr>
 <tr>
+<td><code>ActiveLanguage</code></td>
+<td><code>string</code></td>
+<td>The currently active language for line sheet resolution. Set via <code>SetActiveLanguage()</code>.</td>
+</tr>
+<tr>
 <td><code>ConditionProvider</code></td>
 <td><code>ConditionProvider</code></td>
 <td>The provider assigned in the Inspector (read-only)</td>
@@ -2572,6 +2665,13 @@ void UnregisterSpeaker(string name)
 <pre><code class="language-csharp">void SetBlocked(bool value)
 </code></pre>
 <p>Manually block or unblock all registered blockables. Call if you need to freeze the player for reasons other than dialogue (e.g. a cutscene that runs alongside dialogue). Normally called internally.</p>
+<hr />
+<pre><code class="language-csharp">void SetActiveLanguage(string language)
+</code></pre>
+<p>Sets the active language for line sheet resolution. When a language is set, <code>DialogueManager</code> calls <code>graph.GetSheet(activeLanguage)</code> to retrieve the language-specific sheet for each graph. The sheet's <code>PreviewText</code> fields provide localised NPC line text, and the sheet's audio clips provide language-specific VO.</p>
+<p>Call once from your language/settings menu — the setting persists for the lifetime of the <code>DialogueManager</code> instance.</p>
+<pre><code class="language-csharp">DialogueManager.Instance.SetActiveLanguage(&quot;French&quot;);
+</code></pre>
 <hr />
 <h3 id="audio-behaviour">Audio behaviour</h3>
 <ul>
@@ -2825,9 +2925,9 @@ void UnregisterSpeaker(string name)
 <td>Sticky notes (editor-only)</td>
 </tr>
 <tr>
-<td><code>LineSheet</code></td>
-<td><code>DialogueLineSheet</code></td>
-<td>Optional companion asset that stores per-speaker audio clips and animator actions for each NPC line in this graph.</td>
+<td><code>LineSheets</code></td>
+<td><code>List&lt;NamedLineSheet&gt;</code></td>
+<td>Per-language line sheet assignments. Each entry pairs a language string with a <code>DialogueLineSheet</code> asset. See <a href="../line-sheet/#multi-language-support">Line Sheet — Multi-language support</a>.</td>
 </tr>
 </tbody>
 </table>
@@ -2835,6 +2935,20 @@ void UnregisterSpeaker(string name)
 <pre><code class="language-csharp">string ResolveEntryPointGuid(string key)
 </code></pre>
 <p>Returns the node GUID for <code>key</code>. Falls back to <code>StartNodeGuid</code> if <code>key</code> is null, empty, or not found. Logs a warning (not an error) on fallback when a non-empty key was supplied. Called by <code>DialogueManager.StartDialogue</code>.</p>
+<hr />
+<pre><code class="language-csharp">DialogueLineSheet GetSheet(string language)
+</code></pre>
+<p>Searches the <code>LineSheets</code> list for an entry whose <code>Language</code> matches <code>language</code> (case-sensitive). Returns the corresponding <code>DialogueLineSheet</code>, or <code>null</code> if no match is found. Called internally by <code>DialogueManager</code> when resolving audio clips and localized text for each NPC line.</p>
+<hr />
+<h2 id="namedlinesheet">NamedLineSheet</h2>
+<pre><code class="language-csharp">[Serializable]
+public class NamedLineSheet
+{
+    public string Language;
+    public DialogueLineSheet Sheet;
+}
+</code></pre>
+<p>Pairs a language identifier with a <code>DialogueLineSheet</code> asset. Stored in <code>DialogueGraph.LineSheets</code>. The <code>Language</code> string is matched against <code>DialogueManager.ActiveLanguage</code> at runtime.</p>
 <hr />
 <h2 id="barksource">BarkSource</h2>
 <p><code>BarkSource : MonoBehaviour</code></p>
@@ -3186,6 +3300,49 @@ public class DialogueEntryPoint
 </code></pre>
 <p>Stored on <code>DialogueGraph.EntryPoints</code>. Set via right-click → <strong>Set as Entry Point</strong> in the graph editor.</p>
 <hr />
+<h2 id="switchnode-data-classes">SwitchNode (data classes)</h2>
+<pre><code class="language-csharp">public class SwitchNode : DialogueNode
+{
+    public List&lt;SwitchCase&gt; Cases;
+    public string DefaultNodeGuid;
+}
+</code></pre>
+<pre><code class="language-csharp">[Serializable]
+public class SwitchCase
+{
+    public string Label;
+    public List&lt;VariableCondition&gt; Conditions;
+    public string NextNodeGuid;
+}
+</code></pre>
+<p>Each <code>SwitchCase</code> holds a label, a list of variable conditions (AND logic), and an output GUID. Cases are evaluated top-to-bottom; the first match wins. <code>DefaultNodeGuid</code> is followed when no case matches.</p>
+<hr />
+<h2 id="weightedrandomnode-data-classes">WeightedRandomNode (data classes)</h2>
+<pre><code class="language-csharp">public class WeightedRandomNode : DialogueNode
+{
+    public List&lt;WeightedOutput&gt; Outputs;
+}
+</code></pre>
+<pre><code class="language-csharp">[Serializable]
+public class WeightedOutput
+{
+    public float Weight;
+    public string NextNodeGuid;
+}
+</code></pre>
+<p>Each output has a <code>Weight</code> (float). At runtime, one output is selected randomly with probability proportional to its weight relative to the total.</p>
+<hr />
+<h2 id="choicesheetrow">ChoiceSheetRow</h2>
+<pre><code class="language-csharp">[Serializable]
+public class ChoiceSheetRow
+{
+    public string NodeGuid;
+    public int    ChoiceIndex;
+    public string PreviewText;
+}
+</code></pre>
+<p>Stored in <code>DialogueLineSheet.ChoiceRows</code>. Holds localized choice text for a specific choice on a Player Choice node. Looked up via <code>sheet.LookupChoiceRow(nodeGuid, choiceIndex)</code>.</p>
+<hr />
 <h2 id="enums">Enums</h2>
 <pre><code class="language-csharp">public enum VariableType   { Bool, Int, String }
 public enum SetOperator    { Set, Add, Subtract, Toggle }
@@ -3204,7 +3361,7 @@ public enum NodeType
     NPC, PlayerChoice, End,
     Branch, SetVariable, Random, Jump,
     Debug, Wait, FireEvent, PlayAudio, AnimatorTrigger,
-    SubGraph
+    SubGraph, Switch, WeightedRandom
 }
 </code></pre>
 

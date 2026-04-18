@@ -1875,6 +1875,7 @@
 </tr>
 </tbody>
 </table>
+<p><strong>Referenced by</strong> is a collapsible sub-section inside PROJECT that lists every other graph in the project that references the currently loaded graph as a sub-graph. This is scanned automatically when a graph is loaded. If no graph references it the panel shows "Not referenced by any graph."</p>
 <p>An orange <strong>● Unsaved</strong> indicator appears in the toolbar whenever the graph has changes not yet written to disk. Closing the window or switching graphs while unsaved changes are present will prompt you to save.</p>
 <h3 id="graph">GRAPH</h3>
 <table>
@@ -1946,7 +1947,7 @@
 <p>A set of colour-coded pills for every node type, grouped into categories:</p>
 <ul>
 <li><strong>Dialogue</strong> — NPC Node, Player Choice Node, End Node</li>
-<li><strong>Logic</strong> — Branch Node, Jump Node, Random Node, Sub Graph Node</li>
+<li><strong>Logic</strong> — Branch Node, Jump Node, Random Node, Weighted Random Node, Switch Node, Sub Graph Node</li>
 <li><strong>Data / Events</strong> — Set Variable Node, Fire Event Node, Play Audio Node, Animator Trigger Node</li>
 <li><strong>Utility</strong> — Debug Node, Wait Node, Group, Sticky Note</li>
 </ul>
@@ -2022,6 +2023,18 @@
 <td>Create Wait Node</td>
 </tr>
 <tr>
+<td><code>F6</code></td>
+<td>Create Sub Graph Node</td>
+</tr>
+<tr>
+<td><code>W</code></td>
+<td>Create Weighted Random Node</td>
+</tr>
+<tr>
+<td><code>S</code></td>
+<td>Create Switch Node</td>
+</tr>
+<tr>
 <td><code>G</code></td>
 <td>Group selected nodes into a comment box</td>
 </tr>
@@ -2090,12 +2103,16 @@
 <td>Clears the entry point key from this node</td>
 </tr>
 <tr>
-<td><strong>Set Colour</strong></td>
+<td><strong>Set Colour / Tag</strong></td>
 <td>Opens the colour picker (None / Red / Orange / Yellow / Green / Blue / Purple)</td>
 </tr>
 <tr>
+<td><strong>Clear Colour / Tag</strong></td>
+<td><em>(Only shown when a colour is already set.)</em> Resets the node colour to None</td>
+</tr>
+<tr>
 <td><strong>Bookmark this Node</strong></td>
-<td>Adds this node to the BOOKMARKS sidebar panel</td>
+<td>Adds this node to the BOOKMARKS sidebar panel. When the node is already bookmarked this entry changes to <strong>Remove Bookmark</strong></td>
 </tr>
 <tr>
 <td><strong>Go to Target (tagname)</strong></td>
@@ -2168,7 +2185,11 @@
 <ul>
 <li><strong>Double-click</strong> the title to rename it</li>
 <li>Click the <strong>Notes</strong> text area below the title to type multi-line annotations (saved with the graph)</li>
-<li><strong>Right-click</strong> the group to change its colour (Default / Red / Orange / Yellow / Green / Blue / Purple) or delete it</li>
+<li><strong>Right-click</strong> the group to open its context menu:</li>
+<li><strong>Rename</strong> — edits the group title inline</li>
+<li><strong>Colour</strong> submenu — set colour (None / Red / Orange / Yellow / Green / Blue / Purple)</li>
+<li><strong>Delete Group (keep nodes)</strong> — removes the group box but leaves all nodes in place</li>
+<li><strong>Delete Group and Nodes</strong> — removes the group box and deletes every node inside it</li>
 <li><strong>Drag nodes</strong> in and out of a group to include or exclude them</li>
 <li><strong>Sticky notes</strong> can also be dragged into a group; they snap in and are saved as part of that group</li>
 </ul>
@@ -2233,6 +2254,9 @@
 <li>Set Variable node has no actions</li>
 <li>Set Variable node output is not connected</li>
 <li>Random node has no outputs, or all outputs are unconnected</li>
+<li>Weighted Random node has no outputs, all outputs are unconnected, or all weights are zero</li>
+<li>Switch node has no cases (always routes to Default), a case output is not connected, or the Default output is not connected</li>
+<li>A Bark graph contains a Player Choice node (choices are not supported in bark graphs and will never be reached)</li>
 <li>End node <strong>Next entry</strong> key references an entry point not defined in this graph</li>
 <li>Named entry point references a node that no longer exists</li>
 <li>A node with <strong>Prevent Dialogue Exit</strong> enabled has no reachable End node (would leave the player permanently stuck)</li>

@@ -1543,11 +1543,18 @@
 <ul>
 <li><strong>NPC Node</strong> — each line fires <code>OnBark</code></li>
 <li><strong>Random Node</strong> — randomise which line path is taken</li>
+<li><strong>Weighted Random Node</strong> — weighted random path selection</li>
+<li><strong>Switch Node</strong> — multi-case condition routing</li>
 <li><strong>Branch Node</strong> — condition-driven bark selection</li>
 <li><strong>Set Variable Node</strong> — write variables mid-bark (e.g. mark a bark as heard)</li>
+<li><strong>Jump Node</strong> — redirect to a tagged node</li>
+<li><strong>Fire Event Node</strong> — broadcast named events during bark playback</li>
+<li><strong>Play Audio Node</strong> — play audio clips</li>
+<li><strong>Animator Trigger Node</strong> — set Animator parameters on registered speakers</li>
+<li><strong>Debug Node</strong> — log messages to the Console</li>
 <li><strong>End Node</strong> — terminates the bark, including the optional "On end -&gt;" sub-graph slot</li>
 </ul>
-<p>Bark graphs do <strong>not</strong> support Player Choice Node, Wait Node, or Sub Graph Node. These are hidden from the editor automatically.</p>
+<p>Bark graphs do <strong>not</strong> support Player Choice Node, Wait Node, or Sub Graph Node. These are hidden from the editor automatically. Wait nodes encountered in a bark graph auto-advance immediately.</p>
 <hr />
 <h2 id="setup">Setup</h2>
 <h3 id="1-create-a-bark-graph">1. Create a bark graph</h3>
