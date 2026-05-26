@@ -302,7 +302,7 @@ If no override is assigned, `DialogueManager.Awake` calls `gameObject.AddCompone
 | `FMOD/FMODAudioProvider.cs` | FMOD Studio | FMOD for Unity (`FMOD_INSTALLED` define) |
 | `WWISE/WwiseAudioProvider.cs` | Wwise | Wwise Unity Integration (`AK_WWISE_UNITY_INTEGRATION` define) |
 
-Both files are wrapped in `#if` guards and compile to nothing when the middleware is not installed.
+Both files are wrapped in `#if` guards and compile to nothing when the middleware is not installed. See [Audio — Using a middleware provider](audio.md#using-a-middleware-provider) for full setup instructions.
 
 ---
 
@@ -841,7 +841,7 @@ One row per NPC node line. Stored in `DialogueLineSheet.Rows`.
 | `NodeGuid` | GUID of the NPC node this row belongs to. |
 | `LineIndex` | 0-based index of the line within the node. |
 | `PreviewText` | Localized display text for this line. When non-empty, overrides the node's source text at runtime and in the editor preview. |
-| `LineKey` | Short identifier shared across all language sheets, your VO recording spreadsheet, and your audio middleware event bank. Examples: `"GUARD_GREET_01"`, `"CAT_LADY_FIND_CAT_002"`. Used by FMOD/Wwise providers to look up the correct event — leave empty for Unity AudioSource-only projects. Propagated automatically to all language sheets when syncing. |
+| `LineKey` | Short identifier linking this line to your VO recording spreadsheet and audio middleware event bank. Passed to `IDialogueAudioProvider.Play()` as the `lineKey` parameter. Leave empty for Unity AudioSource-only projects. Propagated to all language sheets on sync. See [Audio — Line Keys](audio.md#line-keys). |
 | `IsOrphaned` | `true` when the node or line index no longer exists in the graph. Shown as a warning stat in the Line Sheet Inspector. Re-running sync removes orphaned rows. |
 | `Speakers` | Per-speaker entries for this line. Each entry holds the `AudioClip`, `AnimatorActions`, and `SpeakerName` for one speaker. |
 
