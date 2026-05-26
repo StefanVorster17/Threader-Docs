@@ -22,7 +22,7 @@ DialogueManager.Instance  // null when no manager exists in the scene
 
 | Field | Type | Description |
 |---|---|---|
-| `audioSource` | `AudioSource` | 2D fallback audio source. Auto-created if not assigned. |
+| `audioProviderOverride` | `MonoBehaviour` | Custom audio backend. Assign any `MonoBehaviour` that implements `IDialogueAudioProvider` (e.g. `FMODAudioProvider`, `WwiseAudioProvider`). Leave empty to use the built-in `UnityAudioProvider`, which is created automatically. |
 | `conditionProvider` | `ConditionProvider` | Optional. Assigned providers are forwarded to `ConditionService.SetProvider` in `Awake`. |
 | `_variablesList` | `List<DialogueVariables>` | Assets searched in order for variable lookups. Exposed as `VariablesList`. |
 | `_speakerRosters` | `List<SpeakerRoster>` | Assets that populate speaker dropdowns in the editor. Exposed as `SpeakerRosters`. |
@@ -182,10 +182,14 @@ DialogueManager.Instance.SetActiveLanguage("French");
 
 ### Audio behaviour
 
-- When a line has an `AudioClip` and the speaker's `Transform` is in the registry, the clip plays from a hidden spatial `AudioSource` repositioned to the speaker's world position (`spatialBlend = 1`, `rolloffMode = Linear`). The runner waits with `WaitWhile(() => _spatialSource.isPlaying && !DialogueUI.SkipLineRequested)`.
-- If no speaker transform is known, the clip plays from the 2D `audioSource` component. The runner waits with `WaitWhile(() => audioSource.isPlaying && !DialogueUI.SkipLineRequested)`.
-- In both cases, if a skip is requested mid-clip, the source is stopped immediately. `linePause` is applied **after** the clip ends (also skippable).
-- When no clip exists, the runner waits for `DialogueUI.IsTyping` to become false, then waits `linePause` seconds before advancing.
+All audio playback is routed through an `IDialogueAudioProvider`. By default, `DialogueManager` creates a `UnityAudioProvider` automatically in `Awake`. To use a different backend (FMOD, Wwise, custom), assign a component implementing `IDialogueAudioProvider` to the **Audio Provider Override** field.
+
+- When a line has an audio clip or a `LineKey`, `_audio.Play(clip, lineKey, speakerName, position)` is called. If the speaker's transform is registered, `position` is that speaker's world position (3D spatial); otherwise `null` (2D).
+- The runner then waits with `WaitWhile(() => _audio.IsPlaying && !DialogueUI.SkipLineRequested)`. Custom providers must return the correct `IsPlaying` state for this to work correctly.
+- If a skip is requested mid-line, `_audio.Stop()` is called immediately. `linePause` is applied after the clip ends (also skippable).
+- When neither a clip nor a `LineKey` exists for a line, the runner waits for `DialogueUI.IsTyping` to become false, then waits `linePause` seconds before advancing.
+
+See [`IDialogueAudioProvider`](#idialogueaudioprovider) and [`UnityAudioProvider`](#unityaudioprovider) below.
 
 ---
 
@@ -257,6 +261,70 @@ public interface IDialogueReady
 ```
 
 Implement alongside `IDialogue` when your blockable needs a moment to complete a transition (a camera cut, a fade-in) before the first line is displayed. `DialogueManager.StartDialogue` waits on `WaitUntil(() => IsDialogueReady)` for every registered blockable that also implements this interface before starting the runner.
+
+---
+
+## IDialogueAudioProvider
+
+```csharp
+public interface IDialogueAudioProvider
+{
+    void  Play(AudioClip clip, string lineKey, string speakerName, Vector3? worldPosition);
+    void  Stop();
+    bool  IsPlaying { get; }
+    float Volume    { get; set; }
+}
+```
+
+The audio abstraction layer. Implement this on a `MonoBehaviour` to replace Threader's default Unity AudioSource playback with any backend — FMOD, Wwise, a custom streaming system, or a silent stub for testing.
+
+| Member | Description |
+|---|---|
+| `Play(clip, lineKey, speakerName, worldPosition)` | Begin playback. `clip` may be `null` when using a middleware backend that resolves audio from `lineKey`. `lineKey` is the [Line Key](#linesheetrow) set in the Line Sheet editor, or the **Audio Event Key** on a Play Audio node — both may be empty for Unity-only projects. `worldPosition` is the speaker's world position for 3D spatial audio, or `null` for 2D. |
+| `Stop()` | Stop all playback immediately. Called on dialogue cancel, line skip, and dialogue end. |
+| `IsPlaying` | Must return `true` while audio is still playing. `DialogueManager` uses `WaitWhile(() => _audio.IsPlaying)` to hold the coroutine until the line finishes. Returning incorrect state here will cause lines to cut short or hang. |
+| `Volume` | Master volume (0–1). Applied when `Play` is called. |
+
+### Wiring a custom provider
+
+1. Create a `MonoBehaviour` that implements `IDialogueAudioProvider`.
+2. Add it as a component on the same `GameObject` as `DialogueManager`.
+3. Drag it into the **Audio Provider Override** slot on the `DialogueManager` component.
+
+If no override is assigned, `DialogueManager.Awake` calls `gameObject.AddComponent<UnityAudioProvider>()` automatically so existing projects need no changes.
+
+### Sample providers
+
+`Assets/Threader/Samples/` contains ready-to-use reference implementations:
+
+| File | Backend | Requires |
+|---|---|---|
+| `FMOD/FMODAudioProvider.cs` | FMOD Studio | FMOD for Unity (`FMOD_INSTALLED` define) |
+| `WWISE/WwiseAudioProvider.cs` | Wwise | Wwise Unity Integration (`AK_WWISE_UNITY_INTEGRATION` define) |
+
+Both files are wrapped in `#if` guards and compile to nothing when the middleware is not installed.
+
+---
+
+## UnityAudioProvider
+
+`UnityAudioProvider : MonoBehaviour, IDialogueAudioProvider`
+
+The default `IDialogueAudioProvider`. Created automatically by `DialogueManager` when no override is assigned. Can also be added manually via **Add Component → Threader → Unity Audio Provider**.
+
+### Inspector fields
+
+| Field | Type | Description |
+|---|---|---|
+| `_2dSource` | `AudioSource` | 2D fallback source for lines with no known speaker position. Created automatically on the same `GameObject` if not assigned. |
+| `_volume` | `float` | Master volume (0–1). Applied to both sources when `Play` is called. |
+
+### Behaviour
+
+- When `worldPosition` is provided, a hidden child `GameObject` with a spatial `AudioSource` (`spatialBlend = 1`, `rolloffMode = Linear`) is repositioned to that world position and used for playback.
+- When `worldPosition` is `null`, the 2D source is used.
+- `IsPlaying` polls whichever source is currently active.
+- `Play` is a no-op when `clip` is `null` — if you only have a `lineKey` and no clip, use a middleware provider instead.
 
 ---
 
@@ -748,6 +816,34 @@ public class WeightedOutput
 ```
 
 Each output has a `Weight` (float). At runtime, one output is selected randomly with probability proportional to its weight relative to the total.
+
+---
+
+## LineSheetRow
+
+```csharp
+[Serializable]
+public class LineSheetRow
+{
+    public string NodeGuid;
+    public int    LineIndex;
+    public string PreviewText;
+    public string LineKey;
+    public bool   IsOrphaned;
+    public List<LineSheetSpeakerEntry> Speakers;
+}
+```
+
+One row per NPC node line. Stored in `DialogueLineSheet.Rows`.
+
+| Field | Description |
+|---|---|
+| `NodeGuid` | GUID of the NPC node this row belongs to. |
+| `LineIndex` | 0-based index of the line within the node. |
+| `PreviewText` | Localized display text for this line. When non-empty, overrides the node's source text at runtime and in the editor preview. |
+| `LineKey` | Short identifier shared across all language sheets, your VO recording spreadsheet, and your audio middleware event bank. Examples: `"GUARD_GREET_01"`, `"CAT_LADY_FIND_CAT_002"`. Used by FMOD/Wwise providers to look up the correct event — leave empty for Unity AudioSource-only projects. Propagated automatically to all language sheets when syncing. |
+| `IsOrphaned` | `true` when the node or line index no longer exists in the graph. Shown as a warning stat in the Line Sheet Inspector. Re-running sync removes orphaned rows. |
+| `Speakers` | Per-speaker entries for this line. Each entry holds the `AudioClip`, `AnimatorActions`, and `SpeakerName` for one speaker. |
 
 ---
 

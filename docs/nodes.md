@@ -429,13 +429,12 @@ Plays one or more `AudioClip` assets and **advances immediately** — it does no
 
 | Field | Description |
 |---|---|
-| **Speaker** | Name of the registered speaker whose world position is used for 3D spatial audio. Leave blank to fall back through: graph's **Default Speaker** → current actor's speaker name. If none resolves or no matching speaker is registered, the 2D fallback `AudioSource` on the `DialogueManager` is used instead. |
-| **Audio Clips** (+ Add) | `AudioClip` object fields. Drag assets in. Null slots are skipped. |
+| **Speaker** | Name of the registered speaker whose world position is used for 3D spatial audio. Leave blank to fall back through: graph's **Default Speaker** → current actor's speaker name. If none resolves or no matching speaker is registered, the 2D fallback source on the `DialogueManager` is used instead. |
+| **Audio Clips** (+ Add) | `AudioClip` object fields. Drag assets in. Null slots are skipped. Used by the default `UnityAudioProvider`. |
+| **Audio Event Keys** (+ Add) | Optional event key strings, one per slot. Index N of **Audio Event Keys** corresponds to index N of **Audio Clips**. Each key is passed to `IDialogueAudioProvider.Play()` as the `lineKey` parameter. Use these with FMOD or Wwise backends — set the event key here instead of (or alongside) an `AudioClip`. Empty strings are skipped alongside a null clip. |
 | **✕** | Removes a slot |
 
-If a matching speaker transform is found, the spatial `AudioSource` is repositioned to that transform and plays with full 3D (`spatialBlend = 1`). If not, the 2D `AudioSource` plays instead.
-
-> Because Play Audio Node advances immediately, it's best for short stings and sound effects. For per-speaker voice lines that the dialogue waits for, assign clips in the graph's [Line Sheet](line-sheet.md).
+> Because Play Audio Node advances immediately, it's best for short stings and sound effects. For per-speaker voice lines that the dialogue waits for, assign clips and Line Keys in the graph's [Line Sheet](line-sheet.md).
 
 ---
 

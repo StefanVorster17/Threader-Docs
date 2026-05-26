@@ -143,7 +143,7 @@ The `DialogueManager` is the central runtime component. It drives conversations,
 | **Speaker Rosters** | Drag your `MyRoster` Speaker Roster asset here. Click **+** to add more if you have multiple rosters. | Optional but strongly recommended — without it, speaker dropdowns in the graph editor are empty. |
 | **Variables List** | Drag your `GameVariables` Variables Store asset here. Click **+** to add more if you split variables across multiple assets. | Only required if your graph uses variables, conditions, or `{token}` text substitution. |
 | **Condition Provider** | Drag a `ConditionProvider` asset here if you use C# custom conditions. | Only if you use custom conditions. See [Conditions](conditions.md). |
-| **Audio Source** | An `AudioSource` for 2D (non-spatial) voice lines. | Optional — one is created automatically at runtime if you leave this empty. |
+| **Audio Provider Override** | Leave empty to use the built-in Unity AudioSource playback (a `UnityAudioProvider` is created automatically). To use FMOD, Wwise, or a custom backend, add a component implementing `IDialogueAudioProvider` to this GameObject and drag it here. See [API Reference — IDialogueAudioProvider](api-reference.md#idialogueaudioprovider). | Optional — leave empty for standard Unity audio. |
 | **Line Pause** | Seconds to wait after a line finishes before auto-advancing. Default: `1`. | Optional — adjust to taste. |
 
 > **Singleton behaviour:** `DialogueManager` sets itself as `DialogueManager.Instance` in `Awake()`. If a second `DialogueManager` exists in the scene, it destroys itself automatically. You only ever need one.

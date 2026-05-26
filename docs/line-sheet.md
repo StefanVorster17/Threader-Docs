@@ -34,12 +34,20 @@ Alternatively, click **Line Data** on any individual NPC node in the graph canva
 
 ### 3. Add speaker entries
 
-For each line, add one entry per speaker who delivers that line. Set:
+Each line has a **Line Key** field and one or more **speaker entries**. Set the Line Key first, then add one speaker entry per character who delivers that line.
+
+#### Line Key
+
+| Field | Description |
+|---|---|
+| **Line Key** | A short identifier for this line shared across all language sheets, your VO recording spreadsheet, and your audio middleware event bank. Examples: `"GUARD_GREET_01"`, `"CAT_LADY_FIND_CAT_002"`. Used by FMOD/Wwise providers to look up the correct event — leave empty for Unity AudioSource-only projects. When you sync sheets across languages, the Line Key is propagated automatically to every language's sheet so you only set it once. |
+
+#### Speaker entries
 
 | Field | Description |
 |---|---|
 | **Speaker** | Name from your [SpeakerRoster](speaker-roster.md). Must match the speaker registered with `DialogueManager`. |
-| **Clip** | The `AudioClip` played when this speaker delivers this line. |
+| **Clip** | The `AudioClip` played when this speaker delivers this line. Leave empty when using a middleware backend — the audio is resolved via the Line Key instead. |
 | **Animator Actions** | Optional list of animator parameters to fire when the line starts (parameter name, type, and value). |
 
 ---
@@ -56,13 +64,14 @@ This scans all `DialogueGraph` assets, creates a sheet next to any graph that do
 
 ## Runtime resolution
 
-At runtime, `DialogueManager` resolves the clip and animator actions for each line via:
+At runtime, `DialogueManager` resolves the clip, Line Key, and animator actions for each line via:
 
 ```csharp
-sheet.Lookup(nodeGuid, lineIndex, speakerName)
+sheet.LookupRow(nodeGuid, lineIndex)        // returns the LineSheetRow (Line Key, PreviewText)
+sheet.Lookup(nodeGuid, lineIndex, speakerName) // returns the LineSheetSpeakerEntry (Clip, AnimatorActions)
 ```
 
-The lookup returns a `LineSheetSpeakerEntry` containing the `Clip` and `AnimatorActions` for that exact node / line / speaker combination. If the graph has no sheet, or the sheet has no matching entry, the line plays silently — no crash.
+Both the `LineKey` from the row and the `AudioClip` from the speaker entry are passed to `IDialogueAudioProvider.Play()`. A Unity-only project uses the clip; a middleware backend (FMOD, Wwise) uses the key. If the graph has no sheet, or the sheet has no matching entry, the line plays silently — no crash.
 
 Sheets are created automatically next to their graph with the name `{graphName}_Sheet.asset`.
 
