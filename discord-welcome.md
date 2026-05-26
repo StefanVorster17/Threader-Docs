@@ -1,15 +1,11 @@
-# Discord Welcome Page — Threader Dialogue Kit
-# Copy each section below as a separate message in your #welcome channel.
-# Discord supports markdown — these are ready to paste.
 
----
 
 ## MESSAGE 1 — Welcome Banner
 
 ```
 ╔══════════════════════════════════════════════════════╗
-║             🧵  THREADER — DIALOGUE KIT             ║
-║         Visual Dialogue System for Unity             ║
+            🧵  THREADER — DIALOGUE KIT             
+            Visual Dialogue System for Unity             
 ╚══════════════════════════════════════════════════════╝
 ```
 
@@ -69,10 +65,6 @@ Please keep this community welcoming and productive. Breaking these rules may re
 > 🐛 `#bug-reports` — Report bugs (include Unity version + repro steps)
 > 🔧 `#troubleshooting` — Known issues and community-sourced fixes
 
-**RESOURCES**
-> 📖 `#tips-and-tricks` — Share useful workflows, patterns, and shortcuts
-> 📁 `#templates` — Share and find community-made node templates
-
 ---
 
 ## MESSAGE 4 — Quick Links & Resources
@@ -118,21 +110,6 @@ Please keep this community welcoming and productive. Breaking these rules may re
 **Step 4** — Got questions? Ask in `#help`!
 > Include your Unity version and describe what you tried — the community (and the dev) are here to help.
 
----
-
-## MESSAGE 6 — Roles (optional — configure in Discord Server Settings)
-
-# 🏷️ Roles
-
-React below to grab your roles:
-
-🟦 **Buyer** — You own Threader (get access to support channels)
-🟩 **Game Dev** — You're actively building a game with Threader
-🟨 **Writer** — You use Threader primarily for narrative design
-🔔 **Update Ping** — Get notified when a new version drops
-🐛 **Beta Tester** — Interested in testing pre-release builds
-
----
 
 ## MESSAGE 7 — FAQ
 

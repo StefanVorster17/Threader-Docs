@@ -51,7 +51,7 @@ The plan is to make this a single gesture — drag from any output port, release
 
 This collapses three steps (open CREATE panel → drag node → connect wire) into one gesture and matches how authors naturally think: "what happens after this line?"
 
-**Status:** Under consideration. High usability impact, particularly for writers and designers less familiar with node graph editors.
+**Status:** Planned for v1.1.
 
 ---
 
