@@ -3277,11 +3277,15 @@
 <tbody>
 <tr>
 <td><strong>Speaker</strong></td>
-<td>Name of the registered speaker whose world position is used for 3D spatial audio. Leave blank to fall back through: graph's <strong>Default Speaker</strong> → current actor's speaker name. If none resolves or no matching speaker is registered, the 2D fallback <code>AudioSource</code> on the <code>DialogueManager</code> is used instead.</td>
+<td>Name of the registered speaker whose world position is used for 3D spatial audio. Leave blank to fall back through: graph's <strong>Default Speaker</strong> → current actor's speaker name. If none resolves or no matching speaker is registered, the 2D fallback source on the <code>DialogueManager</code> is used instead.</td>
 </tr>
 <tr>
 <td><strong>Audio Clips</strong> (+ Add)</td>
-<td><code>AudioClip</code> object fields. Drag assets in. Null slots are skipped.</td>
+<td><code>AudioClip</code> object fields. Drag assets in. Null slots are skipped. Used by the default <code>UnityAudioProvider</code>.</td>
+</tr>
+<tr>
+<td><strong>Audio Event Keys</strong> (+ Add)</td>
+<td>Optional event key strings, one per slot. Index N of <strong>Audio Event Keys</strong> corresponds to index N of <strong>Audio Clips</strong>. Each key is passed to <code>IDialogueAudioProvider.Play()</code> as the <code>lineKey</code> parameter. Use these with FMOD or Wwise backends — set the event key here instead of (or alongside) an <code>AudioClip</code>. Empty strings are skipped alongside a null clip.</td>
 </tr>
 <tr>
 <td><strong>✕</strong></td>
@@ -3289,9 +3293,8 @@
 </tr>
 </tbody>
 </table>
-<p>If a matching speaker transform is found, the spatial <code>AudioSource</code> is repositioned to that transform and plays with full 3D (<code>spatialBlend = 1</code>). If not, the 2D <code>AudioSource</code> plays instead.</p>
 <blockquote>
-<p>Because Play Audio Node advances immediately, it's best for short stings and sound effects. For per-speaker voice lines that the dialogue waits for, assign clips in the graph's <a href="../line-sheet/">Line Sheet</a>.</p>
+<p>Because Play Audio Node advances immediately, it's best for short stings and sound effects. For per-speaker voice lines that the dialogue waits for, assign clips and Line Keys in the graph's <a href="../line-sheet/">Line Sheet</a>.</p>
 </blockquote>
 <hr />
 <h2 id="animator-trigger-node-f4">Animator Trigger Node <code>[F4]</code></h2>

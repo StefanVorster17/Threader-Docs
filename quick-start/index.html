@@ -2172,9 +2172,9 @@
 <td>Only if you use custom conditions. See <a href="../conditions/">Conditions</a>.</td>
 </tr>
 <tr>
-<td><strong>Audio Source</strong></td>
-<td>An <code>AudioSource</code> for 2D (non-spatial) voice lines.</td>
-<td>Optional — one is created automatically at runtime if you leave this empty.</td>
+<td><strong>Audio Provider Override</strong></td>
+<td>Leave empty to use the built-in Unity AudioSource playback (a <code>UnityAudioProvider</code> is created automatically). To use FMOD, Wwise, or a custom backend, add a component implementing <code>IDialogueAudioProvider</code> to this GameObject and drag it here. See <a href="../api-reference/#idialogueaudioprovider">API Reference — IDialogueAudioProvider</a>.</td>
+<td>Optional — leave empty for standard Unity audio.</td>
 </tr>
 <tr>
 <td><strong>Line Pause</strong></td>
