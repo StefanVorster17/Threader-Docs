@@ -892,6 +892,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../audio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Audio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../translation/" class="md-nav__link">
         
   
@@ -3062,7 +3090,7 @@ void UnregisterSpeaker(string name)
 </tr>
 </tbody>
 </table>
-<p>Both files are wrapped in <code>#if</code> guards and compile to nothing when the middleware is not installed.</p>
+<p>Both files are wrapped in <code>#if</code> guards and compile to nothing when the middleware is not installed. See <a href="../audio/#using-a-middleware-provider">Audio — Using a middleware provider</a> for full setup instructions.</p>
 <hr />
 <h2 id="unityaudioprovider">UnityAudioProvider</h2>
 <p><code>UnityAudioProvider : MonoBehaviour, IDialogueAudioProvider</code></p>
@@ -3729,7 +3757,7 @@ public class LineSheetRow
 </tr>
 <tr>
 <td><code>LineKey</code></td>
-<td>Short identifier shared across all language sheets, your VO recording spreadsheet, and your audio middleware event bank. Examples: <code>"GUARD_GREET_01"</code>, <code>"CAT_LADY_FIND_CAT_002"</code>. Used by FMOD/Wwise providers to look up the correct event — leave empty for Unity AudioSource-only projects. Propagated automatically to all language sheets when syncing.</td>
+<td>Short identifier linking this line to your VO recording spreadsheet and audio middleware event bank. Passed to <code>IDialogueAudioProvider.Play()</code> as the <code>lineKey</code> parameter. Leave empty for Unity AudioSource-only projects. Propagated to all language sheets on sync. See <a href="../audio/#line-keys">Audio — Line Keys</a>.</td>
 </tr>
 <tr>
 <td><code>IsOrphaned</code></td>

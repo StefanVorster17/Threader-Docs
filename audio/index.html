@@ -10,13 +10,13 @@
       
       
       
-        <link rel="canonical" href="https://stefanvorster17.github.io/Threader-Docs/translation/">
+        <link rel="canonical" href="https://stefanvorster17.github.io/Threader-Docs/audio/">
       
       
-        <link rel="prev" href="../audio/">
+        <link rel="prev" href="../line-sheet/">
       
       
-        <link rel="next" href="../templates/">
+        <link rel="next" href="../translation/">
       
       
         
@@ -27,7 +27,7 @@
     
     
       
-        <title>Translation - Threader - Dialogue Kit</title>
+        <title>Audio - Threader - Dialogue Kit</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#translation-localization" class="md-skip">
+        <a href="#audio-system" class="md-skip">
           Skip to content
         </a>
       
@@ -117,7 +117,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Translation
+              Audio
             
           </span>
         </div>
@@ -894,34 +894,6 @@
                 
   
   
-  
-  
-    <li class="md-nav__item">
-      <a href="../audio/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Audio
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
     
   
   
@@ -941,7 +913,7 @@
   <span class="md-ellipsis">
     
   
-    Translation
+    Audio
   
 
     
@@ -959,7 +931,7 @@
   <span class="md-ellipsis">
     
   
-    Translation
+    Audio
   
 
     
@@ -985,10 +957,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#concepts" class="md-nav__link">
+  <a href="#how-it-works" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Concepts
+        How it works
       
     </span>
   </a>
@@ -996,22 +968,33 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#language-library" class="md-nav__link">
+  <a href="#default-provider-unityaudioprovider" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Language Library
+        Default provider — UnityAudioProvider
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Language Library">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#line-keys" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Line Keys
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Line Keys">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#create-a-language-library" class="md-nav__link">
+  <a href="#naming-conventions" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Create a Language Library
+        Naming conventions
       
     </span>
   </a>
@@ -1019,10 +1002,21 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#assign-it-to-dialoguemanager" class="md-nav__link">
+  <a href="#setting-line-keys" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Assign it to DialogueManager
+        Setting Line Keys
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-vo-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The VO pipeline
       
     </span>
   </a>
@@ -1035,22 +1029,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#setup" class="md-nav__link">
+  <a href="#using-a-middleware-provider" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Setup
+        Using a middleware provider
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Setup">
+    <nav class="md-nav" aria-label="Using a middleware provider">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#0-recommended-create-a-language-library" class="md-nav__link">
+  <a href="#fmod" class="md-nav__link">
     <span class="md-ellipsis">
       
-        0. (Recommended) Create a Language Library
+        FMOD
       
     </span>
   </a>
@@ -1058,10 +1052,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#1-create-one-line-sheet-per-language" class="md-nav__link">
+  <a href="#wwise" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. Create one Line Sheet per language
+        Wwise
       
     </span>
   </a>
@@ -1069,32 +1063,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-register-sheets-on-the-graph" class="md-nav__link">
+  <a href="#custom-backend" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Register sheets on the graph
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-fill-in-translations" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3. Fill in translations
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#4-set-the-active-language-at-runtime" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4. Set the active language at runtime
+        Custom backend
       
     </span>
   </a>
@@ -1107,154 +1079,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#how-it-works-at-runtime" class="md-nav__link">
+  <a href="#spatial-audio" class="md-nav__link">
     <span class="md-ellipsis">
       
-        How it works at runtime
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="How it works at runtime">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#npc-line-text" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        NPC line text
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#audio-clips" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Audio clips
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#animator-actions" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Animator actions
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#choice-text" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Choice text
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#switching-languages-at-runtime" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Switching languages at runtime
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Switching languages at runtime">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#from-a-settings-menu" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        From a settings menu
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#on-game-startup" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        On game startup
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#clearing-the-active-language" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Clearing the active language
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#getsheet-fallback-chain" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        GetSheet fallback chain
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#bark-graph-translation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Bark graph translation
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#editor-preview" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Editor preview
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#migration-from-legacy-single-sheet" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Migration from legacy single-sheet
+        Spatial audio
       
     </span>
   </a>
@@ -1276,6 +1104,34 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../translation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Translation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -1652,10 +1508,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#concepts" class="md-nav__link">
+  <a href="#how-it-works" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Concepts
+        How it works
       
     </span>
   </a>
@@ -1663,22 +1519,33 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#language-library" class="md-nav__link">
+  <a href="#default-provider-unityaudioprovider" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Language Library
+        Default provider — UnityAudioProvider
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Language Library">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#line-keys" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Line Keys
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Line Keys">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#create-a-language-library" class="md-nav__link">
+  <a href="#naming-conventions" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Create a Language Library
+        Naming conventions
       
     </span>
   </a>
@@ -1686,10 +1553,21 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#assign-it-to-dialoguemanager" class="md-nav__link">
+  <a href="#setting-line-keys" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Assign it to DialogueManager
+        Setting Line Keys
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-vo-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The VO pipeline
       
     </span>
   </a>
@@ -1702,22 +1580,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#setup" class="md-nav__link">
+  <a href="#using-a-middleware-provider" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Setup
+        Using a middleware provider
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Setup">
+    <nav class="md-nav" aria-label="Using a middleware provider">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#0-recommended-create-a-language-library" class="md-nav__link">
+  <a href="#fmod" class="md-nav__link">
     <span class="md-ellipsis">
       
-        0. (Recommended) Create a Language Library
+        FMOD
       
     </span>
   </a>
@@ -1725,10 +1603,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#1-create-one-line-sheet-per-language" class="md-nav__link">
+  <a href="#wwise" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. Create one Line Sheet per language
+        Wwise
       
     </span>
   </a>
@@ -1736,32 +1614,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-register-sheets-on-the-graph" class="md-nav__link">
+  <a href="#custom-backend" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Register sheets on the graph
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-fill-in-translations" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3. Fill in translations
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#4-set-the-active-language-at-runtime" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4. Set the active language at runtime
+        Custom backend
       
     </span>
   </a>
@@ -1774,154 +1630,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#how-it-works-at-runtime" class="md-nav__link">
+  <a href="#spatial-audio" class="md-nav__link">
     <span class="md-ellipsis">
       
-        How it works at runtime
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="How it works at runtime">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#npc-line-text" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        NPC line text
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#audio-clips" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Audio clips
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#animator-actions" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Animator actions
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#choice-text" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Choice text
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#switching-languages-at-runtime" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Switching languages at runtime
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Switching languages at runtime">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#from-a-settings-menu" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        From a settings menu
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#on-game-startup" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        On game startup
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#clearing-the-active-language" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Clearing the active language
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#getsheet-fallback-chain" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        GetSheet fallback chain
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#bark-graph-translation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Bark graph translation
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#editor-preview" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Editor preview
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#migration-from-legacy-single-sheet" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Migration from legacy single-sheet
+        Spatial audio
       
     </span>
   </a>
@@ -1956,289 +1668,199 @@
 
 
 
-<h1 id="translation-localization">Translation &amp; Localization</h1>
-<p>Threader supports multiple languages per dialogue graph through the <strong><a href="../line-sheet/">Line Sheet</a></strong> system. Each language gets its own <code>DialogueLineSheet</code> asset containing translated text, language-specific audio clips, and animator actions. Switching languages at runtime is a single method call.</p>
+<h1 id="audio-system">Audio System</h1>
+<p>Threader abstracts all audio playback behind an <code>IDialogueAudioProvider</code> interface. This means you can use Unity's built-in <code>AudioSource</code>, FMOD Studio, Wwise, or any custom backend — without changing a single line of Threader's core code.</p>
 <hr />
-<h2 id="concepts">Concepts</h2>
+<h2 id="how-it-works">How it works</h2>
+<p>Every time a dialogue line plays, <code>DialogueManager</code> calls:</p>
+<pre><code class="language-csharp">_audio.Play(clip, lineKey, speakerName, worldPosition);
+</code></pre>
+<p><code>_audio</code> is whatever <code>IDialogueAudioProvider</code> is active. By default it is a <code>UnityAudioProvider</code> created automatically. You can replace it by assigning a custom provider to the <strong>Audio Provider Override</strong> slot on <code>DialogueManager</code>.</p>
+<p>After calling <code>Play</code>, the dialogue coroutine waits:</p>
+<pre><code class="language-csharp">yield return new WaitWhile(() =&gt; _audio.IsPlaying &amp;&amp; !DialogueUI.SkipLineRequested);
+_audio.Stop();
+</code></pre>
+<p>This means the system waits for your provider to report that playback has finished before moving to the next line — whether that is a Unity <code>AudioSource</code>, an FMOD instance, or a Wwise event.</p>
+<hr />
+<h2 id="default-provider-unityaudioprovider">Default provider — UnityAudioProvider</h2>
+<p>When no override is assigned, <code>DialogueManager</code> adds a <code>UnityAudioProvider</code> component to itself automatically. No setup is needed for standard Unity audio.</p>
+<p><code>UnityAudioProvider</code> uses two <code>AudioSource</code> components internally:</p>
 <table>
 <thead>
 <tr>
-<th>Term</th>
-<th>Meaning</th>
+<th>Source</th>
+<th>Used when</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><strong>Language Library</strong></td>
-<td>A <code>LanguageLibrary</code> ScriptableObject that defines all languages available in your project. Assign it to <code>DialogueManager</code> to populate language slots automatically on every graph — no manual text entry. See <a href="#language-library">Language Library</a>.</td>
+<td><strong>2D source</strong></td>
+<td>No speaker transform is registered for the current line</td>
 </tr>
 <tr>
-<td><strong>Line Sheet</strong></td>
-<td>A <code>DialogueLineSheet</code> ScriptableObject that stores per-speaker audio clips, animator actions, and optional translated text (<code>PreviewText</code>) for every NPC line in a graph. See <a href="../line-sheet/">Line Sheet</a>.</td>
-</tr>
-<tr>
-<td><strong>Named Line Sheet</strong></td>
-<td>A pairing of a language label (e.g. <code>"English"</code>, <code>"French"</code>) with a Line Sheet asset. Stored in the graph's <code>LineSheets</code> list.</td>
-</tr>
-<tr>
-<td><strong>Active Language</strong></td>
-<td>A string held on <code>DialogueManager</code> at runtime. Determines which Named Line Sheet is selected when a graph plays.</td>
-</tr>
-<tr>
-<td><strong>PreviewText</strong></td>
-<td>A text field on each line sheet row. When non-empty, it overrides the original NPC node text at runtime — this is the primary mechanism for translating dialogue lines.</td>
+<td><strong>Spatial source</strong></td>
+<td>A speaker transform is registered — repositioned to the speaker's world position each line (<code>spatialBlend = 1</code>, <code>rolloffMode = Linear</code>)</td>
 </tr>
 </tbody>
 </table>
+<p>You can also add <code>UnityAudioProvider</code> manually via <strong>Add Component → Threader → Unity Audio Provider</strong> if you need to configure the 2D source in the Inspector.</p>
 <hr />
-<h2 id="language-library">Language Library</h2>
-<p>A <strong>Language Library</strong> is a small ScriptableObject that declares which languages your project supports. When assigned to the <code>DialogueManager</code>, it replaces the manual text entry on every graph's Line Sheet list with a fixed set of language slots — one per language you defined. This prevents typos and ensures every graph uses the same language names.</p>
-<h3 id="create-a-language-library">Create a Language Library</h3>
-<ol>
-<li>Right-click in the Project window → <strong>Create → Threader → Language Library</strong>.</li>
-<li>Name it (e.g. <code>ProjectLanguages</code>).</li>
-<li>In the Inspector, add your languages to the <strong>Languages</strong> list. The first entry is the default/primary language.</li>
-</ol>
-<p>Example:</p>
+<h2 id="line-keys">Line Keys</h2>
+<p>A <strong>Line Key</strong> is a short, stable identifier assigned to each line in the Line Sheet editor. It is the bridge between three separate systems:</p>
+<pre><code>Dialogue tool (Threader)
+        ↓  LineKey
+VO recording spreadsheet
+        ↓  same key
+Audio middleware event bank (FMOD / Wwise)
+</code></pre>
+<p>When a line plays, both the <code>AudioClip</code> (for Unity) and the <code>LineKey</code> (for middleware) are passed to <code>IDialogueAudioProvider.Play()</code>. The active provider decides what to do with each:</p>
 <table>
 <thead>
 <tr>
-<th>Index</th>
-<th>Language</th>
+<th>Provider</th>
+<th>Uses <code>clip</code></th>
+<th>Uses <code>lineKey</code></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>0</td>
-<td><code>English</code></td>
+<td><code>UnityAudioProvider</code></td>
+<td>Yes — plays the <code>AudioClip</code> directly</td>
+<td>Ignored</td>
 </tr>
 <tr>
-<td>1</td>
-<td><code>French</code></td>
+<td><code>FMODAudioProvider</code></td>
+<td>Ignored</td>
+<td>Constructs FMOD event path: <code>event:/Dialogue/{lineKey}</code></td>
 </tr>
 <tr>
-<td>2</td>
-<td><code>Japanese</code></td>
+<td><code>WwiseAudioProvider</code></td>
+<td>Ignored</td>
+<td>Posts Wwise event: <code>Play_{lineKey}</code> (prefix configurable)</td>
+</tr>
+<tr>
+<td>Custom provider</td>
+<td>Up to you</td>
+<td>Up to you</td>
 </tr>
 </tbody>
 </table>
-<h3 id="assign-it-to-dialoguemanager">Assign it to DialogueManager</h3>
-<p>Select the <code>DialogueManager</code> in your scene and drag the Language Library asset into the <strong>Language Library</strong> field.</p>
-<p>Once assigned:</p>
+<h3 id="naming-conventions">Naming conventions</h3>
+<p>Line Keys should be:</p>
 <ul>
-<li>Every <code>DialogueGraph</code> Inspector shows one <strong>read-only</strong> language row per library entry. You only need to drag in the Line Sheet asset — the language name is locked.</li>
-<li>The graph editor sidebar <strong>LANGUAGE</strong> dropdown is populated from the library.</li>
-<li>Adding a new language to the library automatically adds a slot on every graph.</li>
-<li>Removing a language from the library removes the slot (existing sheet references are preserved if you re-add the language later).</li>
+<li><strong>SCREAMING_SNAKE_CASE</strong> — <code>GUARD_GREET_01</code>, <code>CAT_LADY_FIND_CAT_002</code></li>
+<li><strong>Globally unique</strong> within your project — they are used as event names in your audio bank</li>
+<li><strong>Descriptive and stable</strong> — once a key is set and the VO is recorded against it, changing it means renaming events in your middleware project and re-exporting</li>
+<li><strong>Shared across languages</strong> — all language sheets for the same graph use the same Line Key per line; only the <code>AudioClip</code> and <code>PreviewText</code> differ per language</li>
 </ul>
-<blockquote>
-<p><strong>Not required.</strong> The Language Library is optional. If no library is assigned, the graph Inspector falls back to the original manual mode — free-text language fields with a <strong>+ Add Language</strong> button. This is fully backwards-compatible with existing projects.</p>
-</blockquote>
-<hr />
-<h2 id="setup">Setup</h2>
-<h3 id="0-recommended-create-a-language-library">0. (Recommended) Create a Language Library</h3>
-<p>If your project uses multiple languages, start by creating a <a href="#language-library">Language Library</a> as described above. This ensures consistent language names across all graphs and saves time when setting up new graphs.</p>
-<p>If you only need a single language or prefer manual control, skip this step.</p>
-<h3 id="1-create-one-line-sheet-per-language">1. Create one Line Sheet per language</h3>
-<p>For each graph that needs translation, create one <code>DialogueLineSheet</code> asset per language. The recommended naming convention is <code>{GraphName}_{LanguageCode}.asset</code>:</p>
-<pre><code>VillagerGraph_EN.asset
-VillagerGraph_FR.asset
-VillagerGraph_JP.asset
+<p>A common format is:</p>
+<pre><code>{NPC_NAME}_{SCENE_OR_TOPIC}_{LINE_NUMBER}
 </code></pre>
-<p>You can create sheets via:</p>
-<ul>
-<li><strong>From the <a href="../graph-editor/">graph editor</a></strong> — open the sidebar <strong>PROJECT</strong> section and click <strong>Line Sheet Editor</strong>, or click <strong>Line Data</strong> on any NPC node</li>
-<li><strong>Batch creation</strong> — <strong>Threader → Create &amp; Sync All Line Sheets</strong> scans all graphs and creates missing sheets</li>
-<li><strong>Manually</strong> — right-click in the Project window → <strong>Create → Threader → Line Sheet</strong></li>
-</ul>
-<h3 id="2-register-sheets-on-the-graph">2. Register sheets on the graph</h3>
-<p>Open the <code>DialogueGraph</code> asset in the Inspector (or use the Graph Editor sidebar). In the <strong>Line Sheets</strong> section, assign one sheet per language:</p>
+<p>Examples:</p>
 <table>
 <thead>
 <tr>
-<th>Language</th>
-<th>Sheet</th>
+<th>Key</th>
+<th>NPC</th>
+<th>Topic</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>English</code></td>
-<td><code>VillagerGraph_EN</code></td>
+<td><code>GUARD_GATE_GREET_01</code></td>
+<td>Gate Guard</td>
+<td>Greeting at the gate</td>
 </tr>
 <tr>
-<td><code>French</code></td>
-<td><code>VillagerGraph_FR</code></td>
+<td><code>CAT_LADY_FIND_CAT_001</code></td>
+<td>Cat Lady</td>
+<td>First line of "find my cat" quest</td>
 </tr>
 <tr>
-<td><code>Japanese</code></td>
-<td><code>VillagerGraph_JP</code></td>
+<td><code>MERCHANT_HAGGLE_REFUSE_03</code></td>
+<td>Merchant</td>
+<td>Third refusal line during haggling</td>
 </tr>
 </tbody>
 </table>
-<p><strong>With a Language Library:</strong> The language names are pre-filled and read-only. Just drag in each sheet asset.</p>
-<p><strong>Without a Language Library (manual mode):</strong> Click <strong>+ Add Language</strong> to add a new row. Each row has a text field for the language label and an object field for the sheet asset.</p>
-<blockquote>
-<p>The <strong>first entry</strong> in the list is the default/primary language. When no active language is set, or when the requested language is not found, this sheet is used as the fallback.</p>
-</blockquote>
-<h3 id="3-fill-in-translations">3. Fill in translations</h3>
-<p>Open each language sheet and populate:</p>
-<ul>
-<li><strong>PreviewText</strong> — the translated line text for each NPC line row. Leave empty to fall back to the original node text.</li>
-<li><strong>Audio Clips</strong> — language-specific voice-over clips per speaker per line.</li>
-<li><strong>Animator Actions</strong> — language-specific animation triggers per speaker per line (e.g. different lip-sync data).</li>
-</ul>
-<p>When assigning a new sheet to a non-primary language slot in the Inspector, Threader automatically <strong>seeds</strong> the new sheet from the primary sheet — copying all rows, speaker entries, and animator triggers but leaving audio clips empty. This gives you the correct structure to fill in without manually recreating every row.</p>
-<h3 id="4-set-the-active-language-at-runtime">4. Set the active language at runtime</h3>
-<p>Before starting any dialogue, call:</p>
-<pre><code class="language-csharp">DialogueManager.Instance.SetActiveLanguage(&quot;French&quot;);
-</code></pre>
-<p>This sets the active language for <strong>all subsequent dialogue playback</strong> — both main conversations and barks. You typically call this once from a settings menu or game startup script.</p>
-<p>To read the current language:</p>
-<pre><code class="language-csharp">string current = DialogueManager.Instance.ActiveLanguage;
-</code></pre>
+<p>Pad numbers to at least two digits so alphabetical sorting in spreadsheets and audio editors stays consistent.</p>
+<h3 id="setting-line-keys">Setting Line Keys</h3>
+<p>Line Keys are set in the <strong>Line Sheet Editor</strong>, which you open from the graph editor sidebar (<strong>PROJECT → Line Sheet Editor</strong>) or by clicking <strong>Line Data</strong> on any NPC node.</p>
+<p>Each line has a <strong>Line Key</strong> field above the speaker entries. Set it once — when you sync the sheet to other languages, the key propagates automatically to every language sheet. You never need to re-enter it.</p>
+<h3 id="the-vo-pipeline">The VO pipeline</h3>
+<p>For large productions the recommended workflow is:</p>
+<ol>
+<li><strong>Author dialogue</strong> in the graph editor — write lines, set speaker names</li>
+<li><strong>Sync line sheets</strong> — run <strong>Threader → Create &amp; Sync All Line Sheets</strong> to generate rows for every line</li>
+<li><strong>Assign Line Keys</strong> in the Line Sheet Editor — one key per line, following your naming convention</li>
+<li><strong>Export to spreadsheet</strong> — share a CSV or sheet with your VO director; the Line Key column maps every line to a recording session slot</li>
+<li><strong>Record VO</strong> — the director labels each take with the corresponding Line Key</li>
+<li><strong>Import into middleware</strong> — in FMOD or Wwise, create one event per Line Key (batch import from the naming convention); the provider constructs the path from the key at runtime</li>
+<li><strong>Assign clips (optional)</strong> — for Unity AudioSource projects, drag the recorded clips back into the Line Sheet speaker entries; for middleware projects, leave Clip empty and rely entirely on the key</li>
+</ol>
+<p>Steps 1–3 and 7 happen in Unity. Steps 4–6 happen outside Unity. The Line Key is the handshake between them.</p>
 <hr />
-<h2 id="how-it-works-at-runtime">How it works at runtime</h2>
-<h3 id="npc-line-text">NPC line text</h3>
-<p>When an NPC node plays, <code>DialogueManager</code> resolves text for each line through this chain:</p>
+<h2 id="using-a-middleware-provider">Using a middleware provider</h2>
+<h3 id="fmod">FMOD</h3>
 <ol>
-<li>Call <code>graph.GetSheet(activeLanguage)</code> to get the active language's sheet</li>
-<li>Look up the sheet row for this node/line via <code>sheet.LookupRow(nodeGuid, lineIndex)</code></li>
-<li>If the row exists <strong>and</strong> its <code>PreviewText</code> is non-empty → use <code>PreviewText</code> as the line text</li>
-<li>Otherwise → use the original <code>NPCLine.Text</code> from the node itself</li>
-<li>Apply <code>{variable}</code> token substitution to the resolved text (see <a href="../variables/#variable-substitution-in-text">Variables</a>)</li>
-<li>Fire <code>OnNPCLine</code> with the final text</li>
+<li>Install <strong>FMOD for Unity</strong> from the FMOD website. The package adds the <code>FMOD_INSTALLED</code> scripting define symbol automatically.</li>
+<li>Copy <code>Assets/Threader/Samples/FMOD/FMODAudioProvider.cs</code> into your project (or leave it in Samples — it compiles once <code>FMOD_INSTALLED</code> is defined).</li>
+<li>Add <strong>FMODAudioProvider</strong> as a component on the <code>DialogueManager</code> GameObject.</li>
+<li>Drag it into the <strong>Audio Provider Override</strong> slot on <code>DialogueManager</code>.</li>
+<li>Set the <strong>Event Path Prefix</strong> field to match your FMOD Studio project's folder structure (e.g. <code>event:/Dialogue</code>).</li>
 </ol>
-<p>This means you can have partially translated sheets — any line without a <code>PreviewText</code> gracefully falls back to the source language text on the node.</p>
-<h3 id="audio-clips">Audio clips</h3>
-<p>Audio clips are resolved from the same active sheet:</p>
+<p>At runtime, a line with <code>LineKey = "GUARD_GATE_GREET_01"</code> and prefix <code>event:/Dialogue</code> plays <code>event:/Dialogue/GUARD_GATE_GREET_01</code>. Name your FMOD events to match and they resolve automatically.</p>
+<h3 id="wwise">Wwise</h3>
 <ol>
-<li>Call <code>sheet.Lookup(nodeGuid, lineIndex, speakerName)</code> to get the <code>LineSheetSpeakerEntry</code></li>
-<li>If a <code>Clip</code> is assigned → play it (3D spatial if a speaker transform is registered, 2D fallback otherwise)</li>
-<li>If no clip → the line displays with no audio; the runner waits for the typewriter to finish instead</li>
+<li>Install the <strong>Wwise Unity Integration</strong> from Audiokinetic. The package adds the <code>AK_WWISE_UNITY_INTEGRATION</code> scripting define symbol automatically.</li>
+<li>Copy <code>Assets/Threader/Samples/WWISE/WwiseAudioProvider.cs</code> into your project.</li>
+<li>Add <strong>WwiseAudioProvider</strong> as a component on the <code>DialogueManager</code> GameObject.</li>
+<li>Drag it into the <strong>Audio Provider Override</strong> slot on <code>DialogueManager</code>.</li>
+<li>Set the <strong>Event Prefix</strong> field (default: <code>Play_</code>). A line with <code>LineKey = "GUARD_GATE_GREET_01"</code> will post event <code>Play_GUARD_GATE_GREET_01</code>.</li>
+<li>Optionally set a <strong>Volume RTPC Name</strong> to wire dialogue volume to a Wwise RTPC.</li>
 </ol>
-<p>Each language sheet can have completely different clips per speaker — for example, English VO in one sheet and French VO in another.</p>
-<h3 id="animator-actions">Animator actions</h3>
-<p>Per-line animator actions (e.g. lip-sync triggers) are also resolved from the active sheet's <code>LineSheetSpeakerEntry.AnimatorActions</code>. This means you can have different animation data per language if needed.</p>
-<h3 id="choice-text">Choice text</h3>
-<blockquote>
-<p><strong>Note:</strong> Choice text localization via <code>ChoiceSheetRow.PreviewText</code> is currently used for <strong>editor preview only</strong>. At runtime, choice text comes from <code>ChoiceData.Text</code> on the node (with <code>{variable}</code> substitution applied). If you need localized choice text at runtime, override the text in your <code>OnChoiceNode</code> handler by looking up the active sheet yourself:</p>
-</blockquote>
-<pre><code class="language-csharp">void HandleChoices(List&lt;ChoiceData&gt; choices)
+<h3 id="custom-backend">Custom backend</h3>
+<p>Implement <code>IDialogueAudioProvider</code> on a <code>MonoBehaviour</code>:</p>
+<pre><code class="language-csharp">using UnityEngine;
+using Threader;
+
+public class MyAudioProvider : MonoBehaviour, IDialogueAudioProvider
 {
-    var graph = /* your reference to the active DialogueGraph */;
-    var sheet = graph.GetSheet(DialogueManager.Instance.ActiveLanguage);
+    public float Volume { get; set; } = 1f;
+    public bool IsPlaying { get; private set; }
 
-    for (int i = 0; i &lt; choices.Count; i++)
+    public void Play(AudioClip clip, string lineKey, string speakerName, Vector3? worldPosition)
     {
-        var choice = choices[i];
-        if (choice.IsHidden) continue;
+        // resolve and play audio using lineKey, clip, or both
+        IsPlaying = true;
+    }
 
-        // Look up localized text from the sheet
-        string displayText = choice.Text;
-        if (sheet != null)
-        {
-            var choiceRow = sheet.LookupChoiceRow(choice.ChoiceKey?.Split(':')[0], i);
-            if (choiceRow != null &amp;&amp; !string.IsNullOrEmpty(choiceRow.PreviewText))
-                displayText = choiceRow.PreviewText;
-        }
-
-        // Use displayText for your UI button
+    public void Stop()
+    {
+        IsPlaying = false;
     }
 }
 </code></pre>
+<p>The only contract that must be correct is <code>IsPlaying</code> — it must return <code>true</code> while audio is playing and <code>false</code> when it has finished. Returning <code>false</code> too early cuts lines short; never returning <code>false</code> hangs the dialogue permanently.</p>
 <hr />
-<h2 id="switching-languages-at-runtime">Switching languages at runtime</h2>
-<p>Language switching takes effect immediately for all <strong>subsequent</strong> dialogue. Any dialogue already in progress continues with the sheet that was active when it started.</p>
-<h3 id="from-a-settings-menu">From a settings menu</h3>
-<pre><code class="language-csharp">public class LanguageSettings : MonoBehaviour
-{
-    public void SetLanguage(string language)
-    {
-        DialogueManager.Instance.SetActiveLanguage(language);
-        // Optionally save the preference
-        PlayerPrefs.SetString(&quot;Language&quot;, language);
-        PlayerPrefs.Save();
-    }
-}
-</code></pre>
-<h3 id="on-game-startup">On game startup</h3>
-<pre><code class="language-csharp">void Start()
-{
-    string saved = PlayerPrefs.GetString(&quot;Language&quot;, &quot;&quot;);
-    if (!string.IsNullOrEmpty(saved))
-        DialogueManager.Instance.SetActiveLanguage(saved);
-}
-</code></pre>
-<h3 id="clearing-the-active-language">Clearing the active language</h3>
-<p>To revert to the default (first sheet in the list):</p>
-<pre><code class="language-csharp">DialogueManager.Instance.SetActiveLanguage(null);
-// or
-DialogueManager.Instance.SetActiveLanguage(&quot;&quot;);
-</code></pre>
-<p>Both <code>null</code> and <code>""</code> cause <code>GetSheet</code> to return the first entry in the <code>LineSheets</code> list.</p>
-<hr />
-<h2 id="getsheet-fallback-chain">GetSheet fallback chain</h2>
-<p><code>DialogueGraph.GetSheet(language)</code> resolves through this priority:</p>
-<table>
-<thead>
-<tr>
-<th>Condition</th>
-<th>Returns</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>LineSheets</code> is empty</td>
-<td>Legacy single <code>LineSheet</code> field (for pre-multi-language graphs)</td>
-</tr>
-<tr>
-<td><code>language</code> is non-empty and a matching entry exists</td>
-<td>That entry's sheet</td>
-</tr>
-<tr>
-<td><code>language</code> is non-empty but no match found</td>
-<td><strong>First sheet</strong> in the list (default language)</td>
-</tr>
-<tr>
-<td><code>language</code> is null or empty</td>
-<td><strong>First sheet</strong> in the list</td>
-</tr>
-</tbody>
-</table>
-<p>The first entry always acts as the fallback. A graph with at least one entry in <code>LineSheets</code> will always return a sheet (unless the first entry's Sheet field is unassigned).</p>
-<p>The language string comparison is <strong>exact and case-sensitive</strong>: <code>"French"</code> ≠ <code>"french"</code>.</p>
-<hr />
-<h2 id="bark-graph-translation">Bark graph translation</h2>
-<p>Bark graphs use the same translation system. When a bark plays, <code>DialogueManager</code> calls <code>graph.GetSheet(activeLanguage)</code> on the bark graph and resolves text and audio identically to main dialogue. The <code>OnBark</code> event receives the resolved (potentially translated) text. See <a href="../bark/">Bark System</a> for bark setup.</p>
-<p>No additional setup is needed beyond adding language sheets to the bark graph's <code>LineSheets</code> list.</p>
-<hr />
-<h2 id="editor-preview">Editor preview</h2>
-<p>The <a href="../graph-editor/">graph editor</a> supports a <strong>preview language</strong> dropdown in the <a href="../graph-editor/#language">LANGUAGE sidebar section</a>. When a preview language is selected:</p>
+<h2 id="spatial-audio">Spatial audio</h2>
+<p>When a speaker's transform is registered with <code>DialogueManager.RegisterSpeaker</code>, its world position is passed as <code>worldPosition</code> to <code>Play()</code>. Providers use this for 3D positioning:</p>
 <ul>
-<li>NPC nodes display the <code>PreviewText</code> from the matching sheet instead of the original node text</li>
-<li>Player Choice nodes display <code>ChoiceSheetRow.PreviewText</code> for each choice</li>
+<li><strong>UnityAudioProvider</strong> repositions a child <code>AudioSource</code> to that position</li>
+<li><strong>FMODAudioProvider</strong> calls <code>instance.set3DAttributes(RuntimeUtils.To3DAttributes(worldPosition.Value))</code></li>
+<li><strong>WwiseAudioProvider</strong> moves a registered child <code>GameObject</code> to that position before posting the event</li>
 </ul>
-<p>This lets you verify translations directly in the graph editor without entering Play mode.</p>
-<hr />
-<h2 id="migration-from-legacy-single-sheet">Migration from legacy single-sheet</h2>
-<p>Graphs created before multi-language support have a single <code>LineSheet</code> field (hidden in the Inspector). When you open such a graph in the Inspector, a warning appears with a <strong>Migrate to Multi-Language Sheets</strong> button.</p>
-<p>Clicking the button:</p>
-<ol>
-<li>Creates a new <code>NamedLineSheet</code> entry with language label <code>"Default"</code> pointing to the existing sheet</li>
-<li>Adds it to the <code>LineSheets</code> list</li>
-<li>Clears the legacy <code>LineSheet</code> field</li>
-</ol>
-<p>After migration, rename <code>"Default"</code> to your actual primary language (e.g. <code>"English"</code>) and add additional language entries as needed.</p>
+<p>When no speaker transform is found, <code>worldPosition</code> is <code>null</code> and the provider falls back to 2D playback.</p>
+<p>Speaker transforms are registered automatically by <code>NPCDialogue</code> in <code>Start()</code>. You only need to register manually for NPCs added dynamically at runtime via <code>DialogueManager.Instance.RegisterSpeaker(name, transform)</code>.</p>
 <hr />
 <h2 id="checklist">Checklist</h2>
 <ul>
-<li>[ ] Each graph has one <code>DialogueLineSheet</code> asset per supported language</li>
-<li>[ ] The graph's <code>LineSheets</code> list has one entry per language, with the primary language <strong>first</strong></li>
-<li>[ ] Each sheet's <code>PreviewText</code> fields contain the translated text for that language</li>
-<li>[ ] Each sheet's audio clips contain the language-specific voice-over</li>
-<li>[ ] <code>SetActiveLanguage()</code> is called before dialogue starts (e.g. from a settings menu or game startup)</li>
-<li>[ ] Language strings are consistent everywhere — <code>"French"</code> in the graph Inspector must match <code>"French"</code> in <code>SetActiveLanguage("French")</code></li>
-<li>[ ] For bark graphs: language sheets are added to the bark graph's <code>LineSheets</code> list the same way as main graphs</li>
+<li>For Unity audio: leave <strong>Audio Provider Override</strong> empty — <code>UnityAudioProvider</code> is created automatically</li>
+<li>For FMOD/Wwise: add the sample provider component to the <code>DialogueManager</code> GameObject and assign it to <strong>Audio Provider Override</strong></li>
+<li>Line Keys are set once in the Line Sheet Editor and propagate to all language sheets automatically</li>
+<li>Line Keys must match the event names in your middleware bank exactly (accounting for any prefix)</li>
+<li>Custom providers must implement <code>IsPlaying</code> correctly — the dialogue coroutine blocks on it</li>
+<li><code>Play()</code> may receive a null <code>clip</code> (middleware) or an empty <code>lineKey</code> (Unity-only) — handle both gracefully</li>
 </ul>
 
 
