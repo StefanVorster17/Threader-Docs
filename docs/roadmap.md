@@ -6,14 +6,6 @@ If you have a feature request, raise it on the [GitHub repository](https://githu
 
 ---
 
-## Released
-
-### v1.0 — June 1, 2026
-
-Initial release. Full feature set including the visual graph editor, 15 node types, variable system, conditions, entry points, bark system, sub-graph system, line sheet system with multi-language support, node templates, bookmarks, export script, type-aware variable inspector, custom right-click context menu, and all associated components and APIs. See the [Changelog](changelog.md) for the complete list.
-
----
-
 ## Considering
 
 Features on the radar but not yet committed to a version. These may or may not ship depending on scope, community interest, and architectural fit.

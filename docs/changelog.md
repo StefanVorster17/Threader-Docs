@@ -2,21 +2,18 @@
 
 ---
 
-## [1.0.1] — June 8, 2026
+## [1.0.1] — June 5, 2026
 
 ### Bug Fixes
 
-- **Audio no longer continues after a line is skipped** — both the spatial and 2D `AudioSource` paths now stop playback immediately when skip is requested. Previously pressing Space to skip a line would advance the dialogue but leave the audio clip playing until it finished naturally.
-
-### Editor
-
-- **Console-to-node debugging** — double-clicking a runtime console message from `DialogueManager` or `DialogueRunner` now opens the Graph Editor and frames the relevant node automatically. Internally this uses a new `DialogueLogContext` class that stashes the graph and node reference before each log call, and a `DialogueConsoleHandler` that intercepts double-clicks in the Unity Console window.
-- **GUID tools in the NAVIGATE sidebar:**
-  - **Show GUIDs toggle** — displays each node's full GUID above its Tag field. State persists across editor sessions via `EditorPrefs`.
-  - **GUID search field** — paste a full GUID or 8-character prefix and press Go or Enter to select and frame that node on the canvas.
-  - **Copy GUID** (node right-click) — copies the full GUID to the clipboard.
-- **Validator improvements** — each issue row now includes the offending node's GUID and a **Go** button that selects and frames the node immediately.
-- **Help & Documentation** — `Threader → Help & Documentation` now opens the online documentation in the default browser instead of the in-editor panel (the in-editor panel has been removed).
+- **Validator false positives on NPC nodes** — the validator was incorrectly reporting blank lines on NPC nodes that had content. It now checks line sheet data per language and reports which specific language contains the blank lines.
+- **Ctrl+Z undoing multiple operations at once** — adding, deleting, connecting, moving, duplicating, and pasting nodes are now each individually undoable. Previously Ctrl+Z could collapse several operations into a single undo step.
+- **Line Data and Choice Line Data popups cutting off the Save & Close button** — content now scrolls correctly when a node has many lines, keeping the Save & Close button always accessible.
+- **Line Data and Choice Line Data popups opening at the mouse cursor** — both popups now open centred on screen as intended.
+- **Ghost connection lines persisting after node deletion** — connection lines no longer remain visible in the graph after a connected node is deleted.
+- **NPC node "Next" port allowing multiple outgoing connections** — the Next port now correctly enforces a single outgoing connection.
+- **Missing demo Panel Settings theme** — restored the missing Panel Settings theme asset that was causing UI issues in the demo scene.
+- **Demo Player prefab** — updated to match the latest demo scene setup.
 
 ---
 
