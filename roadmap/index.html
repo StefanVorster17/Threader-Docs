@@ -1306,10 +1306,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#v10-april-16-2026" class="md-nav__link">
+  <a href="#v10-june-1-2026" class="md-nav__link">
     <span class="md-ellipsis">
       
-        v1.0 — April 16, 2026
+        v1.0 — June 1, 2026
       
     </span>
   </a>
@@ -1338,28 +1338,6 @@
     <span class="md-ellipsis">
       
         Unity Localization package integration
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#abstract-audio-provider" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Abstract audio provider
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#drag-to-create-node-spawner" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Drag-to-create node spawner
       
     </span>
   </a>
@@ -1493,10 +1471,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#v10-april-16-2026" class="md-nav__link">
+  <a href="#v10-june-1-2026" class="md-nav__link">
     <span class="md-ellipsis">
       
-        v1.0 — April 16, 2026
+        v1.0 — June 1, 2026
       
     </span>
   </a>
@@ -1525,28 +1503,6 @@
     <span class="md-ellipsis">
       
         Unity Localization package integration
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#abstract-audio-provider" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Abstract audio provider
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#drag-to-create-node-spawner" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Drag-to-create node spawner
       
     </span>
   </a>
@@ -1619,7 +1575,7 @@
 <p>If you have a feature request, raise it on the <a href="https://github.com/StefanVorster17/Threader-Docs/issues">GitHub repository</a> — community requests that get traction move up into a planned release.</p>
 <hr />
 <h2 id="released">Released</h2>
-<h3 id="v10-april-16-2026">v1.0 — April 16, 2026</h3>
+<h3 id="v10-june-1-2026">v1.0 — June 1, 2026</h3>
 <p>Initial release. Full feature set including the visual graph editor, 15 node types, variable system, conditions, entry points, bark system, sub-graph system, line sheet system with multi-language support, node templates, bookmarks, export script, type-aware variable inspector, custom right-click context menu, and all associated components and APIs. See the <a href="../changelog/">Changelog</a> for the complete list.</p>
 <hr />
 <h2 id="considering">Considering</h2>
@@ -1628,26 +1584,6 @@
 <p>Threader ships built-in multi-language support via the <code>LineSheets</code> list and <code>SetActiveLanguage()</code>. This covers text, audio, and animator actions per language with no external dependencies.</p>
 <p>An optional bridge assembly that reads from <code>LocalizedString</code> fields via Unity's official Localization package is being considered for projects that already use it. This would be compiled only when the Unity Localization package is detected (<code>#if</code> conditional), so existing buyers are never affected and no unwanted dependencies are introduced.</p>
 <p><strong>Status:</strong> Under consideration. The built-in system covers most use cases; the bridge would be a convenience integration for teams already invested in Unity Localization.</p>
-<h3 id="abstract-audio-provider">Abstract audio provider</h3>
-<p>Threader currently plays audio through Unity's built-in <code>AudioSource</code>. Rather than hard-coding integrations for specific middleware (FMOD, Wwise, etc.) — which creates a maintenance burden every time those systems update — the plan is to introduce an <code>IAudioProvider</code> interface that Threader calls instead of <code>AudioSource</code> directly.</p>
-<ul>
-<li>The built-in <code>AudioSource</code> provider would ship as the default implementation</li>
-<li>Users implement the interface for their audio system (FMOD, Wwise, Master Audio, or any custom solution)</li>
-<li>Example adapters may be included as optional samples, but third-party dependencies are never required</li>
-</ul>
-<p>This follows the same pattern as <code>ConditionProvider</code> for custom conditions, and could extend to other "bring your own system" integration points (TTS, lip sync, etc.) in the future.</p>
-<p><strong>Status:</strong> Under consideration. Depends on community demand for middleware audio support.</p>
-<h3 id="drag-to-create-node-spawner">Drag-to-create node spawner</h3>
-<p>Currently, adding a connected node requires two separate steps: drag a new node from the CREATE panel onto the canvas, then manually wire it to an existing port.</p>
-<p>The plan is to make this a single gesture — drag from any output port, release on empty canvas space, and a context-sensitive searchable popup appears at the drop point listing only the node types valid for that connection. Selecting one creates the node already wired up.</p>
-<ul>
-<li>The popup filters by port type so the list is always relevant, never overwhelming</li>
-<li>A search field is auto-focused — type to filter, press Enter to create</li>
-<li>Works in reverse: drag from an input port to spawn and connect a node behind it</li>
-<li>Escape or click-away dismisses cleanly with no orphan wire left</li>
-</ul>
-<p>This collapses three steps (open CREATE panel → drag node → connect wire) into one gesture and matches how authors naturally think: "what happens after this line?"</p>
-<p><strong>Status:</strong> Planned for v1.1.</p>
 <hr />
 <h2 id="out-of-scope">Out of scope</h2>
 <p>These are features that have been considered and deliberately won't be added to Threader core. If you need them, alternatives are noted.</p>
@@ -1690,7 +1626,7 @@
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Threader Dialogue Kit &nbsp;·&nbsp; v1.0
+      Threader Dialogue Kit &nbsp;·&nbsp; v1.0.1
     </div>
   
   
@@ -1714,7 +1650,7 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.top", "toc.follow", "search.suggest", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": "1.0"}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.top", "toc.follow", "search.suggest", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": "1.0.1"}</script>
     
     
       <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
