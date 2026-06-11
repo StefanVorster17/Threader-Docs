@@ -16,7 +16,7 @@
         <link rel="prev" href="../bark/">
       
       
-        <link rel="next" href="../translation/">
+        <link rel="next" href="../audio/">
       
       
         
@@ -982,6 +982,34 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="3. Add speaker entries">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#line-key" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Line Key
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#speaker-entries" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Speaker entries
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
       </ul>
@@ -1137,6 +1165,34 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../audio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Audio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -1594,6 +1650,34 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="3. Add speaker entries">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#line-key" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Line Key
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#speaker-entries" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Speaker entries
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
       </ul>
@@ -1786,7 +1870,23 @@
 <p>From the sidebar <strong>PROJECT</strong> section, click <strong>Line Sheet Editor</strong>. This opens an overview of every NPC node in the graph, with its lines and speaker entries.</p>
 <p>Alternatively, click <strong>Line Data</strong> on any individual NPC node in the graph canvas to open a focused editor for just that node.</p>
 <h3 id="3-add-speaker-entries">3. Add speaker entries</h3>
-<p>For each line, add one entry per speaker who delivers that line. Set:</p>
+<p>Each line has a <strong>Line Key</strong> field and one or more <strong>speaker entries</strong>. Set the Line Key first, then add one speaker entry per character who delivers that line.</p>
+<h4 id="line-key">Line Key</h4>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Line Key</strong></td>
+<td>A short identifier for this line shared across all language sheets, your VO recording spreadsheet, and your audio middleware event bank. Examples: <code>"GUARD_GREET_01"</code>, <code>"CAT_LADY_FIND_CAT_002"</code>. Used by FMOD/Wwise providers to look up the correct event — leave empty for Unity AudioSource-only projects. When you sync sheets across languages, the Line Key is propagated automatically to every language's sheet so you only set it once.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="speaker-entries">Speaker entries</h4>
 <table>
 <thead>
 <tr>
@@ -1801,7 +1901,7 @@
 </tr>
 <tr>
 <td><strong>Clip</strong></td>
-<td>The <code>AudioClip</code> played when this speaker delivers this line.</td>
+<td>The <code>AudioClip</code> played when this speaker delivers this line. Leave empty when using a middleware backend — the audio is resolved via the Line Key instead.</td>
 </tr>
 <tr>
 <td><strong>Animator Actions</strong></td>
@@ -1816,10 +1916,11 @@
 <p>This scans all <code>DialogueGraph</code> assets, creates a sheet next to any graph that doesn't have one, and syncs all NPC node rows. Safe to re-run — existing data is never overwritten.</p>
 <hr />
 <h2 id="runtime-resolution">Runtime resolution</h2>
-<p>At runtime, <code>DialogueManager</code> resolves the clip and animator actions for each line via:</p>
-<pre><code class="language-csharp">sheet.Lookup(nodeGuid, lineIndex, speakerName)
+<p>At runtime, <code>DialogueManager</code> resolves the clip, Line Key, and animator actions for each line via:</p>
+<pre><code class="language-csharp">sheet.LookupRow(nodeGuid, lineIndex)        // returns the LineSheetRow (Line Key, PreviewText)
+sheet.Lookup(nodeGuid, lineIndex, speakerName) // returns the LineSheetSpeakerEntry (Clip, AnimatorActions)
 </code></pre>
-<p>The lookup returns a <code>LineSheetSpeakerEntry</code> containing the <code>Clip</code> and <code>AnimatorActions</code> for that exact node / line / speaker combination. If the graph has no sheet, or the sheet has no matching entry, the line plays silently — no crash.</p>
+<p>Both the <code>LineKey</code> from the row and the <code>AudioClip</code> from the speaker entry are passed to <code>IDialogueAudioProvider.Play()</code>. A Unity-only project uses the clip; a middleware backend (FMOD, Wwise) uses the key. If the graph has no sheet, or the sheet has no matching entry, the line plays silently — no crash.</p>
 <p>Sheets are created automatically next to their graph with the name <code>{graphName}_Sheet.asset</code>.</p>
 <h3 id="text-localization-via-previewtext">Text localization via PreviewText</h3>
 <p>Each <code>LineSheetRow</code> has a <strong>PreviewText</strong> field. When the active line sheet contains a non-empty <code>PreviewText</code> for a given node/line, that text is used <strong>instead of</strong> the original text on the NPC node. The fallback chain is:</p>
@@ -1998,7 +2099,7 @@ string lang = DialogueManager.Instance.ActiveLanguage;
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Threader Dialogue Kit &nbsp;·&nbsp; v1.0
+      Threader Dialogue Kit &nbsp;·&nbsp; v1.0.1
     </div>
   
   
@@ -2022,7 +2123,7 @@ string lang = DialogueManager.Instance.ActiveLanguage;
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.top", "toc.follow", "search.suggest", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": "1.0"}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.top", "toc.follow", "search.suggest", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": "1.0.1"}</script>
     
     
       <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>

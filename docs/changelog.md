@@ -2,7 +2,25 @@
 
 ---
 
-## [1.0.0] — April 16, 2026
+## [1.0.1] — June 8, 2026
+
+### Bug Fixes
+
+- **Audio no longer continues after a line is skipped** — both the spatial and 2D `AudioSource` paths now stop playback immediately when skip is requested. Previously pressing Space to skip a line would advance the dialogue but leave the audio clip playing until it finished naturally.
+
+### Editor
+
+- **Console-to-node debugging** — double-clicking a runtime console message from `DialogueManager` or `DialogueRunner` now opens the Graph Editor and frames the relevant node automatically. Internally this uses a new `DialogueLogContext` class that stashes the graph and node reference before each log call, and a `DialogueConsoleHandler` that intercepts double-clicks in the Unity Console window.
+- **GUID tools in the NAVIGATE sidebar:**
+  - **Show GUIDs toggle** — displays each node's full GUID above its Tag field. State persists across editor sessions via `EditorPrefs`.
+  - **GUID search field** — paste a full GUID or 8-character prefix and press Go or Enter to select and frame that node on the canvas.
+  - **Copy GUID** (node right-click) — copies the full GUID to the clipboard.
+- **Validator improvements** — each issue row now includes the offending node's GUID and a **Go** button that selects and frames the node immediately.
+- **Help & Documentation** — `Threader → Help & Documentation` now opens the online documentation in the default browser instead of the in-editor panel (the in-editor panel has been removed).
+
+---
+
+## [1.0.0] — June 1, 2026
 
 ### Core Systems
 

@@ -890,6 +890,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../audio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Audio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../translation/" class="md-nav__link">
         
   
@@ -1292,15 +1320,54 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#100-april-16-2026" class="md-nav__link">
+  <a href="#101-june-8-2026" class="md-nav__link">
     <span class="md-ellipsis">
       
-        [1.0.0] — April 16, 2026
+        [1.0.1] — June 8, 2026
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="[1.0.0] — April 16, 2026">
+    <nav class="md-nav" aria-label="[1.0.1] — June 8, 2026">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bug-fixes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bug Fixes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#editor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Editor
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#100-june-1-2026" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        [1.0.0] — June 1, 2026
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="[1.0.0] — June 1, 2026">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1436,7 +1503,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#bug-fixes" class="md-nav__link">
+  <a href="#bug-fixes_1" class="md-nav__link">
     <span class="md-ellipsis">
       
         Bug Fixes
@@ -1505,15 +1572,54 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#100-april-16-2026" class="md-nav__link">
+  <a href="#101-june-8-2026" class="md-nav__link">
     <span class="md-ellipsis">
       
-        [1.0.0] — April 16, 2026
+        [1.0.1] — June 8, 2026
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="[1.0.0] — April 16, 2026">
+    <nav class="md-nav" aria-label="[1.0.1] — June 8, 2026">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bug-fixes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bug Fixes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#editor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Editor
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#100-june-1-2026" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        [1.0.0] — June 1, 2026
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="[1.0.0] — June 1, 2026">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1649,7 +1755,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#bug-fixes" class="md-nav__link">
+  <a href="#bug-fixes_1" class="md-nav__link">
     <span class="md-ellipsis">
       
         Bug Fixes
@@ -1694,7 +1800,23 @@
 
 <h1 id="changelog">Changelog</h1>
 <hr />
-<h2 id="100-april-16-2026">[1.0.0] — April 16, 2026</h2>
+<h2 id="101-june-8-2026">[1.0.1] — June 8, 2026</h2>
+<h3 id="bug-fixes">Bug Fixes</h3>
+<ul>
+<li><strong>Audio no longer continues after a line is skipped</strong> — both the spatial and 2D <code>AudioSource</code> paths now stop playback immediately when skip is requested. Previously pressing Space to skip a line would advance the dialogue but leave the audio clip playing until it finished naturally.</li>
+</ul>
+<h3 id="editor">Editor</h3>
+<ul>
+<li><strong>Console-to-node debugging</strong> — double-clicking a runtime console message from <code>DialogueManager</code> or <code>DialogueRunner</code> now opens the Graph Editor and frames the relevant node automatically. Internally this uses a new <code>DialogueLogContext</code> class that stashes the graph and node reference before each log call, and a <code>DialogueConsoleHandler</code> that intercepts double-clicks in the Unity Console window.</li>
+<li><strong>GUID tools in the NAVIGATE sidebar:</strong></li>
+<li><strong>Show GUIDs toggle</strong> — displays each node's full GUID above its Tag field. State persists across editor sessions via <code>EditorPrefs</code>.</li>
+<li><strong>GUID search field</strong> — paste a full GUID or 8-character prefix and press Go or Enter to select and frame that node on the canvas.</li>
+<li><strong>Copy GUID</strong> (node right-click) — copies the full GUID to the clipboard.</li>
+<li><strong>Validator improvements</strong> — each issue row now includes the offending node's GUID and a <strong>Go</strong> button that selects and frames the node immediately.</li>
+<li><strong>Help &amp; Documentation</strong> — <code>Threader → Help &amp; Documentation</code> now opens the online documentation in the default browser instead of the in-editor panel (the in-editor panel has been removed).</li>
+</ul>
+<hr />
+<h2 id="100-june-1-2026">[1.0.0] — June 1, 2026</h2>
 <h3 id="core-systems">Core Systems</h3>
 <p><strong>Graph Editor</strong>
 - Node-based visual graph editor (<code>DialogueGraphEditorWindow</code>)
@@ -1856,7 +1978,7 @@
 <li><strong>Reachability walk</strong> now correctly follows Jump nodes (was producing false "no End node reachable" warnings).</li>
 <li><strong>Live validation</strong> — the validator re-runs automatically whenever nodes or edges change while the panel is open.</li>
 </ul>
-<h3 id="bug-fixes">Bug Fixes</h3>
+<h3 id="bug-fixes_1">Bug Fixes</h3>
 <ul>
 <li><code>CloneNode</code> for NPCNode silently dropped <code>SpeakerName</code>, <code>SetActions</code>, and <code>AnimatorActions</code> on copy/paste, duplicate, and template save — all three are now correctly copied.</li>
 <li>Pressing Space to skip a line did not stop the active audio clip — the clip now stops immediately when skip is requested.</li>
@@ -1909,7 +2031,7 @@
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Threader Dialogue Kit &nbsp;·&nbsp; v1.0
+      Threader Dialogue Kit &nbsp;·&nbsp; v1.0.1
     </div>
   
   
@@ -1933,7 +2055,7 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.top", "toc.follow", "search.suggest", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": "1.0"}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.top", "toc.follow", "search.suggest", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": "1.0.1"}</script>
     
     
       <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>

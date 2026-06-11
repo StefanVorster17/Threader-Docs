@@ -8,7 +8,7 @@ If you have a feature request, raise it on the [GitHub repository](https://githu
 
 ## Released
 
-### v1.0 — April 16, 2026
+### v1.0 — June 1, 2026
 
 Initial release. Full feature set including the visual graph editor, 15 node types, variable system, conditions, entry points, bark system, sub-graph system, line sheet system with multi-language support, node templates, bookmarks, export script, type-aware variable inspector, custom right-click context menu, and all associated components and APIs. See the [Changelog](changelog.md) for the complete list.
 
@@ -25,33 +25,6 @@ Threader ships built-in multi-language support via the `LineSheets` list and `Se
 An optional bridge assembly that reads from `LocalizedString` fields via Unity's official Localization package is being considered for projects that already use it. This would be compiled only when the Unity Localization package is detected (`#if` conditional), so existing buyers are never affected and no unwanted dependencies are introduced.
 
 **Status:** Under consideration. The built-in system covers most use cases; the bridge would be a convenience integration for teams already invested in Unity Localization.
-
-### Abstract audio provider
-
-Threader currently plays audio through Unity's built-in `AudioSource`. Rather than hard-coding integrations for specific middleware (FMOD, Wwise, etc.) — which creates a maintenance burden every time those systems update — the plan is to introduce an `IAudioProvider` interface that Threader calls instead of `AudioSource` directly.
-
-- The built-in `AudioSource` provider would ship as the default implementation
-- Users implement the interface for their audio system (FMOD, Wwise, Master Audio, or any custom solution)
-- Example adapters may be included as optional samples, but third-party dependencies are never required
-
-This follows the same pattern as `ConditionProvider` for custom conditions, and could extend to other "bring your own system" integration points (TTS, lip sync, etc.) in the future.
-
-**Status:** Under consideration. Depends on community demand for middleware audio support.
-
-### Drag-to-create node spawner
-
-Currently, adding a connected node requires two separate steps: drag a new node from the CREATE panel onto the canvas, then manually wire it to an existing port.
-
-The plan is to make this a single gesture — drag from any output port, release on empty canvas space, and a context-sensitive searchable popup appears at the drop point listing only the node types valid for that connection. Selecting one creates the node already wired up.
-
-- The popup filters by port type so the list is always relevant, never overwhelming
-- A search field is auto-focused — type to filter, press Enter to create
-- Works in reverse: drag from an input port to spawn and connect a node behind it
-- Escape or click-away dismisses cleanly with no orphan wire left
-
-This collapses three steps (open CREATE panel → drag node → connect wire) into one gesture and matches how authors naturally think: "what happens after this line?"
-
-**Status:** Planned for v1.1.
 
 ---
 
