@@ -1320,15 +1320,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#101-june-8-2026" class="md-nav__link">
+  <a href="#101-june-5-2026" class="md-nav__link">
     <span class="md-ellipsis">
       
-        [1.0.1] — June 8, 2026
+        [1.0.1] — June 5, 2026
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="[1.0.1] — June 8, 2026">
+    <nav class="md-nav" aria-label="[1.0.1] — June 5, 2026">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1336,17 +1336,6 @@
     <span class="md-ellipsis">
       
         Bug Fixes
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#editor" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Editor
       
     </span>
   </a>
@@ -1572,15 +1561,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#101-june-8-2026" class="md-nav__link">
+  <a href="#101-june-5-2026" class="md-nav__link">
     <span class="md-ellipsis">
       
-        [1.0.1] — June 8, 2026
+        [1.0.1] — June 5, 2026
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="[1.0.1] — June 8, 2026">
+    <nav class="md-nav" aria-label="[1.0.1] — June 5, 2026">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1588,17 +1577,6 @@
     <span class="md-ellipsis">
       
         Bug Fixes
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#editor" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Editor
       
     </span>
   </a>
@@ -1800,20 +1778,17 @@
 
 <h1 id="changelog">Changelog</h1>
 <hr />
-<h2 id="101-june-8-2026">[1.0.1] — June 8, 2026</h2>
+<h2 id="101-june-5-2026">[1.0.1] — June 5, 2026</h2>
 <h3 id="bug-fixes">Bug Fixes</h3>
 <ul>
-<li><strong>Audio no longer continues after a line is skipped</strong> — both the spatial and 2D <code>AudioSource</code> paths now stop playback immediately when skip is requested. Previously pressing Space to skip a line would advance the dialogue but leave the audio clip playing until it finished naturally.</li>
-</ul>
-<h3 id="editor">Editor</h3>
-<ul>
-<li><strong>Console-to-node debugging</strong> — double-clicking a runtime console message from <code>DialogueManager</code> or <code>DialogueRunner</code> now opens the Graph Editor and frames the relevant node automatically. Internally this uses a new <code>DialogueLogContext</code> class that stashes the graph and node reference before each log call, and a <code>DialogueConsoleHandler</code> that intercepts double-clicks in the Unity Console window.</li>
-<li><strong>GUID tools in the NAVIGATE sidebar:</strong></li>
-<li><strong>Show GUIDs toggle</strong> — displays each node's full GUID above its Tag field. State persists across editor sessions via <code>EditorPrefs</code>.</li>
-<li><strong>GUID search field</strong> — paste a full GUID or 8-character prefix and press Go or Enter to select and frame that node on the canvas.</li>
-<li><strong>Copy GUID</strong> (node right-click) — copies the full GUID to the clipboard.</li>
-<li><strong>Validator improvements</strong> — each issue row now includes the offending node's GUID and a <strong>Go</strong> button that selects and frames the node immediately.</li>
-<li><strong>Help &amp; Documentation</strong> — <code>Threader → Help &amp; Documentation</code> now opens the online documentation in the default browser instead of the in-editor panel (the in-editor panel has been removed).</li>
+<li><strong>Validator false positives on NPC nodes</strong> — the validator was incorrectly reporting blank lines on NPC nodes that had content. It now checks line sheet data per language and reports which specific language contains the blank lines.</li>
+<li><strong>Ctrl+Z undoing multiple operations at once</strong> — adding, deleting, connecting, moving, duplicating, and pasting nodes are now each individually undoable. Previously Ctrl+Z could collapse several operations into a single undo step.</li>
+<li><strong>Line Data and Choice Line Data popups cutting off the Save &amp; Close button</strong> — content now scrolls correctly when a node has many lines, keeping the Save &amp; Close button always accessible.</li>
+<li><strong>Line Data and Choice Line Data popups opening at the mouse cursor</strong> — both popups now open centred on screen as intended.</li>
+<li><strong>Ghost connection lines persisting after node deletion</strong> — connection lines no longer remain visible in the graph after a connected node is deleted.</li>
+<li><strong>NPC node "Next" port allowing multiple outgoing connections</strong> — the Next port now correctly enforces a single outgoing connection.</li>
+<li><strong>Missing demo Panel Settings theme</strong> — restored the missing Panel Settings theme asset that was causing UI issues in the demo scene.</li>
+<li><strong>Demo Player prefab</strong> — updated to match the latest demo scene setup.</li>
 </ul>
 <hr />
 <h2 id="100-june-1-2026">[1.0.0] — June 1, 2026</h2>
@@ -1894,7 +1869,7 @@
 <li><strong>Line Sheet Editor window</strong> — whole-graph overview of all NPC nodes and lines; accessible from the graph editor sidebar (PROJECT → Line Sheet Editor).</li>
 <li><strong>Batch sync</strong> — <code>Threader → Create &amp; Sync All Line Sheets</code> creates and syncs sheets for every graph in the project at once.</li>
 <li><strong>Multi-language support</strong> — <code>DialogueGraph</code> has a <code>LineSheets</code> list (<code>List&lt;NamedLineSheet&gt;</code>) allowing one line sheet per language. <code>DialogueManager.SetActiveLanguage(string)</code> selects the active language at runtime. The active sheet's <code>PreviewText</code> fields override NPC line text and choice text for localization. <code>DialogueManager.ActiveLanguage</code> reads the current language.</li>
-<li><strong>Language Library</strong> — optional <code>LanguageLibrary</code> ScriptableObject (<strong>Create → Threader → Language Library</strong>) defines project-wide languages in a single asset. Assign to <code>DialogueManager</code> to auto-populate language slots on every graph Inspector with read-only labels instead of free-text entry.</li>
+<li><strong>Language Library</strong> — optional <code>LanguageLibrary</code> ScriptableObject (<strong>Create → Threader → Lines → Language Library</strong>) defines project-wide languages in a single asset. Assign to <code>DialogueManager</code> to auto-populate language slots on every graph Inspector with read-only labels instead of free-text entry.</li>
 <li><strong>Choice text localization</strong> — <code>ChoiceSheetRow</code> class stores localized choice text per Player Choice node per language in the line sheet.</li>
 <li><strong>Redesigned <code>DialogueGraph</code> Inspector</strong> — dark header panel, stats row (nodes, NPC lines, entry points, groups), a "Used By" section showing all scene objects referencing the graph, and an editable Line Sheet field.</li>
 <li><strong>Redesigned <code>DialogueLineSheet</code> Inspector</strong> — stats row (lines, speakers, clips, orphaned rows), description, read-only source graph reference, and an <strong>Open Line Sheet Editor</strong> button.</li>
@@ -1912,7 +1887,7 @@
 </ul>
 <h3 id="node-templates">Node Templates</h3>
 <ul>
-<li><strong><code>DialogueNodeTemplate</code> ScriptableObject</strong> — stores a deep-copy snapshot of one or more nodes and their internal connections. Created automatically when saving a selection, or via <code>Assets → Create → Threader → Dialogue Node Template</code>.</li>
+<li><strong><code>DialogueNodeTemplate</code> ScriptableObject</strong> — stores a deep-copy snapshot of one or more nodes and their internal connections. Created automatically when saving a selection, or via <code>Assets → Create → Threader → Graph → Dialogue Node Template</code>.</li>
 <li><strong>Save Selection as Template</strong> — select nodes and click "Save Selection" in the NODE TEMPLATES sidebar panel. Internal connections are preserved; external connections are dropped.</li>
 <li><strong>Drag-to-stamp</strong> — drag a template pill from the NODE TEMPLATES sidebar onto the canvas to instantiate it with fresh GUIDs and re-connected internal wiring.</li>
 <li><strong>Project window drag</strong> — dragging a <code>.asset</code> directly from Unity's Project window onto the canvas also works.</li>

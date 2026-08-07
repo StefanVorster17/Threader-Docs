@@ -55,7 +55,7 @@ Both panels remember their sizes between sessions via EditorPrefs.
 | **Save** | Writes all unsaved changes to the asset on disk (`Ctrl+S` also works) |
 | **Validate** | Runs the graph validator and shows a list of warnings/errors inline. The validator re-runs automatically whenever nodes or edges change while the panel is open. |
 | **Find & Replace** | Opens the find/replace panel (see below) |
-| **Line Sheet Editor** | Opens the Line Sheet Editor window for the currently loaded graph. See [Line Sheet](line-sheet.md) for details. |
+| **Line Sheet Editor** | Opens the Line Sheet Editor window for the currently loaded graph. See [Line Sheet](line-sheet.md) for details. Hidden for Bark graphs — bark graphs use each `BarkNPCNode`'s own **Line Data** popup instead. See [Bark System — line sheets](bark.md#line-sheets-in-bark-graphs). |
 | **Export Script** | Walks the graph from the start node and writes a plain-text `.txt` screenplay file. Output includes `[Speaker Name]` headers, dialogue text, numbered player choices, and branch labels. Silent nodes are invisible. Unreachable nodes are appended at the bottom. The file opens in Explorer/Finder immediately after export. |
 
 **Referenced by** is a collapsible sub-section inside PROJECT that lists every other graph in the project that references the currently loaded graph as a sub-graph. This is scanned automatically when a graph is loaded. If no graph references it the panel shows "Not referenced by any graph."
@@ -72,13 +72,17 @@ Controls which language is previewed on node text in the editor canvas. See [Tra
 
 The preview language does not affect runtime behaviour — it is a visual aid for checking translations in the editor.
 
-### GRAPH
+### SPEAKERS
+
+*(Renamed from "GRAPH" — the section now focuses purely on speaker configuration. The Graph Type toggle has moved to the `DialogueGraph` asset's own Inspector, and the graph's type is shown as a read-only **`· Dialogue`** / **`· Bark`** badge next to the graph name in the editor's top bar.)*
 
 | Field | Description |
 |---|---|
-| **Default Speaker** | Fallback speaker name for any NPC node whose own Speaker field is blank. Populated from your [SpeakerRoster](speaker-roster.md) assets. Nodes with no override show `(Graph Default: X)` in their dropdown, updating live as you change this value. |
-| **Graph Type** | Dropdown — `Dialogue` or `Bark`. Bark graphs run on a non-blocking runner via `PlayBark()` and do not support Player Choice Node, Wait Node, or Sub Graph Node. Setting this to **Bark** hides the **Look At Speaker** row and removes those three node types from the sidebar and context menu. See [Bark System](bark.md) for the full list of supported nodes and setup details. |
-| **Look At Speaker** | *(Dialogue graphs only.)* When ticked, any scene object that implements `IDialogueFocus` (e.g. a first-person camera controller) will automatically rotate to face the current speaker's transform each time an NPC node fires. Toggle this per-graph. See [UI — Camera look-at](ui.md#camera-look-at-during-dialogue). |
+| **Default Speaker** | *(Dialogue graphs.)* Fallback speaker name for any NPC node whose own Speaker field is blank. Populated from your [SpeakerRoster](speaker-roster.md) assets. Nodes with no override show `(Graph Default: X)` in their dropdown, updating live as you change this value. Hidden for Bark graphs. |
+| **Look At Speaker** | *(Dialogue graphs only.)* When ticked, any scene object that implements `IDialogueFocus` (e.g. a first-person camera controller) will automatically rotate to face the current speaker's transform each time an NPC node fires. Toggle this per-graph. See [UI — Camera look-at](ui.md#camera-look-at-during-dialogue). Hidden for Bark graphs. |
+| **Bark Speakers** | *(Bark graphs only.)* Replaces the two fields above when the loaded graph's **Graph Type** is **Bark**. A roster-picker listing speakers from every `BarkSpeakerRoster` assigned to `DialogueManager`, split into **In this graph** and **Available from roster**. Move names between the two lists to control which speakers appear in this graph's `BarkNPCNode` dropdowns and on `BarkSource.speakerName`. See [Bark System — multi-speaker barks](bark.md#multi-speaker-barks-with-bark-npc-node). |
+
+To change a graph between **Dialogue** and **Bark**, select the `DialogueGraph` asset and use the **Graph Type** dropdown at the top of its Inspector (not in this sidebar). If the graph already has nodes, a confirmation dialog warns that switching type may break existing nodes, line sheets, and connections before applying the change. Bark graphs run on a non-blocking runner via `PlayBark()` and do not support Player Choice Node, Player Node, Wait Node, or Sub Graph Node — see [Bark System](bark.md) for the full list of supported nodes.
 
 ### NAVIGATE
 
@@ -104,14 +108,14 @@ Lists all bookmarked nodes in the current graph. Click any row to select and fra
 
 A set of colour-coded pills for every [node type](nodes.md), grouped into categories:
 
-- **Dialogue** — NPC Node, Player Choice Node, End Node
+- **Dialogue** — NPC Node, Player Node, Player Choice Node, End Node, Bark NPC Node
 - **Logic** — Branch Node, Jump Node, Random Node, Weighted Random Node, Switch Node, Sub Graph Node
 - **Data / Events** — Set Variable Node, Fire Event Node, Play Audio Node, Animator Trigger Node
 - **Utility** — Debug Node, Wait Node, Group, Sticky Note
 
 **Drag** a pill onto the canvas to place the node at the drop position.
 
-> Player Choice Node, Wait Node, and Sub Graph Node are hidden automatically when **Graph Type** is set to **Bark**.
+> **Dialogue graphs** hide **Bark NPC Node**. **Bark graphs** hide **NPC Node**, **Player Node**, **Player Choice Node**, **Wait Node**, and **Sub Graph Node** — existing NPC nodes left over in a bark graph from before this pill swap keep working, they're just no longer offered when creating new nodes. See [Bark System](bark.md) for the full supported-node list.
 
 ### NODE TEMPLATES
 
@@ -130,6 +134,7 @@ Lists all [`DialogueNodeTemplate`](templates.md) assets found in the project. Ea
 | Key | Action |
 |---|---|
 | `N` | Create NPC Node |
+| `P` | Create Player Node |
 | `C` | Create Player Choice Node |
 | `E` | Create End Node |
 | `D` | Create Debug Node |
@@ -184,7 +189,7 @@ A 4 px accent border on the left side of the node shows any assigned colour. The
 
 ## Find & Replace
 
-Open via **PROJECT → Find & Replace** in the sidebar. Searches all NPC line text and Player Choice button text in the currently loaded graph.
+Open via **PROJECT → Find & Replace** in the sidebar. Searches all NPC line text, Player Node line text, and Player Choice button text in the currently loaded graph.
 
 | Field | Description |
 |---|---|

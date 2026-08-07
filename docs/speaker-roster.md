@@ -14,7 +14,7 @@ Without a roster, the editor's Speaker dropdowns fall back to scanning every `Sp
 
 ## Creating a roster
 
-1. Right-click in the Project window → **Create → Threader → Speaker Roster**
+1. Right-click in the Project window → **Create → Threader → Speakers → Speaker Roster**
 2. Name the asset something descriptive, e.g. `VillageRoster` or `Chapter1Speakers`
 3. In the Inspector, click **+** and type each speaker name you want to use — these become the options in every Speaker dropdown across the graph editor and `NPCDialogue` components
 
@@ -73,12 +73,24 @@ Without an `NPCDialogue` component on a secondary speaker, the runtime has no tr
 When an NPC node fires, the runtime resolves the speaker through this chain:
 
 1. **Node Speaker field** — the name set directly on that node
-2. **Graph Default Speaker** — the fallback name set at the top of the GRAPH sidebar in the editor; used when the node's own Speaker field is blank
+2. **Graph Default Speaker** — the fallback name set at the top of the SPEAKERS sidebar in the editor; used when the node's own Speaker field is blank
 3. **Calling actor's Speaker Name** — used when the graph was invoked as a [sub-graph](sub-graph.md); the speaker name of whoever started the top-level conversation is inherited automatically
 
 This means a shared graph (e.g. a generic idle sequence referenced by many NPCs) works correctly without setting any Speaker field on its nodes — each NPC supplies their own name as the final fallback.
 
-> **Bark graphs** use the same three-level chain, except the third fallback is the **BarkSource Speaker Name** field (not a calling actor). Set this on the `BarkSource` component to ensure shared bark graphs resolve the correct voice clips and animator actions per NPC. See [Bark System](bark.md) for details.
+> **Bark graphs** use the same three-level chain for legacy NPC nodes, except the third fallback is the **BarkSource Speaker Name** field (not a calling actor). `BarkNPCNode` resolves speakers differently — it matches `BarkSource.speakerName` directly against its own per-speaker entries. See [Bark System — speaker resolution](bark.md#speaker-resolution-in-bark-graphs) for both.
+
+---
+
+## Player Name
+
+`SpeakerRoster` also has a **Player Name** field (default `"Me"`) — the display name used for [Player Node](nodes.md#player-node-p) lines. `DialogueManager.GetPlayerName()` reads the first non-empty **Player Name** across all assigned rosters, falling back to `"Me"` if none is set. It's shown above the speaker list in the roster Inspector, separate from the regular speaker names.
+
+---
+
+## Bark Speaker Roster
+
+A **`BarkSpeakerRoster`** is a separate, parallel asset used only by [Bark NPC Node](nodes.md#bark-npc-node) — a flat list of speaker type names (e.g. `MaleVillager`, `FemaleGuard`) assigned to `DialogueManager`'s **Bark Speaker Rosters** list, distinct from the regular Speaker Roster list. Create one via **Create → Threader → Speakers → Bark Speaker Roster**. See [Bark System — multi-speaker barks](bark.md#multi-speaker-barks-with-bark-npc-node) for the full setup.
 
 ---
 

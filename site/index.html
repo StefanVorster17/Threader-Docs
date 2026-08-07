@@ -1447,7 +1447,7 @@
 <h2 id="features">Features</h2>
 <ul>
 <li><strong>Visual graph editor</strong> — drag, connect, and organise nodes on an infinite canvas</li>
-<li><strong>15 node types</strong> — NPC lines, player choices, branching, switch, weighted random, sub-graphs, variables, audio, animator triggers, events, waits, and more</li>
+<li><strong>17 node types</strong> — NPC lines, scripted player lines, player choices, branching, switch, weighted random, sub-graphs, variables, audio, animator triggers, events, waits, and more</li>
 <li><strong>Sub-graph system</strong> — call any dialogue graph from within another and return — exactly like a function call</li>
 <li><strong>Bark system</strong> — fire-and-forget ambient lines that run in parallel without blocking the player</li>
 <li><strong>Line Sheet system</strong> — per-graph companion assets that store per-speaker audio clips and animator actions for every NPC line; supports multiple speakers sharing the same graph</li>
@@ -1470,9 +1470,9 @@
 <h2 id="minimum-setup">Minimum setup</h2>
 <p>Seven steps to a working dialogue:</p>
 <ol>
-<li><strong>Create</strong> a <a href="speaker-roster/">Speaker Roster</a> — right-click in the Project window → <strong>Create → Threader → Speaker Roster</strong>, then add your speaker names</li>
-<li><strong>Create</strong> a <a href="variables/">Variables Store</a> <em>(optional)</em> — <strong>Create → Threader → Variables Store</strong>, then add any variables your dialogue needs</li>
-<li><strong>Create</strong> a <a href="graph-editor/">Dialogue Graph</a> — <strong>Create → Threader → Dialogue Graph</strong>, then double-click it to open the graph editor and build your conversation</li>
+<li><strong>Create</strong> a <a href="speaker-roster/">Speaker Roster</a> — right-click in the Project window → <strong>Create → Threader → Speakers → Speaker Roster</strong>, then add your speaker names</li>
+<li><strong>Create</strong> a <a href="variables/">Variables Store</a> <em>(optional)</em> — <strong>Create → Threader → Variables → Variables Store</strong>, then add any variables your dialogue needs</li>
+<li><strong>Create</strong> a <a href="graph-editor/">Dialogue Graph</a> — <strong>Create → Threader → Graph → Dialogue Graph</strong>, then double-click it to open the graph editor and build your conversation</li>
 <li><strong>Add</strong> a <code>DialogueManager</code> component to an empty GameObject in the scene — assign your Speaker Roster and Variables Store</li>
 <li><strong>Add</strong> an <code>NPCDialogue</code> or <code>DialogueTrigger</code> component to your NPC — assign the graph and speaker name</li>
 <li><strong>Wire</strong> the UI — add <code>DialogueUI</code> to a GameObject (with <code>UI_Dialogue.uxml</code>), or subscribe to <code>OnNPCLine</code> / <code>OnChoiceNode</code> for a fully custom UI</li>
@@ -1507,7 +1507,7 @@
 </tr>
 <tr>
 <td><a href="nodes/">Node Reference</a></td>
-<td>All 15 node types with field descriptions</td>
+<td>All 17 node types with field descriptions</td>
 </tr>
 <tr>
 <td><a href="variables/">Variables</a></td>

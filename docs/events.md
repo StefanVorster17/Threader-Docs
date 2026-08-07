@@ -6,9 +6,9 @@ Events are named string keys fired at specific points in a conversation. They ar
 
 ## Two ways to fire an event
 
-### From an NPC Node
+### From an NPC Node (or Player Node)
 
-Every [NPC node](nodes.md#npc-node-n) has an **Events** section (click **+ Add** to add a row). These events fire when the node is reached, **before** any lines are displayed.
+Every [NPC node](nodes.md#npc-node-n) — and, identically, every [Player Node](nodes.md#player-node-p) — has an **Events** section (click **+ Add** to add a row). These events fire when the node is reached, **before** any lines are displayed.
 
 | Field | Description |
 |---|---|
@@ -18,7 +18,7 @@ Every [NPC node](nodes.md#npc-node-n) has an **Events** section (click **+ Add**
 
 Multiple events are fired in list order. Empty keys are skipped.
 
-> Use NPC node events when you want something to happen at the same moment speaking begins — for instance, closing a shop UI, playing a sting, or setting a flag before the first line plays.
+> Use NPC/Player node events when you want something to happen at the same moment speaking begins — for instance, closing a shop UI, playing a sting, or setting a flag before the first line plays.
 
 ### From a Fire Event Node
 

@@ -2,6 +2,8 @@
 
 A **Dialogue Line Sheet** is a companion asset for a `DialogueGraph` that stores per-speaker audio clips and animator actions for every NPC line in that graph. Multiple speakers can share the same graph — each has their own clip and animations per line, looked up at runtime by speaker name.
 
+[Player Node](nodes.md#player-node-p) lines also live in the line sheet — unlike NPC Node, a Player Node stores no text on the node itself, so its **PreviewText** in the primary sheet is the only place its line text is authored. [Bark NPC Node](nodes.md#bark-npc-node) has its own variant of per-speaker line sheet rows; see [Bark System — line sheets in bark graphs](bark.md#line-sheets-in-bark-graphs).
+
 ---
 
 ## Overview
@@ -22,7 +24,7 @@ There are several ways to create a line sheet:
 
 - **From the [graph editor](graph-editor.md)** — open the sidebar **PROJECT** section and click **Line Sheet Editor**. If no sheet exists yet, one is created automatically next to the graph asset.
 - **Batch creation** — use **Threader → Create & Sync All Line Sheets** in the Unity menu bar to create and sync sheets for every graph in the project at once.
-- **Manually** — right-click in the Project window → **Create → Threader → Line Sheet**. Then assign the graph to the sheet's **Source Graph** field and click **Sync** to populate its rows.
+- **Manually** — right-click in the Project window → **Create → Threader → Lines → Line Sheet**. Then assign the graph to the sheet's **Source Graph** field and click **Sync** to populate its rows.
 
 Sheets created automatically are named `{GraphName}_Sheet.asset` and placed next to their graph. For [multi-language setups](translation.md), create one sheet per language (e.g. `VillagerGraph_EN.asset`, `VillagerGraph_FR.asset`).
 
@@ -49,6 +51,8 @@ Each line has a **Line Key** field and one or more **speaker entries**. Set the 
 | **Speaker** | Name from your [SpeakerRoster](speaker-roster.md). Must match the speaker registered with `DialogueManager`. |
 | **Clip** | The `AudioClip` played when this speaker delivers this line. Leave empty when using a middleware backend — the audio is resolved via the Line Key instead. |
 | **Animator Actions** | Optional list of animator parameters to fire when the line starts (parameter name, type, and value). |
+
+> **Bark NPC Node** rows are the one exception to "Line Key is shared per row": each speaker entry on a `BarkNPCNode` row carries its **own** Line Key (`LineSheetSpeakerEntry.LineKey`), separate from the row-level Line Key above, since different speakers on the same bark line need different middleware events. See [Bark System — line sheets in bark graphs](bark.md#line-sheets-in-bark-graphs).
 
 ---
 

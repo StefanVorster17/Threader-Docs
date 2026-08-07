@@ -1859,7 +1859,7 @@
 <p>These are added directly inside each choice card in the Player Choice node editor.</p>
 <h3 id="setup-in-3-steps">Setup in 3 steps</h3>
 <p><strong>Step 1 — Create a DialogueVariables asset</strong> (if you haven't already):</p>
-<p>Right-click in the Project window → <strong>Create → Threader → Variables Store</strong>.<br />
+<p>Right-click in the Project window → <strong>Create → Threader → Variables → Variables Store</strong>.<br />
 Add variables in the Inspector. See <a href="../variables/">Variables</a> for full detail.</p>
 <p><strong>Step 2 — Assign the asset to DialogueManager:</strong></p>
 <p>Drag the asset into <strong>DialogueManager → Variables List</strong>.</p>
@@ -1979,7 +1979,7 @@ public class GameConditionProvider : ConditionProvider
 <li><strong><code>WhenMissing</code> fallback</strong> — if none of the above handled this key, the definition's <code>WhenMissing</code> setting decides the result</li>
 </ol>
 <h3 id="step-2-create-a-conditiondefinition-asset">Step 2 — Create a ConditionDefinition asset</h3>
-<p>Right-click in the Project window → <strong>Create → Threader → Condition (Custom)</strong>.</p>
+<p>Right-click in the Project window → <strong>Create → Threader → Variables → Condition (Custom)</strong>.</p>
 <table>
 <thead>
 <tr>
@@ -2062,7 +2062,7 @@ ConditionStore.Set(&quot;HasSword&quot;, inventory.Has(&quot;sword&quot;) ? &quo
 <hr />
 <h2 id="variableconditiondefinition-no-code-asset-condition">VariableConditionDefinition (no-code asset condition)</h2>
 <p>If you want a reusable condition asset that checks a <code>DialogueVariables</code> store without any C# handler, create a <code>VariableConditionDefinition</code>:</p>
-<p>Right-click in the Project window → <strong>Create → Threader → Variable Condition</strong>.</p>
+<p>Right-click in the Project window → <strong>Create → Threader → Variables → Variable Condition</strong>.</p>
 <table>
 <thead>
 <tr>

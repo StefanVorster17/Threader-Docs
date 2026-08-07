@@ -973,10 +973,88 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#multi-speaker-barks-with-bark-npc-node" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Multi-speaker barks with Bark NPC Node
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Multi-speaker barks with Bark NPC Node">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#setup_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Setup
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#backwards-compatibility" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Backwards compatibility
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#speaker-resolution-in-bark-graphs" class="md-nav__link">
     <span class="md-ellipsis">
       
         Speaker resolution in bark graphs
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Speaker resolution in bark graphs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#legacy-npc-node" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Legacy NPC Node
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bark-npc-node" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bark NPC Node
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#line-sheets-in-bark-graphs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Line sheets in bark graphs
       
     </span>
   </a>
@@ -1541,10 +1619,88 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#multi-speaker-barks-with-bark-npc-node" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Multi-speaker barks with Bark NPC Node
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Multi-speaker barks with Bark NPC Node">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#setup_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Setup
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#backwards-compatibility" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Backwards compatibility
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#speaker-resolution-in-bark-graphs" class="md-nav__link">
     <span class="md-ellipsis">
       
         Speaker resolution in bark graphs
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Speaker resolution in bark graphs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#legacy-npc-node" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Legacy NPC Node
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bark-npc-node" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bark NPC Node
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#line-sheets-in-bark-graphs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Line sheets in bark graphs
       
     </span>
   </a>
@@ -1594,10 +1750,11 @@
 <p>Barks are fire-and-forget ambient lines that play without entering a full conversation and without blocking the player. An NPC can mutter as the player walks past, a guard can react to a sound, or a merchant can call out — all without triggering <code>OnDialogueStarted</code> or touching the main dialogue panel.</p>
 <hr />
 <h2 id="overview">Overview</h2>
-<p>A bark graph is a normal <code>DialogueGraph</code> asset with <strong>Graph Type</strong> set to <strong>Bark</strong> in the <a href="../graph-editor/">Graph Editor</a> GRAPH sidebar. The runtime runs it on a second, non-blocking runner. Each line fires <code>OnBark</code> instead of <code>OnNPCLine</code>, leaving the main dialogue system completely unaffected.</p>
+<p>A bark graph is a normal <code>DialogueGraph</code> asset with <strong>Graph Type</strong> set to <strong>Bark</strong> in the <code>DialogueGraph</code> asset's Inspector. The runtime runs it on a second, non-blocking runner. Each line fires <code>OnBark</code> instead of <code>OnNPCLine</code>, leaving the main dialogue system completely unaffected.</p>
 <p>Bark graphs support:</p>
 <ul>
-<li><strong>NPC Node</strong> — each line fires <code>OnBark</code></li>
+<li><strong>Bark NPC Node</strong> — bark-native line node with built-in <a href="#multi-speaker-barks-with-bark-npc-node">multi-speaker support</a>; each line fires <code>OnBark</code>. This is what the CREATE sidebar offers in place of NPC Node once a graph's type is Bark.</li>
+<li><strong>NPC Node</strong> — legacy single-speaker line node. No longer offered in the sidebar for new bark graphs, but any NPC nodes already in a bark graph keep working via the same speaker-fallback path described below.</li>
 <li><strong>Random Node</strong> — randomise which line path is taken</li>
 <li><strong>Weighted Random Node</strong> — weighted random path selection</li>
 <li><strong>Switch Node</strong> — multi-case condition routing</li>
@@ -1610,12 +1767,13 @@
 <li><strong>Debug Node</strong> — log messages to the Console</li>
 <li><strong>End Node</strong> — terminates the bark, including the optional "On end -&gt;" <a href="../sub-graph/">sub-graph</a> slot</li>
 </ul>
-<p>Bark graphs do <strong>not</strong> support Player Choice Node, Wait Node, or Sub Graph Node. These are hidden from the editor automatically. Wait nodes encountered in a bark graph auto-advance immediately.</p>
+<p>Bark graphs do <strong>not</strong> support Player Node, Player Choice Node, Wait Node, or Sub Graph Node. These are hidden from the editor automatically. Wait nodes encountered in a bark graph auto-advance immediately.</p>
 <hr />
 <h2 id="setup">Setup</h2>
 <h3 id="1-create-a-bark-graph">1. Create a bark graph</h3>
-<p>Right-click in the Project window -&gt; <strong>Create -&gt; Threader -&gt; Dialogue Graph</strong>. Open it in the <a href="../graph-editor/">graph editor</a>. In the <strong>GRAPH</strong> sidebar section, change <strong>Graph Type</strong> to <strong>Bark</strong>.</p>
-<p>Build the graph normally — NPC nodes, branches, random nodes. Leave speaker fields blank if you want caller speaker fallback (see below).</p>
+<p>Right-click in the Project window -&gt; <strong>Create -&gt; Threader -&gt; Graph -&gt; Dialogue Graph</strong>. Select the new asset and, at the top of its <strong>Inspector</strong>, change <strong>Graph Type</strong> from <code>Dialogue</code> to <code>Bark</code>. If the graph already contains nodes, a confirmation dialog warns that switching type may break existing nodes, line sheets, and connections — confirm to proceed.</p>
+<p>Open the graph in the <a href="../graph-editor/">graph editor</a>. The top bar now shows a <strong><code>· Bark</code></strong> badge next to the graph name, the sidebar's GRAPH section becomes <a href="../graph-editor/#speakers"><strong>SPEAKERS</strong></a> (Bark Speakers picker instead of Default Speaker / Look At Speaker), and the CREATE sidebar swaps <strong>NPC Node</strong> for <strong>Bark NPC Node</strong>.</p>
+<p>Build the graph normally — Bark NPC nodes, branches, random nodes. Leave speaker fields blank on legacy NPC nodes if you want caller speaker fallback (see below); for <code>BarkNPCNode</code>, add one entry per speaker instead (see <a href="#multi-speaker-barks-with-bark-npc-node">multi-speaker barks</a>).</p>
 <h3 id="2-add-a-barksource">2. Add a BarkSource</h3>
 <p>Add the <code>BarkSource</code> component to the NPC's GameObject (alongside <code>NPCDialogue</code>).</p>
 <table>
@@ -1644,7 +1802,11 @@
 </tr>
 <tr>
 <td><strong>Speaker Name</strong></td>
-<td>The speaker name this NPC is registered under — must match their <code>NPCDialogue</code> <strong>Speaker Name</strong>. Used to resolve audio clips and animator actions from the bark graph's <a href="../line-sheet/">Line Sheet</a> when the NPC node and graph have no speaker set. Populated from your <a href="../speaker-roster/">SpeakerRoster</a> assets as a dropdown.</td>
+<td>Dropdown scoped to the assigned bark graph's <strong>Bark Speakers</strong> list (or free-text if no graph/speakers are configured yet). Selects which <code>BarkNPCNode</code> speaker entry this NPC plays, and doubles as the third-level fallback for legacy NPC-node speaker/Line Sheet resolution (see below).</td>
+</tr>
+<tr>
+<td><strong>Randomise Speaker</strong></td>
+<td>When enabled, <code>Start()</code> picks a random name from the bark graph's <strong>Bark Speakers</strong> list and uses it as this NPC's Speaker Name instead of the fixed value above. Useful for crowds of interchangeable NPCs sharing one <code>BarkSource</code> prefab.</td>
 </tr>
 <tr>
 <td><strong>Suppress During Dialogue</strong></td>
@@ -1680,7 +1842,21 @@ void HandleBark(NPCLine line)
 <li><code>speakerName</code> — optional; used as the third-level speaker fallback for line sheet lookup (see below). <code>BarkSource</code> passes its <strong>Speaker Name</strong> field here automatically.</li>
 </ul>
 <hr />
+<h2 id="multi-speaker-barks-with-bark-npc-node">Multi-speaker barks with Bark NPC Node</h2>
+<p><strong>Problem solved:</strong> several NPC "types" (e.g. Male Villager, Female Guard) can share one bark graph while each playing their own voice, animations, and audio — without duplicating the graph per type. This is what <a href="../nodes/#bark-npc-node">Bark NPC Node</a> is for. It carries one shared text line plus a list of per-speaker entries; at runtime the entry whose <strong>Speaker Name</strong> matches the calling NPC's resolved speaker name is selected.</p>
+<h3 id="setup_1">Setup</h3>
+<ol>
+<li><strong>Create a <code>BarkSpeakerRoster</code></strong> — right-click in the Project window → <strong>Create → Threader → Speakers → Bark Speaker Roster</strong>. Add every speaker type you want available across your bark graphs (e.g. <code>MaleVillager</code>, <code>FemaleGuard</code>).</li>
+<li><strong>Assign the roster</strong> — select your <code>DialogueManager</code> and drag the roster asset into the <strong>Bark Speaker Rosters</strong> list. You can assign multiple rosters; they merge into one flat list.</li>
+<li><strong>Pick speakers for this graph</strong> — open the bark graph, go to the sidebar's <a href="../graph-editor/#speakers"><strong>SPEAKERS</strong></a> section → <strong>Bark Speakers</strong>, and move the names this graph should use from <strong>Available from roster</strong> into <strong>In this graph</strong>.</li>
+<li><strong>Place <code>BarkNPCNode</code>s</strong> — drag the <strong>Bark NPC Node</strong> pill from CREATE onto the canvas. Its per-speaker dropdowns are populated from the graph's local Bark Speakers list (step 3), not the full roster — so unrelated speakers never clutter the picker.</li>
+<li><strong>Set each <code>BarkSource</code>'s Speaker Name</strong> — on every NPC's <code>BarkSource</code> component, the <strong>Speaker Name</strong> dropdown is scoped to the same graph-local list. This is the string matched against each <code>BarkNPCNode</code>'s speaker entries at runtime. Enable <strong>Randomise Speaker</strong> instead if you want a NPC to pick a random voice from the list each time it starts.</li>
+</ol>
+<h3 id="backwards-compatibility">Backwards compatibility</h3>
+<p>Legacy <code>NPCNode</code>s already placed in a bark graph continue to work exactly as before, via the three-level speaker fallback chain below — you don't have to migrate existing bark graphs to adopt <code>BarkNPCNode</code> for new content.</p>
+<hr />
 <h2 id="speaker-resolution-in-bark-graphs">Speaker resolution in bark graphs</h2>
+<h3 id="legacy-npc-node">Legacy NPC Node</h3>
 <p>NPC nodes inside a bark graph resolve their speaker name through a three-level fallback chain:</p>
 <ol>
 <li><strong>Node Speaker</strong> — set directly on that NPC node</li>
@@ -1688,21 +1864,35 @@ void HandleBark(NPCLine line)
 <li><strong>BarkSource Speaker Name</strong> — the <strong>Speaker Name</strong> field on the <code>BarkSource</code> component (or the <code>speakerName</code> parameter passed to <code>PlayBark()</code> from code)</li>
 </ol>
 <p>A shared bark graph with blank speaker fields automatically voices, positions, and resolves line sheet data for whichever NPC triggered it.</p>
+<h3 id="bark-npc-node">Bark NPC Node</h3>
+<p><code>BarkNPCNode</code> does not use the fallback chain above — it looks up its <code>Speakers</code> list directly for an entry whose <strong>Speaker Name</strong> equals the calling NPC's resolved speaker name (the <code>BarkSource.speakerName</code> field, or the <code>speakerName</code> argument passed to <code>PlayBark()</code>). If no entry matches, the node's shared <strong>Text</strong> still displays but no per-speaker audio or animation plays.</p>
+<p><code>BarkSource.speakerName</code> is required at runtime for <code>BarkNPCNode</code> to resolve correctly — it identifies which entry inside the node to use.</p>
+<hr />
+<h2 id="line-sheets-in-bark-graphs">Line sheets in bark graphs</h2>
+<p><code>BarkNPCNode</code> has its own multi-language <a href="../line-sheet/">Line Sheet</a> support, matching how NPC Node and Player Node work:</p>
+<ul>
+<li>The inline <strong>Clip</strong>, <strong>Line Key</strong>, and <strong>Animator Actions</strong> fields on each speaker entry remain as a <strong>fallback</strong> — a <code>BarkNPCNode</code> works with no line sheet at all.</li>
+<li>When a <code>LineSheetRow</code> exists for the node and the active language, its data takes priority: <code>PreviewText</code> overrides the shared <strong>Text</strong>, and each <code>LineSheetSpeakerEntry</code>'s <code>Clip</code> / <code>LineKey</code> / <code>AnimatorActions</code> override the matching inline speaker entry.</li>
+<li>Per-speaker audio in the sheet uses <code>LineSheetSpeakerEntry.LineKey</code> — a field distinct from <code>LineSheetRow.LineKey</code> (which NPC Node and Player Node use, shared across all speakers on that row).</li>
+<li>Each <code>BarkNPCNode</code> has exactly one <code>LineSheetRow</code> (<code>LineIndex = 0</code>); its speaker entries are seeded automatically from the node's own <code>Speakers</code> list.</li>
+</ul>
+<p>Click <strong>Line Data</strong> on a <code>BarkNPCNode</code> to open its per-node editor — the same popup style used by NPC Node and Player Node, scoped to this node's speakers with no add/remove-line controls (a <code>BarkNPCNode</code> only ever has one line).</p>
 <hr />
 <h2 id="npc-to-npc-overheard-dialogue">NPC-to-NPC / overheard dialogue</h2>
 <p>Because the bark runner waits for each audio clip to finish before advancing, you can script a sequential back-and-forth exchange between two NPCs as a single bark graph — no extra code needed.</p>
 <p><strong>Example:</strong> Two guards talking as the player walks past.</p>
 <ol>
-<li>Create a bark graph with alternating NPC nodes: Guard A -&gt; Guard B -&gt; Guard A -&gt; End</li>
-<li>Assign audio clips to each line</li>
+<li>Create a bark graph with alternating Bark NPC nodes (or legacy NPC nodes): Guard A -&gt; Guard B -&gt; Guard A -&gt; End</li>
+<li>Assign audio clips to each line (per-speaker entries if using <code>BarkNPCNode</code>)</li>
 <li>In your <code>OnBark</code> handler, read <code>line.SpeakerName</code> to route each line to the correct speech bubble</li>
 </ol>
 <hr />
 <h2 id="checklist">Checklist</h2>
 <ul>
-<li>Graph Type is set to <strong>Bark</strong> in the GRAPH sidebar</li>
-<li>No Player Choice nodes in the bark graph (validator warns if found)</li>
+<li>Graph Type is set to <strong>Bark</strong> in the <code>DialogueGraph</code> Inspector</li>
+<li>No Player Choice or Player nodes in the bark graph (validator warns on Player Choice nodes)</li>
 <li><code>BarkSource</code> component is on the NPC GameObject</li>
+<li>For multi-speaker barks: a <code>BarkSpeakerRoster</code> is assigned to <code>DialogueManager</code>, the graph's <strong>Bark Speakers</strong> list is populated, and each <code>BarkSource.speakerName</code> is set (or <strong>Randomise Speaker</strong> is enabled)</li>
 <li><code>OnBark</code> is subscribed in a MonoBehaviour</li>
 <li>Speaker registered with <code>DialogueManager</code> if you need 3D audio positioning</li>
 </ul>

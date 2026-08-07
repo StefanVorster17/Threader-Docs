@@ -8,7 +8,7 @@ The built-in variable store lets designers read and write game state directly fr
 
 A `DialogueVariables` asset is a ScriptableObject that holds a named list of typed variables. Create one per logical domain (quests, economy, flags, etc.) or one for the whole project — your choice.
 
-**Create one:** right-click in the Project window → **Create → Threader → Variables Store**.
+**Create one:** right-click in the Project window → **Create → Threader → Variables → Variables Store**.
 
 Each variable in the list has:
 

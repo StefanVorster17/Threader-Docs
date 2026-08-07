@@ -106,7 +106,7 @@
 - **Line Sheet Editor window** — whole-graph overview of all NPC nodes and lines; accessible from the graph editor sidebar (PROJECT → Line Sheet Editor).
 - **Batch sync** — `Threader → Create & Sync All Line Sheets` creates and syncs sheets for every graph in the project at once.
 - **Multi-language support** — `DialogueGraph` has a `LineSheets` list (`List<NamedLineSheet>`) allowing one line sheet per language. `DialogueManager.SetActiveLanguage(string)` selects the active language at runtime. The active sheet's `PreviewText` fields override NPC line text and choice text for localization. `DialogueManager.ActiveLanguage` reads the current language.
-- **Language Library** — optional `LanguageLibrary` ScriptableObject (**Create → Threader → Language Library**) defines project-wide languages in a single asset. Assign to `DialogueManager` to auto-populate language slots on every graph Inspector with read-only labels instead of free-text entry.
+- **Language Library** — optional `LanguageLibrary` ScriptableObject (**Create → Threader → Lines → Language Library**) defines project-wide languages in a single asset. Assign to `DialogueManager` to auto-populate language slots on every graph Inspector with read-only labels instead of free-text entry.
 - **Choice text localization** — `ChoiceSheetRow` class stores localized choice text per Player Choice node per language in the line sheet.
 - **Redesigned `DialogueGraph` Inspector** — dark header panel, stats row (nodes, NPC lines, entry points, groups), a "Used By" section showing all scene objects referencing the graph, and an editable Line Sheet field.
 - **Redesigned `DialogueLineSheet` Inspector** — stats row (lines, speakers, clips, orphaned rows), description, read-only source graph reference, and an **Open Line Sheet Editor** button.
@@ -124,7 +124,7 @@
 
 ### Node Templates
 
-- **`DialogueNodeTemplate` ScriptableObject** — stores a deep-copy snapshot of one or more nodes and their internal connections. Created automatically when saving a selection, or via `Assets → Create → Threader → Dialogue Node Template`.
+- **`DialogueNodeTemplate` ScriptableObject** — stores a deep-copy snapshot of one or more nodes and their internal connections. Created automatically when saving a selection, or via `Assets → Create → Threader → Graph → Dialogue Node Template`.
 - **Save Selection as Template** — select nodes and click "Save Selection" in the NODE TEMPLATES sidebar panel. Internal connections are preserved; external connections are dropped.
 - **Drag-to-stamp** — drag a template pill from the NODE TEMPLATES sidebar onto the canvas to instantiate it with fresh GUIDs and re-connected internal wiring.
 - **Project window drag** — dragging a `.asset` directly from Unity's Project window onto the canvas also works.

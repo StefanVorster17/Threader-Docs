@@ -11,7 +11,7 @@
 ## Features
 
 - **Visual graph editor** — drag, connect, and organise nodes on an infinite canvas
-- **15 node types** — NPC lines, player choices, branching, switch, weighted random, sub-graphs, variables, audio, animator triggers, events, waits, and more
+- **17 node types** — NPC lines, scripted player lines, player choices, branching, switch, weighted random, sub-graphs, variables, audio, animator triggers, events, waits, and more
 - **Sub-graph system** — call any dialogue graph from within another and return — exactly like a function call
 - **Bark system** — fire-and-forget ambient lines that run in parallel without blocking the player
 - **Line Sheet system** — per-graph companion assets that store per-speaker audio clips and animator actions for every NPC line; supports multiple speakers sharing the same graph
@@ -36,9 +36,9 @@
 
 Seven steps to a working dialogue:
 
-1. **Create** a [Speaker Roster](speaker-roster.md) — right-click in the Project window → **Create → Threader → Speaker Roster**, then add your speaker names
-2. **Create** a [Variables Store](variables.md) *(optional)* — **Create → Threader → Variables Store**, then add any variables your dialogue needs
-3. **Create** a [Dialogue Graph](graph-editor.md) — **Create → Threader → Dialogue Graph**, then double-click it to open the graph editor and build your conversation
+1. **Create** a [Speaker Roster](speaker-roster.md) — right-click in the Project window → **Create → Threader → Speakers → Speaker Roster**, then add your speaker names
+2. **Create** a [Variables Store](variables.md) *(optional)* — **Create → Threader → Variables → Variables Store**, then add any variables your dialogue needs
+3. **Create** a [Dialogue Graph](graph-editor.md) — **Create → Threader → Graph → Dialogue Graph**, then double-click it to open the graph editor and build your conversation
 4. **Add** a `DialogueManager` component to an empty GameObject in the scene — assign your Speaker Roster and Variables Store
 5. **Add** an `NPCDialogue` or `DialogueTrigger` component to your NPC — assign the graph and speaker name
 6. **Wire** the UI — add `DialogueUI` to a GameObject (with `UI_Dialogue.uxml`), or subscribe to `OnNPCLine` / `OnChoiceNode` for a fully custom UI
@@ -56,7 +56,7 @@ Seven steps to a working dialogue:
 | [Tutorial](tutorial.md) | Guided walkthrough building a complete dialogue scene |
 | [Graph Editor](graph-editor.md) | Canvas controls, sidebar, shortcuts, tools |
 | [Dialogue Preview](preview-window.md) | Step through graphs in edit mode without entering Play mode |
-| [Node Reference](nodes.md) | All 15 node types with field descriptions |
+| [Node Reference](nodes.md) | All 17 node types with field descriptions |
 | [Variables](variables.md) | Variable store, set actions, text tokens |
 | [Conditions](conditions.md) | Inline conditions and C# custom conditions |
 | [Events](events.md) | Node events, global events, and C# event subscriptions |

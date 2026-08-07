@@ -53,7 +53,7 @@ Click the **Refresh** button in the NODE TEMPLATES section to re-scan the projec
 
 `DialogueNodeTemplate : ScriptableObject`
 
-Create manually via **Assets → Create → Threader → Dialogue Node Template**, or automatically via **Save Selection**.
+Create manually via **Assets → Create → Threader → Graph → Dialogue Node Template**, or automatically via **Save Selection**.
 
 The asset stores:
 

@@ -16,7 +16,7 @@ Make sure you have **imported the Threader package** into your Unity project. Yo
 
 A [Speaker Roster](speaker-roster.md) is a small asset that declares the speaker names available in your project. It populates the speaker-name dropdowns throughout the graph editor so you pick from a list instead of typing names manually.
 
-1. In the **Project** window, right-click → **Create → Threader → Speaker Roster**.
+1. In the **Project** window, right-click → **Create → Threader → Speakers → Speaker Roster**.
 2. Name it something like `MyRoster`.
 3. Select the asset. In the **Inspector**, click **+** and type your first speaker name — for example `Villager`.
 4. Add more names if you already know them (e.g. `Guard`, `Merchant`). You can always add more later.
@@ -29,7 +29,7 @@ A [Speaker Roster](speaker-roster.md) is a small asset that declares the speaker
 
 If your dialogue needs to check or change game state (e.g. "has the player found the key?"), create a [Variables](variables.md) asset now. If you only need a simple linear conversation, you can skip this step and come back later.
 
-1. Right-click in the Project window → **Create → Threader → Variables Store**.
+1. Right-click in the Project window → **Create → Threader → Variables → Variables Store**.
 2. Name it `GameVariables` (or whatever suits your project).
 3. In the Inspector, click **+ Add Variable** for each piece of state you need:
 
@@ -47,7 +47,7 @@ You do not need to define all variables up front. You can add more at any time a
 
 This is the asset that stores your entire conversation — all nodes, connections, and settings.
 
-1. In the **Project** window, right-click → **Create → Threader → Dialogue Graph**.
+1. In the **Project** window, right-click → **Create → Threader → Graph → Dialogue Graph**.
 2. Name it something descriptive, like `VillagerGraph`.
 
 You now have a `.asset` file in your Project window. This single file holds the full node graph for one conversation (or one bark sequence).
@@ -281,5 +281,5 @@ Now that you have a basic conversation working, explore the rest of Threader:
 | Build a custom UI (Canvas/uGUI) | **[UI](ui.md)** | Replace the built-in UI Toolkit display with your own |
 | Save and load dialogue progress | **[Saving](saving.md)** | Persist variables, entry points, and choice history |
 | Full shortcut and toolbar guide | **[Graph Editor](graph-editor.md)** | Canvas controls, sidebar sections, right-click menus |
-| All 15 node types with field descriptions | **[Node Reference](nodes.md)** | Detailed reference for every node |
+| All 17 node types with field descriptions | **[Node Reference](nodes.md)** | Detailed reference for every node |
 | Methods, events, and interfaces | **[API Reference](api-reference.md)** | Everything you can call from C# |

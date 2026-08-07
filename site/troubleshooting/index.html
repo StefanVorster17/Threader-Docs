@@ -2893,7 +2893,7 @@ void OnDestroy() =&gt; ConditionService.Unregister(&quot;MyKey&quot;);
 <h2 id="line-sheet-and-audio">Line sheet and audio</h2>
 <h3 id="no-audio-plays-during-dialogue">No audio plays during dialogue</h3>
 <ol>
-<li>Confirm a <strong>Line Sheet</strong> is assigned to the graph — in the Graph Editor GRAPH sidebar, the <strong>Line Sheets</strong> list should contain at least one entry.</li>
+<li>Confirm a <strong>Line Sheet</strong> is assigned to the graph — in the <code>DialogueGraph</code> asset's Inspector, the <strong>Line Sheets</strong> list should contain at least one entry. (Not applicable to Bark graphs — see <a href="../bark/#line-sheets-in-bark-graphs">Bark System — line sheets in bark graphs</a> instead.)</li>
 <li>Confirm the Line Sheet has an entry for the correct speaker name (case-sensitive).</li>
 <li>Confirm the entry has an audio clip assigned for that NPC node's line index.</li>
 <li>Confirm the speaker's <code>Transform</code> is registered so <code>DialogueManager</code> knows which <code>AudioSource</code> to use. See <a href="../speaker-roster/">Speaker Roster</a>.</li>

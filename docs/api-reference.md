@@ -26,6 +26,7 @@ DialogueManager.Instance  // null when no manager exists in the scene
 | `conditionProvider` | `ConditionProvider` | Optional. Assigned providers are forwarded to `ConditionService.SetProvider` in `Awake`. |
 | `_variablesList` | `List<DialogueVariables>` | Assets searched in order for variable lookups. Exposed as `VariablesList`. |
 | `_speakerRosters` | `List<SpeakerRoster>` | Assets that populate speaker dropdowns in the editor. Exposed as `SpeakerRosters`. |
+| `_barkSpeakerRosters` | `List<BarkSpeakerRoster>` | Assets that populate the per-graph **Bark Speakers** picker used by `BarkNPCNode`. Exposed as `BarkSpeakerRosters`. See [Bark System — multi-speaker barks](bark.md#multi-speaker-barks-with-bark-npc-node). |
 | `_languageLibrary` | `LanguageLibrary` | Optional. Central language list. When assigned, graph Inspector language slots are driven by the library instead of free-text entry. Exposed as `LanguageLibrary`. |
 | `linePause` | `float` | Seconds to wait after each NPC line before advancing. Default: 1. |
 | `OnDialogueStarted` | `UnityEvent` | Inspector-wired event fired when dialogue starts. |
@@ -43,7 +44,14 @@ event Action<NPCLine> OnNPCLine;
 - `NPCLine.Text` — fully resolved text (variable tokens already substituted)
 
 ```csharp
-// Every node event fired from any NPC node (local + global).
+// Each Player Node line as it becomes current. Fired instead of OnNPCLine for Player Node.
+event Action<NPCLine> OnPlayerLine;
+```
+- Same `NPCLine` struct as `OnNPCLine`. `NPCLine.SpeakerName` resolves from `SpeakerRoster.PlayerName` (via `GetPlayerName()`, default `"Me"`) since Player Node has no Speaker field of its own.
+- Follows the same line-advance contract as `OnNPCLine` (waits on audio / `DialogueUI.IsTyping` / `linePause`). See [UI — Player Node lines](ui.md#player-node-lines).
+
+```csharp
+// Every node event fired from any NPC node or Player Node (local + global).
 event Action<string> OnNodeEvent;
 ```
 Guard with `CurrentActor` to scope handling to a specific NPC:
@@ -145,6 +153,13 @@ void RegisterBlockable(IDialogue blockable)
 void UnregisterBlockable(IDialogue blockable)
 ```
 Register/unregister a component to receive `Block()` and `Unblock()` calls when dialogue starts and ends. Also used for `IDialogueFocus` (camera) and `IDialogueReady` (transition gate). Call `Register` in `OnEnable` and `Unregister` in `OnDisable`.
+
+---
+
+```csharp
+string GetPlayerName()
+```
+Returns the first non-empty **Player Name** across all assigned `SpeakerRosters`, falling back to `"Me"` if none is set. Used to fill `NPCLine.SpeakerName` for `OnPlayerLine`.
 
 ---
 
@@ -392,7 +407,7 @@ Safe to call from a `UnityEvent`, animation event, or external script. Guards ag
 
 `DialogueGraph : ScriptableObject`
 
-Create via **Assets → Create → Threader → Dialogue Graph**.
+Create via **Assets → Create → Threader → Graph → Dialogue Graph**.
 
 ### Inspector fields
 
@@ -402,7 +417,8 @@ Create via **Assets → Create → Threader → Dialogue Graph**.
 | `StartNodeGuid` | `string` | GUID of the default start node |
 | `DefaultSpeakerName` | `string` | Fallback speaker name for NPC nodes with no speaker override |
 | `LookAtSpeaker` | `bool` | When true, calls `IDialogueFocus.FocusOn` on the speaking NPC's transform. Set via the **Look At Speaker** toggle in the Graph Editor sidebar. Hidden in the editor when `IsBark` is true. |
-| `IsBark` | `bool` | When true, this graph is treated as a bark graph. Set via the **Graph Type** dropdown in the GRAPH sidebar. `PlayBark()` requires this to be true. |
+| `IsBark` | `bool` | When true, this graph is treated as a bark graph. Set via the **Graph Type** dropdown in the `DialogueGraph` Inspector (asks for confirmation if the graph already has nodes). `PlayBark()` requires this to be true. |
+| `BarkSpeakers` | `List<string>` | Per-graph filtered subset of speaker names (from assigned `BarkSpeakerRoster` assets) that this bark graph's `BarkNPCNode`s can use. Populated via the graph editor's SPEAKERS sidebar section. Only relevant when `IsBark` is true. See [Bark System](bark.md#multi-speaker-barks-with-bark-npc-node). |
 | `EntryPoints` | `List<DialogueEntryPoint>` | Named entry points. Set via right-click in the editor. |
 | `Groups` | `List<DialogueGroupData>` | Comment boxes (editor-only) |
 | `StickyNotes` | `List<StickyNoteData>` | Sticky notes (editor-only) |
@@ -443,7 +459,7 @@ Pairs a language identifier with a `DialogueLineSheet` asset. Stored in `Dialogu
 
 `LanguageLibrary : ScriptableObject`
 
-Create via **Assets → Create → Threader → Language Library**.
+Create via **Assets → Create → Threader → Lines → Language Library**.
 
 | Field | Type | Description |
 |---|---|---|
@@ -467,7 +483,8 @@ Add to any NPC GameObject (alongside `NPCDialogue`) to automate bark playback wi
 | `triggerMode` | `TriggerMode` | `OnEnter` — fires when the player enters the trigger collider. `OnTimer` — fires on an interval. `Manual` — call `Bark()` from script. |
 | `playerTag` | `string` | Tag used to identify the player for `OnEnter` trigger mode. Default: `"Player"`. |
 | `cooldown` | `float` | Minimum seconds between barks. Default: `8`. Prevents rapid repeat firing regardless of trigger mode. |
-| `speakerName` | `string` | The speaker name this NPC is registered under. Must match their `NPCDialogue` Speaker Name. Used for line sheet audio clip and animator action lookup. |
+| `speakerName` | `string` | The speaker name this NPC is registered under. Must match their `NPCDialogue` Speaker Name. Used for line sheet audio clip and animator action lookup, and to select this NPC's entry on any `BarkNPCNode`s in the graph. Shown as a dropdown scoped to the bark graph's `BarkSpeakers` list. |
+| `randomiseSpeaker` | `bool` | When true, `Start()` overwrites `speakerName` with a random entry picked from the bark graph's `BarkSpeakers` list. |
 | `suppressDuringDialogue` | `bool` | When true (default), barks are silently skipped while a full conversation is active. |
 
 ### Methods
@@ -483,7 +500,7 @@ Manually triggers the bark. Safe to call from a `UnityEvent`, animation event, o
 
 `DialogueVariables : ScriptableObject`
 
-Create via **Assets → Create → Threader → Variables Store**.
+Create via **Assets → Create → Threader → Variables → Variables Store**.
 
 ### Inspector fields
 
@@ -551,14 +568,29 @@ Returns the current runtime value as a string, or `"(not found)"` if the name do
 
 `SpeakerRoster : ScriptableObject`
 
-Create via **Assets → Create → Threader → Speaker Roster**.
+Create via **Assets → Create → Threader → Speakers → Speaker Roster**.
 
 | Member | Description |
 |---|---|
 | `Speakers` | `List<string>` — all canonical speaker names |
+| `PlayerName` | `string` — display name for [Player Node](nodes.md#player-node-p) lines (default `"Me"`). Read via `DialogueManager.GetPlayerName()`, which checks all assigned rosters in order and uses the first non-empty value. |
 | `bool Contains(string name)` | Returns true if the name is in the list (case-sensitive) |
 
 Assign one or more rosters to `DialogueManager`. Speaker fields in the graph editor become type-safe dropdowns populated from all assigned rosters combined.
+
+---
+
+## BarkSpeakerRoster
+
+`BarkSpeakerRoster : ScriptableObject`
+
+Create via **Assets → Create → Threader → Speakers → Bark Speaker Roster**.
+
+| Member | Description |
+|---|---|
+| `Speakers` | `List<string>` — all canonical bark speaker type names (e.g. `MaleVillager`, `FemaleGuard`) |
+
+Assign one or more rosters to `DialogueManager.BarkSpeakerRosters`. Each bark graph then picks its own subset from the combined list via the graph editor's [SPEAKERS → Bark Speakers](graph-editor.md#speakers) picker, stored on `DialogueGraph.BarkSpeakers`. `BarkNPCNode` speaker dropdowns and `BarkSource.speakerName` are scoped to that per-graph list. See [Bark System — multi-speaker barks](bark.md#multi-speaker-barks-with-bark-npc-node).
 
 ---
 
@@ -653,7 +685,7 @@ Subclass this to centralize condition evaluation in a single `ScriptableObject`.
 
 `ConditionDefinition : ScriptableObject`
 
-Create via **Assets → Create → Threader → Condition (Custom)**.
+Create via **Assets → Create → Threader → Variables → Condition (Custom)**.
 
 | Field | Description |
 |---|---|

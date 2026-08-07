@@ -194,3 +194,86 @@ body {
   color: #ffffff !important;
   border-bottom: 2px solid #1a6ff5;
 }
+
+/* ── Print / PDF overrides ──────────────────────────────────────────────── */
+
+@media print {
+  /* White background on everything, no images */
+  * {
+    background-color: transparent !important;
+    background-image: none !important;
+    color: #1a1a1a !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  body {
+    background: #ffffff !important;
+  }
+
+  /* Override the slate scheme CSS variables */
+  [data-md-color-scheme="slate"] {
+    --md-default-bg-color:        #ffffff !important;
+    --md-default-bg-color--light: #f4f4f4 !important;
+    --md-default-bg-color--dark:  #e8e8e8 !important;
+    --md-default-fg-color:        #1a1a1a !important;
+    --md-default-fg-color--light: #333333 !important;
+    --md-default-fg-color--dark:  #000000 !important;
+    --md-code-bg-color:           #f0f0f0 !important;
+    --md-code-fg-color:           #1a1a1a !important;
+    --md-typeset-color:           #1a1a1a !important;
+  }
+
+  /* Main body text */
+  .md-typeset,
+  .md-typeset p,
+  .md-typeset li,
+  .md-typeset td,
+  .md-typeset th {
+    color: #1a1a1a !important;
+  }
+
+  /* Headings */
+  .md-content h1 {
+    color: #0d1f3c !important;
+    border-bottom-color: #1a6ff5 !important;
+  }
+  .md-content h2 {
+    color: #1a2f4a !important;
+    border-bottom-color: #cccccc !important;
+  }
+  .md-content h3 { color: #1a3a6e !important; }
+  .md-content h4 { color: #2a4a7e !important; }
+
+  /* Code blocks */
+  pre, code,
+  .highlight, .highlight pre,
+  .md-content pre, .md-content pre > code,
+  .md-content code {
+    background: #f0f0f0 !important;
+    color: #1a1a1a !important;
+  }
+
+  /* Tables */
+  .md-typeset table:not([class]) th {
+    background: #e8ecf0 !important;
+    color: #1a1a1a !important;
+  }
+  .md-typeset table:not([class]) td,
+  .md-typeset table:not([class]) tr {
+    border-color: #cccccc !important;
+    color: #1a1a1a !important;
+  }
+
+  /* Links — keep blue so they're identifiable */
+  .md-typeset a { color: #1a6ff5 !important; }
+
+  /* Hide chrome elements */
+  .md-header,
+  .md-footer,
+  .md-sidebar,
+  .md-tabs,
+  .md-top {
+    display: none !important;
+  }
+}

@@ -31,7 +31,7 @@ These are added directly inside each choice card in the Player Choice node edito
 
 **Step 1 — Create a DialogueVariables asset** (if you haven't already):
 
-Right-click in the Project window → **Create → Threader → Variables Store**.  
+Right-click in the Project window → **Create → Threader → Variables → Variables Store**.  
 Add variables in the Inspector. See [Variables](variables.md) for full detail.
 
 **Step 2 — Assign the asset to DialogueManager:**
@@ -159,7 +159,7 @@ When a choice has a `ConditionDefinition`, `ConditionService.Evaluate` resolves 
 
 ### Step 2 — Create a ConditionDefinition asset
 
-Right-click in the Project window → **Create → Threader → Condition (Custom)**.
+Right-click in the Project window → **Create → Threader → Variables → Condition (Custom)**.
 
 | Field | Description |
 |---|---|
@@ -213,7 +213,7 @@ In the graph, set the **ConditionDefinition** key to the same string you used in
 
 If you want a reusable condition asset that checks a `DialogueVariables` store without any C# handler, create a `VariableConditionDefinition`:
 
-Right-click in the Project window → **Create → Threader → Variable Condition**.
+Right-click in the Project window → **Create → Threader → Variables → Variable Condition**.
 
 | Field | Description |
 |---|---|

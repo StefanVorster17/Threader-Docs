@@ -22,7 +22,7 @@ A **Language Library** is a small ScriptableObject that declares which languages
 
 ### Create a Language Library
 
-1. Right-click in the Project window → **Create → Threader → Language Library**.
+1. Right-click in the Project window → **Create → Threader → Lines → Language Library**.
 2. Name it (e.g. `ProjectLanguages`).
 3. In the Inspector, add your languages to the **Languages** list. The first entry is the default/primary language.
 
@@ -71,7 +71,7 @@ You can create sheets via:
 
 - **From the [graph editor](graph-editor.md)** — open the sidebar **PROJECT** section and click **Line Sheet Editor**, or click **Line Data** on any NPC node
 - **Batch creation** — **Threader → Create & Sync All Line Sheets** scans all graphs and creates missing sheets
-- **Manually** — right-click in the Project window → **Create → Threader → Line Sheet**
+- **Manually** — right-click in the Project window → **Create → Threader → Lines → Line Sheet**
 
 ### 2. Register sheets on the graph
 

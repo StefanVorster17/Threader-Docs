@@ -1582,6 +1582,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#barkspeakerroster" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BarkSpeakerRoster
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#conditionservice-static" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2490,6 +2501,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#barkspeakerroster" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BarkSpeakerRoster
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#conditionservice-static" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2768,6 +2790,11 @@
 <td>Assets that populate speaker dropdowns in the editor. Exposed as <code>SpeakerRosters</code>.</td>
 </tr>
 <tr>
+<td><code>_barkSpeakerRosters</code></td>
+<td><code>List&lt;BarkSpeakerRoster&gt;</code></td>
+<td>Assets that populate the per-graph <strong>Bark Speakers</strong> picker used by <code>BarkNPCNode</code>. Exposed as <code>BarkSpeakerRosters</code>. See <a href="../bark/#multi-speaker-barks-with-bark-npc-node">Bark System — multi-speaker barks</a>.</td>
+</tr>
+<tr>
 <td><code>_languageLibrary</code></td>
 <td><code>LanguageLibrary</code></td>
 <td>Optional. Central language list. When assigned, graph Inspector language slots are driven by the library instead of free-text entry. Exposed as <code>LanguageLibrary</code>.</td>
@@ -2798,7 +2825,14 @@ event Action&lt;NPCLine&gt; OnNPCLine;
 <li><code>NPCLine.SpeakerName</code> — resolved speaker name (graph default applied when the node's Speaker field is blank)</li>
 <li><code>NPCLine.Text</code> — fully resolved text (variable tokens already substituted)</li>
 </ul>
-<pre><code class="language-csharp">// Every node event fired from any NPC node (local + global).
+<pre><code class="language-csharp">// Each Player Node line as it becomes current. Fired instead of OnNPCLine for Player Node.
+event Action&lt;NPCLine&gt; OnPlayerLine;
+</code></pre>
+<ul>
+<li>Same <code>NPCLine</code> struct as <code>OnNPCLine</code>. <code>NPCLine.SpeakerName</code> resolves from <code>SpeakerRoster.PlayerName</code> (via <code>GetPlayerName()</code>, default <code>"Me"</code>) since Player Node has no Speaker field of its own.</li>
+<li>Follows the same line-advance contract as <code>OnNPCLine</code> (waits on audio / <code>DialogueUI.IsTyping</code> / <code>linePause</code>). See <a href="../ui/#player-node-lines">UI — Player Node lines</a>.</li>
+</ul>
+<pre><code class="language-csharp">// Every node event fired from any NPC node or Player Node (local + global).
 event Action&lt;string&gt; OnNodeEvent;
 </code></pre>
 <p>Guard with <code>CurrentActor</code> to scope handling to a specific NPC:</p>
@@ -2919,6 +2953,10 @@ event Action&lt;NPCLine&gt; OnBark;
 void UnregisterBlockable(IDialogue blockable)
 </code></pre>
 <p>Register/unregister a component to receive <code>Block()</code> and <code>Unblock()</code> calls when dialogue starts and ends. Also used for <code>IDialogueFocus</code> (camera) and <code>IDialogueReady</code> (transition gate). Call <code>Register</code> in <code>OnEnable</code> and <code>Unregister</code> in <code>OnDisable</code>.</p>
+<hr />
+<pre><code class="language-csharp">string GetPlayerName()
+</code></pre>
+<p>Returns the first non-empty <strong>Player Name</strong> across all assigned <code>SpeakerRosters</code>, falling back to <code>"Me"</code> if none is set. Used to fill <code>NPCLine.SpeakerName</code> for <code>OnPlayerLine</code>.</p>
 <hr />
 <pre><code class="language-csharp">void RegisterSpeaker(string name, Transform t)
 void UnregisterSpeaker(string name)
@@ -3242,7 +3280,7 @@ void UnregisterSpeaker(string name)
 <hr />
 <h2 id="dialoguegraph">DialogueGraph</h2>
 <p><code>DialogueGraph : ScriptableObject</code></p>
-<p>Create via <strong>Assets → Create → Threader → Dialogue Graph</strong>.</p>
+<p>Create via <strong>Assets → Create → Threader → Graph → Dialogue Graph</strong>.</p>
 <h3 id="inspector-fields_4">Inspector fields</h3>
 <table>
 <thead>
@@ -3276,7 +3314,12 @@ void UnregisterSpeaker(string name)
 <tr>
 <td><code>IsBark</code></td>
 <td><code>bool</code></td>
-<td>When true, this graph is treated as a bark graph. Set via the <strong>Graph Type</strong> dropdown in the GRAPH sidebar. <code>PlayBark()</code> requires this to be true.</td>
+<td>When true, this graph is treated as a bark graph. Set via the <strong>Graph Type</strong> dropdown in the <code>DialogueGraph</code> Inspector (asks for confirmation if the graph already has nodes). <code>PlayBark()</code> requires this to be true.</td>
+</tr>
+<tr>
+<td><code>BarkSpeakers</code></td>
+<td><code>List&lt;string&gt;</code></td>
+<td>Per-graph filtered subset of speaker names (from assigned <code>BarkSpeakerRoster</code> assets) that this bark graph's <code>BarkNPCNode</code>s can use. Populated via the graph editor's SPEAKERS sidebar section. Only relevant when <code>IsBark</code> is true. See <a href="../bark/#multi-speaker-barks-with-bark-npc-node">Bark System</a>.</td>
 </tr>
 <tr>
 <td><code>EntryPoints</code></td>
@@ -3321,7 +3364,7 @@ public class NamedLineSheet
 <hr />
 <h2 id="languagelibrary">LanguageLibrary</h2>
 <p><code>LanguageLibrary : ScriptableObject</code></p>
-<p>Create via <strong>Assets → Create → Threader → Language Library</strong>.</p>
+<p>Create via <strong>Assets → Create → Threader → Lines → Language Library</strong>.</p>
 <table>
 <thead>
 <tr>
@@ -3376,7 +3419,12 @@ public class NamedLineSheet
 <tr>
 <td><code>speakerName</code></td>
 <td><code>string</code></td>
-<td>The speaker name this NPC is registered under. Must match their <code>NPCDialogue</code> Speaker Name. Used for line sheet audio clip and animator action lookup.</td>
+<td>The speaker name this NPC is registered under. Must match their <code>NPCDialogue</code> Speaker Name. Used for line sheet audio clip and animator action lookup, and to select this NPC's entry on any <code>BarkNPCNode</code>s in the graph. Shown as a dropdown scoped to the bark graph's <code>BarkSpeakers</code> list.</td>
+</tr>
+<tr>
+<td><code>randomiseSpeaker</code></td>
+<td><code>bool</code></td>
+<td>When true, <code>Start()</code> overwrites <code>speakerName</code> with a random entry picked from the bark graph's <code>BarkSpeakers</code> list.</td>
 </tr>
 <tr>
 <td><code>suppressDuringDialogue</code></td>
@@ -3392,7 +3440,7 @@ public class NamedLineSheet
 <hr />
 <h2 id="dialoguevariables">DialogueVariables</h2>
 <p><code>DialogueVariables : ScriptableObject</code></p>
-<p>Create via <strong>Assets → Create → Threader → Variables Store</strong>.</p>
+<p>Create via <strong>Assets → Create → Threader → Variables → Variables Store</strong>.</p>
 <h3 id="inspector-fields_6">Inspector fields</h3>
 <table>
 <thead>
@@ -3448,7 +3496,7 @@ void SetString(string name, string value)
 <hr />
 <h2 id="speakerroster">SpeakerRoster</h2>
 <p><code>SpeakerRoster : ScriptableObject</code></p>
-<p>Create via <strong>Assets → Create → Threader → Speaker Roster</strong>.</p>
+<p>Create via <strong>Assets → Create → Threader → Speakers → Speaker Roster</strong>.</p>
 <table>
 <thead>
 <tr>
@@ -3462,12 +3510,35 @@ void SetString(string name, string value)
 <td><code>List&lt;string&gt;</code> — all canonical speaker names</td>
 </tr>
 <tr>
+<td><code>PlayerName</code></td>
+<td><code>string</code> — display name for <a href="../nodes/#player-node-p">Player Node</a> lines (default <code>"Me"</code>). Read via <code>DialogueManager.GetPlayerName()</code>, which checks all assigned rosters in order and uses the first non-empty value.</td>
+</tr>
+<tr>
 <td><code>bool Contains(string name)</code></td>
 <td>Returns true if the name is in the list (case-sensitive)</td>
 </tr>
 </tbody>
 </table>
 <p>Assign one or more rosters to <code>DialogueManager</code>. Speaker fields in the graph editor become type-safe dropdowns populated from all assigned rosters combined.</p>
+<hr />
+<h2 id="barkspeakerroster">BarkSpeakerRoster</h2>
+<p><code>BarkSpeakerRoster : ScriptableObject</code></p>
+<p>Create via <strong>Assets → Create → Threader → Speakers → Bark Speaker Roster</strong>.</p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Speakers</code></td>
+<td><code>List&lt;string&gt;</code> — all canonical bark speaker type names (e.g. <code>MaleVillager</code>, <code>FemaleGuard</code>)</td>
+</tr>
+</tbody>
+</table>
+<p>Assign one or more rosters to <code>DialogueManager.BarkSpeakerRosters</code>. Each bark graph then picks its own subset from the combined list via the graph editor's <a href="../graph-editor/#speakers">SPEAKERS → Bark Speakers</a> picker, stored on <code>DialogueGraph.BarkSpeakers</code>. <code>BarkNPCNode</code> speaker dropdowns and <code>BarkSource.speakerName</code> are scoped to that per-graph list. See <a href="../bark/#multi-speaker-barks-with-bark-npc-node">Bark System — multi-speaker barks</a>.</p>
 <hr />
 <h2 id="conditionservice-static">ConditionService (static)</h2>
 <pre><code class="language-csharp">public static class ConditionService
@@ -3570,7 +3641,7 @@ static void ClearDelegates()
 <hr />
 <h2 id="conditiondefinition">ConditionDefinition</h2>
 <p><code>ConditionDefinition : ScriptableObject</code></p>
-<p>Create via <strong>Assets → Create → Threader → Condition (Custom)</strong>.</p>
+<p>Create via <strong>Assets → Create → Threader → Variables → Condition (Custom)</strong>.</p>
 <table>
 <thead>
 <tr>

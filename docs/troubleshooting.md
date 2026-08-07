@@ -254,7 +254,7 @@ Each sub-graph resolves audio clips and animator actions from its own **Line She
 
 ### No audio plays during dialogue
 
-1. Confirm a **Line Sheet** is assigned to the graph — in the Graph Editor GRAPH sidebar, the **Line Sheets** list should contain at least one entry.
+1. Confirm a **Line Sheet** is assigned to the graph — in the `DialogueGraph` asset's Inspector, the **Line Sheets** list should contain at least one entry. (Not applicable to Bark graphs — see [Bark System — line sheets in bark graphs](bark.md#line-sheets-in-bark-graphs) instead.)
 2. Confirm the Line Sheet has an entry for the correct speaker name (case-sensitive).
 3. Confirm the entry has an audio clip assigned for that NPC node's line index.
 4. Confirm the speaker's `Transform` is registered so `DialogueManager` knows which `AudioSource` to use. See [Speaker Roster](speaker-roster.md).

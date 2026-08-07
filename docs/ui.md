@@ -13,6 +13,7 @@ Threader ships with a built-in `DialogueUI` component that powers the demo scene
 ### What it does
 
 - Displays NPC lines with a configurable typewriter effect
+- Displays [Player Node](nodes.md#player-node-p) lines the same way, via a separate `OnPlayerLine` subscription — the speaker name renders in green to distinguish it from NPC lines, then restores to its normal USS-resolved colour for the next NPC line
 - Shows speaker name
 - Renders player choice buttons with staggered fade-in, visited/locked states, and an animated dismiss on selection
 - Handles **Space** to skip the current typewriter animation or advance the line
@@ -225,6 +226,34 @@ void HandleLine(NPCLine line)
     _textLabel.text    = line.Text;
 }
 ```
+
+### Player Node lines
+
+[Player Node](nodes.md#player-node-p) lines fire a separate `OnPlayerLine` event instead of `OnNPCLine` — subscribe to both if your graphs use Player Node:
+
+```csharp
+void OnEnable()
+{
+    DialogueManager.Instance.OnNPCLine    += HandleLine;
+    DialogueManager.Instance.OnPlayerLine += HandlePlayerLine;
+}
+
+void OnDisable()
+{
+    DialogueManager.Instance.OnNPCLine    -= HandleLine;
+    DialogueManager.Instance.OnPlayerLine -= HandlePlayerLine;
+}
+
+void HandlePlayerLine(NPCLine line)
+{
+    // Same NPCLine struct — line.SpeakerName comes from SpeakerRoster.PlayerName (default "Me")
+    // Style however you distinguish player lines from NPC lines: right-aligned bubble, no
+    // speaker label, a different colour, etc.
+    HandleLine(line);
+}
+```
+
+`OnPlayerLine` follows the exact same [line advance contract](#the-line-advance-contract) as `OnNPCLine` — the runner still waits on `DialogueUI.IsTyping` / audio / `linePause` before calling `Continue()`, so a custom UI must set `IsTyping` (or otherwise gate advancement) for Player Node lines the same way it does for NPC lines.
 
 ### Cancelling dialogue
 

@@ -1,6 +1,6 @@
 # Node Reference
 
-Threader has 15 node types. This page documents every field and the exact order in which things happen at runtime.
+Threader has 17 node types. This page documents every field and the exact order in which things happen at runtime.
 
 All nodes share:
 
@@ -8,7 +8,7 @@ All nodes share:
 - **Prevent Dialogue Exit toggle** — when enabled, `DialogueManager.CancelDialogue()` and the built-in Escape-key handler are ignored while this node is active. Use to protect nodes that write variables, grant rewards, or play mandatory cutscene lines. The validator will warn you if a locked node has no reachable End node (which would leave the player permanently stuck).
 - **Right-click context menu** — Set as Start Node, Set as Entry Point, Remove Entry Point, Set Colour, Bookmark this Node, Duplicate, Delete, Copy GUID.
 
-> **[Bark graphs](bark.md)** (graphs with **Graph Type** set to **Bark** in the GRAPH sidebar) do not support Player Choice Node, Wait Node, or Sub Graph Node. These node types are hidden from the sidebar and right-click context menu when a bark graph is open.
+> **[Bark graphs](bark.md)** (graphs with **Graph Type** set to **Bark** in the `DialogueGraph` Inspector) do not support Player Node, Player Choice Node, Wait Node, or Sub Graph Node. These node types are hidden from the sidebar and right-click context menu when a bark graph is open. **NPC Node** is also hidden from the CREATE sidebar in bark graphs — its bark-native replacement is [Bark NPC Node](#bark-npc-node), which adds per-speaker audio and animation to a single shared line.
 
 ---
 
@@ -78,6 +78,74 @@ The node shows a read-only preview of its lines. To add or edit lines, click the
 - **Add animator actions** per speaker per line
 
 Each line's text field supports `{varName}` and `{varName:name}` tokens (see [Variables — text substitution](variables.md#variable-substitution-in-text)).
+
+---
+
+## Player Node `[P]`
+
+![Player Node](assets/images/nodes/player.png){ width="260" }
+
+Shows one or more scripted lines spoken by the player character. Like an NPC Node, the runner auto-advances through the list and waits for the player to advance before moving to the next line — but there is no Speaker field. Lines are always attributed to the player, and `DialogueManager` fires a separate `OnPlayerLine` event instead of `OnNPCLine`, so your UI can style player lines differently (e.g. a right-aligned bubble with no speaker label).
+
+Use this for games where the player character has a voice, or where a scripted player response should play automatically before an NPC reply — without requiring the player to click a choice button. If you need the player to actually pick between options, use [Player Choice Node](#player-choice-node-c) instead.
+
+> **Not available in bark graphs.** Player Node is hidden from the sidebar and context menu when **Graph Type** is set to **Bark**.
+
+### Execution order
+
+1. **Set Vars** actions are applied to `DialogueVariables` (in list order)
+2. `DialogueRunner` fires `OnPlayerNode` → `DialogueManager` receives the node
+3. **Events** are fired inside the handler — local events trigger `OnNodeEvent`; global events also trigger `OnGlobalNodeEvent`
+4. Each **Line** in the list is displayed in sequence — `OnPlayerLine` fires per line, then the UI typewriter runs, then the per-line pause, then the player advances (or space-to-skip)
+5. After the last line, `Continue()` is called and execution moves to the next connected node
+
+### Fields
+
+#### Events (+ Add)
+
+Same as the [NPC Node — Events](#events-add) field: fires named string events (Local/Global scope) when this node is reached, before lines are shown. See [Events](events.md).
+
+#### Set Vars (+ Add)
+
+Same as the [NPC Node — Set Vars](#set-vars-add) field: applies variable write operations the moment this node is reached, before events fire.
+
+#### Lines
+
+Unlike NPC Node, **Player Node text is not stored on the node itself** — it is authored entirely through the **Line Data** button, which writes into the primary (first) [Line Sheet's](line-sheet.md) `PreviewText` for that line. This keeps Player Node consistent with how translated text works everywhere else in Threader, but it means an empty-looking Line Data popup on a fresh node is expected — type your line there, not anywhere else.
+
+- **Add / remove lines** with the **+ Add Line** button
+- **Edit the text** of each line directly in the popup
+- Supports `{varName}` and `{varName:name}` tokens, same as NPC lines
+
+---
+
+## Bark NPC Node
+
+![Bark NPC Node](assets/images/nodes/bark-npc.png){ width="260" }
+
+The bark-graph equivalent of NPC Node — one shared line of text plus a list of per-speaker entries (audio clip, Line Key, animator actions). At runtime the entry whose **Speaker Name** matches the calling `BarkSource.speakerName` (or the `speakerName` argument passed to `PlayBark()`) is selected, so several NPC "types" that share one bark graph (e.g. Male Villager, Female Guard) can each play their own voice line and animation from the same node.
+
+> **Only available in bark graphs.** Bark NPC Node replaces NPC Node in the CREATE sidebar's Dialogue category when **Graph Type** is set to **Bark**; it is hidden entirely in Dialogue graphs.
+
+### Fields
+
+#### Text
+
+The shared line text shown regardless of which speaker delivers it. Supports `{varName}` tokens.
+
+#### Speakers (+ Add Speaker)
+
+| Field | Description |
+|---|---|
+| **Speaker Name** | Dropdown scoped to this graph's **Bark Speakers** list (configured in the [SPEAKERS sidebar](graph-editor.md#speakers) from your assigned `BarkSpeakerRoster` assets) |
+| **Clip** | Inline fallback `AudioClip` for this speaker. Used only when no [Line Sheet](line-sheet.md) row overrides it. |
+| **Line Key** | Inline fallback Line Key for middleware providers (FMOD/Wwise). See [Audio — Line Keys](audio.md#line-keys). |
+| **Animator Actions** | Inline fallback list of animator parameter actions for this speaker |
+| **✕** | Removes this speaker entry |
+
+#### Line Data (button)
+
+Opens the same kind of per-node popup as NPC Node's **Line Data** button, scoped to this node's speakers. When a [Line Sheet](line-sheet.md) row exists for this node and the active language, its `PreviewText`, per-speaker Clip, and per-speaker Line Key take priority over the inline **Speakers** fields above — the inline fields remain as a no-line-sheet-required fallback. See [Bark System — multi-speaker barks](bark.md#multi-speaker-barks-with-bark-npc-node) for the full setup (creating a `BarkSpeakerRoster`, assigning it, and populating the graph's Bark Speakers list).
 
 ---
 

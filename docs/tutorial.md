@@ -39,7 +39,7 @@ Three branches, two entry points, one variable. Keep this sketch open while buil
 
 You need one variable to track whether the player has found the cat.
 
-1. In the Project window, right-click → **Create → Threader → Variables Store**.
+1. In the Project window, right-click → **Create → Threader → Variables → Variables Store**.
 2. Name it `VillagerVars`.
 3. Select the asset. In the Inspector, click **+ Add Variable**.
 4. Fill in the fields:
@@ -56,7 +56,7 @@ You need one variable to track whether the player has found the cat.
 
 ## 3. Create the graph
 
-1. In the Project window, right-click → **Create → Threader → Dialogue Graph**.
+1. In the Project window, right-click → **Create → Threader → Graph → Dialogue Graph**.
 2. Name it `VillagerDialogue`.
 3. Double-click it to open the [Graph Editor](graph-editor.md).
 
