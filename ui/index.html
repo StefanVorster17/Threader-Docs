@@ -1158,6 +1158,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#player-node-lines" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Player Node lines
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#cancelling-dialogue" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1669,6 +1680,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#player-node-lines" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Player Node lines
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#cancelling-dialogue" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1767,6 +1789,7 @@
 <h3 id="what-it-does">What it does</h3>
 <ul>
 <li>Displays NPC lines with a configurable typewriter effect</li>
+<li>Displays <a href="../nodes/#player-node-p">Player Node</a> lines the same way, via a separate <code>OnPlayerLine</code> subscription — the speaker name renders in green to distinguish it from NPC lines, then restores to its normal USS-resolved colour for the next NPC line</li>
 <li>Shows speaker name</li>
 <li>Renders player choice buttons with staggered fade-in, visited/locked states, and an animated dismiss on selection</li>
 <li>Handles <strong>Space</strong> to skip the current typewriter animation or advance the line</li>
@@ -2018,6 +2041,29 @@ public class MyDialogueUI : MonoBehaviour
     _textLabel.text    = line.Text;
 }
 </code></pre>
+<h3 id="player-node-lines">Player Node lines</h3>
+<p><a href="../nodes/#player-node-p">Player Node</a> lines fire a separate <code>OnPlayerLine</code> event instead of <code>OnNPCLine</code> — subscribe to both if your graphs use Player Node:</p>
+<pre><code class="language-csharp">void OnEnable()
+{
+    DialogueManager.Instance.OnNPCLine    += HandleLine;
+    DialogueManager.Instance.OnPlayerLine += HandlePlayerLine;
+}
+
+void OnDisable()
+{
+    DialogueManager.Instance.OnNPCLine    -= HandleLine;
+    DialogueManager.Instance.OnPlayerLine -= HandlePlayerLine;
+}
+
+void HandlePlayerLine(NPCLine line)
+{
+    // Same NPCLine struct — line.SpeakerName comes from SpeakerRoster.PlayerName (default &quot;Me&quot;)
+    // Style however you distinguish player lines from NPC lines: right-aligned bubble, no
+    // speaker label, a different colour, etc.
+    HandleLine(line);
+}
+</code></pre>
+<p><code>OnPlayerLine</code> follows the exact same <a href="#the-line-advance-contract">line advance contract</a> as <code>OnNPCLine</code> — the runner still waits on <code>DialogueUI.IsTyping</code> / audio / <code>linePause</code> before calling <code>Continue()</code>, so a custom UI must set <code>IsTyping</code> (or otherwise gate advancement) for Player Node lines the same way it does for NPC lines.</p>
 <h3 id="cancelling-dialogue">Cancelling dialogue</h3>
 <p><code>DialogueManager.CancelDialogue()</code> immediately ends active dialogue. Call it from any button click or key handler in your custom UI:</p>
 <pre><code class="language-csharp">// Example: Escape key in Update(), or a cancel button callback
@@ -2139,7 +2185,7 @@ DialogueManager.Instance.SelectChoice(index);
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Threader Dialogue Kit &nbsp;·&nbsp; v1.0.1
+      Threader Dialogue Kit &nbsp;·&nbsp; v1.1.0
     </div>
   
   
@@ -2163,7 +2209,7 @@ DialogueManager.Instance.SelectChoice(index);
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.top", "toc.follow", "search.suggest", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": "1.0.1"}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.top", "toc.follow", "search.suggest", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": "1.1.0"}</script>
     
     
       <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>

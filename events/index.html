@@ -829,10 +829,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#from-an-npc-node" class="md-nav__link">
+  <a href="#from-an-npc-node-or-player-node" class="md-nav__link">
     <span class="md-ellipsis">
       
-        From an NPC Node
+        From an NPC Node (or Player Node)
       
     </span>
   </a>
@@ -1565,10 +1565,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#from-an-npc-node" class="md-nav__link">
+  <a href="#from-an-npc-node-or-player-node" class="md-nav__link">
     <span class="md-ellipsis">
       
-        From an NPC Node
+        From an NPC Node (or Player Node)
       
     </span>
   </a>
@@ -1762,8 +1762,8 @@
 <p>Events are named string keys fired at specific points in a conversation. They are the primary way dialogue drives the rest of your game — opening doors, spawning enemies, triggering cutscene beats, awarding items, updating UI — without writing any coupling code inside the dialogue system itself.</p>
 <hr />
 <h2 id="two-ways-to-fire-an-event">Two ways to fire an event</h2>
-<h3 id="from-an-npc-node">From an NPC Node</h3>
-<p>Every <a href="../nodes/#npc-node-n">NPC node</a> has an <strong>Events</strong> section (click <strong>+ Add</strong> to add a row). These events fire when the node is reached, <strong>before</strong> any lines are displayed.</p>
+<h3 id="from-an-npc-node-or-player-node">From an NPC Node (or Player Node)</h3>
+<p>Every <a href="../nodes/#npc-node-n">NPC node</a> — and, identically, every <a href="../nodes/#player-node-p">Player Node</a> — has an <strong>Events</strong> section (click <strong>+ Add</strong> to add a row). These events fire when the node is reached, <strong>before</strong> any lines are displayed.</p>
 <table>
 <thead>
 <tr>
@@ -1788,7 +1788,7 @@
 </table>
 <p>Multiple events are fired in list order. Empty keys are skipped.</p>
 <blockquote>
-<p>Use NPC node events when you want something to happen at the same moment speaking begins — for instance, closing a shop UI, playing a sting, or setting a flag before the first line plays.</p>
+<p>Use NPC/Player node events when you want something to happen at the same moment speaking begins — for instance, closing a shop UI, playing a sting, or setting a flag before the first line plays.</p>
 </blockquote>
 <h3 id="from-a-fire-event-node">From a Fire Event Node</h3>
 <p>The <strong>Fire Event Node <code>[F2]</code></strong> fires events standalone without any dialogue being shown. It fires all its rows in list order, then advances silently.</p>
@@ -1991,7 +1991,7 @@ DialogueManager.Instance.OnGlobalNodeEvent += key =&gt;
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Threader Dialogue Kit &nbsp;·&nbsp; v1.0.1
+      Threader Dialogue Kit &nbsp;·&nbsp; v1.1.0
     </div>
   
   
@@ -2015,7 +2015,7 @@ DialogueManager.Instance.OnGlobalNodeEvent += key =&gt;
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.top", "toc.follow", "search.suggest", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": "1.0.1"}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.top", "toc.follow", "search.suggest", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": "1.1.0"}</script>
     
     
       <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>

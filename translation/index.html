@@ -1995,7 +1995,7 @@
 <p>A <strong>Language Library</strong> is a small ScriptableObject that declares which languages your project supports. When assigned to the <code>DialogueManager</code>, it replaces the manual text entry on every graph's Line Sheet list with a fixed set of language slots — one per language you defined. This prevents typos and ensures every graph uses the same language names.</p>
 <h3 id="create-a-language-library">Create a Language Library</h3>
 <ol>
-<li>Right-click in the Project window → <strong>Create → Threader → Language Library</strong>.</li>
+<li>Right-click in the Project window → <strong>Create → Threader → Lines → Language Library</strong>.</li>
 <li>Name it (e.g. <code>ProjectLanguages</code>).</li>
 <li>In the Inspector, add your languages to the <strong>Languages</strong> list. The first entry is the default/primary language.</li>
 </ol>
@@ -2049,7 +2049,7 @@ VillagerGraph_JP.asset
 <ul>
 <li><strong>From the <a href="../graph-editor/">graph editor</a></strong> — open the sidebar <strong>PROJECT</strong> section and click <strong>Line Sheet Editor</strong>, or click <strong>Line Data</strong> on any NPC node</li>
 <li><strong>Batch creation</strong> — <strong>Threader → Create &amp; Sync All Line Sheets</strong> scans all graphs and creates missing sheets</li>
-<li><strong>Manually</strong> — right-click in the Project window → <strong>Create → Threader → Line Sheet</strong></li>
+<li><strong>Manually</strong> — right-click in the Project window → <strong>Create → Threader → Lines → Line Sheet</strong></li>
 </ul>
 <h3 id="2-register-sheets-on-the-graph">2. Register sheets on the graph</h3>
 <p>Open the <code>DialogueGraph</code> asset in the Inspector (or use the Graph Editor sidebar). In the <strong>Line Sheets</strong> section, assign one sheet per language:</p>
@@ -2275,7 +2275,7 @@ DialogueManager.Instance.SetActiveLanguage(&quot;&quot;);
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Threader Dialogue Kit &nbsp;·&nbsp; v1.0.1
+      Threader Dialogue Kit &nbsp;·&nbsp; v1.1.0
     </div>
   
   
@@ -2299,7 +2299,7 @@ DialogueManager.Instance.SetActiveLanguage(&quot;&quot;);
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.top", "toc.follow", "search.suggest", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": "1.0.1"}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.top", "toc.follow", "search.suggest", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": "1.1.0"}</script>
     
     
       <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>

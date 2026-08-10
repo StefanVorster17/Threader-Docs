@@ -1980,7 +1980,7 @@
 <h2 id="step-1-create-a-speaker-roster">Step 1 — Create a Speaker Roster</h2>
 <p>A <a href="../speaker-roster/">Speaker Roster</a> is a small asset that declares the speaker names available in your project. It populates the speaker-name dropdowns throughout the graph editor so you pick from a list instead of typing names manually.</p>
 <ol>
-<li>In the <strong>Project</strong> window, right-click → <strong>Create → Threader → Speaker Roster</strong>.</li>
+<li>In the <strong>Project</strong> window, right-click → <strong>Create → Threader → Speakers → Speaker Roster</strong>.</li>
 <li>Name it something like <code>MyRoster</code>.</li>
 <li>Select the asset. In the <strong>Inspector</strong>, click <strong>+</strong> and type your first speaker name — for example <code>Villager</code>.</li>
 <li>Add more names if you already know them (e.g. <code>Guard</code>, <code>Merchant</code>). You can always add more later.</li>
@@ -1992,7 +1992,7 @@
 <h2 id="step-2-create-a-variables-store-optional-but-recommended">Step 2 — Create a Variables Store (optional but recommended)</h2>
 <p>If your dialogue needs to check or change game state (e.g. "has the player found the key?"), create a <a href="../variables/">Variables</a> asset now. If you only need a simple linear conversation, you can skip this step and come back later.</p>
 <ol>
-<li>Right-click in the Project window → <strong>Create → Threader → Variables Store</strong>.</li>
+<li>Right-click in the Project window → <strong>Create → Threader → Variables → Variables Store</strong>.</li>
 <li>Name it <code>GameVariables</code> (or whatever suits your project).</li>
 <li>In the Inspector, click <strong>+ Add Variable</strong> for each piece of state you need:</li>
 </ol>
@@ -2023,7 +2023,7 @@
 <h2 id="step-3-create-a-dialogue-graph-asset">Step 3 — Create a Dialogue Graph asset</h2>
 <p>This is the asset that stores your entire conversation — all nodes, connections, and settings.</p>
 <ol>
-<li>In the <strong>Project</strong> window, right-click → <strong>Create → Threader → Dialogue Graph</strong>.</li>
+<li>In the <strong>Project</strong> window, right-click → <strong>Create → Threader → Graph → Dialogue Graph</strong>.</li>
 <li>Name it something descriptive, like <code>VillagerGraph</code>.</li>
 </ol>
 <p>You now have a <code>.asset</code> file in your Project window. This single file holds the full node graph for one conversation (or one bark sequence).</p>
@@ -2463,7 +2463,7 @@ if (npc != null &amp;&amp; npc.IsInteractable)
 <td>Canvas controls, sidebar sections, right-click menus</td>
 </tr>
 <tr>
-<td>All 15 node types with field descriptions</td>
+<td>All 17 node types with field descriptions</td>
 <td><strong><a href="../nodes/">Node Reference</a></strong></td>
 <td>Detailed reference for every node</td>
 </tr>
@@ -2509,7 +2509,7 @@ if (npc != null &amp;&amp; npc.IsInteractable)
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Threader Dialogue Kit &nbsp;·&nbsp; v1.0.1
+      Threader Dialogue Kit &nbsp;·&nbsp; v1.1.0
     </div>
   
   
@@ -2533,7 +2533,7 @@ if (npc != null &amp;&amp; npc.IsInteractable)
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.top", "toc.follow", "search.suggest", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": "1.0.1"}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.top", "toc.follow", "search.suggest", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": "1.1.0"}</script>
     
     
       <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>

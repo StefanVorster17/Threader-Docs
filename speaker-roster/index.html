@@ -939,6 +939,28 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#player-name" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Player Name
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bark-speaker-roster" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bark Speaker Roster
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#tips" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1563,6 +1585,28 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#player-name" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Player Name
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bark-speaker-roster" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bark Speaker Roster
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#tips" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1599,7 +1643,7 @@
 <hr />
 <h2 id="creating-a-roster">Creating a roster</h2>
 <ol>
-<li>Right-click in the Project window → <strong>Create → Threader → Speaker Roster</strong></li>
+<li>Right-click in the Project window → <strong>Create → Threader → Speakers → Speaker Roster</strong></li>
 <li>Name the asset something descriptive, e.g. <code>VillageRoster</code> or <code>Chapter1Speakers</code></li>
 <li>In the Inspector, click <strong>+</strong> and type each speaker name you want to use — these become the options in every Speaker dropdown across the graph editor and <code>NPCDialogue</code> components</li>
 </ol>
@@ -1642,13 +1686,19 @@
 <p>When an NPC node fires, the runtime resolves the speaker through this chain:</p>
 <ol>
 <li><strong>Node Speaker field</strong> — the name set directly on that node</li>
-<li><strong>Graph Default Speaker</strong> — the fallback name set at the top of the GRAPH sidebar in the editor; used when the node's own Speaker field is blank</li>
+<li><strong>Graph Default Speaker</strong> — the fallback name set at the top of the SPEAKERS sidebar in the editor; used when the node's own Speaker field is blank</li>
 <li><strong>Calling actor's Speaker Name</strong> — used when the graph was invoked as a <a href="../sub-graph/">sub-graph</a>; the speaker name of whoever started the top-level conversation is inherited automatically</li>
 </ol>
 <p>This means a shared graph (e.g. a generic idle sequence referenced by many NPCs) works correctly without setting any Speaker field on its nodes — each NPC supplies their own name as the final fallback.</p>
 <blockquote>
-<p><strong>Bark graphs</strong> use the same three-level chain, except the third fallback is the <strong>BarkSource Speaker Name</strong> field (not a calling actor). Set this on the <code>BarkSource</code> component to ensure shared bark graphs resolve the correct voice clips and animator actions per NPC. See <a href="../bark/">Bark System</a> for details.</p>
+<p><strong>Bark graphs</strong> use the same three-level chain for legacy NPC nodes, except the third fallback is the <strong>BarkSource Speaker Name</strong> field (not a calling actor). <code>BarkNPCNode</code> resolves speakers differently — it matches <code>BarkSource.speakerName</code> directly against its own per-speaker entries. See <a href="../bark/#speaker-resolution-in-bark-graphs">Bark System — speaker resolution</a> for both.</p>
 </blockquote>
+<hr />
+<h2 id="player-name">Player Name</h2>
+<p><code>SpeakerRoster</code> also has a <strong>Player Name</strong> field (default <code>"Me"</code>) — the display name used for <a href="../nodes/#player-node-p">Player Node</a> lines. <code>DialogueManager.GetPlayerName()</code> reads the first non-empty <strong>Player Name</strong> across all assigned rosters, falling back to <code>"Me"</code> if none is set. It's shown above the speaker list in the roster Inspector, separate from the regular speaker names.</p>
+<hr />
+<h2 id="bark-speaker-roster">Bark Speaker Roster</h2>
+<p>A <strong><code>BarkSpeakerRoster</code></strong> is a separate, parallel asset used only by <a href="../nodes/#bark-npc-node">Bark NPC Node</a> — a flat list of speaker type names (e.g. <code>MaleVillager</code>, <code>FemaleGuard</code>) assigned to <code>DialogueManager</code>'s <strong>Bark Speaker Rosters</strong> list, distinct from the regular Speaker Roster list. Create one via <strong>Create → Threader → Speakers → Bark Speaker Roster</strong>. See <a href="../bark/#multi-speaker-barks-with-bark-npc-node">Bark System — multi-speaker barks</a> for the full setup.</p>
 <hr />
 <h2 id="tips">Tips</h2>
 <ul>
@@ -1691,7 +1741,7 @@
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Threader Dialogue Kit &nbsp;·&nbsp; v1.0.1
+      Threader Dialogue Kit &nbsp;·&nbsp; v1.1.0
     </div>
   
   
@@ -1715,7 +1765,7 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.top", "toc.follow", "search.suggest", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": "1.0.1"}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.top", "toc.follow", "search.suggest", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": "1.1.0"}</script>
     
     
       <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>

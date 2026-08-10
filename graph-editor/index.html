@@ -687,10 +687,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#graph" class="md-nav__link">
+  <a href="#speakers" class="md-nav__link">
     <span class="md-ellipsis">
       
-        GRAPH
+        SPEAKERS
       
     </span>
   </a>
@@ -1663,10 +1663,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#graph" class="md-nav__link">
+  <a href="#speakers" class="md-nav__link">
     <span class="md-ellipsis">
       
-        GRAPH
+        SPEAKERS
       
     </span>
   </a>
@@ -1945,7 +1945,7 @@
 </tr>
 <tr>
 <td><strong>Line Sheet Editor</strong></td>
-<td>Opens the Line Sheet Editor window for the currently loaded graph. See <a href="../line-sheet/">Line Sheet</a> for details.</td>
+<td>Opens the Line Sheet Editor window for the currently loaded graph. See <a href="../line-sheet/">Line Sheet</a> for details. Hidden for Bark graphs — bark graphs use each <code>BarkNPCNode</code>'s own <strong>Line Data</strong> popup instead. See <a href="../bark/#line-sheets-in-bark-graphs">Bark System — line sheets</a>.</td>
 </tr>
 <tr>
 <td><strong>Export Script</strong></td>
@@ -1972,7 +1972,8 @@
 </tbody>
 </table>
 <p>The preview language does not affect runtime behaviour — it is a visual aid for checking translations in the editor.</p>
-<h3 id="graph">GRAPH</h3>
+<h3 id="speakers">SPEAKERS</h3>
+<p><em>(Renamed from "GRAPH" — the section now focuses purely on speaker configuration. The Graph Type toggle has moved to the <code>DialogueGraph</code> asset's own Inspector, and the graph's type is shown as a read-only </em><em><code>· Dialogue</code></em><em> / </em><em><code>· Bark</code></em><em> badge next to the graph name in the editor's top bar.)</em></p>
 <table>
 <thead>
 <tr>
@@ -1983,18 +1984,19 @@
 <tbody>
 <tr>
 <td><strong>Default Speaker</strong></td>
-<td>Fallback speaker name for any NPC node whose own Speaker field is blank. Populated from your <a href="../speaker-roster/">SpeakerRoster</a> assets. Nodes with no override show <code>(Graph Default: X)</code> in their dropdown, updating live as you change this value.</td>
-</tr>
-<tr>
-<td><strong>Graph Type</strong></td>
-<td>Dropdown — <code>Dialogue</code> or <code>Bark</code>. Bark graphs run on a non-blocking runner via <code>PlayBark()</code> and do not support Player Choice Node, Wait Node, or Sub Graph Node. Setting this to <strong>Bark</strong> hides the <strong>Look At Speaker</strong> row and removes those three node types from the sidebar and context menu. See <a href="../bark/">Bark System</a> for the full list of supported nodes and setup details.</td>
+<td><em>(Dialogue graphs.)</em> Fallback speaker name for any NPC node whose own Speaker field is blank. Populated from your <a href="../speaker-roster/">SpeakerRoster</a> assets. Nodes with no override show <code>(Graph Default: X)</code> in their dropdown, updating live as you change this value. Hidden for Bark graphs.</td>
 </tr>
 <tr>
 <td><strong>Look At Speaker</strong></td>
-<td><em>(Dialogue graphs only.)</em> When ticked, any scene object that implements <code>IDialogueFocus</code> (e.g. a first-person camera controller) will automatically rotate to face the current speaker's transform each time an NPC node fires. Toggle this per-graph. See <a href="../ui/#camera-look-at-during-dialogue">UI — Camera look-at</a>.</td>
+<td><em>(Dialogue graphs only.)</em> When ticked, any scene object that implements <code>IDialogueFocus</code> (e.g. a first-person camera controller) will automatically rotate to face the current speaker's transform each time an NPC node fires. Toggle this per-graph. See <a href="../ui/#camera-look-at-during-dialogue">UI — Camera look-at</a>. Hidden for Bark graphs.</td>
+</tr>
+<tr>
+<td><strong>Bark Speakers</strong></td>
+<td><em>(Bark graphs only.)</em> Replaces the two fields above when the loaded graph's <strong>Graph Type</strong> is <strong>Bark</strong>. A roster-picker listing speakers from every <code>BarkSpeakerRoster</code> assigned to <code>DialogueManager</code>, split into <strong>In this graph</strong> and <strong>Available from roster</strong>. Move names between the two lists to control which speakers appear in this graph's <code>BarkNPCNode</code> dropdowns and on <code>BarkSource.speakerName</code>. See <a href="../bark/#multi-speaker-barks-with-bark-npc-node">Bark System — multi-speaker barks</a>.</td>
 </tr>
 </tbody>
 </table>
+<p>To change a graph between <strong>Dialogue</strong> and <strong>Bark</strong>, select the <code>DialogueGraph</code> asset and use the <strong>Graph Type</strong> dropdown at the top of its Inspector (not in this sidebar). If the graph already has nodes, a confirmation dialog warns that switching type may break existing nodes, line sheets, and connections before applying the change. Bark graphs run on a non-blocking runner via <code>PlayBark()</code> and do not support Player Choice Node, Player Node, Wait Node, or Sub Graph Node — see <a href="../bark/">Bark System</a> for the full list of supported nodes.</p>
 <h3 id="navigate">NAVIGATE</h3>
 <table>
 <thead>
@@ -2041,14 +2043,14 @@
 <h3 id="create">CREATE</h3>
 <p>A set of colour-coded pills for every <a href="../nodes/">node type</a>, grouped into categories:</p>
 <ul>
-<li><strong>Dialogue</strong> — NPC Node, Player Choice Node, End Node</li>
+<li><strong>Dialogue</strong> — NPC Node, Player Node, Player Choice Node, End Node, Bark NPC Node</li>
 <li><strong>Logic</strong> — Branch Node, Jump Node, Random Node, Weighted Random Node, Switch Node, Sub Graph Node</li>
 <li><strong>Data / Events</strong> — Set Variable Node, Fire Event Node, Play Audio Node, Animator Trigger Node</li>
 <li><strong>Utility</strong> — Debug Node, Wait Node, Group, Sticky Note</li>
 </ul>
 <p><strong>Drag</strong> a pill onto the canvas to place the node at the drop position.</p>
 <blockquote>
-<p>Player Choice Node, Wait Node, and Sub Graph Node are hidden automatically when <strong>Graph Type</strong> is set to <strong>Bark</strong>.</p>
+<p><strong>Dialogue graphs</strong> hide <strong>Bark NPC Node</strong>. <strong>Bark graphs</strong> hide <strong>NPC Node</strong>, <strong>Player Node</strong>, <strong>Player Choice Node</strong>, <strong>Wait Node</strong>, and <strong>Sub Graph Node</strong> — existing NPC nodes left over in a bark graph from before this pill swap keep working, they're just no longer offered when creating new nodes. See <a href="../bark/">Bark System</a> for the full supported-node list.</p>
 </blockquote>
 <h3 id="node-templates">NODE TEMPLATES</h3>
 <p>Lists all <a href="../templates/"><code>DialogueNodeTemplate</code></a> assets found in the project. Each pill shows the template name and node count <code>[N]</code>.</p>
@@ -2072,6 +2074,10 @@
 <tr>
 <td><code>N</code></td>
 <td>Create NPC Node</td>
+</tr>
+<tr>
+<td><code>P</code></td>
+<td>Create Player Node</td>
 </tr>
 <tr>
 <td><code>C</code></td>
@@ -2238,7 +2244,7 @@
 <p>A 4 px accent border on the left side of the node shows any assigned colour. The colour is purely organisational — it has no effect on execution.</p>
 <hr />
 <h2 id="find-replace">Find &amp; Replace</h2>
-<p>Open via <strong>PROJECT → Find &amp; Replace</strong> in the sidebar. Searches all NPC line text and Player Choice button text in the currently loaded graph.</p>
+<p>Open via <strong>PROJECT → Find &amp; Replace</strong> in the sidebar. Searches all NPC line text, Player Node line text, and Player Choice button text in the currently loaded graph.</p>
 <table>
 <thead>
 <tr>
@@ -2395,7 +2401,7 @@
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Threader Dialogue Kit &nbsp;·&nbsp; v1.0.1
+      Threader Dialogue Kit &nbsp;·&nbsp; v1.1.0
     </div>
   
   
@@ -2419,7 +2425,7 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.top", "toc.follow", "search.suggest", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": "1.0.1"}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.top", "toc.follow", "search.suggest", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": "1.1.0"}</script>
     
     
       <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
